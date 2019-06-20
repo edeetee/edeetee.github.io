@@ -9,16 +9,18 @@ html, body {
     flex-direction: row;
     flex-wrap: wrap;
     max-width: none;
-    /* padding: 5px; */
-    padding: 20px;
+    padding: 0;
     margin: 0;
-    /* margin: 20px; */
+
+    padding-left: 8vw;
+    padding-left: 4vw;
+    padding-top: 20px;
 }
 
 #menu {
     display: flex;
     flex-direction: column;
-    margin-left: 4vw;
+    margin-left: 20px;
     margin-right: 50px;
     max-width: 500px;
     align-items: flex-start;
@@ -80,18 +82,16 @@ a.action {
     margin-top: 80px;
     margin-left: auto;
     margin-right: auto;
-    /* padding-right: 30px; */
-    padding-bottom: 20px;
+    padding-right: 30px;
+    margin-bottom: 50px;
+    width: 100vw;
 }
 
 
 /* display the cv pdf inline */
 
 #cv {
-    /* width: 0; */
-    width: 200px;
-    flex-basis: 0;
-    max-width: 900px;
+    max-width: 850px;
     border: none;
     height: 99vh;
     flex-grow: 1;
@@ -101,10 +101,9 @@ a.action {
 /* Fixing the google doc html generator */
 
 #portfolio {
-    max-width: 800px;
-    width: 100vw;
+    max-width: 750px;
     font-size: 40px;
-    margin-bottom: 100px;
+    /* margin-bottom: 100px; */
 }
 
 #portfolio > * {
