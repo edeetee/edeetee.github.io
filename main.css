@@ -133,13 +133,29 @@ a:active  {
 
 #portfolio > * {
     padding-right: 50px;
+    line-height: 1.35;
+}
+
+#portfolio > * {
+    padding-right: 50px;
 }
 
 #portfolio * {
-    height: auto
+    height: auto;
+    line-height: 1.4;
+}
+
+#portfolio li {
+    margin-top: 0.5vh;
+}
+
+#portfolio p {
+    font-weight: 500 !important;
 }
 
 #portfolio ul {
+    margin-top: 0.5vh;
+    margin-bottom: 1vh;
     padding-left: 0;
 }
 
