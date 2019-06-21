@@ -35,7 +35,7 @@ a:active  {
     display: flex;
     flex-direction: column;
     margin-left: 20px;
-    margin-right: 50px;
+    margin-right: 10vw;
     max-width: 500px;
     align-items: flex-start;
 }
@@ -87,11 +87,12 @@ a:active  {
 }
 
 .action.selected {
-    padding: 4px 8px;
+    padding: 2px 6px;
+
     border-style: solid;
     border-color: rgb(221, 221, 221);
-    border-radius: 5px;
-    border-left: -5px;
+    border-radius: 4px;
+    border-width: 2px;
 }
 
 
@@ -102,9 +103,11 @@ a:active  {
     margin-right: auto;
     
     margin-top: 80px;
-    padding-right: 30px;
     margin-bottom: 50px;
     width: 100vw;
+
+    padding-right: 5vw;
+    margin-left: 2vw;
 }
 
 
@@ -114,7 +117,6 @@ a:active  {
     border: none;
     height: 99vh;
     flex-grow: 1;
-    padding-left: 3vw;
 }
 
 /* Fixing the google doc html generator */
