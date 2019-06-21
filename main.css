@@ -72,9 +72,11 @@ html, body {
 
 /* displaying big right content */
 #body > .hideable {
-    margin-top: 80px;
+    /* spacing for flex */
     margin-left: auto;
     margin-right: auto;
+    
+    margin-top: 80px;
     padding-right: 30px;
     margin-bottom: 50px;
     width: 100vw;
@@ -87,8 +89,8 @@ html, body {
     border: none;
     height: 99vh;
     flex-grow: 1;
+    padding-left: 3vw;
 }
-
 
 /* Fixing the google doc html generator */
 
