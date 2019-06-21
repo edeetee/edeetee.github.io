@@ -37,14 +37,22 @@ html, body {
     margin-bottom: 25px;
 }
 
-
-#menu > h2, #menu > h3 {
-    margin: 10px;
-}
-
-a h2, a h3{
+a h2 {
     padding: 4px 8px;
     outline: none;
+}
+
+.buttonContainer {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.buttonContainer h3 {
+    padding: 0;
+    margin: 0;
+    margin-left: 30px;
+    margin-top: 20px;
 }
 
 a.action {
@@ -61,13 +69,7 @@ a.action {
     background-color: rgb(204, 204, 204);
 }
 
-
-#menu .infoClear h3 {
-    margin-top: 0;
-    outline:none;
-}
-
-
+/* padding, layout */
 #menu h2 {
     font-size: 34px;
     margin-bottom: 10px;
