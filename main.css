@@ -3,6 +3,20 @@ html, body {
     outline: none;
 }
 
+/* http://mrmrs.io/links/ */
+a {
+    transition: color .4s;
+    color: #265C83;
+}
+a:link,
+a:visited { color: #265C83; }
+a:hover   { color: #7FDBFF; }
+a:active  {
+    transition: color .3s;
+    color: #007BE6;
+}
+.link { text-decoration: none; }
+
 #body{
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
@@ -74,9 +88,10 @@ html, body {
 
 .action.selected {
     padding: 4px 8px;
-    background-color: rgb(221, 221, 221);
-    border-radius: 2px;
-    padding-left: -5px;
+    border-style: solid;
+    border-color: rgb(221, 221, 221);
+    border-radius: 5px;
+    border-left: -5px;
 }
 
 
