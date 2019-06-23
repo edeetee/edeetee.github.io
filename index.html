@@ -45,11 +45,12 @@
             cvButton.onclick = () => displayClass(cvButton, 'displayCv')
             
             const portfolioButton = document.getElementById('portfolioButton')
-            portfolioButton.onclick = () =>displayClass(portfolioButton, 'displayPortfolio')
+            portfolioButton.onclick = () => displayClass(portfolioButton, 'displayPortfolio')
 
             /**
              *  
-             * @param {String} class
+             * @param {HTMLElement} button
+             * @param {String} className
              * */
             function displayClass(button, className) {
                 const displaying = document.getElementsByClassName(className)
