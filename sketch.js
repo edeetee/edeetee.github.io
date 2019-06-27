@@ -37,7 +37,7 @@ function draw(){
 
   avgFps += (frameRate()-avgFps)*frameVel;
 
-  if(avgFps < 20)
+  if(avgFps < 15)
     backgroundEnabled.click()
 
   singleRender = false;
