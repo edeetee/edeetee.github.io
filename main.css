@@ -7,10 +7,11 @@ html, body {
 a {
     transition: color .4s;
     color: #265C83;
+    cursor: pointer; 
 }
 a:link,
 a:visited { color: #265C83; }
-a:hover   { color: #7FDBFF; }
+a:hover   { color: #7FDBFF;}
 a:active  {
     transition: color .3s;
     color: #007BE6;
@@ -29,6 +30,32 @@ a:active  {
     padding-left: 8vw;
     padding-left: 4vw;
     padding-top: 2vh;
+}
+
+.p5Canvas{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+
+#options {
+    position: fixed;
+    top:15px;
+    right:10px;
+    opacity: 0.8;
+}
+
+#options label {
+    display: none;
+}
+
+#options:hover label{
+    display:inline;
+}
+
+#options > * {
+    padding: 10px 5px;
 }
 
 #menu {
@@ -81,7 +108,6 @@ a:active  {
 .action {
     outline:none;
     text-decoration: none;
-    cursor: pointer;
     /* padding: 4px 8px; */
 }
 
