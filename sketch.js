@@ -36,7 +36,6 @@ function draw(){
   lastRender = millis()
 
   avgFps += (frameRate()-avgFps)*frameVel;
-  console.log(avgFps)
 
   if(avgFps < 20)
     backgroundEnabled.click()
@@ -67,24 +66,16 @@ document.getElementById("changeBackground").onclick = ev => {
   singleRender = true;
 }
 
-let curFactor = 0;
-const curFactorVelocity = 0.08;
-function scrollFactor(){
-  // return ((mouseX/width)+(mouseY/height))/2
-  curFactor += (scrollY/height-curFactor)*curFactorVelocity
-  return curFactor;
-}
-
 let extraTime = 0;
 
 
-const maxFactor = 0.5;
+const maxFactor = 0.4;
 const minFactor = 0.1;
 const points = 30
-const timeScale = 1/100000
+const timeScale = 1/80000
 
 function drawLandscape(){
-  let time = (millis()+extraTime)*timeScale+scrollFactor()/60;
+  let time = (millis()+extraTime)*timeScale;
 
   background('white')
   noStroke()
@@ -98,10 +89,10 @@ function drawLandscape(){
     beginShape()
     for(let x = -1; x <= points+1; x++){
       let xP = x/points;
-      let xScale = (7-6.99*cos(time*TWO_PI))
+      let xScale = 5*(1-0.999*cos(time*TWO_PI))
         
       curveVertex(map(x, 0, points, 0, width),
-        y + singleH/2 - singleH*noise((mirror ? 0 : 100000)+xScale/2-xP*xScale, yP*2, time))
+        y + singleH/4 - singleH*noise((mirror ? 0 : 100000)+xScale/2-xP*xScale, yP*2, time))
     }
     vertex(width, height)
     vertex(0, height)

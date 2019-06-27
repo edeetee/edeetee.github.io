@@ -114,6 +114,7 @@ a:active  {
 .action.selected {
     padding: 2px 6px;
 
+    background: whitesmoke;
     border-style: solid;
     border-color: rgb(221, 221, 221);
     border-radius: 4px;
@@ -146,10 +147,30 @@ a:active  {
 
 /* display the cv pdf inline */
 #cv {
-    max-width: 850px;
+    max-width: 750px;
     border: none;
-    height: 99vh;
     flex-grow: 1;
+}
+
+#cv #photo {
+    display:inline;
+}
+
+#photo img {
+    width: 200px;
+}
+
+#cv .header{
+    float:right;
+}
+
+#cv #title{
+    display:none;
+}
+
+#cv p {
+    margin-top: 5px;
+    margin-bottom: 2px;
 }
 
 /* Fixing the google doc html generator */
