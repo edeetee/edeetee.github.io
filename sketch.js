@@ -6,7 +6,7 @@ function setup () {
   // /** @type {HTMLElement} */ let canvas = document.getElementsByClassName("p5Canvas")[0]
   document.body.onclick = (ev) => {
     singleRender = true;
-    extraTime = -500000+random()*1000000
+    timeOffset = -500000+random()*1000000
   }
   document.body.click()
 
@@ -18,7 +18,13 @@ function setup () {
 
 function windowResized(){
   singleRender = true;
+  start = millis()
   resizeCanvas(windowWidth, windowHeight)
+}
+
+let start = 0;
+function curTime(){
+  return millis()-start+timeOffset
 }
 
 let doDraw = true;
@@ -27,15 +33,12 @@ let mirror = false;
 
 let backgroundEnabled = document.getElementById("toggleBackground")
 let singleRender = false;
-let lastRender;
 
 const frameVel = 0.05;
 let avgFps = 60;
 function draw(){
   if(!doDraw && !singleRender)
     return;
-
-  lastRender = millis()
 
   avgFps += (frameRate()-avgFps)*frameVel;
 
@@ -57,9 +60,9 @@ backgroundEnabled.onclick = ev => {
 
   //pauses spot on millis
   if(doDraw){
-    extraTime -= (millis()-lastRender)
     avgFps = 60;
-  }
+    start = millis()
+  }  
 }
 
 document.getElementById("changeBackground").onclick = ev => {
@@ -69,13 +72,13 @@ document.getElementById("changeBackground").onclick = ev => {
   singleRender = true;
 }
 
-let extraTime = 0;
+let timeOffset = 0;
 
 let xPointInterval = 20
 const timeScale = 1/80000
 
 function drawLandscape(){
-  let time = (millis()+extraTime)*timeScale;
+  let time = curTime()*timeScale;
 
   //reduce quality
   if(frameRate() < 10){
@@ -127,7 +130,7 @@ function drawWallpaper () {
 
   const modX = size*2*t(xModInterval)
   const modY = size*2*t(yModInterval)
-  const time = millis()+extraTime;
+  const time = curTime()
   const fX = makeMap(-size*4, width+size*4);
   const fY = makeMap(-size*4, height+size*4);
 
@@ -194,7 +197,7 @@ function drawCircle(radius, waveMap, offset){
 }
 
 function t(period){
-  return (millis()+extraTime).mod(period)/period
+  return curTime().mod(period)/period
 }
 
 function st(period){
