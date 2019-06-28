@@ -13,7 +13,7 @@ function setup () {
   angleMode(RADIANS)
   colorMode(HSB)
 
-  curveTightness(0.5)
+  curveTightness(isLandscape ? 0.4 : 0)
 }
 
 function windowResized(){
@@ -65,28 +65,35 @@ backgroundEnabled.onclick = ev => {
 document.getElementById("changeBackground").onclick = ev => {
   ev.stopPropagation();
   isLandscape = !isLandscape;
+  curveTightness(isLandscape ? 0.4 : 0)
   singleRender = true;
 }
 
 let extraTime = 0;
 
-const xPointInterval = 30
+let xPointInterval = 30
 const timeScale = 1/80000
 
 function drawLandscape(){
   let time = (millis()+extraTime)*timeScale;
 
-  background('white')
+  //reduce quality
+  if(frameRate() < 10)
+    xPointInterval += 1
+
+  console.log(xPointInterval)
+
   noStroke()
   let y = 0;
   //positive y is down
 
-  while(y < (height)){
+  while(y < height){
     let yP = y/height;
-    let singleH = map(y, height, 0, height*0.4, height*0.1)*2
+    let singleH = map(y, height, 0, height*0.4, height*0.05)*2
     fill(0, 0, 100-yP*20)
 
     beginShape()
+    // vertex(0, height)
     for(let x = -xPointInterval; x <= width+xPointInterval*2; x += xPointInterval){
       let xP = x/width;
       let xScale = 4*(1-0.999*cos(time*TWO_PI))*width/1920
@@ -98,17 +105,15 @@ function drawLandscape(){
     }
     vertex(width, height)
     vertex(0, height)
-    vertex(-100, height)
-    vertex(-200, height)
 
-    endShape()
+    endShape(CLOSE)
 
     y += singleH/2
   }
 }
   
 
-const gridSize = 200;
+const size = 200;
 const minBright = 85;
 
 const xModInterval = 5000;
@@ -120,31 +125,31 @@ function drawWallpaper () {
   strokeWeight(0.4)
   noStroke();
 
-  let modX = gridSize*2*t(xModInterval)
-  let modY = gridSize*2*t(yModInterval)
-  let fX = makeMap(-gridSize*4, width+gridSize*4);
-  let fY = makeMap(-gridSize*4, height+gridSize*4);
-
-  let time = millis()+extraTime;
+  const modX = size*2*t(xModInterval)
+  const modY = size*2*t(yModInterval)
+  const time = millis()+extraTime;
+  const fX = makeMap(-size*4, width+size*4);
+  const fY = makeMap(-size*4, height+size*4);
 
   background(0, 0, minBright)
-  let i = Math.floor(time/yModInterval)+Math.floor(time/xModInterval)
-  
-  for(let x = modX-gridSize*2; x < width+gridSize*2+modX; x+= gridSize*2){
-    for(let y = modY-gridSize*2; y < height+gridSize*2+modY; y += gridSize*2){
+  let i = Math.floor(time/yModInterval)+Math.floor(time/xModInterval);
+  for(let x = modX-size*2; x < width+size*2+modX; x+= size*2){
+    for(let y = modY-size*2; y < height+size*2+modY; y += size*2){
       i++;
-
       let fx = fX(x)
       let fy = fY(y)
+
+      // let nX = Math.floor(width/gridSize)
+      // let i = Math.floor(fx*nX + fy*nX)
       
       translate(x, y)
       let heightI = 8000+fx*3000
       // let heightI = 5000
 
-      let radius = gridSize*(1.4 -0.5*ct(heightI*2) -0.8*ct(heightI*10));
+      let radius = size*(1.4 -0.5*ct(heightI*2) -0.8*ct(heightI*10));
 
-      if(gridSize < radius){
-        let alpha = Math.min((radius-gridSize)/(gridSize), 1);
+      if(size < radius){
+        let alpha = Math.min((radius-size)/(size), 1);
         fill(0, 0, i%2 == 0 ? minBright : 100, 1-alpha*0.8)
       } else{
         fill(0, 0, i%2 == 0 ? minBright : 100)
@@ -163,6 +168,8 @@ function makeMap(low, high){
   return val => (val-low)/(high-low)
 }
 
+const circlePoints = 20
+
 /**
  * 
  * @param {Number} radius
@@ -174,14 +181,12 @@ function drawCircle(radius, waveMap, offset){
   waveMap = waveMap || (x => x)
   offset = offset || 0
 
-  let points = 20
-
-  let circle = fillArray(points, radius)
+  let circle = fillArray(circlePoints, radius)
   //wavy offset
   .map(waveMap)
   //circle coordinates
   .map((radius, i, arr) => {
-    let ang = i/points*TWO_PI+offset
+    let ang = i/circlePoints*TWO_PI+offset
     return createVector(radius*sin(ang), -radius*cos(ang))
   })
 
