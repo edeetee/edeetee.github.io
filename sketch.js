@@ -12,6 +12,8 @@ function setup () {
 
   angleMode(RADIANS)
   colorMode(HSB)
+
+  curveTightness(0.5)
 }
 
 function windowResized(){
@@ -37,7 +39,7 @@ function draw(){
 
   avgFps += (frameRate()-avgFps)*frameVel;
 
-  if(avgFps < 15)
+  if(avgFps < 10)
     backgroundEnabled.click()
 
   singleRender = false;
@@ -68,10 +70,7 @@ document.getElementById("changeBackground").onclick = ev => {
 
 let extraTime = 0;
 
-
-const maxFactor = 0.4;
-const minFactor = 0.1;
-const points = 30
+const xPointInterval = 30
 const timeScale = 1/80000
 
 function drawLandscape(){
@@ -80,19 +79,22 @@ function drawLandscape(){
   background('white')
   noStroke()
   let y = 0;
+  //positive y is down
 
   while(y < (height)){
     let yP = y/height;
-    let singleH = map(y, height, 0, height*maxFactor, height*minFactor)*2
+    let singleH = map(y, height, 0, height*0.4, height*0.1)*2
     fill(0, 0, 100-yP*20)
 
     beginShape()
-    for(let x = -1; x <= points+1; x++){
-      let xP = x/points;
-      let xScale = 5*(1-0.999*cos(time*TWO_PI))
+    for(let x = -xPointInterval; x <= width+xPointInterval*2; x += xPointInterval){
+      let xP = x/width;
+      let xScale = 4*(1-0.999*cos(time*TWO_PI))*width/1920
+
+      let offset = singleH/4
+        - singleH * noise((mirror ? 0 : 100000)+xScale/2-xP*xScale, yP*0.8,time)
         
-      curveVertex(map(x, 0, points, 0, width),
-        y + singleH/4 - singleH*noise((mirror ? 0 : 100000)+xScale/2-xP*xScale, yP*2, time))
+      curveVertex(x, y + offset)
     }
     vertex(width, height)
     vertex(0, height)
@@ -101,7 +103,7 @@ function drawLandscape(){
 
     endShape()
 
-    y += map(y, height, 0, height*maxFactor, height*minFactor)
+    y += singleH/2
   }
 }
   

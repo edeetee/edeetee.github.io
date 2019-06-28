@@ -1,8 +1,6 @@
 /// <reference path="./global.d.ts" />
 
 const hidePanels = document.querySelectorAll(".hideable")
-const resetInfos = n => {n.hidden = true}
-hidePanels.forEach(resetInfos)
 
 const actionPanels = document.querySelectorAll('.action')
 
@@ -23,7 +21,7 @@ function displayClass(button, className) {
     const isHidden = !first.hidden;
 
     actionPanels.forEach(action => action.classList.remove("selected"))
-    hidePanels.forEach(resetInfos)
+    hidePanels.forEach(panel => panel.hidden = true)
 
     if(!isHidden){
         button.classList.add("selected")
