@@ -71,17 +71,17 @@ document.getElementById("changeBackground").onclick = ev => {
 
 let extraTime = 0;
 
-let xPointInterval = 30
+let xPointInterval = 20
 const timeScale = 1/80000
 
 function drawLandscape(){
   let time = (millis()+extraTime)*timeScale;
 
   //reduce quality
-  if(frameRate() < 10)
+  if(frameRate() < 10){
     xPointInterval += 1
-
-  console.log(xPointInterval)
+    console.log("lowered qual for fps " + frameRate())
+  }
 
   noStroke()
   let y = 0;
