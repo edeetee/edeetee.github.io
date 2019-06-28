@@ -14,11 +14,13 @@ function setup () {
   colorMode(HSB)
 
   curveTightness(isLandscape ? 0.4 : 0)
+  
+  start = millis()
 }
 
 function windowResized(){
   singleRender = true;
-  start = millis()
+  start += millis()-lastDrawMillis
   resizeCanvas(windowWidth, windowHeight)
 }
 
@@ -36,11 +38,13 @@ let singleRender = false;
 
 const frameVel = 0.05;
 let avgFps = 60;
+let lastDrawMillis = 0;
 function draw(){
   if(!doDraw && !singleRender)
     return;
 
   avgFps += (frameRate()-avgFps)*frameVel;
+  lastDrawMillis = millis()
 
   if(avgFps < 10)
     backgroundEnabled.click()
@@ -53,6 +57,7 @@ function draw(){
     drawLandscape()
 }
 
+let pausedStart = 0;
 backgroundEnabled.onclick = ev => {
   ev.stopPropagation();
   doDraw = !doDraw;
@@ -61,8 +66,8 @@ backgroundEnabled.onclick = ev => {
   //pauses spot on millis
   if(doDraw){
     avgFps = 60;
-    start = millis()
-  }  
+    start += millis()-lastDrawMillis
+  }
 }
 
 document.getElementById("changeBackground").onclick = ev => {
