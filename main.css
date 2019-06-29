@@ -141,7 +141,7 @@ a:active  {
     width: 100vw;
 
     padding-right: 5vw;
-    margin-left: 2vw;
+    padding-left: 5vw;
 }
 
 
@@ -213,7 +213,7 @@ a:active  {
 }
 
 #portfolio > * { 
-    padding-right: 50px;
+    padding-right: 70px;
 }
 
 #portfolio * {

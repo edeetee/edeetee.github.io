@@ -28,19 +28,35 @@ function displayClass(button, className) {
         for (let i = 0; i < displaying.length; i++) {
             let el = displaying[i];
             el.hidden = isHidden
+            setTimeout(() => {
+                if(!isScrolledUpto(el, 100))
+                    scrollToOffset(el, -50)
+            }, 1000)
         }
     }
 }
 
-// function setup(){
-//     createCanvas(windowWidth, windowHeight)
-// }
+/**
+ * @param {Element} el 
+ * @param {Number} [offset]
+ */
+function scrollToOffset(el, offset) {
+    offset = offset || 0
+    var rect = el.getBoundingClientRect();
+    var elemTop = rect.top;
+    window.scrollTo({
+        top: elemTop+offset,
+        behavior: "smooth"
+    })
+}
 
-// function windowResized(){
-//     resizeCanvas(windowWidth, windowHeight)
-// }
-
-
-// function draw(){
-
-// }
+/**
+ * @param {Element} el 
+ * @param {Number} [offset]
+ */
+function isScrolledUpto(el, offset) {
+    offset = offset || 0
+    var rect = el.getBoundingClientRect();
+    var elemTop = rect.top;
+    return (elemTop+offset) < window.innerHeight;
+}
