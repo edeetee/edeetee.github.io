@@ -29,8 +29,8 @@ function displayClass(button, className) {
             let el = displaying[i];
             el.hidden = isHidden
             setTimeout(() => {
-                if(!isScrolledUpto(el, 100))
-                    scrollToOffset(el, -50)
+                if(!isScrolledUpto(el, 300))
+                    scrollToOffset(el, -60)
             }, 1000)
         }
     }
