@@ -18,8 +18,12 @@ a:active  {
 }
 .link { text-decoration: none; }
 
+* {
+    font-family: "Roboto", Arial, Helvetica, sans-serif !important;
+}
+
 #body{
-    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    font-family: "Roboto", Arial, Helvetica, sans-serif !important;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -70,7 +74,6 @@ a:active  {
 #menu h1{
     font-size: 48px;
     margin-bottom: 20px;
-    margin-top: 1vh;
 }
 #menu sub{
     font-size: 24px;
@@ -133,7 +136,6 @@ a:active  {
 /* displaying big right content */
 #body > .hideable {
     /* spacing for flex */
-    margin-left: auto;
     margin-right: auto;
     
     margin-top: 80px;
@@ -142,12 +144,13 @@ a:active  {
 
     padding-right: 5vw;
     padding-left: 5vw;
+
+    max-width: 750px;
 }
 
 
 /* display the cv pdf inline */
 #cv {
-    max-width: 750px;
     border: none;
     flex-grow: 1;
 }
@@ -160,8 +163,14 @@ a:active  {
     width: 200px;
 }
 
+#cv #main {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 #cv .header{
-    float:right;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #cv #title{
@@ -202,18 +211,9 @@ a:active  {
 }
 
 /* Fixing the google doc html generator */
-#portfolio {
-    max-width: 700px;
-    font-size: 40px;
-}
-
 #portfolio > * {
-    padding-right: 50px;
+    padding-right: 100px;
     line-height: 1.35;
-}
-
-#portfolio > * { 
-    padding-right: 70px;
 }
 
 #portfolio * {

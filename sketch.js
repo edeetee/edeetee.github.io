@@ -5,8 +5,22 @@ function setup () {
 
   // /** @type {HTMLElement} */ let canvas = document.getElementsByClassName("p5Canvas")[0]
   document.body.onclick = (ev) => {
-    singleRender = true;
-    timeOffset = -500000+random()*1000000
+    console.log()
+    let target = ev.target
+    if(target instanceof Node){
+      console.log(target)
+      console.log()
+
+      if(!target.textContent)
+        return randomize()
+      
+      if(target.firstChild){
+        if(!target.firstChild.textContent.trim().length)
+          return randomize()
+        if(target.firstChild.firstChild)
+          return randomize()
+      }
+    }
   }
   document.body.click()
 
@@ -16,6 +30,11 @@ function setup () {
   curveTightness(isLandscape ? 0.4 : 0)
   
   start = millis()
+}
+
+function randomize(){
+  singleRender = true;
+  timeOffset = -500000+random()*1000000
 }
 
 function windowResized(){
