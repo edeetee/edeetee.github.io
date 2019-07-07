@@ -94,7 +94,7 @@ backgroundEnabled.onclick = ev => {
 document.getElementById("changeBackground").onclick = ev => {
   ev.stopPropagation();
   isLandscape = !isLandscape;
-  curveTightness(isLandscape ? 0.4 : 0)
+  curveTightness(isLandscape ? 0.3 : 0)
   singleRender = true;
 }
 
@@ -109,7 +109,7 @@ function drawLandscape(){
   let time = curTime()*timeScale;
 
 
-  const minTimes = 10
+  const minTimes = 5
   const countTimes = 5
   //reduce quality
   if(frameRate() < 15){
