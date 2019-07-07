@@ -5,11 +5,11 @@ function setup () {
 
   // /** @type {HTMLElement} */ let canvas = document.getElementsByClassName("p5Canvas")[0]
   document.body.onclick = (ev) => {
-    console.log()
+    // console.log()
     let target = ev.target
     if(target instanceof Node){
-      console.log(target)
-      console.log()
+      // console.log(target)
+      // console.log()
 
       if(!target.textContent)
         return randomize()
@@ -56,7 +56,7 @@ let backgroundEnabled = document.getElementById("toggleBackground")
 let singleRender = false;
 
 const frameVel = 0.05;
-let avgFps = 60;
+let avgFps = 30;
 let lastDrawMillis = 0;
 function draw(){
   if(!doDraw && !singleRender)
@@ -65,8 +65,10 @@ function draw(){
   avgFps += (frameRate()-avgFps)*frameVel;
   lastDrawMillis = millis()
 
-  if(avgFps < 10)
+  if(avgFps < 15){
     backgroundEnabled.click()
+    console.log('disabled, avgFps: ' + avgFps)
+  }
 
   singleRender = false;
 
@@ -98,17 +100,26 @@ document.getElementById("changeBackground").onclick = ev => {
 
 let timeOffset = 0;
 
-let xPointInterval = 20
+// let xPointInterval = 20
 const timeScale = 1/80000
+
+let timesSlow = 0;
 
 function drawLandscape(){
   let time = curTime()*timeScale;
 
+
   //reduce quality
-  if(frameRate() < 10){
-    xPointInterval += 1
-    console.log("lowered qual for fps " + frameRate())
+  if(frameRate() < 30){
+    timesSlow++;
+    if(timesSlow < 15){
+      console.log(`triggered ${timesSlow}, fps ${frameRate()}`)
+    }
   }
+
+  const minTimes = 3
+  let xPointInterval = 20;
+  xPointInterval = map(timesSlow, minTimes, minTimes+5, xPointInterval, xPointInterval+400, true)
 
   noStroke()
   let y = 0;
