@@ -109,17 +109,18 @@ function drawLandscape(){
   let time = curTime()*timeScale;
 
 
+  const minTimes = 10
+  const countTimes = 5
   //reduce quality
-  if(frameRate() < 30){
+  if(frameRate() < 20){
     timesSlow++;
-    if(timesSlow < 15){
+    if(timesSlow < minTimes+countTimes){
       console.log(`triggered ${timesSlow}, fps ${frameRate()}`)
     }
   }
 
-  const minTimes = 3
   let xPointInterval = 20;
-  xPointInterval = map(timesSlow, minTimes, minTimes+5, xPointInterval, xPointInterval+400, true)
+  xPointInterval = map(timesSlow, minTimes, minTimes+countTimes, xPointInterval, xPointInterval+400, true)
 
   noStroke()
   let y = 0;
@@ -137,7 +138,7 @@ function drawLandscape(){
       let xScale = 4*(1-0.999*cos(time*TWO_PI))*width/1920
 
       let offset = singleH/4
-        - singleH * noise((mirror ? 0 : 100000)+xScale/2-xP*xScale, yP*0.8,time)
+        - singleH * noise((mirror ? 0 : 100000)+xScale/2-xP*xScale, yP*0.8, time*5)
         
       curveVertex(x, y + offset)
     }
