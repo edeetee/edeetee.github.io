@@ -112,7 +112,7 @@ function drawLandscape(){
   const minTimes = 10
   const countTimes = 5
   //reduce quality
-  if(frameRate() < 20){
+  if(frameRate() < 15){
     timesSlow++;
     if(timesSlow < minTimes+countTimes){
       console.log(`triggered ${timesSlow}, fps ${frameRate()}`)
@@ -128,7 +128,7 @@ function drawLandscape(){
 
   while(y < height){
     let yP = y/height;
-    let singleH = map(y, height, 0, height*0.4, height*0.05)*2
+    let singleH = map(y, height, 0, height*0.38, height*0.08)*2
     fill(0, 0, 100-yP*20)
 
     beginShape()
