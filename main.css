@@ -198,14 +198,14 @@ a:active  {
 
 h3 a::before, sub a::before, h2 > * > a::before{
     content: "*";
-    color: rgba(0, 0, 0, 0.15);
-    font-size: 200%;
+    color: rgba(0, 0, 0, 0.10);
+    font-size: 170%;
     font-weight: bold;
 
     text-decoration: none;
     position: relative;
-    left: -20px;
-    top: -15px;
+    left: -0.4em;
+    top: -0.3em;
     /* top: 6.5px; */
 
     width: 0;
@@ -234,6 +234,7 @@ h3 a::before, sub a::before, h2 > * > a::before{
 
 #portfolio p {
     font-weight: 500 !important;
+    margin: 15px 0;
 }
 
 #portfolio ul {
