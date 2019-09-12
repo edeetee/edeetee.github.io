@@ -10,6 +10,21 @@ cvButton.onclick = ev => {ev.stopPropagation(); displayClass(cvButton, 'displayC
 const portfolioButton = document.getElementById('portfolioButton')
 portfolioButton.onclick = ev => {ev.stopPropagation(); displayClass(portfolioButton, 'displayPortfolio')}
 
+const portfolio = document.getElementById("portfolio")
+goAwayGoogle(portfolio)
+
+/**
+ * 
+ * @param {Node} el 
+ */
+function goAwayGoogle(el){
+    if(el instanceof HTMLAnchorElement){
+        el.href = el.href.replace("https://www.google.com/url?q=", "").replace(/&sa=D.*/g, "")
+    }
+    if(el.hasChildNodes())
+        el.childNodes.forEach(child => goAwayGoogle(child))
+}
+
 /**
  *  
  * @param {HTMLElement} button

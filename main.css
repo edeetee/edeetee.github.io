@@ -1,25 +1,30 @@
 html, body {
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     outline: none;
 }
 
 /* http://mrmrs.io/links/ */
 a {
     transition: color .4s;
-    color: #265C83;
+    color: rgb(23, 103, 160) !important;
     cursor: pointer; 
 }
-a:link,
-a:visited { color: #265C83; }
-a:hover   { color: #7FDBFF;}
+
+a:hover   { color: #7FDBFF !important;}
 a:active  {
-    transition: color .3s;
-    color: #007BE6;
+    transition: color .3s !important;
+    color: #007BE6 !important;
 }
 
 * {
     font-family: "Roboto", Arial, Helvetica, sans-serif !important;
     text-decoration: none !important;
+}
+
+/* stops load in jump from google css */
+h1 {
+    padding-top: 20pt;
+    padding-bottom: 6pt;
 }
 
 #body{
@@ -31,9 +36,9 @@ a:active  {
     padding: 0;
     margin: 0;
 
-    padding-left: 8vw;
-    padding-left: 4vw;
-    padding-top: 2vh;
+    margin-left: 8vw;
+    margin-top: 2vh;
+    margin-right: 2vw;
 }
 
 .p5Canvas{
@@ -59,7 +64,7 @@ a:active  {
 }
 
 #options > * {
-    padding: 10px 5px;
+    margin: 10px 5px;
 }
 
 #menu {
@@ -111,17 +116,16 @@ a:active  {
 
 .action {
     outline:none;
-    /* padding: 4px 8px; */
-}
-
-.action.selected {
     padding: 2px 6px;
 
-    background: whitesmoke;
     border-style: solid;
     border-color: rgb(221, 221, 221);
     border-radius: 4px;
     border-width: 2px;
+}
+
+.action.selected {
+    background: rgba(255, 255, 255, 0.5);
 
     border-bottom-color: rgb(175, 175, 175);
     border-right-color: rgb(175, 175, 175);
@@ -135,17 +139,10 @@ a:active  {
 
 /* displaying big right content */
 #body > .hideable {
-    /* spacing for flex */
-    margin-right: auto;
-    
     margin-top: 80px;
     margin-bottom: 50px;
-    width: 100vw;
-
-    padding-right: 5vw;
-    padding-left: 5vw;
-
-    max-width: 750px;
+    
+    max-width: 700px;
 }
 
 
@@ -196,22 +193,21 @@ a:active  {
     content: ","
 }
 
-h3 a::before, sub a::before, h2 > * > a::before{
-    content: "*";
-    color: rgba(0, 0, 0, 0.10);
-    font-size: 170%;
+/* h3 a::before, sub a::before, h2 > * > a::before{
+    content: "🔗";
+    color: rgba(0, 0, 0, 0.3);
+    font-size: 120%;
     font-weight: bold;
 
     text-decoration: none;
     position: relative;
-    left: -0.4em;
-    top: -0.3em;
-    /* top: 6.5px; */
+    left: -0.8em;
+    top: -0.4em;
 
     width: 0;
     height: 0;
     display: block;
-}
+} */
 
 .buttonContainer *::before {
     content: ""
@@ -219,7 +215,7 @@ h3 a::before, sub a::before, h2 > * > a::before{
 
 /* Fixing the google doc html generator */
 #portfolio > * {
-    padding-right: 100px;
+    /* padding-right: 100px; */
     line-height: 1.35;
 }
 
@@ -243,8 +239,12 @@ h3 a::before, sub a::before, h2 > * > a::before{
     padding-left: 0;
 }
 
+#portfolio span {
+    width: auto !important;
+}
+
 #portfolio img {
+    /* max-width: 80vw !important; */
     max-width: 80vw !important;
-    /* width:auto; */
     height:auto !important;
 }
