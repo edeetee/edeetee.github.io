@@ -1,6 +1,10 @@
 import React from "react";
 
 import { Header, Main, Cards, Footer } from "@components/css";
+import Head from "next/head";
+import { Portfolio } from "@components/css/portfolio";
+import { About } from "@components/css/about";
+import { Availability } from "@components/css/availability";
 
 const Home: React.FC = () => {
     return (
@@ -8,13 +12,17 @@ const Home: React.FC = () => {
             style={{
                 display: "flex",
                 flexDirection: "column",
-                minHeight: "100vh",
+                margin: "10vh"
             }}
         >
-            <Header />
+            <Head>
+                <title>edeetee</title>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+            </Head>
             <Main />
-            <Cards />
-            <Footer />
+            <About />
+            <Portfolio />
+            <Availability />
         </div>
     );
 };
