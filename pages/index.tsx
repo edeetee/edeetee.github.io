@@ -5,7 +5,7 @@ import Head from "next/head";
 import { Portfolio } from "@components/css/portfolio";
 import { About } from "@components/css/about";
 import { Availability } from "@components/css/availability";
-import { Background } from "@components/background";
+import { CanvasRenderer } from "@components/background";
 
 const Home: React.FC = () => {
     return (
@@ -25,7 +25,10 @@ const Home: React.FC = () => {
                 <Portfolio />
                 <Availability />
 
-                <Background />
+                <div style={{zIndex: -10}}>                
+                    <CanvasRenderer />
+                </div>
+
             </div>
         
     );
