@@ -32,7 +32,7 @@ export const FeedbackRenderer: (regl: Regl) => {onMouseMove: MouseMoveListener, 
 
     // var mouse = mouseChange(document.body, () => {})
 
-    // var pixels = regl.texture()
+    var pixels = regl.texture()
 
     var feedbackFramebuffer = regl.framebuffer()
 
@@ -48,7 +48,7 @@ export const FeedbackRenderer: (regl: Regl) => {onMouseMove: MouseMoveListener, 
         frag: feedbackFrag,
         
         uniforms: {
-            texture: feedbackFramebuffer,
+            texture: pixels,
             size: ({viewportWidth, viewportHeight}) => [viewportWidth, viewportHeight],
             mouse: ({pixelRatio}) => [mouseUV.x, 1-mouseUV.y/pixelRatio],
             t: ({tick}) => 0.01 * tick
@@ -72,17 +72,25 @@ export const FeedbackRenderer: (regl: Regl) => {onMouseMove: MouseMoveListener, 
 
         onFrame: ({viewportHeight, viewportWidth}) => {
 
-            // pixels.resize(viewportWidth, viewportHeight)
-
+            pixels.resize(viewportWidth, viewportHeight)
             feedbackFramebuffer.resize(viewportWidth, viewportHeight)
 
             fullscreenQuad(() => {
-
                 regl.clear({
                     color: [0, 0, 0, 1]
                 })
 
-                processFeedback()
+                processFeedback(() => {
+                    pixels({
+                        copy: true,
+                    })
+
+                    regl.draw()
+                })
+
+                // feedbackFramebuffer.use(() => {
+                //     var readFbo = regl.read()
+                // })
 
                 // regl.clear({
                 //     color: [0, 0, 0, 1]
@@ -90,11 +98,13 @@ export const FeedbackRenderer: (regl: Regl) => {onMouseMove: MouseMoveListener, 
     
                 processOutput()
 
+                // regl.clear({
+                //     color: [1, 0, 0, 1]
+                // })
+
+                // regl.draw()
             })
 
-            // pixels({
-            //     copy: true
-            // })
         }
     }
 }

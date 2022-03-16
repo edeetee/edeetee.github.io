@@ -30,8 +30,6 @@ export class CanvasRenderer extends Component   {
             }
         })
 
-        console.log(`version: ${regl.limits.version}`)
-
         var feedbackRenderer = FeedbackRenderer(regl)
 
         this.onMouseMove = feedbackRenderer.onMouseMove

@@ -11,6 +11,8 @@ void main () {
     float dist = length(gl_FragCoord.xy - mouse);
     vec2 textureUv = ((uv-vec2(0.5))*0.98) + vec2(0.5);
     vec4 textureColor = texture2D(texture, textureUv);
+
+    vec2 feedbackUV = textureColor.xy;
     // vec2 feedbackUv = textureColor.xy;
 
     vec2 mouseDist = (uv-mouse);
@@ -19,11 +21,16 @@ void main () {
 
     // gl_FragColor = mix(uv, feedbackUv, 0.01);
 
+    // vec2 distortedUV = feedbackUV + clamp(vec2(1)-mouseDist, vec2(0.0), vec2(1.0))
+
+    // gl_FragColor = vec4(mix(uv, textureColor.xy, 0.5), mouseStrength, 1); 
+
     // gl_FragColor = textureColor + vec4(vec3(mouseStrength), 0);
-    float newStrength = mouseStrength + textureColor.x*0.1;
+    // float newStrength = mouseStrength + textureColor.x*0.1;
     
     // gl_FragColor = vec4(vec3(newStrength), 1);
     gl_FragColor = vec4(uv, mouseStrength, 1);
+    // gl_FragColor = vec4(uv, 0,1);
     // gl_FragColor = vec4(1,1,1,0);
     
     // gl_FragColor = vec4(0.98 * texture2D(texture,
