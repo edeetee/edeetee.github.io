@@ -26,15 +26,20 @@ export const FeedbackRenderer: (regl: Regl) => {onMouseMove: MouseMoveListener, 
     var mouseUV = {x: 0, y: 0}
 
     document.body.addEventListener("mousemove", ev => {
-        mouseUV.x = ev.clientX/document.body.clientWidth
-        mouseUV.y = ev.clientY/document.body.clientHeight
+        mouseUV.x = ev.pageX/window.innerWidth
+        mouseUV.y = ev.pageY/window.innerHeight
+        
     })
 
     // var mouse = mouseChange(document.body, () => {})
 
-    var pixels = regl.texture()
+    var pixels = regl.texture({
+        type: "float"
+    })
 
-    var feedbackFramebuffer = regl.framebuffer()
+    var feedbackFramebuffer = regl.framebuffer({
+        colorType: "float"
+    })
 
     var fullscreenQuad = regl({
         attributes: {
@@ -50,11 +55,11 @@ export const FeedbackRenderer: (regl: Regl) => {onMouseMove: MouseMoveListener, 
         uniforms: {
             texture: pixels,
             size: ({viewportWidth, viewportHeight}) => [viewportWidth, viewportHeight],
-            mouse: ({pixelRatio}) => [mouseUV.x, 1-mouseUV.y/pixelRatio],
+            mouse: ({pixelRatio}) => [mouseUV.x, 1-mouseUV.y],
             t: ({tick}) => 0.01 * tick
         },
         
-        framebuffer: feedbackFramebuffer,
+        // framebuffer: feedbackFramebuffer,
     })
 
     var processOutput = regl({
@@ -77,15 +82,15 @@ export const FeedbackRenderer: (regl: Regl) => {onMouseMove: MouseMoveListener, 
 
             fullscreenQuad(() => {
                 regl.clear({
-                    color: [0, 0, 0, 1]
+                    color: [1,1,1,1]
                 })
 
                 processFeedback(() => {
+                    regl.draw()
+
                     pixels({
                         copy: true,
                     })
-
-                    regl.draw()
                 })
 
                 // feedbackFramebuffer.use(() => {

@@ -20,10 +20,23 @@ export class CanvasRenderer extends Component   {
 
         var canvas = this.canvasRef.current!
 
-        // var gl2Context =canvas.getContext("webgl2")
+        var glContext = canvas.getContext("webgl")!
+
+        function updateSize(){
+            canvas.width = window.innerWidth
+            canvas.height = window.innerHeight
+            glContext.viewport(0,0, window.innerWidth, window.innerHeight)
+        }
+
+        window.addEventListener("resize", updateSize)
+
+        updateSize()
 
         var regl = REGL({
-            canvas: canvas,
+            pixelRatio: 1,
+            // canvas: canvas,
+            gl: glContext,
+            extensions: ['OES_texture_float'],
             onDone(err, regl){
                 if(err != null)
                     console.log(err)
@@ -41,13 +54,17 @@ export class CanvasRenderer extends Component   {
 
     onMouseMove = (x: number, y: number) => {}
 
-    render = () => <canvas ref={this.canvasRef} onMouseMove={e => this.onMouseMove(e.clientX, e.clientY)} style={{
-        position: "fixed",
-        width: "100vw",
-        height: "100vh",
-        left: 0,
-        top: 0
-    }}>
+    render = () => <canvas 
+        ref={this.canvasRef} 
+        onMouseMove={e => this.onMouseMove(e.clientX, e.clientY)} 
+        style={{
+            position: "fixed",
+            width: "100vw",
+            height: "100vh",
+            left: 0,
+            top: 0
+        }}
+    >
         
     </canvas>   
 }
