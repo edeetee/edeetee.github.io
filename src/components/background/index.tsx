@@ -3,7 +3,7 @@
 
 import React, {Component, RefObject} from "react";
 import REGL from "regl";
-import { FeedbackRenderer } from "src/lib/rendergl";
+import { FeedbackRenderer } from "src/lib/feedbackRenderer";
 
 export class CanvasRenderer extends Component   {
     canvasRef: RefObject<HTMLCanvasElement>
@@ -14,23 +14,36 @@ export class CanvasRenderer extends Component   {
         this.canvasRef = React.createRef()
     }
 
-    componentDidMount = () => {
+    componentDidMount() {
+        if(!process.browser)
+            return
+
         var canvas = this.canvasRef.current!
 
-        var regl = REGL(canvas)
+        // var gl2Context =canvas.getContext("webgl2")
 
-        var feedbackRendererOnFrame = FeedbackRenderer(regl)
+        var regl = REGL({
+            canvas: canvas,
+            onDone(err, regl){
+                if(err != null)
+                    console.log(err)
+            }
+        })
 
-        regl.frame(() => {
-            feedbackRendererOnFrame()
+        console.log(`version: ${regl.limits.version}`)
+
+        var feedbackRenderer = FeedbackRenderer(regl)
+
+        this.onMouseMove = feedbackRenderer.onMouseMove
+
+        regl.frame(ctx => {
+            feedbackRenderer.onFrame(ctx)
         })
     }
-    
-    // componentWillUnmount(){
-        
-    // }
 
-    render = () => <canvas style={{
+    onMouseMove = (x: number, y: number) => {}
+
+    render = () => <canvas ref={this.canvasRef} onMouseMove={e => this.onMouseMove(e.clientX, e.clientY)} style={{
         position: "fixed",
         width: "100vw",
         height: "100vh",
