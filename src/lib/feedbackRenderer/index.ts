@@ -8,7 +8,7 @@ interface MouseMoveListener{
 }
 
 const fullscreenVertShader = `
-precision mediump float;
+precision highp float;
 attribute vec2 position;
 varying vec2 uv;
 void main () {
@@ -28,17 +28,17 @@ export const FeedbackRenderer: (regl: Regl) => {onMouseMove: MouseMoveListener, 
     document.body.addEventListener("mousemove", ev => {
         mouseUV.x = ev.pageX/window.innerWidth
         mouseUV.y = ev.pageY/window.innerHeight
-        
     })
 
     // var mouse = mouseChange(document.body, () => {})
 
-    var pixels = regl.texture({
-        type: "float"
+    var lastFramebuffer = regl.texture({
+        type: "float",
     })
 
     var feedbackFramebuffer = regl.framebuffer({
-        colorType: "float"
+        colorType: "float",
+        depthStencil: false
     })
 
     var fullscreenQuad = regl({
@@ -53,13 +53,14 @@ export const FeedbackRenderer: (regl: Regl) => {onMouseMove: MouseMoveListener, 
         frag: feedbackFrag,
         
         uniforms: {
-            texture: pixels,
+            texture: lastFramebuffer,
             size: ({viewportWidth, viewportHeight}) => [viewportWidth, viewportHeight],
             mouse: ({pixelRatio}) => [mouseUV.x, 1-mouseUV.y],
+            // resized: () => 
             t: ({tick}) => 0.01 * tick
         },
         
-        // framebuffer: feedbackFramebuffer,
+        framebuffer: feedbackFramebuffer,
     })
 
     var processOutput = regl({
@@ -77,18 +78,19 @@ export const FeedbackRenderer: (regl: Regl) => {onMouseMove: MouseMoveListener, 
 
         onFrame: ({viewportHeight, viewportWidth}) => {
 
-            pixels.resize(viewportWidth, viewportHeight)
+            lastFramebuffer.resize(viewportWidth, viewportHeight)
             feedbackFramebuffer.resize(viewportWidth, viewportHeight)
 
             fullscreenQuad(() => {
-                regl.clear({
-                    color: [1,1,1,1]
-                })
+                // regl.clear({
+                //     color: [1,1,1,1],
+                //     framebuffer: feedbackFramebuffer
+                // })
 
                 processFeedback(() => {
                     regl.draw()
 
-                    pixels({
+                    lastFramebuffer({
                         copy: true,
                     })
                 })
@@ -98,7 +100,7 @@ export const FeedbackRenderer: (regl: Regl) => {onMouseMove: MouseMoveListener, 
                 // })
 
                 // regl.clear({
-                //     color: [0, 0, 0, 1]
+                //     color: [1,1,1, 1]
                 // })
     
                 processOutput()

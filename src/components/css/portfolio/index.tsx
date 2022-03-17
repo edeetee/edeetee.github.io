@@ -1,3 +1,5 @@
+import { PropsWithChildren } from "react"
+
 class PortfolioItem {
     title: String
     content: JSX.Element
@@ -7,6 +9,8 @@ class PortfolioItem {
         this.content = content
     }
 }
+
+const basicPortfolioItem = (title: String, content: String) => new PortfolioItem(title, <p>{content}</p>)
 
 const portfolioItems: PortfolioItem[] = [
     new PortfolioItem("This website", <p>I wanted to update my website to make it easier to update content and showcase my generative art...</p>),
@@ -18,16 +22,16 @@ const portfolioItems: PortfolioItem[] = [
 
     new PortfolioItem("Pictocraft", 
     <p>
-        For my final project at Victoria University, I carried out independent research where I created a modification of the
+        For my final project at Victoria University, I carried out independent research where I created a modification of the game <a href="http://www.minecraft.net">Minecraft</a> in order to give communication abilities to people with language difficulties. I integrated an existing English to Picograph system into the game to translate recieved text into images and made a web interface to allow communicating back by pressing buttons on a tablet. It's not 100% accurate, but the ability to communicate ideas like “I want to build a brick house on a hill” can give users a lot more depth than they had otherwise.
     </p>)
 ]
 
 export const Portfolio: React.FC = () => 
-    <div> 
+    <> 
         {portfolioItems.map((item, i) => 
             <div key={i}> 
                 <h3>{item.title}</h3>
                 {item.content}
             </div>
         )}
-    </div>
+    </>
