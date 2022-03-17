@@ -1,4 +1,4 @@
-import REGL, { DrawCommand, DrawConfig, FrameCallback, Regl, Texture, Texture2D } from "regl";
+import { FrameCallback, Regl } from "regl";
 
 import feedbackFrag from "./feedback.frag"
 import outputFrag from "./output.frag"
@@ -15,6 +15,8 @@ void main () {
     uv = position;
     gl_Position = vec4(2.0 * position - 1.0, 0, 1);
 }`
+
+//http://stack.gl/packages/#hughsk/glsl-noise
 
 const fullscreenVertPositions = [
     -2, 0,
