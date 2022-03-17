@@ -42,7 +42,7 @@ void main () {
 
     vec2 mouseUvOffset = normalize(rotate(mouseDist, t*0.5))*mouseStrength;
 
-    vec2 newUv = feedbackUv - mouseUvOffset*0.002 + snoise3(vec3(uv, t*0.1))*0.001;
+    vec2 newUv = feedbackUv - mouseUvOffset*0.004 + snoise3(vec3(uv, t*0.1))*0.001;
 
     newUv = mix(uv, newUv, 0.997);
 

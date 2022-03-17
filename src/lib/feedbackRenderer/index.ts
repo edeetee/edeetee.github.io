@@ -25,10 +25,13 @@ export const FeedbackRenderer: (regl: Regl) => {onMouseMove: MouseMoveListener, 
     // var mouse = mouseChange(document.body, () => {})
     var mouseUV = {x: 0, y: 0}
 
-    document.body.addEventListener("mousemove", ev => {
-        mouseUV.x = ev.pageX/window.innerWidth
-        mouseUV.y = ev.pageY/window.innerHeight
-    })
+    function updateMouse(pageX: number, pageY: number){
+        mouseUV.x = (pageX-window.scrollX)/window.innerWidth
+        mouseUV.y = (pageY-window.scrollY)/window.innerHeight
+    }
+
+    document.body.addEventListener("touchmove", ev => updateMouse(ev.touches[0].pageX, ev.touches[0].pageY))
+    document.body.addEventListener("mousemove", ev => updateMouse(ev.pageX, ev.pageY))
 
     // var mouse = mouseChange(document.body, () => {})
 
