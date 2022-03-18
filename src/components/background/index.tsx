@@ -37,6 +37,7 @@ export class CanvasRenderer extends Component   {
             // canvas: canvas,
             gl: glContext,
             extensions: ['OES_texture_float'],
+            // optionalExtensions: ['OES_texture_float_linear', "WEBGL_color_buffer_float"],
             onDone(err, regl){
                 if(err != null)
                     console.log(err)

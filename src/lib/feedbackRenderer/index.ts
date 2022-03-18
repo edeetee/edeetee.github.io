@@ -68,6 +68,8 @@ export const FeedbackRenderer: (regl: Regl) => {onMouseMove: MouseMoveListener, 
         framebuffer: feedbackFramebuffer,
     })
 
+    var lastSize = [0,0]
+
     var processOutput = regl({
         frag: outputFrag,
 
@@ -83,8 +85,12 @@ export const FeedbackRenderer: (regl: Regl) => {onMouseMove: MouseMoveListener, 
 
         onFrame: ({viewportHeight, viewportWidth}) => {
 
-            lastFramebuffer.resize(viewportWidth, viewportHeight)
-            feedbackFramebuffer.resize(viewportWidth, viewportHeight)
+            //only resize on larger
+            if(lastSize[0] < viewportWidth || lastSize[1] < viewportHeight){
+                lastFramebuffer.resize(viewportWidth, viewportHeight)
+                feedbackFramebuffer.resize(viewportWidth, viewportHeight)
+                lastSize = [viewportWidth, viewportHeight]
+            }
 
             fullscreenQuad(() => {
                 // regl.clear({
@@ -92,18 +98,16 @@ export const FeedbackRenderer: (regl: Regl) => {onMouseMove: MouseMoveListener, 
                 //     framebuffer: feedbackFramebuffer
                 // })
 
-                processFeedback(() => {
-                    regl.draw()
-
-                    lastFramebuffer({
-                        copy: true,
-                    })
-                })
+                processFeedback()
 
                 // feedbackFramebuffer.use(() => {
                 //     var readFbo = regl.read()
                 // })
-
+                feedbackFramebuffer.use(() => {
+                    lastFramebuffer({
+                        copy: true,
+                    })
+                })
                 // regl.clear({
                 //     color: [1,1,1, 1]
                 // })
