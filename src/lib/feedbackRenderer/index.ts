@@ -23,13 +23,18 @@ const fullscreenVertPositions = [
     0, -2,
     2, 2]
 
+const mouseDeltaMult = 2
+
 export const FeedbackRenderer: (regl: Regl) => {onMouseMove: MouseMoveListener, onFrame: FrameCallback} = (regl: Regl) => {
     // var mouse = mouseChange(document.body, () => {})
     var mouseUV = {x: 0, y: 0}
 
     function updateMouse(pageX: number, pageY: number){
-        mouseUV.x = (pageX-window.scrollX)/window.innerWidth
-        mouseUV.y = (pageY-window.scrollY)/window.innerHeight
+        var newMouseUv = {
+            x: (pageX-window.scrollX)/window.innerWidth,
+            y: (pageY-window.scrollY)/window.innerHeight
+        }
+        mouseUV = newMouseUv
     }
 
     document.body.addEventListener("touchmove", ev => updateMouse(ev.touches[0].pageX, ev.touches[0].pageY))

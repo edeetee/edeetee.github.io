@@ -13,32 +13,30 @@ varying vec2 uv;
 
 vec2 resize = vec2(size.x/size.y, 1);
 
-vec2 s2noise3(vec3 pos){
+vec2 snoise32(vec3 pos){
     return vec2(snoise3(pos), snoise3(pos+vec3(99.40139)));
 }
 
 void main () {
-    float dist = length(gl_FragCoord.xy - mouse);
-
+    
     vec2 mouseDist = (uv-mouse)*resize;
     float mouseLength = length(mouseDist);
-    float mouseStrength = pow(clamp(1.0-mouseLength*2.0, 0.0, 1.0), 5.0);
+    float mouseStrength = pow(max(1.0-mouseLength*1.5, 0.0), 5.0);
 
     vec2 aspectUv = uv*resize;
 
-    vec2 rotatedMouseDist = rotate(mouseDist, PI);
-    vec2 mouseUvOffset = normalize(rotatedMouseDist)*mouseStrength;
+    // vec2 rotatedMouseDist = rotate(mouseDist, PI*(1.0+0.25*sin(t*1.0)));
+    vec2 mouseUvOffset = normalize(-mouseDist)*mouseStrength;
 
-    vec2 textureUv = uv + mouseUvOffset*0.02 + s2noise3(vec3(aspectUv*2.0, t*0.1))*0.002;
+    vec2 textureUv = uv + mouseUvOffset*0.02 + snoise32(vec3(aspectUv, t*0.2))*0.001;
     vec4 textureColor = texture2D(texture, textureUv);
 
     // if(textureColor.a == 0.0)
     //     textureColor = mix(vec4(uv, 0,1);
 
     vec2 feedbackUv = textureColor.xy;
-    // vec2 feedbackUv = textureColor.xy;
 
-    vec2 newUv = feedbackUv + s2noise3(vec3(aspectUv, t*0.1))*0.002;
+    vec2 newUv = feedbackUv + snoise32(vec3(aspectUv, t*0.1))*0.002;
 
     //only use uv for first frame
     newUv = mix(uv, feedbackUv, 0.99*textureColor.a);
