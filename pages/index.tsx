@@ -12,17 +12,17 @@ import { ShowSingle } from "@components/showSingle";
 const menuFlexStyle: React.CSSProperties = {
     display: "flex",
     flexDirection: "column",
-    maxWidth: 300
+    maxWidth: 400
 }
 
 const responsiveDoubleColStyle: React.CSSProperties = {
-    marginLeft: "10vh",
-    marginRight: "10vh",
+    margin: "10vh",
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap"
 }
 
+//TODO: modularise this
 var pageOptions = [
     {page: <Portfolio />, label: "Portfolio"},
     {page: <Availability />, label: "Availability"}
@@ -54,9 +54,11 @@ const Home: React.FC = () => {
                     </div>
 
                 </div>
-                <div style={{maxWidth: 500}}>
+                <div style={{margin: "0 auto"}}></div>
+                <div style={{maxWidth: 500, justifySelf: "center"}}>
                     {selectedPage}
                 </div>
+                <div style={{margin: "0 auto"}}></div>
             </div>
             
         
