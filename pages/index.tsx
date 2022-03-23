@@ -7,7 +7,6 @@ import { About } from "@components/css/about";
 import { Availability } from "@components/css/availability";
 import { CanvasRenderer } from "@components/background";
 import { PageSelector } from "@components/css/pageSelector";
-import { ShowSingle } from "@components/showSingle";
 
 const menuFlexStyle: React.CSSProperties = {
     display: "flex",
@@ -22,15 +21,19 @@ const responsiveDoubleColStyle: React.CSSProperties = {
     flexWrap: "wrap"
 }
 
+interface PageInfo {
+    page: JSX.Element,
+    label: string
+}
+
 //TODO: modularise this
-var pageOptions = [
+var pageOptions: PageInfo[] = [
     {page: <Portfolio />, label: "Portfolio"},
     {page: <Availability />, label: "Availability"}
 ]
 
 const Home: React.FC = () => {
-
-    var [selectedPage, selectPage] = useState<JSX.Element|null>(null)
+    var [selectedPage, selectPage] = useState<PageInfo|undefined>(undefined)
 
     return (
             <div style={responsiveDoubleColStyle}>
@@ -42,10 +45,11 @@ const Home: React.FC = () => {
                     <Main />
                     <About />
 
-                    <PageSelector 
+                    <PageSelector<PageInfo> 
                         options={pageOptions}
-                        onClick={
-                            ({page}) => selectPage(page == selectedPage ? null : page)
+                        selected={selectedPage}
+                        onSelected = {
+                            el => selectPage(el == selectedPage ? undefined : el)
                         }
                     />
 
@@ -56,7 +60,7 @@ const Home: React.FC = () => {
                 </div>
                 <div style={{margin: "0 auto"}}></div>
                 <div style={{maxWidth: 500, justifySelf: "center"}}>
-                    {selectedPage}
+                    {selectedPage?.page}
                 </div>
                 <div style={{margin: "0 auto"}}></div>
             </div>
