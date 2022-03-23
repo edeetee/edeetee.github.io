@@ -1,16 +1,12 @@
-import { HTMLAttributes, PropsWithChildren } from "react"
-
 class TitledJSX {
-    title: String
+    title: string
     content: JSX.Element
 
-    constructor(title: String, content: JSX.Element){
+    constructor(title: string, content: JSX.Element){
         this.title = title
         this.content = content
     }
 }
-
-const titledParagraph = (title: String, content: String) => new TitledJSX(title, <p>{content}</p>)
 
 //TODO: images
 

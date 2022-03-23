@@ -1,6 +1,6 @@
-import React, { useReducer, useState } from "react";
+import React, { useState } from "react";
 
-import { Header, Main, Cards, Footer } from "@components/css";
+import { Main } from "@components/css";
 import Head from "next/head";
 import { Portfolio } from "@components/css/portfolio";
 import { About } from "@components/css/about";
@@ -27,13 +27,13 @@ interface PageInfo {
 }
 
 //TODO: modularise this
-var pageOptions: PageInfo[] = [
+const pageOptions: PageInfo[] = [
     {page: <Portfolio />, label: "Portfolio"},
     {page: <Availability />, label: "Availability"}
 ]
 
 const Home: React.FC = () => {
-    var [selectedPage, selectPage] = useState<PageInfo|undefined>(undefined)
+    const [selectedPage, selectPage] = useState<PageInfo|undefined>(undefined)
 
     return (
             <div style={responsiveDoubleColStyle}>

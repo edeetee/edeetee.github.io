@@ -3,8 +3,6 @@ import { FrameCallback, Regl } from "regl";
 import feedbackFrag from "./feedback.frag"
 import outputFrag from "./output.frag"
 
-import {vec2} from "gl-matrix"
-
 import vec from "fast-vector"
 
 interface MouseMoveListener{
@@ -27,12 +25,10 @@ const fullscreenVertPositions = [
     0, -2,
     2, 2]
 
-const mouseDeltaMult = 2
-
 export const FeedbackRenderer: (regl: Regl) => {onMouseMove: MouseMoveListener, onFrame: FrameCallback} = (regl: Regl) => {
-    // var mouse = mouseChange(document.body, () => {})
-    var mouseUV = new vec(0,0)
-    var laggedMouseUV = new vec(0,0)
+    // let mouse = mouseChange(document.body, () => {})
+    const mouseUV = new vec(0,0)
+    let laggedMouseUV = new vec(0,0)
 
     function updateMouse(pageX: number, pageY: number){
         mouseUV.x = (pageX-window.scrollX)/window.innerWidth
@@ -42,21 +38,21 @@ export const FeedbackRenderer: (regl: Regl) => {onMouseMove: MouseMoveListener, 
     document.body.addEventListener("touchmove", ev => updateMouse(ev.touches[0].pageX, ev.touches[0].pageY))
     document.body.addEventListener("mousemove", ev => updateMouse(ev.pageX, ev.pageY))
 
-    // var mouse = mouseChange(document.body, () => {})
+    // let mouse = mouseChange(document.body, () => {})
 
-    var lastFramebuffer = regl.texture({
+    const lastFramebuffer = regl.texture({
         type: "float",
         min: 'linear',
         mag: 'linear'
         // filter: ''
     })
 
-    var feedbackFramebuffer = regl.framebuffer({
+    const feedbackFramebuffer = regl.framebuffer({
         colorType: "float",
         depthStencil: false
     })
 
-    var fullscreenQuad = regl({
+    const fullscreenQuad = regl({
         attributes: {
             position: fullscreenVertPositions
         },
@@ -64,13 +60,13 @@ export const FeedbackRenderer: (regl: Regl) => {onMouseMove: MouseMoveListener, 
         count: 3,
     })
 
-    var processFeedback = regl({
+    const processFeedback = regl({
         frag: feedbackFrag,
         
         uniforms: {
             texture: lastFramebuffer,
             size: ({viewportWidth, viewportHeight}) => [viewportWidth, viewportHeight],
-            mouse: ({pixelRatio}) => laggedMouseUV.toArray(),
+            mouse: () => laggedMouseUV.toArray(),
             // resized: () => 
             t: ({tick}) => 0.01 * tick
         },
@@ -78,9 +74,9 @@ export const FeedbackRenderer: (regl: Regl) => {onMouseMove: MouseMoveListener, 
         framebuffer: feedbackFramebuffer,
     })
 
-    var lastSize = [0,0]
+    let lastSize = [0,0]
 
-    var processOutput = regl({
+    const processOutput = regl({
         frag: outputFrag,
 
         uniforms: {
@@ -88,7 +84,7 @@ export const FeedbackRenderer: (regl: Regl) => {onMouseMove: MouseMoveListener, 
         },
     })
 
-    var lastTime = 0
+    let lastTime = 0
 
     return {
         onMouseMove(x, y) {
@@ -97,11 +93,11 @@ export const FeedbackRenderer: (regl: Regl) => {onMouseMove: MouseMoveListener, 
         },
 
         onFrame: ({viewportHeight, viewportWidth, time}) => {
-            var timeDiff = time-lastTime
+            const timeDiff = time-lastTime
             lastTime = time
 
             //limit mouse speed
-            var diff = mouseUV.sub(laggedMouseUV)
+            const diff = mouseUV.sub(laggedMouseUV)
             const maxSpeed = timeDiff*1.2
             laggedMouseUV = laggedMouseUV.add(diff.normalize().mul(maxSpeed))
             // laggedMouseUV = laggedMouseUV.add(diff)
@@ -124,7 +120,7 @@ export const FeedbackRenderer: (regl: Regl) => {onMouseMove: MouseMoveListener, 
                 processFeedback()
 
                 // feedbackFramebuffer.use(() => {
-                //     var readFbo = regl.read()
+                //     let readFbo = regl.read()
                 // })
                 feedbackFramebuffer.use(() => {
                     lastFramebuffer({

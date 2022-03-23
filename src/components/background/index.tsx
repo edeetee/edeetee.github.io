@@ -1,41 +1,41 @@
 
 //TODO: maybe make component class?
 
-import React, {Component, RefObject} from "react";
+import React, { useEffect } from "react";
 import REGL from "regl";
 import { FeedbackRenderer } from "src/lib/feedbackRenderer";
 
-export class CanvasRenderer extends Component   {
-    canvasRef: RefObject<HTMLCanvasElement>
+const RES_MULTIPLIER = 0.5
 
-    constructor(props: {}){
-        super(props)
+export const CanvasRenderer = () => {
+    const canvasRef = React.createRef<HTMLCanvasElement>()
 
-        this.canvasRef = React.createRef()
-    }
+    let onMouseMove: ((x: number, y: number) => void)|undefined
 
-    componentDidMount() {
+    useEffect(() => {
         if(!process.browser)
             return
 
-        var canvas = this.canvasRef.current!
+        const canvas = canvasRef.current
 
-        var glContext = canvas.getContext("webgl")!
+        const glContext = canvas?.getContext("webgl")
 
         function updateSize(){
-            canvas.width = window.innerWidth
-            canvas.height = window.innerHeight
-            glContext.viewport(0,0, window.innerWidth, window.innerHeight)
+            if(canvas && glContext){
+                canvas.width = window.innerWidth*RES_MULTIPLIER
+                canvas.height = window.innerHeight*RES_MULTIPLIER
+                glContext.viewport(0,0, canvas.width, canvas.height)
+            }
         }
 
         window.addEventListener("resize", updateSize)
 
         updateSize()
 
-        var regl = REGL({
+        const regl = REGL({
             pixelRatio: 1,
             // canvas: canvas,
-            gl: glContext,
+            gl: glContext || undefined,
             extensions: [
                 'OES_texture_float', 
                 // 'GL_OES_texture_float', 
@@ -53,20 +53,17 @@ export class CanvasRenderer extends Component   {
             }
         })
 
-        var feedbackRenderer = FeedbackRenderer(regl)
+        const feedbackRenderer = FeedbackRenderer(regl)
 
-        this.onMouseMove = feedbackRenderer.onMouseMove
+        onMouseMove = feedbackRenderer.onMouseMove
 
         regl.frame(ctx => {
             feedbackRenderer.onFrame(ctx)
         })
-    }
-
-    onMouseMove = (x: number, y: number) => {}
-
-    render = () => <canvas 
-        ref={this.canvasRef} 
-        onMouseMove={e => this.onMouseMove(e.clientX, e.clientY)} 
+    })
+    
+    return <canvas ref={canvasRef}
+        onMouseMove={e => {if(onMouseMove) onMouseMove(e.clientX, e.clientY)}} 
         style={{
             position: "fixed",
             width: "100vw",
@@ -74,7 +71,5 @@ export class CanvasRenderer extends Component   {
             left: 0,
             top: 0
         }}
-    >
-        
-    </canvas>   
+    ></canvas>
 }
