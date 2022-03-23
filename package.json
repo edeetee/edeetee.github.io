@@ -10,6 +10,8 @@
         "prettier": "prettier --write '**/*.{js,jsx,ts,tsx}'"
     },
     "dependencies": {
+        "fast-vector": "^2.3.3",
+        "gl-matrix": "^3.4.3",
         "glsl-hsv2rgb": "^1.0.0",
         "glsl-noise": "^0.0.0",
         "glsl-rotate": "^1.1.0",

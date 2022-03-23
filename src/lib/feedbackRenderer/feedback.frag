@@ -25,21 +25,30 @@ void main () {
 
     vec2 aspectUv = uv*resize;
 
-    // vec2 rotatedMouseDist = rotate(mouseDist, PI*(1.0+0.25*sin(t*1.0)));
+    // vec2 rotatedMouseDist = rotate(mouseDist, PI*(t));
     vec2 mouseUvOffset = normalize(-mouseDist)*mouseStrength;
 
-    vec2 textureUv = uv + mouseUvOffset*0.02 + snoise32(vec3(aspectUv, t*0.2))*0.001;
-    vec4 textureColor = texture2D(texture, textureUv);
+    vec2 textureUV = uv;
+    textureUV += mouseUvOffset*0.02;
+    textureUV += snoise32(vec3(aspectUv, t*0.2))*0.001;
+
+    vec4 textureColor;
+    if((textureUV.x < 0.0 || 1.0 < textureUV.x) && (textureUV.y < 0.0 || 1.0 < textureUV.y))
+        textureColor = vec4(textureUV, 0, 1);
+    else
+        textureColor = texture2D(texture, textureUV);
+        
 
     // if(textureColor.a == 0.0)
     //     textureColor = mix(vec4(uv, 0,1);
 
     vec2 feedbackUv = textureColor.xy;
 
-    vec2 newUv = feedbackUv + snoise32(vec3(aspectUv, t*0.1))*0.002;
+    vec2 newUv = feedbackUv;
+    newUv += snoise32(vec3(aspectUv, t*0.1))*0.002;
 
     //only use uv for first frame
-    newUv = mix(uv, feedbackUv, 0.99*textureColor.a);
+    newUv = mix(uv, feedbackUv, 0.995*textureColor.a);
 
     gl_FragColor = vec4(newUv, 0, 1);
 }

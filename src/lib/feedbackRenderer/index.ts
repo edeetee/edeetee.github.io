@@ -3,6 +3,10 @@ import { FrameCallback, Regl } from "regl";
 import feedbackFrag from "./feedback.frag"
 import outputFrag from "./output.frag"
 
+import {vec2} from "gl-matrix"
+
+import vec from "fast-vector"
+
 interface MouseMoveListener{
     (x: number, y: number): void
 }
@@ -27,14 +31,12 @@ const mouseDeltaMult = 2
 
 export const FeedbackRenderer: (regl: Regl) => {onMouseMove: MouseMoveListener, onFrame: FrameCallback} = (regl: Regl) => {
     // var mouse = mouseChange(document.body, () => {})
-    var mouseUV = {x: 0, y: 0}
+    var mouseUV = new vec(0,0)
+    var laggedMouseUV = new vec(0,0)
 
     function updateMouse(pageX: number, pageY: number){
-        var newMouseUv = {
-            x: (pageX-window.scrollX)/window.innerWidth,
-            y: (pageY-window.scrollY)/window.innerHeight
-        }
-        mouseUV = newMouseUv
+        mouseUV.x = (pageX-window.scrollX)/window.innerWidth
+        mouseUV.y = 1-(pageY-window.scrollY)/window.innerHeight
     }
 
     document.body.addEventListener("touchmove", ev => updateMouse(ev.touches[0].pageX, ev.touches[0].pageY))
@@ -44,6 +46,9 @@ export const FeedbackRenderer: (regl: Regl) => {onMouseMove: MouseMoveListener, 
 
     var lastFramebuffer = regl.texture({
         type: "float",
+        min: 'linear',
+        mag: 'linear'
+        // filter: ''
     })
 
     var feedbackFramebuffer = regl.framebuffer({
@@ -65,7 +70,7 @@ export const FeedbackRenderer: (regl: Regl) => {onMouseMove: MouseMoveListener, 
         uniforms: {
             texture: lastFramebuffer,
             size: ({viewportWidth, viewportHeight}) => [viewportWidth, viewportHeight],
-            mouse: ({pixelRatio}) => [mouseUV.x, 1-mouseUV.y],
+            mouse: ({pixelRatio}) => laggedMouseUV.toArray(),
             // resized: () => 
             t: ({tick}) => 0.01 * tick
         },
@@ -83,12 +88,25 @@ export const FeedbackRenderer: (regl: Regl) => {onMouseMove: MouseMoveListener, 
         },
     })
 
+    var lastTime = 0
+
     return {
         onMouseMove(x, y) {
-            mouseUV = { x: x, y: y }
+            mouseUV.x = x
+            mouseUV.y = y
         },
 
-        onFrame: ({viewportHeight, viewportWidth}) => {
+        onFrame: ({viewportHeight, viewportWidth, time}) => {
+            var timeDiff = time-lastTime
+            lastTime = time
+
+            //limit mouse speed
+            var diff = mouseUV.sub(laggedMouseUV)
+            const maxSpeed = timeDiff*1.2
+            laggedMouseUV = laggedMouseUV.add(diff.normalize().mul(maxSpeed))
+            // laggedMouseUV = laggedMouseUV.add(diff)
+
+            // console.log(laggedMouseUV)
 
             //only resize on larger
             if(lastSize[0] < viewportWidth || lastSize[1] < viewportHeight){

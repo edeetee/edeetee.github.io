@@ -36,7 +36,16 @@ export class CanvasRenderer extends Component   {
             pixelRatio: 1,
             // canvas: canvas,
             gl: glContext,
-            extensions: ['OES_texture_float'],
+            extensions: [
+                'OES_texture_float', 
+                // 'GL_OES_texture_float', 
+                'WEBGL_color_buffer_float',
+                'OES_texture_float_linear'
+                // 'WEBGL_texture_float'
+            ],
+            optionalExtensions: [
+                'EXT_color_buffer_float'
+            ],
             // optionalExtensions: ['OES_texture_float_linear', "WEBGL_color_buffer_float"],
             onDone(err, regl){
                 if(err != null)
