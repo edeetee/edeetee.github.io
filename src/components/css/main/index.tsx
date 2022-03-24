@@ -36,7 +36,6 @@ export const Main: React.FC = () => {
     return (
         <div style={responsiveDoubleColStyle}>
             <div style={menuFlexStyle}>
-                <Main />
                 <About />
 
                 <PageSelector<PageInfo> 
