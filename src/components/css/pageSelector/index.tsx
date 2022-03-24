@@ -4,6 +4,7 @@ interface PageSelectorProps<K extends {label: string}>{
     onSelected: (item: K) => void
 }
 
+
 export const PageSelector = <K extends {label: string}>({options, selected, onSelected}: PageSelectorProps<K>) => 
 <div>
     {options.map((el, i) => {
