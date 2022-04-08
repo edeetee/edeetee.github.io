@@ -1,4 +1,6 @@
+
+
 export const Availability: React.FC = () =>
     <div>
-        I can do the following stuff for ya:
+        I am available for a wide range of work related to digital technology and art. Taking a browse through my portfolio will give you an idea of what my 
     </div>

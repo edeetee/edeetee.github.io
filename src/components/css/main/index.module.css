@@ -1,0 +1,35 @@
+.responsiveDoubleCol{
+    padding: 10vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.responsiveStickyMenu{
+    display: flex;
+    align-self: flex-start;
+    flex-direction: column;
+    max-width: 400px;
+    margin-right: 20px;
+}
+
+.separator {
+    height: 1px;
+    margin: 5vh 0;
+    background-color: rgba(0, 0, 0, 0.486)
+}
+
+@media screen and (min-width: 1200px) {
+    .responsiveDoubleCol{
+        flex-direction: row;
+    }
+
+    .separator{
+        margin: 0 auto;
+    }
+
+    .responsiveStickyMenu{
+        position: sticky;
+        top: 10vh;
+    }
+}
