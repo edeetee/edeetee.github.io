@@ -1,6 +1,7 @@
 const withPlugins = require("next-compose-plugins");
+const withNextOptimizedImages = require('next-optimized-images');
 
-module.exports = withPlugins([
+module.exports = withNextOptimizedImages([
     {
         webpack: (config) => {
             config.module.rules.push({
