@@ -1,0 +1,1 @@
+export const asyncAnimationFrame = () => new Promise(resolve => requestAnimationFrame(resolve))

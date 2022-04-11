@@ -4,6 +4,7 @@ import createAndCapture from '@public/images/createAndCapture.jpg'
 import pictocraft from "@public/images/pictocraft.bmp"
 
 import Image from 'next/image'
+import { TitledItems } from 'src/lib/TitledList'
 
 interface PortfolioItem {
     title: string
@@ -27,7 +28,11 @@ const portfolioItems: PortfolioItem[] = [
             </div>
 
             <p>
-                I have been performing visual art at fesitvals and music events under the name Optiphonic. 
+                I have been performing visual art at festivals and music events under the name Optiphonic. Many years ago I was inspired by music visualisers in winamp and iTunes, since then I have created my own and started performing them for different events. Check out some of my renders and performances <a href="https://instagram.com/optiphonic">on instagram</a>.
+            </p>
+
+            <p>
+                With this work, I'm currently developing tools that allow me to bring the surfaces of the real world into my generative worlds. I'm lucky to collaborate with some other awesome artists in this work and I hope to develop even larger collaborative things in the future! <a href="mailto:edeetee@gmail.com">Email me</a> if you want to collab :)
             </p>
         </div>
        
@@ -78,7 +83,7 @@ const portfolioItems: PortfolioItem[] = [
     {
         title: "Misc Experiments (2017/18)",
         content: 
-        <p>
+        <div>
             Here's a collection of small experiments that I want to keep around
             <a href="https://bl.ocks.org/edeetee">
                 <h4>All Uni CC Projects</h4>
@@ -92,7 +97,7 @@ const portfolioItems: PortfolioItem[] = [
             <a href="https://medium.com/@edeetee/live-style-transfer-modulated-by-audio-frequency-analysis-for-edm-events-4a76acabd029">
                 <h4>Audio modulated style transfer</h4>
             </a>
-        </p>
+        </div>
     },
 
     {
@@ -110,14 +115,8 @@ const portfolioItems: PortfolioItem[] = [
 
 export const Portfolio = () => 
     <>
-        {portfolioItems.map((item, i) => 
-            <div key={i}> 
-
-                {item.url != null ? 
-                    <a href={item.url}><h3>{item.title}</h3></a> : 
-                    <h3>{item.title}</h3>}
-
-                {item.content}
-            </div>
-        )}
+        <p>
+            I am passionate about using technology intentionally and consciously. Here is a collection of my favourite projects.
+        </p>
+        {TitledItems(portfolioItems)}
     </>

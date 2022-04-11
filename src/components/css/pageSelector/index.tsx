@@ -11,7 +11,15 @@ export const PageSelector = <K extends {label: string}>({options, selected, onSe
         const isSelected = selected == el
 
         return <a key={i} onClick={() => onSelected(el)} className={isSelected ? "selected" : ""}>
-            <h2 style={{fontWeight: isSelected ? "bold" : "inherit"}}>| {el.label}</h2>
+            <h2 style={{
+                fontWeight: isSelected ? "bold" : "inherit", 
+                borderLeft: "solid",
+                borderWidth: 1,
+                paddingLeft: 8
+            }}>
+                    
+                {el.label}
+            </h2>
         </a>
     }
         

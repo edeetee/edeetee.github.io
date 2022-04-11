@@ -1,4 +1,4 @@
-import { mdiAt, mdiGithub, mdiInstagram } from "@mdi/js"
+import { mdiAt, mdiCodeTags, mdiGithub, mdiInstagram } from "@mdi/js"
 import Image from "next/image"
 
 interface LinkItem {
@@ -22,6 +22,11 @@ const linkItems: LinkItem[] = [
         title: "Github",
         url: "https://github.com/edeetee",
         mdiPath: mdiGithub
+    },
+    {
+        title: "Source for this website",
+        url: "https://github.com/edeetee/edeetee.github.io",
+        mdiPath: mdiCodeTags
     }
 ]
 

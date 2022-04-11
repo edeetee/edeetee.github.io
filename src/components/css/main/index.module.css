@@ -1,5 +1,5 @@
 .responsiveDoubleCol{
-    padding: 10vh;
+    padding: 10vh 10vw;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -10,7 +10,7 @@
     align-self: flex-start;
     flex-direction: column;
     max-width: 400px;
-    margin-right: 20px;
+    margin-right: 40px;
 }
 
 .separator {
