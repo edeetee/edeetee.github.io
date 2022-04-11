@@ -7,12 +7,6 @@ import { Portfolio } from "../portfolio";
 import styles from './index.module.css'
 import { asyncAnimationFrame } from "src/lib/asyncAnimationFrame";
 
-const menuFlexStyle: React.CSSProperties = {
-    display: "flex",
-    flexDirection: "column",
-    maxWidth: 400
-}
-
 interface PageInfo {
     page: JSX.Element,
     label: string
