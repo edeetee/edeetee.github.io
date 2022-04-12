@@ -9,12 +9,12 @@ interface LinkItem {
 
 const linkItems: LinkItem[] = [
     {
-        title: "Email me",
+        title: "Email",
         url: "mailto:edeetee@gmail.com",
         mdiPath: mdiAt
     },
     {
-        title: "Optiphonic on Instagram",
+        title: "Optiphonic",
         url: "https://instagram.com/optiphonic",
         mdiPath: mdiInstagram
     },
@@ -24,7 +24,7 @@ const linkItems: LinkItem[] = [
         mdiPath: mdiGithub
     },
     {
-        title: "Source for this website",
+        title: "Source code",
         url: "https://github.com/edeetee/edeetee.github.io",
         mdiPath: mdiCodeTags
     }

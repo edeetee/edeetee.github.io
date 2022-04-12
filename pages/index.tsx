@@ -7,7 +7,7 @@ import { Main } from "@components/css/main";
 const Home: React.FC = () => {
     return <>   
         <Head>
-            <title>edeetee</title>
+            <title>Edward Taylor</title>
             <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
         </Head> 
         <CanvasRenderer />
