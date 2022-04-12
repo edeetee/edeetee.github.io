@@ -1,10 +1,10 @@
-import scutter1 from '@public/images/scutter1.png'
-import scutter2 from '@public/images/scutter2.png'
-import createAndCapture from '@public/images/createAndCapture.jpg'
-import pictocraft from "@public/images/pictocraft.bmp"
+import scutter1 from '@public/images/scutter1.webp'
+import scutter2 from '@public/images/scutter2.webp'
+import createAndCapture from '@public/images/createAndCapture.webp'
+import pictocraft from "@public/images/pictocraft.webp"
 
-import Image from 'next/image'
 import { TitledItems } from 'src/lib/TitledList'
+import { StaticImage } from 'src/lib/StaticImage'
 
 interface PortfolioItem {
     title: string
@@ -58,7 +58,7 @@ const portfolioItems: PortfolioItem[] = [
         url: "https://github.com/edeetee/pictocraft",
         content: 
         <div>
-            <Image src={pictocraft}/>
+            <StaticImage src={pictocraft}/>
             <p>
                 For my final project at Victoria University, I carried out independent research where I created a modification of the game <a href="http://www.minecraft.net">Minecraft</a> in order to give communication abilities to people with language difficulties. I integrated an existing English to Picograph system into the game to translate recieved text into images and made a web interface to allow communicating back by pressing buttons on a tablet. It's not 100% accurate, but the ability to communicate ideas like “I want to build a brick house on a hill” can give users a lot more depth than they had otherwise.
             </p>
@@ -71,8 +71,8 @@ const portfolioItems: PortfolioItem[] = [
         content: 
             <div>
                 <div style={{display: 'flex'}}>
-                    <Image src={scutter1}/>
-                    <Image src={scutter2}/>
+                    <StaticImage src={scutter1}/>
+                    <StaticImage src={scutter2}/>
                 </div>
                 <p>
                     For a university game design course, I designed a multiplayer game best described as blind mans bluff in VR. Up to two players hold a controller each and one player dons the headset. As the controller players move around, a corresponding object in virtual space follows their movements. The VR player's goal is find the objects that represent the controllers moving around and take the controller from the other players, pressing a button to verify. While this happens, the controller players are getting vibrations that guide them to goals in space, with the aim to gain as many points as possible.
@@ -105,7 +105,7 @@ const portfolioItems: PortfolioItem[] = [
         url: "https://steamcommunity.com/sharedfiles/filedetails/?id=389065555",
         content: 
         <div>
-            <Image src={createAndCapture}/>
+            <StaticImage src={createAndCapture}/>
             <p>
                 With my friend Tom Lewis (now a practicing game designer), we build a multiplayer gamemode for the popular game platform Garry's Mod. We did a lot of user testing with our friends and learnt a lot about collaborative and design driven development. The game ended up being a lot of fun and had several thousand downloads.
             </p>
