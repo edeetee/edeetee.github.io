@@ -1,0 +1,1 @@
+export const constrain = (val: number, min: number, max: number) => Math.min(max, Math.max(val, min))

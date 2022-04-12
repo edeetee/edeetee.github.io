@@ -10,8 +10,6 @@ const RES_MULTIPLIER = 0.5
 export const CanvasRenderer = () => {
     const canvasRef = React.createRef<HTMLCanvasElement>()
 
-    let onMouseMove: ((x: number, y: number) => void)|undefined
-
     useEffect(() => {
         if(!process.browser)
             return
@@ -55,15 +53,12 @@ export const CanvasRenderer = () => {
 
         const feedbackRenderer = FeedbackRenderer(regl)
 
-        onMouseMove = feedbackRenderer.onMouseMove
-
         regl.frame(ctx => {
             feedbackRenderer.onFrame(ctx)
         })
     })
     
     return <canvas ref={canvasRef}
-        onMouseMove={e => {if(onMouseMove) onMouseMove(e.clientX, e.clientY)}} 
         style={{
             position: "fixed",
             width: "100vw",

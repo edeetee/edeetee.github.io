@@ -48,7 +48,7 @@ void main () {
     newUv += snoise32(vec3(aspectUv, t*0.1))*0.002;
 
     //only use uv for first frame
-    newUv = mix(uv, feedbackUv, 0.995*textureColor.a);
+    newUv = mix(uv, feedbackUv, 0.99*textureColor.a);
 
     gl_FragColor = vec4(newUv, 0, 1);
 }

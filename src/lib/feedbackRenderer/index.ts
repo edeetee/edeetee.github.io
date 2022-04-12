@@ -4,6 +4,7 @@ import feedbackFrag from "./feedback.frag"
 import outputFrag from "./output.frag"
 
 import vec from "fast-vector"
+import { constrain } from "../constrain";
 
 interface MouseMoveListener{
     (x: number, y: number): void
@@ -25,14 +26,14 @@ const fullscreenVertPositions = [
     0, -2,
     2, 2]
 
-export const FeedbackRenderer: (regl: Regl) => {onMouseMove: MouseMoveListener, onFrame: FrameCallback} = (regl: Regl) => {
+export const FeedbackRenderer: (regl: Regl) => {onFrame: FrameCallback} = (regl: Regl) => {
     // let mouse = mouseChange(document.body, () => {})
     const mouseUV = new vec(0,0)
     let laggedMouseUV = new vec(0,0)
 
     function updateMouse(pageX: number, pageY: number){
-        mouseUV.x = (pageX-window.scrollX)/window.innerWidth
-        mouseUV.y = 1-(pageY-window.scrollY)/window.innerHeight
+        mouseUV.x = constrain((pageX-window.scrollX)/window.innerWidth, 0, 1)
+        mouseUV.y = constrain(1-(pageY-window.scrollY)/window.innerHeight, 0, 1)
     }
 
     document.body.addEventListener("touchmove", ev => updateMouse(ev.touches[0].pageX, ev.touches[0].pageY))
@@ -87,20 +88,14 @@ export const FeedbackRenderer: (regl: Regl) => {onMouseMove: MouseMoveListener, 
     let lastTime = 0
 
     return {
-        onMouseMove(x, y) {
-            mouseUV.x = x
-            mouseUV.y = y
-        },
-
         onFrame: ({viewportHeight, viewportWidth, time}) => {
             const timeDiff = time-lastTime
             lastTime = time
 
             //limit mouse speed
             const diff = mouseUV.sub(laggedMouseUV)
-            const maxSpeed = timeDiff*1.2
+            const maxSpeed = timeDiff*0.8
             laggedMouseUV = laggedMouseUV.add(diff.normalize().mul(maxSpeed))
-            // laggedMouseUV = laggedMouseUV.add(diff)
 
             // console.log(laggedMouseUV)
 

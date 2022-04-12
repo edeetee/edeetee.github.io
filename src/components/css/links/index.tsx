@@ -1,5 +1,4 @@
 import { mdiAt, mdiCodeTags, mdiGithub, mdiInstagram } from "@mdi/js"
-import Image from "next/image"
 
 interface LinkItem {
     title: string,
