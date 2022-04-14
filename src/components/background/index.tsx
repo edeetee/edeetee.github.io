@@ -61,8 +61,8 @@ export const CanvasRenderer = () => {
     return <canvas ref={canvasRef}
         style={{
             position: "fixed",
-            width: "100vw",
-            height: "100vh",
+            width: "100%",
+            height: "100%",
             left: 0,
             top: 0
         }}
