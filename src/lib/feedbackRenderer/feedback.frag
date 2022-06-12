@@ -6,12 +6,10 @@ precision highp float;
 uniform sampler2D texture;
 uniform vec2 mouse;
 uniform float t;
-uniform vec2 size;
+uniform vec2 aspect;
 varying vec2 uv;
 
 #define PI 3.1415926538
-
-vec2 resize = vec2(size.x/size.y, 1);
 
 vec2 snoise32(vec3 pos){
     return vec2(snoise3(pos), snoise3(pos+vec3(99.40139)));
@@ -19,11 +17,11 @@ vec2 snoise32(vec3 pos){
 
 void main () {
     
-    vec2 mouseDist = (uv-mouse)*resize;
+    vec2 mouseDist = (uv-mouse)*aspect;
     float mouseLength = length(mouseDist);
     float mouseStrength = pow(max(1.0-mouseLength*1.5, 0.0), 5.0);
 
-    vec2 aspectUv = uv*resize;
+    vec2 aspectUv = uv*aspect;
 
     // vec2 rotatedMouseDist = rotate(mouseDist, PI*(t));
     vec2 mouseUvOffset = normalize(-mouseDist)*mouseStrength;

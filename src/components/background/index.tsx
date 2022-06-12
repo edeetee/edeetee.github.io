@@ -4,6 +4,7 @@
 import React, { useEffect } from "react";
 import REGL from "regl";
 import { FeedbackRenderer } from "src/lib/feedbackRenderer";
+import { constrain } from "src/lib/constrain";
 
 const RES_MULTIPLIER = 0.5
 
@@ -11,12 +12,12 @@ export const CanvasRenderer = () => {
     const canvasRef = React.createRef<HTMLCanvasElement>()
 
     useEffect(() => {
-        if(!process.browser)
+        if(window === undefined)
             return
 
         const canvas = canvasRef.current
 
-        const glContext = canvas?.getContext("webgl")
+        const glContext = canvas?.getContext("webgl") || undefined
 
         function updateSize(){
             if(canvas && glContext){
@@ -33,7 +34,7 @@ export const CanvasRenderer = () => {
         const regl = REGL({
             pixelRatio: 1,
             // canvas: canvas,
-            gl: glContext || undefined,
+            gl: glContext,
             extensions: [
                 'OES_texture_float', 
                 // 'GL_OES_texture_float', 
@@ -52,6 +53,16 @@ export const CanvasRenderer = () => {
         })
 
         const feedbackRenderer = FeedbackRenderer(regl)
+
+        function updateMouse(pageX: number, pageY: number){
+            const x = constrain((pageX-window.scrollX)/window.innerWidth, 0, 1)
+            const y = constrain(1-(pageY-window.scrollY)/window.innerHeight, 0, 1)
+
+            feedbackRenderer.onMove(x, y)
+        }
+    
+        document.body.addEventListener("touchmove", ev => updateMouse(ev.touches[0].pageX, ev.touches[0].pageY))
+        document.body.addEventListener("mousemove", ev => updateMouse(ev.pageX, ev.pageY))
 
         regl.frame(ctx => {
             feedbackRenderer.onFrame(ctx)
