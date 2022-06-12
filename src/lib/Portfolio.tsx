@@ -125,3 +125,17 @@ export const portfolioItems: PortfolioItem[] = [
         </div>
     }
 ]
+
+export const RenderPortfolio = (items: PortfolioItem[]) => 
+    <>
+        {items.map((item, i) => 
+            <div key={i}> 
+
+                {item.url != null ? 
+                    <a href={item.url}><h3>{item.title}</h3></a> : 
+                    <h3>{item.title}</h3>}
+
+                {item.content}
+            </div>
+        )}
+    </>
