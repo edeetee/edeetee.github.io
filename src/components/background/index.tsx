@@ -46,7 +46,7 @@ export const CanvasRenderer = () => {
                 'EXT_color_buffer_float'
             ],
             // optionalExtensions: ['OES_texture_float_linear', "WEBGL_color_buffer_float"],
-            onDone(err, regl){
+            onDone(err){
                 if(err != null)
                     console.log(err)
             }
