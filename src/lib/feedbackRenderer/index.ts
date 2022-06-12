@@ -93,9 +93,8 @@ export const FeedbackRenderer: (regl: Regl) => {onFrame: FrameCallback} = (regl:
             lastTime = time
 
             //limit mouse speed
-            const diff = mouseUV.sub(laggedMouseUV)
-            const maxSpeed = timeDiff*0.8
-            laggedMouseUV = laggedMouseUV.add(diff.normalize().mul(maxSpeed))
+            const diff = mouseUV.sub(laggedMouseUV).limit(timeDiff*0.8)
+            laggedMouseUV = laggedMouseUV.add(diff)
 
             // console.log(laggedMouseUV)
 
@@ -107,32 +106,15 @@ export const FeedbackRenderer: (regl: Regl) => {onFrame: FrameCallback} = (regl:
             }
 
             fullscreenQuad(() => {
-                // regl.clear({
-                //     color: [1,1,1,1],
-                //     framebuffer: feedbackFramebuffer
-                // })
-
                 processFeedback()
 
-                // feedbackFramebuffer.use(() => {
-                //     let readFbo = regl.read()
-                // })
                 feedbackFramebuffer.use(() => {
                     lastFramebuffer({
                         copy: true,
                     })
                 })
-                // regl.clear({
-                //     color: [1,1,1, 1]
-                // })
     
                 processOutput()
-
-                // regl.clear({
-                //     color: [1, 0, 0, 1]
-                // })
-
-                // regl.draw()
             })
 
         }
