@@ -44,17 +44,17 @@ export const FeedbackRenderer: (regl: Regl) => {onFrame: FrameCallback, onMove: 
         // filter: ''
     })
 
-    const feedbackFramebuffer = regl.framebuffer({
-        colorType: "float",
-        depthStencil: false
-    })
-
     const fullscreenQuad = regl({
         attributes: {
             position: fullscreenVertPositions
         },
         vert: fullscreenVertShader,
         count: 3,
+    })
+
+    const feedbackFramebuffer = regl.framebuffer({
+        colorType: "float",
+        depthStencil: false
     })
 
     const processFeedback = regl({

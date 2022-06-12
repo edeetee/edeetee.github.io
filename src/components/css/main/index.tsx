@@ -1,9 +1,10 @@
 import React, { useRef, useState } from "react";
-import { About } from "../about";
-import { Work } from "../work";
-import { Links } from "../links";
+import { About } from "@components/css/about";
+import { Work } from "@components/work";
+import { Links } from "@components/links";
 import { PageSelector } from "../pageSelector";
-import { Portfolio } from "../portfolio";
+import { Creative } from "@components/creative";
+import { Assistive } from "@components/assistive";
 import styles from './index.module.css'
 import { asyncAnimationFrame } from "src/lib/asyncAnimationFrame";
 
@@ -14,8 +15,9 @@ interface PageInfo {
 
 //TODO: modularise this
 const pageOptions: PageInfo[] = [
-    {page: <Portfolio />, label: "Portfolio"},
-    {page: <Work />, label: "Work"}
+    {page: <Creative />, label: "Creative"},
+    {page: <Assistive />, label: "Assistive"},
+    {page: <Work />, label: "Skills"}
 ]
 
 export const Main: React.FC = () => {

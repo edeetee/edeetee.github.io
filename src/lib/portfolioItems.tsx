@@ -3,23 +3,30 @@ import scutter2 from '@public/images/scutter2.webp'
 import createAndCapture from '@public/images/createAndCapture.webp'
 import pictocraft from "@public/images/pictocraft.webp"
 
-import { TitledItems } from 'src/lib/TitledList'
 import { StaticImage } from 'src/lib/StaticImage'
 
-interface PortfolioItem {
-    title: string
-    content: JSX.Element,
-    url?: string
+export enum PortfolioTag{
+    Creative,
+    Assistive
 }
 
-const portfolioItems: PortfolioItem[] = [
+export interface PortfolioItem {
+    title: string
+    tag: PortfolioTag
+    content: JSX.Element,
+    url?: string,
+}
+
+export const portfolioItems: PortfolioItem[] = [
     {
         title: "This website (2022)", 
+        tag: PortfolioTag.Creative,
         content: 
-            <p>I wanted to update my website to make it easier to update content and showcase my generative art. I want to speak through my art and my words.</p>
+            <p>I wanted to update my website to make it easier to update content and showcase my generative art. I want to speak through my art and my words.</p>,
     },
     {
         title: "Optiphonic (2020+)",
+        tag: PortfolioTag.Creative,
         url: "http://instagram.com/optiphonic",
         content: 
         <div>
@@ -40,6 +47,7 @@ const portfolioItems: PortfolioItem[] = [
 
     {
         title: "TASKA Prosthetics (2020)",
+        tag: PortfolioTag.Assistive,
         content: <p>
             Worked for TASKA Prosthetics to update and maintain their phone app. I went into the job desiring to work with patients and design software that aligned with research into how to best assist users. The role ended up being more software engineering that I desired so I moved on after a year.
         </p>
@@ -47,6 +55,7 @@ const portfolioItems: PortfolioItem[] = [
 
     {
         title: "Blind Foundation Alexa Scholarship (2018/19)", 
+        tag: PortfolioTag.Assistive,
         content: 
             <p>
                 As part of a summer scholarship with Victoria University at the end of my degree, I researched, designed, experimented and iterated on a app for the Amazon Alexa platform to assist with the lives of visually impaired people. I explored the potentials and limitations of the technology and how it could best be leveraged to assist the target audience. After learning the technology with an experimental game prototype and interviewing members of the community, we ended up developing a voice frontend to <a href="http://www.eventfinda.co.nz">eventfinda</a> instead of assistance with transport or blind foundation communications.
@@ -55,6 +64,7 @@ const portfolioItems: PortfolioItem[] = [
 
     {
         title: "Pictocraft (2019)", 
+        tag: PortfolioTag.Assistive,
         url: "https://github.com/edeetee/pictocraft",
         content: 
         <div>
@@ -67,6 +77,7 @@ const portfolioItems: PortfolioItem[] = [
 
     {
         title: "Scutter - Asymmetric VR (2019)",
+        tag: PortfolioTag.Creative,
         url: "https://github.com/edeetee/scutter",
         content: 
             <div>
@@ -82,6 +93,7 @@ const portfolioItems: PortfolioItem[] = [
 
     {
         title: "Misc Experiments (2017/18)",
+        tag: PortfolioTag.Creative,
         content: 
         <div>
             Here's a collection of small experiments that I want to keep around
@@ -102,6 +114,7 @@ const portfolioItems: PortfolioItem[] = [
 
     {
         title: "Create and Capture for Garry's Mod (2015)",
+        tag: PortfolioTag.Creative,
         url: "https://steamcommunity.com/sharedfiles/filedetails/?id=389065555",
         content: 
         <div>
@@ -112,11 +125,3 @@ const portfolioItems: PortfolioItem[] = [
         </div>
     }
 ]
-
-export const Portfolio = () => 
-    <>
-        <p>
-            I am passionate about using technology intentionally and consciously. Here is a collection of my favorite projects.
-        </p>
-        {TitledItems(portfolioItems)}
-    </>
