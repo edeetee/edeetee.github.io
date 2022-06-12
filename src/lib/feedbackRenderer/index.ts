@@ -27,8 +27,9 @@ const fullscreenVertPositions = [
 
 export const FeedbackRenderer: (regl: Regl) => {onFrame: FrameCallback, onMove: MouseMoveListener} = (regl: Regl) => {
     // let mouse = mouseChange(document.body, () => {})
-    const mouseUV = new vec(0,0)
-    let laggedMouseUV = new vec(0,0)
+    let mouseUV = new vec(-1,-1)
+    let laggedMouseUV = mouseUV
+    let firstMouse = true
 
     let lastTime = 0
     let size = new vec(0,0)
@@ -64,7 +65,7 @@ export const FeedbackRenderer: (regl: Regl) => {onFrame: FrameCallback, onMove: 
             aspect: () => [aspect, 1],
             mouse: () => laggedMouseUV.toArray(),
             // resized: () => 
-            t: ({tick}) => 0.01 * tick
+            t: ({time}) => time
         },
         
         framebuffer: feedbackFramebuffer,
@@ -80,8 +81,12 @@ export const FeedbackRenderer: (regl: Regl) => {onFrame: FrameCallback, onMove: 
 
     return {
         onMove: (x, y) => {
-            mouseUV.x = x
-            mouseUV.y = y
+            mouseUV = new vec(x,y)
+            if(firstMouse){
+                laggedMouseUV = mouseUV
+                firstMouse = false
+            }
+
         },
 
         onFrame: ({viewportHeight, viewportWidth, time}) => {
