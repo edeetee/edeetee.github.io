@@ -60,7 +60,7 @@ export const Main: React.FC = () => {
 
             </div>
             <div style={{display: selectedPage ? "initial" : "none"}} className={styles.separator}></div>
-            <div ref={contentRef} style={{maxWidth: 600, justifySelf: "center"}}>
+            <div ref={contentRef} className={styles.content}>
                 <h1>{selectedPage?.label}</h1>
                 {selectedPage?.page}
             </div>

@@ -22,7 +22,7 @@ export const portfolioItems: PortfolioItem[] = [
         title: "This website (2022)", 
         tag: PortfolioTag.Creative,
         content: 
-            <p>I wanted to update my website to make it easier to update content and showcase my generative art. I want to speak through my art and my words.</p>,
+            <p>I wanted to update my website to make it easier to update content and showcase my generative art. I want to speak through examples.</p>,
     },
     {
         title: "Optiphonic (2020+)",

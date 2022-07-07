@@ -1,5 +1,6 @@
 .responsiveDoubleCol{
-    padding: 10vh 10vw;
+    padding: 0 10vw;
+    padding-top: 5vh;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -10,7 +11,15 @@
     align-self: flex-start;
     flex-direction: column;
     max-width: 400px;
-    margin-right: 40px;
+    margin-right: 80px;
+}
+
+.content {
+    width: 500px;
+    max-width: 700px;
+    justify-self: "center";
+    flex-grow: 1;
+    flex-shrink: 1;
 }
 
 .separator {
@@ -30,6 +39,6 @@
 
     .responsiveStickyMenu{
         position: sticky;
-        top: 10vh;
+        top: 5vh;
     }
 }
