@@ -7,6 +7,7 @@ import { Creative } from "@components/creative";
 import { Assistive } from "@components/assistive";
 import styles from './index.module.css'
 import { asyncAnimationFrame } from "src/lib/asyncAnimationFrame";
+import { Visuals } from "@components/visuals";
 
 interface PageInfo {
     page: JSX.Element,
@@ -15,6 +16,7 @@ interface PageInfo {
 
 //TODO: modularise this
 const pageOptions: PageInfo[] = [
+    {page: <Visuals/>, label: "Music Visuals"},
     {page: <Creative />, label: "Creative"},
     {page: <Assistive />, label: "Assistive"},
     {page: <Work />, label: "Skills"}

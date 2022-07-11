@@ -2,12 +2,16 @@ import scutter1 from '@public/images/scutter1.webp'
 import scutter2 from '@public/images/scutter2.webp'
 import createAndCapture from '@public/images/createAndCapture.webp'
 import pictocraft from "@public/images/pictocraft.webp"
+import unleashedSocietyDejaVuduu from "@public/images/unleashedSocietyDejaVuduu.webp"
+import unleashedSocietyInProgress from "@public/images/unleashedSocietyInProgress.webp"
 
 import { StaticImage } from 'src/lib/StaticImage'
+import { Youtube } from './Youtube'
 
 export enum PortfolioTag{
     Creative,
-    Assistive
+    Assistive,
+    Visuals
 }
 
 export interface PortfolioItem {
@@ -19,30 +23,42 @@ export interface PortfolioItem {
 
 export const portfolioItems: PortfolioItem[] = [
     {
+        title: "Cultured (2022)",
+        tag: PortfolioTag.Visuals,
+        content: 
+            <div>
+                <Youtube embedId='qiAt0ZFS1eQ' />
+                <p>
+                Performed at a friends doof near Peel Forest as a send off to their family farm. Had a hand in designing the stage to match projections to wrap around the dance floor. This performance is an example of my live rendered 3D content where I experiment with infinite twisted space.
+                </p>
+                <p>Producer/DJ: <a href="https://soundcloud.com/keithunsheathed">Keith</a></p>
+            </div>
+    },
+    {
+        title: "Unleashed Society (2022)",
+        tag: PortfolioTag.Visuals,
+        content: 
+            <div>
+                <Youtube embedId='dXHccbCmphk' />
+                <div style={{
+                    display: "flex",
+                    flexDirection: "row"
+                }}>
+                    <StaticImage style={{width: '100%'}} src={unleashedSocietyInProgress} />
+                    <div style={{flexBasis: 8}}/>
+                    <StaticImage style={{width: '100%'}} src={unleashedSocietyDejaVuduu} />
+                </div>
+                <p>
+                    For this gig, I collaborated with stage designers to map out this custom built taniwha. I was really happy with the result - ghostly taniwha watching over the audience with my reactive shapes adding depth. I especially valued having enough time in this project to prototype different visual styles beforehand and get the mapping pixel perfect.
+                </p>
+            </div>
+        
+    },
+    {
         title: "This website (2022)", 
         tag: PortfolioTag.Creative,
         content: 
             <p>I wanted to update my website to make it easier to update content and showcase my generative art. I want to speak through examples.</p>,
-    },
-    {
-        title: "Optiphonic (2020+)",
-        tag: PortfolioTag.Creative,
-        url: "http://instagram.com/optiphonic",
-        content: 
-        <div>
-            <div style={{width: "100%", display: "flex"}}>
-                <iframe style={{margin: "0 auto", border: "none"}} width="320px" height="320px" src="https://mega.nz/embed/bYYUiTqA#3ZUu6S5wuDsjtp76TwF-P8t_0-rutFbiomdxRzVPJt8" allowFullScreen={true} ></iframe> 
-            </div>
-
-            <p>
-                I have been performing visual art at festivals and music events under the name Optiphonic. Many years ago I was inspired by music visualizers in winamp and iTunes, since then I have created my own and started performing them for different events. Check out some of my renders and performances <a href="https://instagram.com/optiphonic">on instagram</a>.
-            </p>
-
-            <p>
-                With this work, I'm currently developing tools that allow me to bring the surfaces of the real world into my generative worlds. I'm lucky to collaborate with some other awesome artists in this work and I hope to develop even larger collaborative things in the future! <a href="mailto:edeetee@gmail.com">Email me</a> if you want to collab :)
-            </p>
-        </div>
-       
     },
 
     {
@@ -82,8 +98,8 @@ export const portfolioItems: PortfolioItem[] = [
         content: 
             <div>
                 <div style={{display: 'flex'}}>
-                    <StaticImage style={{width: "50%", height: "50%"}} src={scutter1}/>
-                    <StaticImage style={{width: "50%", height: "50%"}} src={scutter2}/>
+                    <StaticImage src={scutter1}/>
+                    <StaticImage src={scutter2}/>
                 </div>
                 <p>
                     For a university game design course, I designed a multiplayer game best described as blind mans bluff in VR. Up to two players hold a controller each and one player dons the headset. As the controller players move around, a corresponding object in virtual space follows their movements. The VR player's goal is find the objects that represent the controllers moving around and take the controller from the other players, pressing a button to verify. While this happens, the controller players are getting vibrations that guide them to goals in space, with the aim to gain as many points as possible.
@@ -128,10 +144,14 @@ export const portfolioItems: PortfolioItem[] = [
 ]
 
 export const RenderPortfolio = (items: PortfolioItem[]) => 
-    <>
+    <div style={{marginBottom: '10vh'}}>
         {items.map((item, i) => 
             <div key={i}> 
 
+                {/* dividers */}
+                <div style={{width: '100%', height: 1, backgroundColor: '#AAA', margin: '32px 0'}}/>
+
+                {/* title */}
                 {item.url != null ? 
                     <a href={item.url}><h3>{item.title}</h3></a> : 
                     <h3>{item.title}</h3>}
@@ -139,4 +159,4 @@ export const RenderPortfolio = (items: PortfolioItem[]) =>
                 {item.content}
             </div>
         )}
-    </>
+    </div>

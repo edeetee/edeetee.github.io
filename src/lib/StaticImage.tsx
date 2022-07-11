@@ -1,4 +1,14 @@
-import { DetailedHTMLProps, ImgHTMLAttributes } from 'react'
+import { CSSProperties, DetailedHTMLProps, ImgHTMLAttributes } from 'react'
 
-export const StaticImage = (props: DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>) => 
-    <img {...props} style={{width: '100%', height: '100%', objectFit: "contain", ...props.style}} />
+interface ImageProps{
+    style?: CSSProperties,
+    src: string
+}
+
+export const StaticImage = ({style, src}: ImageProps) => 
+    <div style={{...style}}>
+        <a href={src}>
+            <img src={src} style={{width: '100%', height: '100%', objectFit: "cover"}} />
+        </a>
+    </div>
+    
