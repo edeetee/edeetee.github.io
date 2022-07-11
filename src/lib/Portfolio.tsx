@@ -5,7 +5,7 @@ import pictocraft from "@public/images/pictocraft.webp"
 import unleashedSocietyDejaVuduu from "@public/images/unleashedSocietyDejaVuduu.webp"
 import unleashedSocietyInProgress from "@public/images/unleashedSocietyInProgress.webp"
 
-import { StaticImage } from 'src/lib/StaticImage'
+import { Image } from 'src/lib/StaticImage'
 import { Youtube } from './Youtube'
 
 export enum PortfolioTag{
@@ -44,9 +44,9 @@ export const portfolioItems: PortfolioItem[] = [
                     display: "flex",
                     flexDirection: "row"
                 }}>
-                    <StaticImage style={{width: '100%'}} src={unleashedSocietyInProgress} />
+                    <Image style={{width: '100%'}} src={unleashedSocietyInProgress} />
                     <div style={{flexBasis: 8}}/>
-                    <StaticImage style={{width: '100%'}} src={unleashedSocietyDejaVuduu} />
+                    <Image style={{width: '100%'}} src={unleashedSocietyDejaVuduu} />
                 </div>
                 <p>
                     For this gig, I collaborated with stage designers to map out this custom built taniwha. I was really happy with the result - ghostly taniwha watching over the audience with my reactive shapes adding depth. I especially valued having enough time in this project to prototype different visual styles beforehand and get the mapping pixel perfect.
@@ -84,7 +84,7 @@ export const portfolioItems: PortfolioItem[] = [
         url: "https://github.com/edeetee/pictocraft",
         content: 
         <div>
-            <StaticImage src={pictocraft}/>
+            <Image src={pictocraft}/>
             <p>
                 For my final project at Victoria University, I carried out independent research where I created a modification of the game <a href="http://www.minecraft.net">Minecraft</a> in order to give communication abilities to people with language difficulties. I integrated an existing English to Picograph system into the game to translate received text into images and made a web interface to allow communicating back by pressing buttons on a tablet. It's not 100% accurate, but the ability to communicate ideas like “I want to build a brick house on a hill” can give users a lot more depth than they had otherwise.
             </p>
@@ -98,8 +98,8 @@ export const portfolioItems: PortfolioItem[] = [
         content: 
             <div>
                 <div style={{display: 'flex'}}>
-                    <StaticImage src={scutter1}/>
-                    <StaticImage src={scutter2}/>
+                    <Image src={scutter1}/>
+                    <Image src={scutter2}/>
                 </div>
                 <p>
                     For a university game design course, I designed a multiplayer game best described as blind mans bluff in VR. Up to two players hold a controller each and one player dons the headset. As the controller players move around, a corresponding object in virtual space follows their movements. The VR player's goal is find the objects that represent the controllers moving around and take the controller from the other players, pressing a button to verify. While this happens, the controller players are getting vibrations that guide them to goals in space, with the aim to gain as many points as possible.
@@ -135,7 +135,7 @@ export const portfolioItems: PortfolioItem[] = [
         url: "https://steamcommunity.com/sharedfiles/filedetails/?id=389065555",
         content: 
         <div>
-            <StaticImage src={createAndCapture}/>
+            <Image src={createAndCapture}/>
             <p>
                 With my friend Tom Lewis (now a practicing game designer), we build a multiplayer gamemode for the popular game platform Garry's Mod. We did a lot of user testing with our friends and learnt a lot about collaborative and design driven development. The game ended up being a lot of fun and had several thousand downloads.
             </p>
