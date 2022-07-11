@@ -65,6 +65,7 @@ export const Main: React.FC = () => {
             <div ref={contentRef} className={styles.content}>
                 <h1>{selectedPage?.label}</h1>
                 {selectedPage?.page}
+                <div style={{height: 64}}></div>
             </div>
             <div style={{margin: "0 auto"}}></div>
         </div>
