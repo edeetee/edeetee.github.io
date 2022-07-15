@@ -8,7 +8,7 @@ interface LinkItem {
 
 const linkItems: LinkItem[] = [
     {
-        title: "Email",
+        title: "edeetee@gmail.com",
         url: "mailto:edeetee@gmail.com",
         mdiPath: mdiAt
     },

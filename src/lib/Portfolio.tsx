@@ -23,13 +23,36 @@ export interface PortfolioItem {
 
 export const portfolioItems: PortfolioItem[] = [
     {
+        title: "Spaceship \"DiscoVery\" Airbnb (2022)",
+        url: "https://linktr.ee/discoveryship",
+        tag: PortfolioTag.Creative,
+        content: 
+            <div>
+                <p>
+                    Got to collaborate with other skilled artists <a href="https://linktr.ee/discoveryship">(links here)</a> to add interactive elements to a spaceship themed airbnb made from the shell of an airplane. 
+                </p>
+                <Youtube embedId='q3hAaLLpg0A' />
+                <p>
+                    My initial work focused on:
+                    <ul>
+                        <li>An interactive touchscreen exterior view to be the main menu for home automation</li>
+                        <li>A game viewed in the cockpit, controlled via the joysticks</li>
+                    </ul>
+                    It was a hit at Armageddon Auckland and there are plans to do more development before it is open for booking.
+                </p>
+            </div>
+    },
+    {
         title: "Cultured (2022)",
         tag: PortfolioTag.Visuals,
         content: 
             <div>
+                <p>
+                    Performed at a mostly psy event near Peel Forest to send off a family farm.
+                </p>
                 <Youtube embedId='qiAt0ZFS1eQ' />
                 <p>
-                Performed at a friends doof near Peel Forest as a send off to their family farm. Had a hand in designing the stage to match projections to wrap around the dance floor. This performance is an example of my live rendered 3D content where I experiment with infinite twisted space.
+                    Had a hand in designing the stage to match projections to wrap around the dance floor. This performance is an example of my live rendered 3D content where I experiment with infinite geometries.
                 </p>
                 <p>Producer/DJ: <a href="https://soundcloud.com/keithunsheathed">Keith</a></p>
             </div>
