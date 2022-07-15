@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { About } from "@components/css/about";
 import { Work } from "@components/work";
 import { Links } from "@components/links";
@@ -23,11 +23,23 @@ const pageOptions: PageInfo[] = [
     {page: <Work />, label: "Skills", name: "skills"}
 ]
 
+function getURL(page: PageInfo | undefined): string {
+    return page !== undefined ? `/#${page.name}` : "/"
+}
+
 export const Main: React.FC = () => {
     const [selectedPage, selectPage] = useState<PageInfo|undefined>(undefined)
 
     const menuRef = useRef<HTMLDivElement>(null)
     const contentRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        if (window !== undefined && window.history.state != null && window.history.state.as != getURL(selectedPage)){
+            const new_page = pageOptions.find(info => getURL(info) == window.history.state.as)
+            selectPage(new_page)
+        }
+    })
+
     
     return (
         <div className={styles.responsiveDoubleCol}>
@@ -40,7 +52,9 @@ export const Main: React.FC = () => {
                     onSelected = {
                         async el => {
                             const newPageSelected = el != selectedPage
-                            selectPage(newPageSelected ? el : undefined)
+                            const new_page = newPageSelected ? el : undefined
+                            selectPage(new_page)
+                            window.history.pushState(null, el.label, getURL(new_page))
 
                             await asyncAnimationFrame()
 

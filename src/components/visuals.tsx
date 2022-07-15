@@ -1,11 +1,13 @@
 import { portfolioItems, PortfolioTag, RenderPortfolio } from "src/lib/Portfolio";
 
+const halfBoxStyle = {margin: "0 auto", border: "none", width: "50%", aspectRatio: "1/1"}
+
 export const Visuals = () => 
 <div>
     <div>
         <div style={{width: "100%", display: "flex"}}>
-            <iframe style={{margin: "0 auto", border: "none"}} width="320px" height="320px" src="https://mega.nz/embed/bYYUiTqA#3ZUu6S5wuDsjtp76TwF-P8t_0-rutFbiomdxRzVPJt8" allowFullScreen={true} ></iframe>
-            <iframe style={{margin: "0 auto", border: "none"}} width="320px" height="320px" src="https://mega.nz/embed/2BZ1BDYL#DN8Pvo7veq1T83Lq01W27uFAayesabDffIYFSy6zq-k" allowFullScreen={true} ></iframe> 
+            <iframe style={halfBoxStyle} src="https://mega.nz/embed/bYYUiTqA#3ZUu6S5wuDsjtp76TwF-P8t_0-rutFbiomdxRzVPJt8" allowFullScreen={true} ></iframe>
+            <iframe style={halfBoxStyle} src="https://mega.nz/embed/2BZ1BDYL#DN8Pvo7veq1T83Lq01W27uFAayesabDffIYFSy6zq-k" allowFullScreen={true} ></iframe> 
         </div>
 
         <p>
