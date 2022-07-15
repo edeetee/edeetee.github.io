@@ -11,15 +11,16 @@ import { Visuals } from "@components/visuals";
 
 interface PageInfo {
     page: JSX.Element,
-    label: string
+    label: string,
+    name: string
 }
 
 //TODO: modularise this
 const pageOptions: PageInfo[] = [
-    {page: <Visuals/>, label: "Music Visuals"},
-    {page: <Creative />, label: "Creative"},
-    {page: <Assistive />, label: "Assistive"},
-    {page: <Work />, label: "Skills"}
+    {page: <Visuals/>, label: "Music Visuals", name: "visuals"},
+    {page: <Creative />, label: "Creative", name: "creative"},
+    {page: <Assistive />, label: "Assistive", name: "assistive"},
+    {page: <Work />, label: "Skills", name: "skills"}
 ]
 
 export const Main: React.FC = () => {
