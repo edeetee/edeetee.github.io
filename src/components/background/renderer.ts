@@ -1,4 +1,4 @@
-import { FrameCallback, Regl } from "regl";
+import REGL from "regl";
 
 import feedbackFrag from "./feedback.frag"
 import outputFrag from "./output.frag"
@@ -25,7 +25,28 @@ const fullscreenVertPositions = [
     0, -2,
     2, 2]
 
-export const FeedbackRenderer: (regl: Regl) => {onFrame: FrameCallback, onMove: MouseMoveListener} = (regl: Regl) => {
+export const FeedbackRenderer = (glContext: WebGLRenderingContext) => {
+
+    const regl = REGL({
+        pixelRatio: 1,
+        gl: glContext,
+        extensions: [
+            'OES_texture_float', 
+            // 'GL_OES_texture_float', 
+            'WEBGL_color_buffer_float',
+            'OES_texture_float_linear'
+            // 'WEBGL_texture_float'
+        ],
+        optionalExtensions: [
+            'EXT_color_buffer_float'
+        ],
+        // optionalExtensions: ['OES_texture_float_linear', "WEBGL_color_buffer_float"],
+        onDone(err){
+            if(err != null)
+                console.log(err)
+        }
+    })
+
     // let mouse = mouseChange(document.body, () => {})
     let mouseUV = new vec(-1,-1)
     let laggedMouseUV = mouseUV
@@ -79,6 +100,38 @@ export const FeedbackRenderer: (regl: Regl) => {onFrame: FrameCallback, onMove: 
         },
     })
 
+    regl.frame(({viewportHeight, viewportWidth, time}) => {
+        const timeDiff = time-lastTime
+        lastTime = time
+
+        //limit mouse speed
+        const diff = vec.div(mouseUV.sub(laggedMouseUV).limit(timeDiff), aspect, 1)
+        laggedMouseUV = laggedMouseUV.add(diff)
+
+        // console.log(laggedMouseUV)
+
+        //only resize on larger
+        if(size.x < viewportWidth || size.y < viewportHeight){
+            lastFramebuffer.resize(viewportWidth, viewportHeight)
+            feedbackFramebuffer.resize(viewportWidth, viewportHeight)
+            size = new vec(viewportWidth, viewportHeight)
+            aspect = viewportWidth/viewportHeight
+        }
+
+        fullscreenQuad(() => {
+            processFeedback()
+
+            feedbackFramebuffer.use(() => {
+                lastFramebuffer({
+                    copy: true,
+                })
+            })
+
+            processOutput()
+        })
+
+    })
+
     return {
         onMove: (x, y) => {
             mouseUV = new vec(x,y)
@@ -86,38 +139,6 @@ export const FeedbackRenderer: (regl: Regl) => {onFrame: FrameCallback, onMove: 
                 laggedMouseUV = mouseUV
                 firstMouse = false
             }
-
-        },
-
-        onFrame: ({viewportHeight, viewportWidth, time}) => {
-            const timeDiff = time-lastTime
-            lastTime = time
-
-            //limit mouse speed
-            const diff = vec.div(mouseUV.sub(laggedMouseUV).limit(timeDiff), aspect, 1)
-            laggedMouseUV = laggedMouseUV.add(diff)
-
-            // console.log(laggedMouseUV)
-
-            //only resize on larger
-            if(size.x < viewportWidth || size.y < viewportHeight){
-                lastFramebuffer.resize(viewportWidth, viewportHeight)
-                feedbackFramebuffer.resize(viewportWidth, viewportHeight)
-                size = new vec(viewportWidth, viewportHeight)
-                aspect = viewportWidth/viewportHeight
-            }
-
-            fullscreenQuad(() => {
-                processFeedback()
-
-                feedbackFramebuffer.use(() => {
-                    lastFramebuffer({
-                        copy: true,
-                    })
-                })
-    
-                processOutput()
-            })
 
         }
     }

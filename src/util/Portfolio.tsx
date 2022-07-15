@@ -6,7 +6,7 @@ import unleashedSocietyDejaVuduu from "@public/images/unleashedSocietyDejaVuduu.
 import unleashedSocietyInProgress from "@public/images/unleashedSocietyInProgress.webp"
 
 import { Image } from 'src/lib/StaticImage'
-import { Youtube } from './Youtube'
+import { Youtube } from '../components/Youtube'
 
 export enum PortfolioTag{
     Creative,
@@ -166,20 +166,3 @@ export const portfolioItems: PortfolioItem[] = [
     }
 ]
 
-export const RenderPortfolio = (items: PortfolioItem[]) => 
-    <div style={{marginBottom: '10vh'}}>
-        {items.map((item, i) => 
-            <div key={i}> 
-
-                {/* dividers */}
-                <div style={{width: '100%', height: 1, backgroundColor: '#AAA', margin: '32px 0'}}/>
-
-                {/* title */}
-                {item.url != null ? 
-                    <a href={item.url}><h3>{item.title}</h3></a> : 
-                    <h3>{item.title}</h3>}
-
-                {item.content}
-            </div>
-        )}
-    </div>

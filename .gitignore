@@ -1,9 +1,8 @@
-# npm
+.DS_Store
 node_modules
-# next.js build files
-.next
-# environment variables
+/build
+/.svelte-kit
+/package
 .env
 .env.*
 !.env.example
-out/*
