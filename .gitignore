@@ -7,3 +7,7 @@ node_modules
 .env.*
 !.env.example
 out/*
+
+#touchdesigner
+*.*[0-9].toe
+Backup
