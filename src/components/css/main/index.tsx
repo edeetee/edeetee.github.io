@@ -12,7 +12,7 @@ import { Visuals } from "@components/visuals";
 interface PageInfo {
     page: JSX.Element,
     label: string,
-    name: string
+    url: string
 }
 
 //TODO: modularise this
@@ -21,11 +21,9 @@ const pageOptions: PageInfo[] = [
     {page: <Creative />, label: "Creative", name: "creative"},
     {page: <Assistive />, label: "Assistive", name: "assistive"},
     {page: <Work />, label: "Skills", name: "skills"}
-]
-
-function getURL(page: PageInfo | undefined): string {
-    return page !== undefined ? `/#${page.name}` : "/"
-}
+].map(info => {
+    return {url: `/#${info.name}`, ...info}
+})
 
 export const Main: React.FC = () => {
     const [selectedPage, selectPage] = useState<PageInfo|undefined>(undefined)
@@ -33,11 +31,25 @@ export const Main: React.FC = () => {
     const menuRef = useRef<HTMLDivElement>(null)
     const contentRef = useRef<HTMLDivElement>(null)
 
-    useEffect(() => {
-        if (window !== undefined && window.history.state != null && window.history.state.as != getURL(selectedPage)){
-            const new_page = pageOptions.find(info => getURL(info) == window.history.state.as)
+    async function tryUpdateView(){
+        if (window.history.state != null && window.history.state.as != selectedPage?.url){
+            const new_page = pageOptions.find(info => info.url == window.history.state.as)
             selectPage(new_page)
+
+            await asyncAnimationFrame()
+            const y = contentRef.current?.getBoundingClientRect()?.top
+            const menuY = menuRef.current?.getBoundingClientRect()?.top
+            if(y !== undefined && menuY != undefined)
+                scrollTo({
+                    top: y-menuY,
+                    behavior: "smooth"
+                })
         }
+    }
+
+    useEffect(() => {
+        window.addEventListener('hashchange', tryUpdateView)
+        tryUpdateView()
     })
 
     
@@ -49,28 +61,6 @@ export const Main: React.FC = () => {
                 <PageSelector<PageInfo> 
                     options={pageOptions}
                     selected={selectedPage}
-                    onSelected = {
-                        async el => {
-                            const newPageSelected = el != selectedPage
-                            const new_page = newPageSelected ? el : undefined
-                            selectPage(new_page)
-                            window.history.pushState(null, el.label, getURL(new_page))
-
-                            await asyncAnimationFrame()
-
-                            //if content below menu
-                            if(newPageSelected && menuRef.current?.offsetTop != contentRef.current?.offsetTop){
-                                const y = contentRef.current?.getBoundingClientRect()?.top
-                                scrollTo({
-                                    top: y,
-                                    behavior: "smooth"
-                                })
-                            }
-                                // contentRef.current?.scrollIntoView({
-                                //     behavior: "smooth"
-                                // })
-                        }
-                    }
                 />
 
                 <Links />
