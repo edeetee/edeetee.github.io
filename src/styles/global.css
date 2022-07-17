@@ -5,6 +5,9 @@ body {
     font-family: "Roboto", "Segoe UI", "Noto Sans", "Helvetica Neue", Arial, Helvetica, sans-serif !important;
     text-decoration: none !important;
 
+    font-weight: 400;
+    font-size: 15px;
+
     outline: none;
 }
 
@@ -34,7 +37,7 @@ a:active  {
 }
 
 h1{
-    font-size: 48px;
+    font-size: 36px;
     font-weight: 500;
     color: rgb(34, 34, 34);
     /* margin-bottom: 20px; */
@@ -52,10 +55,14 @@ h2, h3 {
 
 h2 {
     color: rgb(88, 88, 88);
-    /* font-size: 34px; */
 }
 
-h3 {
+/* h3 {
     margin-top: 4vh;
     font-size: 24px;
+} */
+
+h4 {
+    margin-top: 4px;
+    margin-bottom: 16px;
 }

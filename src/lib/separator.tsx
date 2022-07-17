@@ -1,0 +1,1 @@
+export const Separator = () => <div style={{width: '100%', height: 1, backgroundColor: '#AAA', margin: '32px 0'}}/>

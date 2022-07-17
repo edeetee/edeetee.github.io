@@ -1,15 +1,17 @@
-import cv from '@public/cv.pdf'
 
-export const Work: React.FC = () =>
+import { Separator } from 'src/lib/separator'
+
+export const Skills: React.FC = () =>
     <>
         <p>
             I am available for a wide range of work related to digital technology and art. Taking a browse through my portfolio will give you an idea of where my interests lie and what I can create with passion.
         </p>
-        <p>
-            Here are some of my skills:
-        </p>
-
+        
+        <Separator />
+        
+        <h2>Skills</h2>
         <h3>Rendering & Interaction</h3>
+        As shown in my visual work, I love leveraging the potential of hardware to create art.
         <ul>
             <li>3D Materials & Modelling</li>
             <li>Game & Interactive logic</li>
@@ -19,6 +21,7 @@ export const Work: React.FC = () =>
         </ul>
 
         <h3>Linux</h3>
+        I have general linux systems knowledge from my use of raspberry pi and feel most at home on a linux system
         <ul>
             <li>Web servers</li>
             <li>Maintainance</li>
@@ -34,7 +37,4 @@ export const Work: React.FC = () =>
             <li>AWS & web servers</li>
             <li>Arduino & embedded computing</li>
         </ul>
-        <p>
-            I'm still in the process of bringing my previous employments into this site, so in the meantime you can see <a href={cv}>my old CV here.</a>
-        </p>
     </>

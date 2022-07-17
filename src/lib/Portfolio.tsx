@@ -7,6 +7,7 @@ import unleashedSocietyInProgress from "@public/images/unleashedSocietyInProgres
 
 import { Image } from 'src/lib/StaticImage'
 import { Youtube } from './Youtube'
+import { Separator } from './separator'
 
 export enum PortfolioTag{
     Creative,
@@ -88,7 +89,7 @@ export const portfolioItems: PortfolioItem[] = [
         title: "TASKA Prosthetics (2020)",
         tag: PortfolioTag.Assistive,
         content: <p>
-            Worked for TASKA Prosthetics to update and maintain their phone app. I went into the job desiring to work with patients and design software that aligned with research into how to best assist users. The role ended up being more software engineering that I desired so I moved on after a year.
+            Worked for TASKA Prosthetics to update and maintain their phone app. I went into the job desiring to work with patients and design software that aligned with research into how to best assist users. I learnt a lot about project management including continuous integration, deployment and spreading work across a team. The role was not giving me the support and variety I desired so I moved on after a year.
         </p>
     },
 
@@ -172,7 +173,7 @@ export const RenderPortfolio = (items: PortfolioItem[]) =>
             <div key={i}> 
 
                 {/* dividers */}
-                <div style={{width: '100%', height: 1, backgroundColor: '#AAA', margin: '32px 0'}}/>
+                <Separator />
 
                 {/* title */}
                 {item.url != null ? 

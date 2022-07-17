@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { About } from "@components/css/about";
-import { Work } from "@components/work";
+import { Skills } from "@components/skills";
 import { Links } from "@components/links";
 import { PageSelector } from "../pageSelector";
 import { Creative } from "@components/creative";
@@ -8,6 +8,7 @@ import { Assistive } from "@components/assistive";
 import styles from './index.module.css'
 import { asyncAnimationFrame } from "src/lib/asyncAnimationFrame";
 import { Visuals } from "@components/visuals";
+import { History } from "@components/history";
 
 interface PageInfo {
     page: JSX.Element,
@@ -20,7 +21,8 @@ const pageOptions: PageInfo[] = [
     {page: <Visuals/>, label: "Music Visuals", name: "visuals"},
     {page: <Creative />, label: "Creative", name: "creative"},
     {page: <Assistive />, label: "Assistive", name: "assistive"},
-    {page: <Work />, label: "Skills", name: "skills"}
+    {page: <Skills />, label: "Skills", name: "skills"},
+    {page: <History/>, label: "History", name: "history"}
 ].map(info => {
     return {url: `/#${info.name}`, ...info}
 })
