@@ -10,7 +10,7 @@ export const About: React.FC = () => {
             <h2>New Zealand</h2>
         </div>
         <p>
-            I am a creative individual who uses technology to create beauty, add to experiences and solve problems.
+            I am a creative individual who uses technology for beauty, experiences and solutions.
         </p>
     </>
 };
