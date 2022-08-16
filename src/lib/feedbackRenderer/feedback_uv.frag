@@ -20,7 +20,7 @@ void main () {
     
     vec2 mouseDist = (uv-mouse)*aspect;
     float mouseLength = length(mouseDist);
-    float mouseStrength = pow(max(1.0-mouseLength*1.5, 0.0), 5.0);
+    float mouseStrength = pow(max(1.0-mouseLength*2.0, 0.0), 1.5)*0.3;
 
     vec2 aspectUv = uv*aspect;
 
