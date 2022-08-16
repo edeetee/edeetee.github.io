@@ -6,7 +6,7 @@ import REGL from "regl";
 import { FeedbackRenderer } from "src/lib/feedbackRenderer";
 import { constrain } from "src/lib/constrain";
 
-const RES_MULTIPLIER = 0.5
+const RES_MULTIPLIER = 1/4
 
 export const CanvasRenderer = () => {
     const canvasRef = React.createRef<HTMLCanvasElement>()
@@ -32,7 +32,7 @@ export const CanvasRenderer = () => {
         updateSize()
 
         const regl = REGL({
-            pixelRatio: 1,
+            // pixelRatio: 0.001,
             // canvas: canvas,
             gl: glContext,
             extensions: [
@@ -79,6 +79,7 @@ export const CanvasRenderer = () => {
     
     return <canvas ref={canvasRef}
         style={{
+            imageRendering: "pixelated",
             position: "fixed",
             width: "100%",
             height: "100%",

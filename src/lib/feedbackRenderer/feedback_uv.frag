@@ -24,7 +24,7 @@ void main () {
 
     vec2 aspectUv = uv*aspect;
 
-    float rotation = pressed ? PI*t*0.2 : PI;
+    float rotation = pressed ? PI*sin(t*0.5)/2. : PI;
     vec2 rotatedMouseDist = rotate(mouseDist, rotation);
     vec2 mouseUvOffset = normalize(rotatedMouseDist)*mouseStrength;
 
