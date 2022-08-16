@@ -18,12 +18,14 @@ export const Visuals = () =>
             Some of the technology I make in relation to visual art include:
             <ul>
                 <li>Tools to represent real spaces in the virtual and vice versa</li>
-                <li>Extensions of programs to improve quality of life</li>
+                <li>Extending existing tools to improve quality of life</li>
+                <li>Midi control systems</li>
+                <li>Low level programming for embedded visual systems (raspberry pi)</li>
             </ul>
         </p>
 
         <p>
-            Some of the tools I make in relation to visual art include . I'm lucky to collaborate with some other awesome artists in this work and I hope to develop even larger collaborative things in the future! <a href="mailto:edeetee@gmail.com">Email me</a> if you want to collab :)
+            I'm lucky to collaborate with some other awesome creative people through this work and I hope to develop even larger collaborative things in the future! <a href="mailto:edeetee@gmail.com">Email me</a> if you want to collab :)
         </p>
     </div>
 

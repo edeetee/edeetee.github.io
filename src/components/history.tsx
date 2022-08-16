@@ -78,10 +78,10 @@ export const History = () =>
     <Separator />
 
     <h2>Education</h2>
-    <h3>Computer Science (dropped out)</h3>
+    <h3>BSc Computer Science (dropped out)</h3>
     <h4>2014-2016</h4>
     Initially started a Computer Science degree at Canterbury University with a minor in Philosophy, then transferred to
-    Victoria University. I did this as I was no longer interested in pure computer science as opposed to using it as a tool.
+    Victoria University. I did this as I was no longer interested in pure computer science as opposed to using it as a tool. I did however learn coding foundations and would not be where I am today without my time here.
     <h3>BDI Media Design</h3>
     <h4>Victoria University of Wellington</h4>
     <h4>2017</h4>
