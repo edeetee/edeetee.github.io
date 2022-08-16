@@ -1,12 +1,17 @@
 import { FrameCallback, Regl } from "regl";
 
-import feedbackFrag from "./feedback.frag"
+import feedbackUvFrag from "./feedback_uv.frag"
+import feedbackMonoFrag from "./feedback_mono.frag"
 import outputFrag from "./output.frag"
 
 import vec from "fast-vector"
 
 interface MouseMoveListener{
     (x: number, y: number): void
+}
+
+interface PressListener{
+    (pressed: boolean): void
 }
 
 const fullscreenVertShader = `
@@ -25,7 +30,7 @@ const fullscreenVertPositions = [
     0, -2,
     2, 2]
 
-export const FeedbackRenderer: (regl: Regl) => {onFrame: FrameCallback, onMove: MouseMoveListener} = (regl: Regl) => {
+export const FeedbackRenderer: (regl: Regl) => {onFrame: FrameCallback, onPress: PressListener, onMove: MouseMoveListener} = (regl: Regl) => {
     // let mouse = mouseChange(document.body, () => {})
     let mouseUV = new vec(-1,-1)
     let laggedMouseUV = mouseUV
@@ -34,15 +39,19 @@ export const FeedbackRenderer: (regl: Regl) => {onFrame: FrameCallback, onMove: 
     let lastTime = 0
     let size = new vec(0,0)
     let aspect = 1
+    let pressed = false
 
     // let mouse = mouseChange(document.body, () => {})
 
     const lastFramebuffer = regl.texture({
         type: "float",
         min: 'linear',
-        mag: 'linear'
+        mag: 'linear',
+        wrap: 'clamp'
         // filter: ''
     })
+
+    const timestamp = Date.now()/1000 % 1000;
 
     const fullscreenQuad = regl({
         attributes: {
@@ -58,14 +67,15 @@ export const FeedbackRenderer: (regl: Regl) => {onFrame: FrameCallback, onMove: 
     })
 
     const processFeedback = regl({
-        frag: feedbackFrag,
+        frag: feedbackUvFrag,
         
         uniforms: {
             texture: lastFramebuffer,
             aspect: () => [aspect, 1],
             mouse: () => laggedMouseUV.toArray(),
+            pressed: () => pressed,
             // resized: () => 
-            t: ({time}) => time
+            t: ({time}) => time+timestamp
         },
         
         framebuffer: feedbackFramebuffer,
@@ -87,6 +97,10 @@ export const FeedbackRenderer: (regl: Regl) => {onFrame: FrameCallback, onMove: 
                 firstMouse = false
             }
 
+        },
+
+        onPress: (pressedState) => {
+            pressed = pressedState
         },
 
         onFrame: ({viewportHeight, viewportWidth, time}) => {

@@ -63,6 +63,14 @@ export const CanvasRenderer = () => {
     
         document.body.addEventListener("touchmove", ev => updateMouse(ev.touches[0].pageX, ev.touches[0].pageY))
         document.body.addEventListener("mousemove", ev => updateMouse(ev.pageX, ev.pageY))
+        document.body.addEventListener("mouseover", ev => updateMouse(ev.pageX, ev.pageY))
+
+        document.body.addEventListener("mousedown", ev => feedbackRenderer.onPress(true))
+        document.body.addEventListener("touchstart", ev => feedbackRenderer.onPress(true))
+
+        document.body.addEventListener("touchend", ev => feedbackRenderer.onPress(false))
+        document.body.addEventListener("touchcancel", ev => feedbackRenderer.onPress(false))
+        document.body.addEventListener("mouseup", ev => feedbackRenderer.onPress(false))
 
         regl.frame(ctx => {
             feedbackRenderer.onFrame(ctx)
