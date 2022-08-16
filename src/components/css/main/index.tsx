@@ -9,6 +9,8 @@ import styles from './index.module.css'
 import { asyncAnimationFrame } from "src/lib/asyncAnimationFrame";
 import { Visuals } from "@components/visuals";
 import { History } from "@components/history";
+import Home from "pages";
+import { HomeContent } from "@components/home";
 
 interface PageInfo {
     page: JSX.Element,
@@ -71,7 +73,7 @@ export const Main: React.FC = () => {
             <div style={{display: selectedPage ? "initial" : "none"}} className={styles.separator}></div>
             <div ref={contentRef} className={styles.content}>
                 <h1>{selectedPage?.label}</h1>
-                {selectedPage?.page}
+                {selectedPage?.page || <HomeContent/>}
                 <div style={{height: 64}}></div>
             </div>
             <div style={{margin: "0 auto"}}></div>
