@@ -108,7 +108,7 @@ export const FeedbackRenderer: (regl: Regl) => {onFrame: FrameCallback, onPress:
             lastTime = time
 
             //limit mouse speed
-            const diff = vec.div(mouseUV.sub(laggedMouseUV).limit(timeDiff), aspect, 1)
+            const diff = vec.div(mouseUV.sub(laggedMouseUV).limit(timeDiff*2), aspect, 1)
             laggedMouseUV = laggedMouseUV.add(diff)
 
             // console.log(laggedMouseUV)
