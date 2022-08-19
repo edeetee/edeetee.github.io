@@ -6,7 +6,7 @@ interface PageSelectorProps<K extends {label: string, url: string}>{
 }
 
 export const PageSelector = <K extends {label: string, url: string}>({options, selected}: PageSelectorProps<K>) => 
-<div>
+<div style={{margin: "16px 0"}}>
     {options.map((el, i) => {
         const isSelected = selected == el
 

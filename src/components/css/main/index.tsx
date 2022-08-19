@@ -41,8 +41,8 @@ export const Main: React.FC = () => {
     //     requestAnimationFrame(animateDom)
     // }
 
-    async function tryUpdateView(){
-        if (window.history.state != null && window.history.state.as != selectedPage?.url){
+    async function tryUpdateView() {
+        if (window.history.state != null && window.history.state.as != selectedPage?.url) {
             const new_page = pageOptions.find(info => info.url == window.history.state.as)
             selectPage(new_page)
 
