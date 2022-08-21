@@ -35,8 +35,14 @@ export const Main: React.FC = () => {
     const menuRef = useRef<HTMLDivElement>(null)
     const contentRef = useRef<HTMLDivElement>(null)
 
-    async function tryUpdateView(){
-        if (window.history.state != null && window.history.state.as != selectedPage?.url){
+    // function animateDom(){
+    //     menuRef
+
+    //     requestAnimationFrame(animateDom)
+    // }
+
+    async function tryUpdateView() {
+        if (window.history.state != null && window.history.state.as != selectedPage?.url) {
             const new_page = pageOptions.find(info => info.url == window.history.state.as)
             selectPage(new_page)
 
@@ -53,6 +59,7 @@ export const Main: React.FC = () => {
 
     useEffect(() => {
         window.addEventListener('hashchange', tryUpdateView)
+        // requestAnimationFrame(animateDom)
         tryUpdateView()
     })
 
