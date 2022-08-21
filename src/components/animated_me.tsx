@@ -10,21 +10,29 @@ export const AnimatedMe = () => {
 
     let cur_rotation = 0;
 
+    let clicked = false;
+    let offset = 0;
+
     function onFrame(){
         const aim_rotation = mouse_over ? Math.sin(Date.now()*0.005)*4 : 0;
 
         cur_rotation += (aim_rotation - cur_rotation) * 0.1;
+        
+        if(clicked)
+            offset -= 20;
 
-        if (imageRef.current)
-            imageRef.current.style.transform = `rotate(${cur_rotation-45}deg)`;
+        if (imageRef.current){
+            imageRef.current.style.transform = `translate(${offset}px, ${offset}px) rotate(${cur_rotation-45}deg)`;
+        }
 
         requestAnimationFrame(onFrame)
     }
 
     function onClick() {
-        if(imageRef.current)
+        clicked = true;
+        // if(imageRef.current)
             // imageRef.current.remove()
-            imageRef.current.style.display = "none"
+            // imageRef.current.style.display = "none"
             // setTimeout(() => {
             //     if(imageRef.current)
             //         imageRef.current.
@@ -50,7 +58,6 @@ export const AnimatedMe = () => {
                 right: -64,
                 bottom: -150,
                 transformOrigin: "50%, 50%", 
-                transform: "rotate(90deg)",
                 width: 128,
             }}>
 
