@@ -14,7 +14,9 @@ export const AnimatedMe = () => {
     let offset = 0;
 
     function onFrame(){
-        const aim_rotation = mouse_over ? Math.sin(Date.now()*0.005)*4 : 0;
+        const freq = clicked ? 0.03 : 0.005;
+        const amp = clicked ? 20 : 4;
+        const aim_rotation = mouse_over || clicked ? Math.sin(Date.now()*freq)*amp : 0;
 
         cur_rotation += (aim_rotation - cur_rotation) * 0.1;
         
