@@ -13,7 +13,7 @@ export const AnimatedMe = () => {
     let clicked = false;
     let offset = 0;
 
-    function onFrame(){
+    function calc_transform() {
         const freq = clicked ? 0.03 : 0.005;
         const amp = clicked ? 20 : 4;
         const aim_rotation = mouse_over || clicked ? Math.sin(Date.now()*freq)*amp : 0;
@@ -23,8 +23,12 @@ export const AnimatedMe = () => {
         if(clicked)
             offset -= 20;
 
+        return `translate(${offset}px, ${offset}px) rotate(${cur_rotation-45}deg)`;
+    }
+
+    function onFrame(){
         if (imageRef.current){
-            imageRef.current.style.transform = `translate(${offset}px, ${offset}px) rotate(${cur_rotation-45}deg)`;
+            imageRef.current.style.transform = calc_transform();
         }
 
         requestAnimationFrame(onFrame)
@@ -60,6 +64,7 @@ export const AnimatedMe = () => {
                 right: -64,
                 bottom: -150,
                 transformOrigin: "50%, 50%", 
+                transform: calc_transform(),
                 width: 128,
             }}>
 
