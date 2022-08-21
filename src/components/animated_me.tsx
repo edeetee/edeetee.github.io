@@ -6,18 +6,25 @@ import { useEffect, useRef } from "react";
 export const AnimatedMe = () => {
     const imageRef = useRef<HTMLDivElement>(null)
 
+    let mouse_over = false;
+
+    let cur_rotation = 0;
+
     function onFrame(){
-        const rotation = Math.sin(Date.now()*0.002)*4
+        const aim_rotation = mouse_over ? Math.sin(Date.now()*0.005)*4 : 0;
+
+        cur_rotation += (aim_rotation - cur_rotation) * 0.1;
 
         if (imageRef.current)
-            imageRef.current.style.transform = `rotate(${rotation}deg)`;
+            imageRef.current.style.transform = `rotate(${cur_rotation-45}deg)`;
 
         requestAnimationFrame(onFrame)
     }
 
     function onClick() {
         if(imageRef.current)
-            imageRef.current.remove()
+            // imageRef.current.remove()
+            imageRef.current.style.display = "none"
             // setTimeout(() => {
             //     if(imageRef.current)
             //         imageRef.current.
@@ -29,16 +36,28 @@ export const AnimatedMe = () => {
         requestAnimationFrame(onFrame)
     })
 
-    return (<div ref={imageRef} onClick={onClick} style={{
+    return (
+    <div
+        ref={imageRef}
+        onClick={onClick} 
+        onMouseEnter={() => mouse_over = true}
+        onMouseLeave={() => mouse_over = false}
+         style={{
                 position: "fixed",
                 cursor: "pointer",
                 // width: "20vw",
-                margin: 100,
-                right: 0,
-                transformOrigin: "50%, 50%",
-                top: 0,
-                width: "10vw"
+                // margin: 64,
+                right: -64,
+                bottom: -150,
+                transformOrigin: "50%, 50%", 
+                transform: "rotate(90deg)",
+                width: 128,
             }}>
-        <Image style={{pointerEvents: "none"}} src={me}/>
-    </div>)
+
+
+        <Image style={{
+            pointerEvents: "none"
+            }} src={me}/>
+    </div>
+    )
 }

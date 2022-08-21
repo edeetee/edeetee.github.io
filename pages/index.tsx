@@ -3,7 +3,6 @@ import React from "react";
 import { CanvasRenderer } from "@components/background";
 import Head from "next/head";
 import { Main } from "@components/css/main";
-import { AnimatedMe } from "@components/animated_me";
 
 const Home: React.FC = () => {
     return <>   
@@ -16,7 +15,7 @@ const Home: React.FC = () => {
         </Head> 
         <CanvasRenderer />
         <Main />
-        <AnimatedMe />
+        {/* <AnimatedMe /> */}
     </>  
 };
 
