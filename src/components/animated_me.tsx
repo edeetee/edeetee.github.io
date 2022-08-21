@@ -7,13 +7,16 @@ export const AnimatedMe = () => {
     const imageRef = useRef<HTMLDivElement>(null)
 
     let mouse_over = false;
+    let clicked = false;
 
     let cur_rotation = 0;
-
-    let clicked = false;
     let offset = 0;
 
+    let last_frame = Date.now();
+
     function calc_transform() {
+        const speed = (Date.now() - last_frame)/(1000/60);
+
         const freq = clicked ? 0.03 : 0.005;
         const amp = clicked ? 20 : 4;
         const aim_rotation = mouse_over || clicked ? Math.sin(Date.now()*freq)*amp : 0;
@@ -21,7 +24,7 @@ export const AnimatedMe = () => {
         cur_rotation += (aim_rotation - cur_rotation) * 0.1;
         
         if(clicked)
-            offset -= 20;
+            offset -= 20*speed;
 
         return `translate(${offset}px, ${offset}px) rotate(${cur_rotation-45}deg)`;
     }
@@ -30,19 +33,13 @@ export const AnimatedMe = () => {
         if (imageRef.current){
             imageRef.current.style.transform = calc_transform();
         }
-
+        
+        last_frame = Date.now();
         requestAnimationFrame(onFrame)
     }
 
     function onClick() {
         clicked = true;
-        // if(imageRef.current)
-            // imageRef.current.remove()
-            // imageRef.current.style.display = "none"
-            // setTimeout(() => {
-            //     if(imageRef.current)
-            //         imageRef.current.
-            // }, 1000)
         return false
     }
 
