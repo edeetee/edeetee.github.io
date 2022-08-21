@@ -30,6 +30,8 @@ const fullscreenVertPositions = [
     0, -2,
     2, 2]
 
+const expectedFramePeriod = 1000 / 60;
+
 export const FeedbackRenderer: (regl: Regl) => {onFrame: FrameCallback, onPress: PressListener, onMove: MouseMoveListener} = (regl: Regl) => {
     // let mouse = mouseChange(document.body, () => {})
     let mouseUV = new vec(-1,-1)
@@ -37,6 +39,7 @@ export const FeedbackRenderer: (regl: Regl) => {onFrame: FrameCallback, onPress:
     let firstMouse = true
 
     let lastTime = 0
+    let framePeriod = expectedFramePeriod;
     let size = new vec(0,0)
     let aspect = 1
     let pressed = false
@@ -75,6 +78,7 @@ export const FeedbackRenderer: (regl: Regl) => {onFrame: FrameCallback, onPress:
             mouse: () => laggedMouseUV.toArray(),
             pressed: () => pressed,
             // resized: () => 
+            speed: framePeriod/expectedFramePeriod,
             t: ({time}) => time+timestamp
         },
         
@@ -104,11 +108,11 @@ export const FeedbackRenderer: (regl: Regl) => {onFrame: FrameCallback, onPress:
         },
 
         onFrame: ({viewportHeight, viewportWidth, time}) => {
-            const timeDiff = time-lastTime
+            framePeriod = time-lastTime
             lastTime = time
 
             //limit mouse speed
-            const diff = vec.div(mouseUV.sub(laggedMouseUV).limit(timeDiff*2), aspect, 1)
+            const diff = vec.div(mouseUV.sub(laggedMouseUV).limit(framePeriod*2), aspect, 1)
             laggedMouseUV = laggedMouseUV.add(diff)
 
             // console.log(laggedMouseUV)

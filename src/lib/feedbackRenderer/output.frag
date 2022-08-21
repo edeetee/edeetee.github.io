@@ -12,7 +12,7 @@ void main () {
     float feedbackLength = min(1., length(feedbackDiff));
     // float feedbackLength = textureColor.r;
 
-    vec3 hsv = vec3(pow(feedbackLength, 1.0)*0.7-0.6, pow(feedbackLength, 1.1)*0.4, 1);
+    vec3 hsv = vec3(pow(feedbackLength, 1.0)*0.7-0.6, pow(feedbackLength, 1.1)*0.3, 1);
 
     gl_FragColor = vec4(hsv2rgb(hsv), 1);
     // gl_FragColor = vec4(textureColor.xy, 0, 1);

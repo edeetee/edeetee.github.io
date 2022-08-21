@@ -9,6 +9,7 @@ uniform float t;
 uniform vec2 aspect;
 varying vec2 uv;
 uniform bool pressed;
+uniform float speed;
 
 #define PI 3.1415926538
 
@@ -29,8 +30,8 @@ void main () {
     vec2 mouseUvOffset = normalize(rotatedMouseDist)*mouseStrength;
 
     vec2 textureUV = uv;
-    textureUV += mouseUvOffset*0.02;
-    textureUV += snoise32(vec3(aspectUv, t*0.2))*0.002;
+    textureUV += mouseUvOffset*0.02*speed;
+    textureUV += snoise32(vec3(aspectUv, t*0.05))*0.004*speed;
 
     vec4 textureColor;
     if((textureUV.x < 0.0 || 1.0 < textureUV.x) && (textureUV.y < 0.0 || 1.0 < textureUV.y))
@@ -39,10 +40,10 @@ void main () {
         textureColor = texture2D(texture, textureUV);
 
     vec2 outUv = textureColor.xy;
-    outUv += snoise32(vec3(aspectUv*0.5+vec2(1234.1232), t*0.05))*0.01;
+    outUv += snoise32(vec3(aspectUv*0.5+vec2(1234.1232), t*0.05))*0.01*speed;
 
     //alpha starts at 0
-    outUv = mix(uv, outUv, 0.99*textureColor.a);
+    outUv = mix(uv, outUv, (1.0-0.01*speed)*textureColor.a);
 
     gl_FragColor = vec4(outUv, 0, 1);
 }
