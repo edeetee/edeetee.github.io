@@ -4,12 +4,11 @@ import cv from '@public/cv.pdf'
 
 export const History = () =>
 <>
-    Here is some information of my past employment and education. This information would typically be in a CV.
+    Information about my work and education history.
 
     <Separator />
 
     <h2>Employment</h2>
-    I prefer to work contract/independently as it allows me to personally manage my time and mental space. However, for the right position and sufficient support and flexibility, I would consider otherwise.
 
     <EmploymentItem 
     company="Taska Prosthetics"
