@@ -8,6 +8,35 @@ export const History = () =>
 
     <Separator />
 
+    <h2>Education</h2>
+    <h3>BSc Computer Science (dropped out)</h3>
+    <h4>2014-2016</h4>
+    Initially started a Computer Science degree at Canterbury University with a minor in Philosophy, then transferred to
+    Victoria University. I did this as I was no longer interested in pure computer science as opposed to using it as a tool. I did however learn coding foundations and would not be where I am today without my time here.
+    <h3>BDI Media Design</h3>
+    <h4>Victoria University of Wellington</h4>
+    <h4>2017</h4>
+    <ul>
+        <li><b>Deans Award</b></li>
+        <li>Design as Inquiry: A</li>
+        <li>Creative Coding II: A+</li>
+        <li>Mobile Media: A</li>
+        <li>Wearable Technology: A-</li>
+        <li>Creative Coding III: A-</li>
+    </ul>
+    <h4>2018</h4>
+    <ul>
+        <li>Advanced Comp Game Design: B+</li>
+        <li>Interaction Design: B+</li>
+        <li>Creative Artificial Intelligence: A-</li>
+    </ul>
+    <h4>2019</h4>
+    <ul>
+        <li>Independent Study: A</li>
+    </ul>   
+
+    <Separator />
+
     <h2>Employment</h2>
 
     <EmploymentItem 
@@ -73,35 +102,6 @@ export const History = () =>
         date="December 2015 — February 2016" >
             Final of 3 internships with Jade.
     </EmploymentItem>
-
-    <Separator />
-
-    <h2>Education</h2>
-    <h3>BSc Computer Science (dropped out)</h3>
-    <h4>2014-2016</h4>
-    Initially started a Computer Science degree at Canterbury University with a minor in Philosophy, then transferred to
-    Victoria University. I did this as I was no longer interested in pure computer science as opposed to using it as a tool. I did however learn coding foundations and would not be where I am today without my time here.
-    <h3>BDI Media Design</h3>
-    <h4>Victoria University of Wellington</h4>
-    <h4>2017</h4>
-    <ul>
-        <li>Deans Award</li>
-        <li>Design as Inquiry: A</li>
-        <li>Creative Coding II: A+</li>
-        <li>Mobile Media: A</li>
-        <li>Wearable Technology: A-</li>
-        <li>Creative Coding III: A-</li>
-    </ul>
-    <h4>2018</h4>
-    <ul>
-        <li>Advanced Comp Game Design: B+</li>
-        <li>Interaction Design: B+</li>
-        <li>Creative Artificial Intelligence: A-</li>
-    </ul>
-    <h4>2019</h4>
-    <ul>
-        <li>Independent Study: A</li>
-    </ul>   
 
     <br/>
     <p>
