@@ -1,10 +1,14 @@
 import { Separator } from "src/lib/separator"
 import { EmploymentItem } from "./EmploymentItem"
 import cv from '@public/cv.pdf'
+import resume from '@public/resume.pdf'
 
 export const History = () =>
 <>
     Information about my work and education history.
+    <p>
+    View <a href={resume}>my current Resume here.</a>
+    </p>
 
     <Separator />
 
@@ -105,6 +109,6 @@ export const History = () =>
 
     <br/>
     <p>
-        You can view my <a href={cv}>my old CV here.</a>
+        You can view <a href={cv}>my old CV here.</a>
     </p>
 </>

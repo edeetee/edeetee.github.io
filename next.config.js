@@ -15,7 +15,10 @@ const nextConfig =   {
 
     config.module.rules.push({
       test: /\.(pdf)$/,
-      type: "asset/resource"
+      type: "asset/resource",
+      // generator: {
+      //   filename: "[name][ext]"
+      // }
     })
 
     config.module.rules.push({
