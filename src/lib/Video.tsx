@@ -14,24 +14,33 @@ export const Video = ({ style, src, unmutable, ...props }: VideoProps & Detailed
     const [isPlaying, setIsPlaying] = useState(false);
 
     function setPlaying(isPlaying: boolean) {
+        if (!isPlaying) {
+            setShowMutedIcon(true)
+            if (videoRef.current != null)
+                videoRef.current.muted = true;
+        }
         isPlaying ? videoRef.current?.play() : videoRef.current?.pause()
         setIsPlaying(isPlaying)
     }
 
     return <div style={{ ...style }} onMouseOver={
         (e) => {
+            console.log('OVER')
             e.preventDefault()
-            setPlaying(true)
+            if (!isPlaying) {
+                setPlaying(true)
+            }
         }
     }
         onClick={
             (e) => {
-                console.log(e)
+                console.log('CLICK')
                 e.preventDefault()
                 if (unmutable && videoRef.current?.muted) {
                     videoRef.current.muted = false;
                     setShowMutedIcon(false)
-                    return;
+                    if (isPlaying)
+                        return;
                 }
                 setPlaying(!isPlaying)
             }
