@@ -25,7 +25,6 @@ export const Video = ({ style, src, unmutable, ...props }: VideoProps & Detailed
 
     return <div style={{ ...style }} onMouseOver={
         (e) => {
-            console.log('OVER')
             e.preventDefault()
             if (!isPlaying) {
                 setPlaying(true)
@@ -34,7 +33,6 @@ export const Video = ({ style, src, unmutable, ...props }: VideoProps & Detailed
     }
         onClick={
             (e) => {
-                console.log('CLICK')
                 e.preventDefault()
                 if (unmutable && videoRef.current?.muted) {
                     videoRef.current.muted = false;
