@@ -53,10 +53,19 @@ h2, h3 {
     font-weight: 500;
 }
 
-h2 {
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 48
+}
+
+/* h2 {
     color: rgb(88, 88, 88);
 }
 
+*/
 /* h3 {
     margin-top: 4vh;
     font-size: 24px;

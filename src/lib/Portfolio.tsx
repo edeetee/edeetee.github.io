@@ -8,6 +8,7 @@ import unleashedSocietyInProgress from "@public/images/unleashedSocietyInProgres
 import { Image } from 'src/lib/StaticImage'
 import { Youtube } from './Youtube'
 import { Separator } from './separator'
+import { Video } from './Video'
 
 export enum PortfolioTag{
     Creative,
@@ -24,6 +25,36 @@ export interface PortfolioItem {
 
 export const portfolioItems: PortfolioItem[] = [
     {
+        title: "Twisted Frequency Website (2023)",
+        url: "https://twistedfrequency.nz",
+        tag: PortfolioTag.Creative,
+        content:
+            <div>
+                <a href='https://twistedfrequency.nz'> <Image style={{ width: '100%' }} src={require("@public/images/tf-web.png")} disableLink /> </a>
+                <p>
+                    Took static elements made by a graphic designer and recreated them in code to create interactive animated elements that fit into the theme for the <a href="https://twistedfrequency.nz">new Twisted Frequency website</a>.
+                    I used <a href="http://regl.party/">regl</a> to to create line polygons and leaf particles.
+                </p>
+            </div>
+    },
+    {
+        title: "Robot head",
+        tag: PortfolioTag.Creative,
+        content:
+            <div>
+                <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'start', flexWrap: 'wrap', justifyContent: 'space-around' }}>
+                    <Video style={{ width: 300 }} src='https://github.com/edeetee/edeetee.github.io/assets/7484745/f624c6be-ed87-4bd0-973e-bad487336421' />
+                    <Video unmutable style={{ width: 300 }} src='https://user-images.githubusercontent.com/7484745/253836224-fa02cf26-d18e-461b-92b0-02775d6028d4.mp4' />
+                </div>
+                <p>
+                    We created a robot head that allowed a performer (in the cockpit) to control various elements of the head.
+                    I programmed generative art for the led matrices that responded the the performers voice.
+                    I programmed it in Rust and got it running on a Raspberry Pi alongside the audio code, generating the animations on the fly and sending them to the ArtNET led controller.
+                    Worked with Doppler Electric, Tom Cosm and <a href="https://www.instagram.com/christian.vee.art/">Chris Van der meys</a>
+                </p>
+            </div>
+    },
+    {
         title: "Spaceship \"DiscoVery\" Airbnb (2022)",
         url: "https://linktr.ee/discoveryship",
         tag: PortfolioTag.Creative,
@@ -35,10 +66,12 @@ export const portfolioItems: PortfolioItem[] = [
                 <Youtube embedId='q3hAaLLpg0A' />
                 <p>
                     My initial work focused on:
+                </p>
                     <ul>
                         <li>An interactive touchscreen exterior view to be the main menu for home automation</li>
                         <li>A game viewed in the cockpit, controlled via the joysticks</li>
                     </ul>
+                <p>
                     It was a hit at Armageddon Auckland and there are plans to do more development before it is open for booking.
                 </p>
             </div>
@@ -177,8 +210,8 @@ export const RenderPortfolio = (items: PortfolioItem[]) =>
 
                 {/* title */}
                 {item.url != null ? 
-                    <a href={item.url}><h3>{item.title}</h3></a> : 
-                    <h3>{item.title}</h3>}
+                    <a href={item.url}><h2>{item.title}</h2></a> :
+                    <h2>{item.title}</h2>}
 
                 {item.content}
             </div>

@@ -9,7 +9,7 @@ interface EmploymentPars{
 
 export const EmploymentItem = ({title, company, date, children}: EmploymentPars) => 
 <>
-    <div style={{marginTop: 16, display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems:"center"}}>
+        <div style={{ marginTop: 32, display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
         <div>
             <h3>{company}</h3>
             <h4 style={{marginTop: 0}}>{title}</h4>

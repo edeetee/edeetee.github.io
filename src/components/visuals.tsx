@@ -2,7 +2,7 @@ import { portfolioItems, PortfolioTag, RenderPortfolio } from "src/lib/Portfolio
 
 const halfBoxStyle = {margin: "0 auto", border: "none", width: "50%", aspectRatio: "1/1"}
 
-export const Visuals = () => 
+export const Events = () =>
 <div>
     <div>
         <div style={{width: "100%", display: "flex"}}>

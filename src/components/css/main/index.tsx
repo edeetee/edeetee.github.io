@@ -7,7 +7,7 @@ import { Creative } from "@components/creative";
 import { Assistive } from "@components/assistive";
 import styles from './index.module.css'
 import { asyncAnimationFrame } from "src/lib/asyncAnimationFrame";
-import { Visuals } from "@components/visuals";
+import { Events } from "@components/visuals";
 import { History } from "@components/history";
 import Home from "pages";
 import { HomeContent } from "@components/home";
@@ -20,7 +20,7 @@ interface PageInfo {
 
 //TODO: modularise this
 const pageOptions: PageInfo[] = [
-    {page: <Visuals/>, label: "Music Visuals", name: "visuals"},
+    { page: <Events />, label: "Events", name: "optiphonic" },
     {page: <Creative />, label: "Creative", name: "creative"},
     {page: <Assistive />, label: "Assistive", name: "assistive"},
     {page: <Skills />, label: "Skills", name: "skills"},

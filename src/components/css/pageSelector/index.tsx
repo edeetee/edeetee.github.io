@@ -12,6 +12,7 @@ export const PageSelector = <K extends {label: string, url: string}>({options, s
 
         return <a key={i} href={isSelected ? "/#" : el.url} className={isSelected ? styles.selected : ""}>
             <h2 style={{
+                color: 'rgb(88, 88, 88)',
                 fontWeight: isSelected ? "bold" : "inherit", 
                 minWidth: 150,
                 borderLeft: "solid",
