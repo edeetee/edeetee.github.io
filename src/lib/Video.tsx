@@ -11,7 +11,7 @@ export const Video = ({ style, src, unmutable, ...props }: VideoProps & Detailed
     const videoRef = useRef<HTMLVideoElement>(null)
 
     const [showMutedIcon, setShowMutedIcon] = useState(unmutable);
-    const [isPlaying, setIsPlaying] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(true);
 
     function setPlaying(isPlaying: boolean) {
         if (!isPlaying) {
@@ -62,7 +62,7 @@ export const Video = ({ style, src, unmutable, ...props }: VideoProps & Detailed
                 play_circle
             </span>}
 
-            <video muted loop ref={videoRef} src={src} style={{ width: '100%', height: '100%', objectFit: "cover" }} {...props} > </video>
+            <video muted autoPlay loop ref={videoRef} src={src} style={{ width: '100%', height: '100%', objectFit: "cover" }} {...props} > </video>
         </a>
     </div>
 }

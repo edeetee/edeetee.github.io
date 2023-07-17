@@ -12,7 +12,7 @@ export const Image = ({ style, src, disableLink }: ImageProps) => {
     return <div style={{ ...style }}>
         {!disableLink ?
             <a href={src} style={{ display: 'block' }}>
-                inner
+                {inner}
             </a>
             : inner
         }
