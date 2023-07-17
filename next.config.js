@@ -31,6 +31,11 @@ const nextConfig =   {
       type: "asset/resource"
     })
 
+    config.module.rules.push({
+      test: /\.(jpg)$/,
+      type: "asset/resource"
+    })
+
     return config
   },
   images: {

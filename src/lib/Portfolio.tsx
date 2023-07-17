@@ -9,12 +9,15 @@ import { Image } from 'src/lib/StaticImage'
 import { Youtube } from './Youtube'
 import { Separator } from './separator'
 import { Video } from './Video'
+import { CSSProperties, DetailedHTMLProps, HTMLAttributes } from 'react'
 
 export enum PortfolioTag{
     Creative,
     Assistive,
     Visuals
 }
+
+const centeredFlexStyle: CSSProperties = { display: 'flex', flexDirection: 'row', alignItems: 'start', flexWrap: 'wrap', justifyContent: 'space-around' }
 
 export interface PortfolioItem {
     title: string
@@ -24,6 +27,21 @@ export interface PortfolioItem {
 }
 
 export const portfolioItems: PortfolioItem[] = [
+    {
+        title: "Mary Hush (2023)",
+        tag: PortfolioTag.Visuals,
+        content:
+            <div>
+                <p>
+                    For this experimental event, we took over a swanky conference center in Christchurch. We had many floors of interactive art and music made by over 50 creators.
+                </p>
+                <p>I managed the main stage visuals and created a show control system for the opening ceremony, using TouchOSC to control lights and sounds that went along with the opening ceremony, where participants of the 'Holographic hotel' arrived through portals in time and space.</p>
+                <div style={centeredFlexStyle}>
+                    <Video src='https://github.com/edeetee/edeetee.github.io/assets/7484745/bfb6ee96-6576-4939-94a8-e719aae3a22a' />
+                    <Image src={require("@public/images/mh_dragon.jpg")} />
+                </div>
+            </div>
+    },
     {
         title: "Twisted Frequency Website (2023)",
         url: "https://twistedfrequency.nz",
@@ -42,7 +60,7 @@ export const portfolioItems: PortfolioItem[] = [
         tag: PortfolioTag.Creative,
         content:
             <div>
-                <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'start', flexWrap: 'wrap', justifyContent: 'space-around' }}>
+                <div style={centeredFlexStyle}>
                     <Video style={{ width: 300 }} src='https://github.com/edeetee/edeetee.github.io/assets/7484745/f624c6be-ed87-4bd0-973e-bad487336421' />
                     <Video unmutable style={{ width: 300 }} src='https://user-images.githubusercontent.com/7484745/253836224-fa02cf26-d18e-461b-92b0-02775d6028d4.mp4' />
                 </div>
@@ -52,6 +70,31 @@ export const portfolioItems: PortfolioItem[] = [
                     I programmed it in Rust and got it running on a Raspberry Pi alongside the audio code, generating the animations on the fly and sending them to the ArtNET led controller.
                     Worked with Doppler Electric, Tom Cosm and <a href="https://www.instagram.com/christian.vee.art/">Chris Van der meys</a>
                 </p>
+            </div>
+    },
+    {
+        title: "Twisted Frequency (2022/2023)",
+        tag: PortfolioTag.Visuals,
+        url: "https://twistedfrequency.nz",
+        content:
+            <div>
+                <p>
+                    I headed main stage projection this year, after being a guest VJ for several years. It was a good challenge to work as a team and leverage the skills of many creative and technical people.
+                </p>
+                <div style={centeredFlexStyle}>
+                    <Image style={{ width: 350 }} src={require('@public/images/tf_23_0.jpg')} />
+                    <Image style={{ width: 350 }} src={require('@public/images/tf_23_1.jpg')} />
+                </div>
+                <Youtube embedId='05LZwgacdOQ' />
+            </div>
+    },
+    {
+        title: "Syncronicity (2022)",
+        tag: PortfolioTag.Visuals,
+        content:
+            <div>
+                <Youtube embedId='D3JL0f5XKTo' />
+                <p>Managed and performed visuals for this one night event near Christchurch. I was really proud of how I utilised the layering of the stage facade</p>
             </div>
     },
     {
