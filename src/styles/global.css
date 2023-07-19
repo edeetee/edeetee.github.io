@@ -20,7 +20,8 @@ li{
 }
 
 /* http://mrmrs.io/links/ */
-a {
+a,
+a h1 {
     transition: color .4s;
     color: rgb(23, 103, 160) !important;
     cursor: pointer; 
@@ -71,6 +72,10 @@ h2, h3 {
     font-size: 24px;
 } */
 
+@font-face {
+    font-family: 'Poppkorn';
+    src: local('Poppkorn'), url('./fonts/Poppkorn.ttf') format('truetype');
+}
 h4 {
     margin-top: 4px;
     margin-bottom: 16px;

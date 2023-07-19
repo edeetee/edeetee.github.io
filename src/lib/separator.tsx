@@ -1,1 +1,1 @@
-export const Separator = () => <div style={{ width: '100%', height: 1, backgroundColor: '#AAA', margin: '64px 0 32px 0' }} />
+export const Separator = () => <div style={{ width: '100%', height: 1, margin: '128px 0 32px 0' }} />

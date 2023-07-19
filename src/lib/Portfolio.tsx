@@ -17,10 +17,22 @@ export enum PortfolioTag{
     Visuals
 }
 
+/**
+ * 
+ * @param year actual year
+ * @param month 1-12
+ * @param day 1-31
+ * @returns Date
+ */
+function date(year: number, month?: number, day?: number) {
+    return new Date(year, (month ?? 1) - 1, day ?? 1)
+}
+
 const centeredFlexStyle: CSSProperties = { display: 'flex', flexDirection: 'row', alignItems: 'start', flexWrap: 'wrap', justifyContent: 'space-around' }
 
 export interface PortfolioItem {
-    title: string
+    title: string,
+    date: Date,
     tag: PortfolioTag
     content: JSX.Element,
     url?: string,
@@ -28,8 +40,9 @@ export interface PortfolioItem {
 
 export const portfolioItems: PortfolioItem[] = [
     {
-        title: "Mary Hush (2023)",
+        title: "Mary Hush",
         tag: PortfolioTag.Visuals,
+        date: date(2023, 5),
         content:
             <div>
                 <p>
@@ -43,9 +56,10 @@ export const portfolioItems: PortfolioItem[] = [
             </div>
     },
     {
-        title: "Twisted Frequency Website (2023)",
+        title: "Twisted Frequency Website",
         url: "https://twistedfrequency.nz",
         tag: PortfolioTag.Creative,
+        date: date(2023, 6),
         content:
             <div>
                 <a href='https://twistedfrequency.nz'> <Image style={{ width: '100%' }} src={require("@public/images/tf-web.png")} disableLink /> </a>
@@ -58,6 +72,7 @@ export const portfolioItems: PortfolioItem[] = [
     {
         title: "Robot head",
         tag: PortfolioTag.Creative,
+        date: date(2023, 2, 22),
         content:
             <div>
                 <div style={centeredFlexStyle}>
@@ -73,9 +88,10 @@ export const portfolioItems: PortfolioItem[] = [
             </div>
     },
     {
-        title: "Twisted Frequency (2022/2023)",
+        title: "Twisted Frequency",
         tag: PortfolioTag.Visuals,
         url: "https://twistedfrequency.nz",
+        date: date(2023),
         content:
             <div>
                 <p>
@@ -89,8 +105,21 @@ export const portfolioItems: PortfolioItem[] = [
             </div>
     },
     {
-        title: "Syncronicity (2022)",
+        title: "Dude where's my turtle?",
         tag: PortfolioTag.Visuals,
+        date: date(2022, 10, 1),
+        content:
+            <div>
+                <div style={centeredFlexStyle}>
+                    <Video unmutable src="https://user-images.githubusercontent.com/7484745/254428275-761daede-d3a3-4db5-a314-f342b0822871.MOV" />
+                    <Video unmutable src="https://user-images.githubusercontent.com/7484745/254428340-655d6f64-9069-4b1b-986c-a3664f2c6768.mp4" />
+                </div>
+            </div>
+    },
+    {
+        title: "Syncronicity",
+        tag: PortfolioTag.Visuals,
+        date: date(2022, 10, 22),
         content:
             <div>
                 <Youtube embedId='D3JL0f5XKTo' />
@@ -98,9 +127,10 @@ export const portfolioItems: PortfolioItem[] = [
             </div>
     },
     {
-        title: "Spaceship \"DiscoVery\" Airbnb (2022)",
+        title: "Spaceship \"DiscoVery\" Airbnb",
         url: "https://linktr.ee/discoveryship",
         tag: PortfolioTag.Creative,
+        date: date(2022, 6),
         content: 
             <div>
                 <p>
@@ -120,8 +150,18 @@ export const portfolioItems: PortfolioItem[] = [
             </div>
     },
     {
-        title: "Cultured (2022)",
+        title: "Now that's not music",
         tag: PortfolioTag.Visuals,
+        date: date(2022, 8, 28),
+        content:
+            <div>
+                <Video src="https://user-images.githubusercontent.com/7484745/254429379-84129801-c0fc-479c-9ed8-ca57e70b06df.mp4" />
+            </div>
+    },
+    {
+        title: "Cultured",
+        tag: PortfolioTag.Visuals,
+        date: date(2022, 1),
         content: 
             <div>
                 <p>
@@ -135,8 +175,9 @@ export const portfolioItems: PortfolioItem[] = [
             </div>
     },
     {
-        title: "Unleashed Society (2022)",
+        title: "Unleashed Society",
         tag: PortfolioTag.Visuals,
+        date: date(2022, 5),
         content: 
             <div>
                 <Youtube embedId='dXHccbCmphk' />
@@ -155,15 +196,17 @@ export const portfolioItems: PortfolioItem[] = [
         
     },
     {
-        title: "This website (2022)", 
+        title: "This website", 
         tag: PortfolioTag.Creative,
+        date: date(2022),
         content: 
             <p>I wanted to update my website to make it easier to update content and showcase my generative art. I want to speak through examples.</p>,
     },
 
     {
-        title: "TASKA Prosthetics (2020)",
+        title: "TASKA Prosthetics",
         tag: PortfolioTag.Assistive,
+        date: date(2020),
         content: <p>
             Worked for TASKA Prosthetics to update and maintain their phone app. I went into the job desiring to work with patients and design software that aligned with research into how to best assist users. I learnt a lot about project management including continuous integration, deployment and spreading work across a team. The role was not giving me the support and variety I desired so I moved on after a year.
         </p>
@@ -172,6 +215,7 @@ export const portfolioItems: PortfolioItem[] = [
     {
         title: "Blind Foundation Alexa Scholarship (2018/19)", 
         tag: PortfolioTag.Assistive,
+        date: date(2018),
         content: 
             <p>
                 As part of a summer scholarship with Victoria University at the end of my degree, I researched, designed, experimented and iterated on a app for the Amazon Alexa platform to assist with the lives of visually impaired people. I explored the potentials and limitations of the technology and how it could best be leveraged to assist the target audience. After learning the technology with an experimental game prototype and interviewing members of the community, we ended up developing a voice frontend to <a href="http://www.eventfinda.co.nz">eventfinda</a> instead of assistance with transport or blind foundation communications.
@@ -181,6 +225,7 @@ export const portfolioItems: PortfolioItem[] = [
     {
         title: "Pictocraft (2019)", 
         tag: PortfolioTag.Assistive,
+        date: date(2019),
         url: "https://github.com/edeetee/pictocraft",
         content: 
         <div>
@@ -193,6 +238,7 @@ export const portfolioItems: PortfolioItem[] = [
 
     {
         title: "Scutter - Asymmetric VR (2019)",
+        date: date(2019),
         tag: PortfolioTag.Creative,
         url: "https://github.com/edeetee/scutter",
         content: 
@@ -208,8 +254,9 @@ export const portfolioItems: PortfolioItem[] = [
     },
 
     {
-        title: "Misc Experiments (2017/18)",
+        title: "Misc Experiments",
         tag: PortfolioTag.Creative,
+        date: date(2018),
         content: 
         <div>
             Here's a collection of small experiments that I want to keep around
@@ -232,6 +279,7 @@ export const portfolioItems: PortfolioItem[] = [
     {
         title: "Create and Capture for Garry's Mod (2015)",
         tag: PortfolioTag.Creative,
+        date: date(2015),
         url: "https://steamcommunity.com/sharedfiles/filedetails/?id=389065555",
         content: 
         <div>
@@ -243,18 +291,29 @@ export const portfolioItems: PortfolioItem[] = [
     }
 ]
 
+const titleStyle: CSSProperties = {
+    borderLeft: "solid",
+    borderWidth: 8,
+    borderColor: "rgba(0,0,0,0.2)",
+    borderRadius: 0,
+    paddingLeft: 8,
+};
+
 export const RenderPortfolio = (items: PortfolioItem[]) => 
     <div style={{marginBottom: '10vh'}}>
         {items.map((item, i) => 
-            <div key={i}> 
+            <div style={{ position: 'relative' }} key={i}> 
 
                 {/* dividers */}
                 <Separator />
 
+                <div style={{ transform: 'translate(-100%, 0)', fontWeight: 'bold', fontStyle: 'italic', textAlign: 'end', fontSize: 16, position: 'absolute', left: -16, verticalAlign: 'center', top: 44 }}>{item.date.getFullYear()}</div>
                 {/* title */}
                 {item.url != null ? 
-                    <a href={item.url}><h2>{item.title}</h2></a> :
-                    <h2>{item.title}</h2>}
+                    <a href={item.url}><h1 style={titleStyle}>{item.title}</h1></a> :
+                    <h1 style={titleStyle}>{item.title}</h1>}
+
+                {/* <div style={{ width: '100%', height: 1, backgroundColor: 'grey' }}> </div> */}
 
                 {item.content}
             </div>

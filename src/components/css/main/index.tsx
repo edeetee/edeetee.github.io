@@ -18,7 +18,6 @@ interface PageInfo {
     url: string
 }
 
-//TODO: modularise this
 const pageOptions: PageInfo[] = [
     { page: <Events />, label: "Events", name: "optiphonic" },
     {page: <Creative />, label: "Creative", name: "creative"},
@@ -34,12 +33,6 @@ export const Main: React.FC = () => {
 
     const menuRef = useRef<HTMLDivElement>(null)
     const contentRef = useRef<HTMLDivElement>(null)
-
-    // function animateDom(){
-    //     menuRef
-
-    //     requestAnimationFrame(animateDom)
-    // }
 
     async function tryUpdateView() {
         if (window.history.state != null && window.history.state.as != selectedPage?.url) {
@@ -59,11 +52,9 @@ export const Main: React.FC = () => {
 
     useEffect(() => {
         window.addEventListener('hashchange', tryUpdateView)
-        // requestAnimationFrame(animateDom)
         tryUpdateView()
     })
 
-    
     return (
         <div className={styles.responsiveDoubleCol}>
             <div ref={menuRef} className={styles.responsiveStickyMenu}>
@@ -77,12 +68,14 @@ export const Main: React.FC = () => {
                 <Links />
 
             </div>
-            <div style={{display: selectedPage ? "initial" : "none"}} className={styles.separator}></div>
+            <>
             <div ref={contentRef} className={styles.content}>
                 <h1>{selectedPage?.label}</h1>
                 {selectedPage?.page || <HomeContent/>}
                 <div style={{height: 64}}></div>
             </div>
+                <div style={{ display: selectedPage ? "initial" : "none" }} className={styles.separator}></div></>
+
             <div style={{margin: "0 auto"}}></div>
         </div>
     );
