@@ -12,13 +12,13 @@ export const PageSelector = <K extends {label: string, url: string}>({options, s
 
         return <a key={i} href={isSelected ? "/#" : el.url} className={isSelected ? styles.selected : ""}>
             <h2 style={{
-                color: 'rgb(88, 88, 88)',
+                color: 'rgb(200,200,200)',
                 fontWeight: isSelected ? "bold" : "inherit", 
                 minWidth: 150,
                 borderLeft: "solid",
                 // borderBottom: "solid",
                 borderBottomWidth: 1,
-                borderLeftWidth: isSelected ? 2 : 2,
+                borderLeftWidth: isSelected ? 4 : 4,
                 borderColor: "rgba(0,0,0,0.1)",
                 borderLeftColor: isSelected ? "white" : "rgba(0,0,0,1)",
                 borderRadius: 1,

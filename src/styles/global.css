@@ -9,6 +9,8 @@ body {
     font-size: 15px;
 
     outline: none;
+    background: black;
+        color: whitesmoke;
 }
 
 p div{
@@ -40,7 +42,7 @@ a:active  {
 h1{
     font-size: 36px;
     font-weight: 500;
-    color: rgb(34, 34, 34);
+    color: rgb(222, 222, 222);
     /* margin-bottom: 20px; */
 }
 

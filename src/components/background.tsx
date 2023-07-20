@@ -6,7 +6,7 @@ import REGL from "regl";
 import { FeedbackRenderer } from "src/lib/feedbackRenderer";
 import { constrain } from "src/lib/constrain";
 
-const RES_MULTIPLIER = 1/4
+const RES_MULTIPLIER = 1 / 2
 
 export const CanvasRenderer = () => {
     const canvasRef = React.createRef<HTMLCanvasElement>()

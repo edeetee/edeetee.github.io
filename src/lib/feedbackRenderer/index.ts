@@ -70,20 +70,21 @@ export const FeedbackRenderer: (regl: Regl) => {onFrame: FrameCallback, onPress:
     })
 
     const processFeedback = regl({
-        frag: feedbackUvFrag,
-        
-        uniforms: {
-            texture: lastFramebuffer,
-            aspect: () => [aspect, 1],
-            mouse: () => laggedMouseUV.toArray(),
-            pressed: () => pressed,
-            // resized: () => 
-            speed: framePeriod/expectedFramePeriod,
-            t: ({time}) => time+timestamp
-        },
-        
-        framebuffer: feedbackFramebuffer,
-    })
+      frag: feedbackUvFrag,
+
+      uniforms: {
+        texture: lastFramebuffer,
+        aspect: () => [aspect, 1],
+        mousePos: () => mouseUV.toArray(),
+        mouseVel: () => laggedMouseUV.sub(mouseUV).toArray(),
+        pressed: () => pressed,
+        // resized: () =>
+        speed: framePeriod / expectedFramePeriod,
+        t: ({ time }) => time + timestamp,
+      },
+
+      framebuffer: feedbackFramebuffer,
+    });
 
     const processOutput = regl({
         frag: outputFrag,
