@@ -24,6 +24,7 @@ void main () {
     float brightness = pow(feedbackLength, 2.0);
 
     gl_FragColor = vec4(color, 1)*brightness;
+    // gl_FragColor = textureColor;
     // gl_FragColor = vec4(0.0,0.0,0.0,0.0);
     // gl_FragColor = vec4(textureColor.xy, 0, 1);
     // gl_FragColor = vec4(mod(uv+textureColor.xy, vec2(1)), 0,1);
