@@ -1,4 +1,4 @@
-import { Image } from "src/lib/StaticImage";
+import { Image, imgStyle } from "src/lib/StaticImage";
 import me from "@public/images/me.webp"
 import { useEffect, useRef } from "react";
 
@@ -66,7 +66,8 @@ export const AnimatedMe = () => {
             }}>
 
 
-        <Image style={{
+            <img style={{
+                ...imgStyle,
             pointerEvents: "none"
             }} src={me}/>
     </div>

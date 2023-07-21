@@ -1,4 +1,5 @@
 import { CSSProperties } from "react"
+import { MediaContainer } from "./MediaContainer"
 
 interface YoutubeParams{
     style?: CSSProperties,
@@ -6,7 +7,7 @@ interface YoutubeParams{
 }
 
 export const Youtube = ({embedId, style}: YoutubeParams) => 
-    <div style={{
+    <MediaContainer style={{
         position: "relative",
         aspectRatio: '16/9',
         ...style
@@ -27,4 +28,4 @@ export const Youtube = ({embedId, style}: YoutubeParams) =>
             allowFullScreen
             title="Embedded youtube"
         />
-    </div>
+    </MediaContainer>

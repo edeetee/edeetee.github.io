@@ -1,4 +1,5 @@
 import { CSSProperties, DetailedHTMLProps, ImgHTMLAttributes, VideoHTMLAttributes, useEffect, useRef, useState } from 'react'
+import { MediaContainer } from './MediaContainer';
 
 interface VideoProps {
     style?: CSSProperties,
@@ -23,28 +24,30 @@ export const Video = ({ style, src, unmutable, ...props }: VideoProps & Detailed
         setIsPlaying(isPlaying)
     }
 
-    return <div style={{ ...style }} onMouseOver={
-        (e) => {
-            e.preventDefault()
-            if (!isPlaying) {
-                setPlaying(true)
-            }
-        }
-    }
-        onClick={
-            (e) => {
-                e.preventDefault()
-                if (unmutable && videoRef.current?.muted) {
-                    videoRef.current.muted = false;
-                    setShowMutedIcon(false)
-                    if (isPlaying)
-                        return;
-                }
-                setPlaying(!isPlaying)
-            }
-        }
+    return <MediaContainer style={{ ...style }}
     >
-        <a href={src} style={{ position: 'relative', display: 'block' }}>
+        <a href={src} style={{ position: 'relative', display: 'flex' }}
+            onMouseOver={
+                (e) => {
+                    e.preventDefault()
+                    if (!isPlaying) {
+                        setPlaying(true)
+                    }
+                }
+            }
+            onClick={
+                (e) => {
+                    e.preventDefault()
+                    if (unmutable && videoRef.current?.muted) {
+                        videoRef.current.muted = false;
+                        setShowMutedIcon(false)
+                        if (isPlaying)
+                            return;
+                    }
+                    setPlaying(!isPlaying)
+                }
+            }
+        >
             {unmutable && <span className="material-symbols-outlined" style={{ position: 'absolute', color: 'white', fontSize: 32 }}>
                 {showMutedIcon ? 'no_sound' : 'volume_up'}
             </span>}
@@ -62,5 +65,5 @@ export const Video = ({ style, src, unmutable, ...props }: VideoProps & Detailed
 
             <video muted autoPlay loop ref={videoRef} src={src} style={{ width: '100%', height: '100%', objectFit: "cover" }} {...props} > </video>
         </a>
-    </div>
+    </MediaContainer>
 }

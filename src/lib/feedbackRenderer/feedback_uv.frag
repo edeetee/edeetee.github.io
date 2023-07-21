@@ -45,10 +45,10 @@ void main () {
     if((textureUV.x < 0.0 || 1.0 < textureUV.x) && (textureUV.y < 0.0 || 1.0 < textureUV.y))
         textureColor = vec4(textureUV, 0, 1);
     else
-        textureColor = blur(texture, textureUV, res, normalize(textureOffset)*0.4);
+        textureColor = blur(texture, textureUV, res, normalize(textureOffset)*max(0.3, min(1.0, length(textureOffset))));
 
     vec2 outUv = textureColor.xy;
-    outUv += pow(snoise32(vec3(aspectUv*1000.0+vec2(1234.1232), t*10.323)), vec2(8.0))
+    outUv += pow(snoise32(vec3(aspectUv*300.0+vec2(1234.1232), t*10.323)), vec2(8.0))
         *0.3
         *speed
         *(1.0+1.0*pow(snoise3(vec3(aspectUv*0.8312, t*0.2581232)), 2.0));

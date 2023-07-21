@@ -1,4 +1,5 @@
 import { CSSProperties, DetailedHTMLProps, ImgHTMLAttributes } from 'react'
+import { MediaContainer } from './MediaContainer';
 
 interface ImageProps{
     style?: CSSProperties,
@@ -6,15 +7,19 @@ interface ImageProps{
     disableLink?: boolean
 }
 
-export const Image = ({ style, src, disableLink }: ImageProps) => {
-    const inner = <img src={src} style={{ width: '100%', height: '100%', objectFit: "cover" }} />;
+export const imgStyle: CSSProperties = { width: '100%', height: '100%', objectFit: "cover" };
 
-    return <div style={{ ...style }}>
+export const Image = ({ style, src, disableLink }: ImageProps) => {
+    const inner = <img src={src} style={imgStyle} />;
+
+    return <MediaContainer>
+
         {!disableLink ?
-            <a href={src} style={{ display: 'block' }}>
+            <a href={src} style={{ display: 'flex' }}>
                 {inner}
             </a>
             : inner
         }
-    </div>
+
+    </MediaContainer>
 }
