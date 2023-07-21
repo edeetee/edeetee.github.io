@@ -11,7 +11,7 @@ const borderLength = 3;
 const commonBorderStyle: CSSProperties = { position: "absolute", width: borderLength, height: borderLength, borderWidth: 1, borderColor: 'white', zIndex: 1 };
 
 export const MediaContainer = ({ children, style }: ImageProps) => {
-    return <div style={{ ...style, position: 'relative', margin: borderOffset }}>
+    return <div style={{ ...style, position: 'relative', margin: borderOffset, display: 'flex' }}>
         <div style={{ ...commonBorderStyle, left: -borderOffset, top: -borderOffset, borderLeft: borderStyle, borderTop: borderStyle }}></div>
         <div style={{ ...commonBorderStyle, right: -borderOffset, bottom: -borderOffset, borderRight: borderStyle, borderBottom: borderStyle }}></div>
         <div style={{ ...commonBorderStyle, right: -borderOffset, top: -borderOffset, borderRight: borderStyle, borderTop: borderStyle }}></div>

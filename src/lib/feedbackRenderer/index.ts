@@ -38,11 +38,13 @@ export const FeedbackRenderer: (regl: Regl) => {onFrame: FrameCallback, onPress:
     let laggedMouseUV = mouseUV
     let firstMouse = true
 
-    let lastTime = 0
+    let lastMousePress = 0;
+
+    let lastTime = 0;
     let framePeriod = expectedFramePeriod;
-    let size = new vec(0,0)
-    let aspect = 1
-    let pressed = false
+    let size = new vec(0, 0);
+    let aspect = 1;
+    let pressed = false;
 
     // let mouse = mouseChange(document.body, () => {})
 
@@ -57,7 +59,7 @@ export const FeedbackRenderer: (regl: Regl) => {onFrame: FrameCallback, onPress:
       // filter: ''
     });
 
-    const timestamp = Date.now()/1000 % 1000;
+    const timestamp = (Date.now() / 1000) % 1000;
 
     const fullscreenQuad = regl({
       attributes: {
@@ -73,6 +75,7 @@ export const FeedbackRenderer: (regl: Regl) => {onFrame: FrameCallback, onPress:
           viewportWidth,
           viewportHeight,
         ],
+        hyperdrive: () => lastTime - lastMousePress,
         // resized: () =>
         speed: framePeriod / expectedFramePeriod,
         t: ({ time }) => time + timestamp,
@@ -96,57 +99,60 @@ export const FeedbackRenderer: (regl: Regl) => {onFrame: FrameCallback, onPress:
     });
 
     const processOutput = regl({
-        frag: outputFrag,
+      frag: outputFrag,
 
-        uniforms: {
-            texture: feedbackFramebuffer
-        },
-    })
+      uniforms: {
+        texture: feedbackFramebuffer,
+      },
+    });
 
     return {
-        onMove: (x, y) => {
-            mouseUV = new vec(x,y)
-            if(firstMouse){
-                laggedMouseUV = mouseUV
-                firstMouse = false
-            }
-
-        },
-
-        onPress: (pressedState) => {
-            pressed = pressedState
-        },
-
-        onFrame: ({viewportHeight, viewportWidth, time}) => {
-            framePeriod = time-lastTime
-            lastTime = time
-
-            //limit mouse speed
-            const diff = vec.div(mouseUV.sub(laggedMouseUV).limit(framePeriod*2), aspect, 1)
-            laggedMouseUV = laggedMouseUV.add(diff)
-
-            // console.log(laggedMouseUV)
-
-            //only resize on larger
-            if(size.x < viewportWidth || size.y < viewportHeight){
-                lastFramebuffer.resize(viewportWidth, viewportHeight)
-                feedbackFramebuffer.resize(viewportWidth, viewportHeight)
-                size = new vec(viewportWidth, viewportHeight)
-                aspect = viewportWidth/viewportHeight
-            }
-
-            fullscreenQuad(() => {
-                processFeedback()
-
-                feedbackFramebuffer.use(() => {
-                    lastFramebuffer({
-                        copy: true,
-                    })
-                })
-    
-                processOutput()
-            })
-
+      onMove: (x, y) => {
+        mouseUV = new vec(x, y);
+        if (firstMouse) {
+          laggedMouseUV = mouseUV;
+          firstMouse = false;
         }
-    }
+      },
+
+      onPress: (pressedState) => {
+        pressed = pressedState;
+        lastMousePress = lastTime;
+      },
+
+      onFrame: ({ viewportHeight, viewportWidth, time }) => {
+        framePeriod = time - lastTime;
+        lastTime = time;
+
+        //limit mouse speed
+        const diff = vec.div(
+          mouseUV.sub(laggedMouseUV).limit(framePeriod * 2),
+          aspect,
+          1
+        );
+        laggedMouseUV = laggedMouseUV.add(diff);
+
+        // console.log(laggedMouseUV)
+
+        //only resize on larger
+        if (size.x < viewportWidth || size.y < viewportHeight) {
+          lastFramebuffer.resize(viewportWidth, viewportHeight);
+          feedbackFramebuffer.resize(viewportWidth, viewportHeight);
+          size = new vec(viewportWidth, viewportHeight);
+          aspect = viewportWidth / viewportHeight;
+        }
+
+        fullscreenQuad(() => {
+          processFeedback();
+
+          feedbackFramebuffer.use(() => {
+            lastFramebuffer({
+              copy: true,
+            });
+          });
+
+          processOutput();
+        });
+      },
+    };
 }

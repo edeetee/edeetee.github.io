@@ -14,6 +14,7 @@ varying vec2 uv;
 uniform bool pressed;
 uniform float speed;
 uniform vec2 res;
+uniform float hyperdrive;
 
 #define PI 3.1415926538
 
@@ -25,19 +26,25 @@ void main () {
     
     vec2 mouseDist = (uv-mousePos)*aspect;
     float mouseLength = length(mouseDist);
-    float mouseStrength = pow(max(1.0-mouseLength*1.5, 0.0), 2.0);
+    float mouseStrength = pow(max(1.0-mouseLength*1.0, 0.0), 2.0);
 
     vec2 aspectUv = uv*aspect;
 
     float rotation = pressed ? PI*t*0.5 : PI;
     vec2 rotatedMouseDist = rotate(mouseDist, rotation);
 
-    vec2 mouseForceDir = normalize(rotatedMouseDist)*4.0;
-    vec2 mouseUvOffset = (mouseForceDir+mouseVel*40.0)*mouseStrength;
+    vec2 mouseForceDir = normalize(rotatedMouseDist)* (pressed ? 5.0 : 2.0);
+    vec2 mouseUvOffset = (mouseForceDir+mouseVel*80.0)*mouseStrength;
+
+    vec2 centerness = (uv)*2.0;
+    vec2 hyperdriveOffset = max(1.0-length(centerness), 0.0)*10.0*normalize(centerness);
 
     vec2 textureOffset = vec2(0.0, 0.0);
     textureOffset += mouseUvOffset;
     textureOffset += snoise32(vec3(aspectUv*1.1232, t*0.2));
+
+    if(pressed)
+        textureOffset += hyperdriveOffset;
 
     vec2 textureUV = uv+textureOffset*0.001*speed;
 
