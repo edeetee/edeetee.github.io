@@ -6,7 +6,7 @@ uniform sampler2D texture;
 varying vec2 uv;
 uniform float t;
 
-float modPeriod = 0.5;
+float modPeriod = 0.3;
 
 void main () {
     vec4 textureColor = texture2D(texture, uv);

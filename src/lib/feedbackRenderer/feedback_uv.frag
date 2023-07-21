@@ -30,14 +30,14 @@ void main () {
 
     vec2 aspectUv = uv*aspect;
 
-    float rotation = pressed ? PI*t*0.5 : PI;
+    float rotation = pressed ? PI+PI*hyperdrive : PI;
     vec2 rotatedMouseDist = rotate(mouseDist, rotation);
 
-    vec2 mouseForceDir = normalize(rotatedMouseDist)* (pressed ? 5.0 : 2.0);
+    vec2 mouseForceDir = normalize(rotatedMouseDist)* (pressed ? 5.0 : 1.5);
     vec2 mouseUvOffset = (mouseForceDir+mouseVel*80.0)*mouseStrength;
 
-    vec2 centerness = rotate(uv-0.5, PI*hyperdrive*0.3);
-    vec2 hyperdriveOffset = pow(max(1.0-length(centerness), 0.0), 0.5)*normalize(-centerness)*hyperdrive*1.0;
+    vec2 centerness = rotate(uv-0.5, PI*hyperdrive*0.25);
+    vec2 hyperdriveOffset = pow(max(1.0-length(centerness), 0.0), 0.5)*normalize(-centerness)*max(3.0, hyperdrive)*0.8;
 
     vec2 textureOffset = vec2(0.0, 0.0);
     textureOffset += mouseUvOffset;
