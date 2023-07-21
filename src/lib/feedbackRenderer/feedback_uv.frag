@@ -33,8 +33,8 @@ void main () {
     vec2 mouseUvOffset = (mouseForceDir+mouseVel*40.0)*mouseStrength;
 
     vec2 textureUV = uv;
-    textureUV += mouseUvOffset*0.01*speed;
-    textureUV += snoise32(vec3(aspectUv*1.0, t*0.2))*0.01*speed;
+    textureUV += mouseUvOffset*0.005*speed;
+    textureUV += snoise32(vec3(aspectUv*1.0, t*0.2))*0.002*speed;
 
     vec4 textureColor;
     if((textureUV.x < 0.0 || 1.0 < textureUV.x) && (textureUV.y < 0.0 || 1.0 < textureUV.y))

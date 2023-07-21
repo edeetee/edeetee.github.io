@@ -6,7 +6,7 @@ import REGL from "regl";
 import { FeedbackRenderer } from "src/lib/feedbackRenderer";
 import { constrain } from "src/lib/constrain";
 
-const RES_MULTIPLIER = 1 / 4
+const RES_MULTIPLIER = 1 / 2
 
 export const CanvasRenderer = () => {
     const canvasRef = React.createRef<HTMLCanvasElement>()
@@ -20,10 +20,15 @@ export const CanvasRenderer = () => {
         const glContext = canvas?.getContext("webgl") || undefined
 
         function updateSize(){
+
             if(canvas && glContext){
-                canvas.width = window.innerWidth*RES_MULTIPLIER
-                canvas.height = window.innerHeight*RES_MULTIPLIER
-                glContext.viewport(0,0, canvas.width, canvas.height)
+                const newWidth = window.innerWidth * RES_MULTIPLIER;
+                const newHeight = window.innerHeight * RES_MULTIPLIER;
+                if (canvas.width < newWidth || canvas.height < newHeight) {
+                    canvas.width = newWidth
+                    canvas.height = newHeight
+                    glContext.viewport(0, 0, canvas.width, canvas.height)
+                }
             }
         }
 

@@ -34,7 +34,7 @@ export const Links: React.FC = () =>
     {
         linkItems.map((item, i) => 
             <a key={i} href={item.url} style={{display: "flex", flexDirection: "row", alignItems: "center", margin:"6px 0"}}>
-                <svg style={{width: "18px", height: "18px", margin: "auto 0"}} viewBox="0 0 24 24"><path d={item.mdiPath}></path></svg>
+                <svg style={{ width: "18px", height: "18px", margin: "auto 0", fill: 'white' }} viewBox="0 0 24 24"><path d={item.mdiPath}></path></svg>
                 <h4 style={{margin: "auto 0", paddingLeft:"4px"}}>{item.title}</h4>
             </a>
         )

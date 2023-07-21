@@ -294,7 +294,7 @@ export const portfolioItems: PortfolioItem[] = [
 const titleStyle: CSSProperties = {
     borderLeft: "solid",
     borderWidth: 8,
-    borderColor: "rgba(0,0,0,0.2)",
+    // borderColor: "rgba(.5,.5,.5,0.5)",
     borderRadius: 0,
     paddingLeft: 8,
 };
