@@ -47,33 +47,24 @@ export const FeedbackRenderer: (regl: Regl) => {onFrame: FrameCallback, onPress:
     // let mouse = mouseChange(document.body, () => {})
 
     const lastFramebuffer = regl.texture({
-        type: "float",
-        min: 'linear',
-        mag: 'linear',
-        wrap: 'clamp'
-        // filter: ''
-    })
+      type: "float",
+      //   format: "rgba",
+      // min: 'linear',
+      // mag: 'linear',
+      min: "nearest",
+      mag: "nearest",
+      wrap: "clamp",
+      // filter: ''
+    });
 
     const timestamp = Date.now()/1000 % 1000;
 
     const fullscreenQuad = regl({
-        attributes: {
-            position: fullscreenVertPositions
-        },
-        vert: fullscreenVertShader,
-        count: 3,
-    })
-
-    const feedbackFramebuffer = regl.framebuffer({
-        colorType: "float",
-        depthStencil: false
-    })
-
-    const processFeedback = regl({
-      frag: feedbackUvFrag,
-
+      attributes: {
+        position: fullscreenVertPositions,
+      },
+      vert: fullscreenVertShader,
       uniforms: {
-        texture: lastFramebuffer,
         aspect: () => [aspect, 1],
         mousePos: () => mouseUV.toArray(),
         mouseVel: () => laggedMouseUV.sub(mouseUV).toArray(),
@@ -81,6 +72,20 @@ export const FeedbackRenderer: (regl: Regl) => {onFrame: FrameCallback, onPress:
         // resized: () =>
         speed: framePeriod / expectedFramePeriod,
         t: ({ time }) => time + timestamp,
+      },
+      count: 3,
+    });
+
+    const feedbackFramebuffer = regl.framebuffer({
+      colorType: "float",
+      depthStencil: false,
+    });
+
+    const processFeedback = regl({
+      frag: feedbackUvFrag,
+
+      uniforms: {
+        texture: lastFramebuffer,
       },
 
       framebuffer: feedbackFramebuffer,
