@@ -13,6 +13,7 @@
         "@mdi/js": "^6.6.96",
         "fast-vector": "^2.3.3",
         "gl-matrix": "^3.4.3",
+        "glsl-fast-gaussian-blur": "^1.0.2",
         "glsl-hsv2rgb": "^1.0.0",
         "glsl-noise": "^0.0.0",
         "glsl-rotate": "^1.1.0",

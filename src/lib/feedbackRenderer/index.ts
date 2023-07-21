@@ -69,6 +69,10 @@ export const FeedbackRenderer: (regl: Regl) => {onFrame: FrameCallback, onPress:
         mousePos: () => mouseUV.toArray(),
         mouseVel: () => laggedMouseUV.sub(mouseUV).toArray(),
         pressed: () => pressed,
+        res: ({ viewportWidth, viewportHeight }) => [
+          viewportWidth,
+          viewportHeight,
+        ],
         // resized: () =>
         speed: framePeriod / expectedFramePeriod,
         t: ({ time }) => time + timestamp,
