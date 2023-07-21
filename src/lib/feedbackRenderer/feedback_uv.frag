@@ -36,8 +36,8 @@ void main () {
     vec2 mouseForceDir = normalize(rotatedMouseDist)* (pressed ? 5.0 : 2.0);
     vec2 mouseUvOffset = (mouseForceDir+mouseVel*80.0)*mouseStrength;
 
-    vec2 centerness = (uv)*2.0;
-    vec2 hyperdriveOffset = max(1.0-length(centerness), 0.0)*10.0*normalize(centerness);
+    vec2 centerness = rotate(uv-0.5, PI*hyperdrive);
+    vec2 hyperdriveOffset = pow(max(1.0-length(centerness), 0.0), 0.5)*normalize(-centerness)*hyperdrive*1.0;
 
     vec2 textureOffset = vec2(0.0, 0.0);
     textureOffset += mouseUvOffset;
@@ -58,7 +58,7 @@ void main () {
     outUv += pow(snoise32(vec3(uv*res*0.31232+vec2(1234.1232), t*10.323)), vec2(8.0))
         *0.3
         *speed
-        *(1.0+1.0*pow(snoise3(vec3(aspectUv*0.8312, t*0.2581232)), 2.0));
+        *(1.0+1.0*pow(snoise3(vec3(aspectUv*0.8312, t*0.2581232)), 2.0) + pow(mouseStrength, 8.0));
 
     //alpha starts at 0
     outUv = mix(uv, outUv, (1.0-0.03*speed)*textureColor.a);
