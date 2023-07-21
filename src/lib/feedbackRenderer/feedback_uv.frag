@@ -29,10 +29,10 @@ void main () {
 
     vec2 aspectUv = uv*aspect;
 
-    float rotation = pressed ? PI*sin(t*0.5)/2. : PI;
+    float rotation = pressed ? PI*t*0.5 : PI;
     vec2 rotatedMouseDist = rotate(mouseDist, rotation);
 
-    vec2 mouseForceDir = normalize(rotatedMouseDist)*3.0;
+    vec2 mouseForceDir = normalize(rotatedMouseDist)*4.0;
     vec2 mouseUvOffset = (mouseForceDir+mouseVel*40.0)*mouseStrength;
 
     vec2 textureOffset = vec2(0.0, 0.0);
@@ -48,7 +48,7 @@ void main () {
         textureColor = blur(texture, textureUV, res, normalize(textureOffset)*max(0.3, min(1.0, length(textureOffset))));
 
     vec2 outUv = textureColor.xy;
-    outUv += pow(snoise32(vec3(aspectUv*300.0+vec2(1234.1232), t*10.323)), vec2(8.0))
+    outUv += pow(snoise32(vec3(uv*res*0.31232+vec2(1234.1232), t*10.323)), vec2(8.0))
         *0.3
         *speed
         *(1.0+1.0*pow(snoise3(vec3(aspectUv*0.8312, t*0.2581232)), 2.0));
