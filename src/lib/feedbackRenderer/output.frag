@@ -21,7 +21,7 @@ void main () {
     vec3 color = hsv2rgb(hsv);
     // vec3 color = vec3(textureColor.xy, 0.0);
     // float brightness = edges;
-    float brightness = pow(feedbackLength, 2.0);
+    float brightness = pow(feedbackLength, 2.5);
 
     gl_FragColor = vec4(color, 1)*brightness;
     // gl_FragColor = textureColor;

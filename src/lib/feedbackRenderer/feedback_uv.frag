@@ -26,7 +26,7 @@ void main () {
     
     vec2 mouseDist = (uv-mousePos)*aspect;
     float mouseLength = length(mouseDist);
-    float mouseStrength = pow(max(1.0-mouseLength*1.0, 0.0), 2.0);
+    float mouseStrength = pow(max(1.0-mouseLength*1.0, 0.0), 3.0);
 
     vec2 aspectUv = uv*aspect;
 
@@ -61,7 +61,7 @@ void main () {
         *(1.0+1.0*pow(snoise3(vec3(aspectUv*0.8312, t*0.2581232)), 2.0) + pow(mouseStrength, 100.0)*1.5);
 
     //alpha starts at 0
-    outUv = mix(uv, outUv, (1.0-0.03*speed)*textureColor.a);
+    outUv = mix(uv, outUv, (1.0-0.02*speed)*textureColor.a);
 
     gl_FragColor = vec4(outUv, 0, 1);
 }
