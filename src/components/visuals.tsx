@@ -5,10 +5,9 @@ const halfBoxStyle = {margin: "0 auto", border: "none", width: "50%", aspectRati
 
 export const Events = () =>
 <div>
-    <div>
-
+        <div>
             <p>
-                I have been performing visual art at festivals and music events under the name <span style={{ fontSize: 32, fontFamily: 'Poppkorn' }}>Optiphonic</span>. Many years ago I was inspired by music visualizers in winamp and iTunes. Since then I have created my own and started performing them for events all over the south island. You can see more of my content <a href="https://instagram.com/optiphonic">on instagram</a>.
+                I perform visual art at festivals and music events around New Zealand under the name <span style={{ fontSize: 24, fontFamily: 'Poppkorn' }}>Optiphonic</span>. Inspired by music visualizers in winamp and iTunes, I create computer programs that transform audio data into visually pleasing stage projections. You can see more of my content <a href="https://instagram.com/optiphonic">on instagram</a>.
             </p>
             <div style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "space-around" }}>
                 <Video unmutable style={{ width: 300 }} src="https://user-images.githubusercontent.com/7484745/253841919-00aac186-7d5b-4839-8db7-d66f50b6a360.mp4" />

@@ -6,12 +6,10 @@ import { PageSelector } from "../pageSelector";
 import { Creative } from "@components/creative";
 import { Assistive } from "@components/assistive";
 import styles from './index.module.css'
-import { asyncAnimationFrame } from "src/lib/asyncAnimationFrame";
 import { Events } from "@components/visuals";
 import { History } from "@components/history";
-import Home from "pages";
-import { HomeContent } from "@components/home";
 import { ContentExpander } from "@components/contentExpander";
+import { AnimatedMe } from "@components/animated_me";
 
 interface PageInfo {
     page: JSX.Element,
@@ -33,11 +31,12 @@ export const Main: React.FC = () => {
     const [selectedPage, selectPage] = useState<PageInfo>(pageOptions[0])
     const [showContent, setShowContent] = useState(false);
 
+
     const menuRef = useRef<HTMLDivElement>(null)
     const contentRef = useRef<HTMLDivElement>(null)
 
-    async function tryUpdateView() {
-        if (window.history.state != null && window.history.state.as != selectedPage?.url) {
+    async function tryUpdateView(initial = false) {
+        if (window.history.state != null && (window.history.state.as != selectedPage?.url || initial)) {
             const new_page = pageOptions.find(info => info.url == window.history.state.as)
             if (new_page != null) {
                 setShowContent(true)
@@ -56,9 +55,12 @@ export const Main: React.FC = () => {
     }
 
     useEffect(() => {
-        window.addEventListener('hashchange', tryUpdateView)
-        tryUpdateView()
+        window.addEventListener('hashchange', () => tryUpdateView())
     })
+
+    useEffect(() => {
+        tryUpdateView(true)
+    }, []);
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', alignItems: 'stretch' }} >
@@ -73,7 +75,7 @@ export const Main: React.FC = () => {
             </div>
             {/* {showContent && } */}
             <div style={{ margin: 'auto' }}></div>
-            {showContent ?
+            {showContent &&
                 <>
                     <PageSelector<PageInfo>
                     options={pageOptions}
@@ -84,9 +86,9 @@ export const Main: React.FC = () => {
                         <div style={{ margin: 64 }}>{selectedPage.page}</div>
                         <div style={{ height: 64 }}></div>
                     </div>
-                </>
-                : <HomeContent />}
+                </>}
             <Links className={styles.padding} />
+            <AnimatedMe />
         </div>
     );
 };

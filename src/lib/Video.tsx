@@ -12,7 +12,7 @@ export const Video = ({ style, src, unmutable, ...props }: VideoProps & Detailed
     const videoRef = useRef<HTMLVideoElement>(null)
 
     const [showMutedIcon, setShowMutedIcon] = useState(unmutable);
-    const [isPlaying, setIsPlaying] = useState(true);
+    const [isPlaying, setIsPlaying] = useState(false);
 
     function setPlaying(isPlaying: boolean) {
         if (!isPlaying) {
@@ -23,6 +23,11 @@ export const Video = ({ style, src, unmutable, ...props }: VideoProps & Detailed
         isPlaying ? videoRef.current?.play() : videoRef.current?.pause()
         setIsPlaying(isPlaying)
     }
+
+    useEffect(() => {
+        if (videoRef.current != null)
+            videoRef.current.volume = 0.5;
+    }, []);
 
     return <MediaContainer style={{ ...style }}
     >
@@ -37,6 +42,7 @@ export const Video = ({ style, src, unmutable, ...props }: VideoProps & Detailed
             }
             onClick={
                 (e) => {
+                    if (e.currentTarget)
                     e.preventDefault()
                     if (unmutable && videoRef.current?.muted) {
                         videoRef.current.muted = false;
@@ -48,7 +54,7 @@ export const Video = ({ style, src, unmutable, ...props }: VideoProps & Detailed
                 }
             }
         >
-            {unmutable && <span className="material-symbols-outlined" style={{ position: 'absolute', color: 'white', fontSize: 32 }}>
+            {unmutable && <span onClick={(e) => { e.preventDefault(); setShowMutedIcon(!showMutedIcon) }} className="material-symbols-outlined" style={{ position: 'absolute', color: 'white', fontSize: 32, zIndex: 1 }}>
                 {showMutedIcon ? 'no_sound' : 'volume_up'}
             </span>}
 
@@ -63,7 +69,7 @@ export const Video = ({ style, src, unmutable, ...props }: VideoProps & Detailed
                 play_circle
             </span>}
 
-            <video muted autoPlay loop ref={videoRef} src={src} style={{ width: '100%', height: '100%', objectFit: "cover" }} {...props} > </video>
+            <video muted autoPlay={isPlaying} loop ref={videoRef} src={src} style={{ width: '100%', height: '100%', objectFit: "cover" }} {...props} > </video>
         </a>
     </MediaContainer>
 }

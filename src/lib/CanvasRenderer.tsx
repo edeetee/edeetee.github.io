@@ -89,7 +89,8 @@ export const CanvasRenderer = () => {
         style={{
             imageRendering: "pixelated",
             position: "fixed",
-            height: "100%",
+            height: "100vh",
+            width: '100vw',
             left: 0,
             top: 0,
             background: "black",
