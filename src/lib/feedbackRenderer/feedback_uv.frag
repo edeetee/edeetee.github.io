@@ -26,14 +26,14 @@ void main () {
     
     vec2 mouseDist = (uv-mousePos)*aspect;
     float mouseLength = length(mouseDist);
-    float mouseStrength = pow(max(1.0-mouseLength*1.0, 0.0), 3.0);
+    float mouseStrength = pow(max(1.0-mouseLength*1.0, 0.0), 5.0);
 
     vec2 aspectUv = uv*aspect;
 
     float rotation = pressed ? PI+PI*hyperdrive : PI;
     vec2 rotatedMouseDist = rotate(mouseDist, rotation);
 
-    vec2 mouseForceDir = normalize(rotatedMouseDist)* (pressed ? 5.0 : 1.5);
+    vec2 mouseForceDir = normalize(rotatedMouseDist)* (pressed ? 5.0 : 3.0);
     vec2 mouseUvOffset = (mouseForceDir+mouseVel*80.0)*mouseStrength;
 
     vec2 centerness = rotate(uv-0.5, PI*hyperdrive*0.25);

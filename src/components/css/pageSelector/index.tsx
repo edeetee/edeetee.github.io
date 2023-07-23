@@ -6,7 +6,7 @@ interface PageSelectorProps<K extends {label: string, url: string}>{
 }
 
 export const PageSelector = <K extends {label: string, url: string}>({options, selected}: PageSelectorProps<K>) => 
-<div style={{margin: "16px 0"}}>
+    <div style={{ margin: "16px 0", justifyContent: 'center', display: 'flex' }}>
     {options.map((el, i) => {
         const isSelected = selected == el
 
@@ -15,16 +15,20 @@ export const PageSelector = <K extends {label: string, url: string}>({options, s
                 color: 'rgb(200,200,200)',
                 fontWeight: isSelected ? "bold" : "inherit", 
                 minWidth: 150,
-                borderLeft: "solid",
+                // borderRight: "solid",
                 // borderBottom: "solid",
-                borderBottomWidth: 1,
-                borderLeftWidth: isSelected ? 4 : 4,
-                borderColor: "rgba(0,0,0,0.1)",
-                borderLeftColor: isSelected ? "white" : "rgba(0,0,0,1)",
+                display: 'inline',
+
+                borderBottomStyle: 'solid',
+                borderWidth: 8,
+                // borderColor: "rgba(0,0,0,0.1)",
+                borderColor: isSelected ? "white" : "rgba(0,0,0,1)",
                 borderRadius: 1,
-                paddingLeft: 8,
-                paddingRight: 8,
-                textDecoration: isSelected ? "none" : "underline",
+
+                paddingLeft: 16,
+                paddingRight: 16,
+                paddingBottom: 8,
+                // textDecoration: isSelected ? "none" : "underline",
                 // paddingTop: 4,
                 // paddingBottom: 4,
                 // background: isSelected ? "rgba(0,0,0,0)" : "rgba(0,0,0,0.04)",

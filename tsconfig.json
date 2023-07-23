@@ -25,6 +25,12 @@
       "@components": [
         "src/components"
       ],
+      "@src": [
+        "src"
+      ],
+      "@src/*": [
+        "src/*"
+      ],
       "@styles/*": [
         "src/styles/*"
       ],

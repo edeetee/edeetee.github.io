@@ -12,16 +12,16 @@ export const CanvasRenderer = () => {
     const canvasRef = React.createRef<HTMLCanvasElement>()
 
     useEffect(() => {
-        if(window === undefined)
+        if (window === undefined)
             return
 
         const canvas = canvasRef.current
 
         const glContext = canvas?.getContext("webgl") || undefined
 
-        function updateSize(){
+        function updateSize() {
 
-            if(canvas && glContext){
+            if (canvas && glContext) {
                 const newWidth = window.innerWidth * RES_MULTIPLIER;
                 const newHeight = window.innerHeight * RES_MULTIPLIER;
                 if (canvas.width < newWidth || canvas.height < newHeight) {
@@ -41,7 +41,7 @@ export const CanvasRenderer = () => {
             // canvas: canvas,
             gl: glContext,
             extensions: [
-                'OES_texture_float', 
+                'OES_texture_float',
                 // 'GL_OES_texture_float', 
                 'WEBGL_color_buffer_float',
                 'OES_texture_float_linear'
@@ -51,45 +51,49 @@ export const CanvasRenderer = () => {
                 'EXT_color_buffer_float'
             ],
             // optionalExtensions: ['OES_texture_float_linear', "WEBGL_color_buffer_float"],
-            onDone(err){
-                if(err != null)
+            onDone(err) {
+                if (err != null)
                     console.log(err)
             }
         })
 
         const feedbackRenderer = FeedbackRenderer(regl)
 
-        function updateMouse(pageX: number, pageY: number){
-            const x = constrain((pageX-window.scrollX)/window.innerWidth, 0, 1)
-            const y = constrain(1-(pageY-window.scrollY)/window.innerHeight, 0, 1)
+        function updateMouse(pageX: number, pageY: number) {
+            if (canvasRef.current == null)
+                return;
+
+            const x = constrain((pageX - window.scrollX) / canvasRef.current.clientWidth, 0, 1)
+            const y = constrain(1 - (pageY - window.scrollY) / window.innerHeight, 0, 1)
 
             feedbackRenderer.onMove(x, y)
         }
-    
-        document.body.addEventListener("touchmove", ev => updateMouse(ev.touches[0].pageX, ev.touches[0].pageY))
-        document.body.addEventListener("mousemove", ev => updateMouse(ev.pageX, ev.pageY))
-        document.body.addEventListener("mouseover", ev => updateMouse(ev.pageX, ev.pageY))
 
-        document.body.addEventListener("mousedown", () => feedbackRenderer.onPress(true))
-        document.body.addEventListener("touchstart", () => feedbackRenderer.onPress(true))
+        document.addEventListener("touchmove", ev => updateMouse(ev.touches[0].pageX, ev.touches[0].pageY))
+        document.addEventListener("mousemove", ev => updateMouse(ev.pageX, ev.pageY))
+        document.addEventListener("mouseover", ev => updateMouse(ev.pageX, ev.pageY))
 
-        document.body.addEventListener("touchend", () => feedbackRenderer.onPress(false))
-        document.body.addEventListener("touchcancel", () => feedbackRenderer.onPress(false))
-        document.body.addEventListener("mouseup", () => feedbackRenderer.onPress(false))
+        document.addEventListener("mousedown", () => feedbackRenderer.onPress(true))
+        document.addEventListener("touchstart", () => feedbackRenderer.onPress(true))
+
+        document.addEventListener("touchend", () => feedbackRenderer.onPress(false))
+        document.addEventListener("touchcancel", () => feedbackRenderer.onPress(false))
+        document.addEventListener("mouseup", () => feedbackRenderer.onPress(false))
 
         regl.frame(ctx => {
             feedbackRenderer.onFrame(ctx)
         })
     })
-    
+
     return <canvas ref={canvasRef}
         style={{
             imageRendering: "pixelated",
             position: "fixed",
-            width: "100%",
             height: "100%",
             left: 0,
-            top: 0
+            top: 0,
+            background: "black",
+            zIndex: -1
         }}
     ></canvas>
 }

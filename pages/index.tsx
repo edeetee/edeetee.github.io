@@ -1,6 +1,6 @@
 import React from "react";
 
-import { CanvasRenderer } from "@components/background";
+import { CanvasRenderer } from "@src/lib/CanvasRenderer";
 import Head from "next/head";
 import { Main } from "@components/css/main";
 

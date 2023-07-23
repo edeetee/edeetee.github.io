@@ -5,6 +5,9 @@ precision highp float;
 uniform sampler2D texture;
 varying vec2 uv;
 uniform float t;
+uniform vec2 mousePos;
+uniform vec2 res;
+uniform vec2 aspect;
 
 float modPeriod = 0.3;
 
@@ -24,6 +27,17 @@ void main () {
     float brightness = pow(feedbackLength, 2.5);
 
     gl_FragColor = vec4(color, 1)*brightness;
+
+    vec2 mouseDiff = vec2(ivec2((mousePos-uv)*res+vec2(1.5, -1.5)));
+    float mouseLength = abs(mouseDiff.x)+abs(mouseDiff.y);
+
+    float dirMask = step(mouseDiff.x, 0.0)*step(-mouseDiff.y, 0.0);
+
+    float distMask = step(mouseLength, 4.0);
+    float mouseModX = 0.1;
+    float cursorMask = distMask*dirMask;
+
+    gl_FragColor = max(gl_FragColor*(1.0-cursorMask),(cursorMask-gl_FragColor));
     // gl_FragColor = textureColor;
     // gl_FragColor = vec4(0.0,0.0,0.0,0.0);
     // gl_FragColor = vec4(textureColor.xy, 0, 1);
