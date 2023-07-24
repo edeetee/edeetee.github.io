@@ -16,30 +16,12 @@ const nextConfig =   {
     config.module.rules.push({
       test: /\.(pdf)$/,
       type: "asset/resource",
-      // generator: {
-      //   filename: "[name][ext]"
-      // }
-    })
-
-    config.module.rules.push({
-      test: /\.(webp)$/,
-      type: "asset/resource"
-    })
-
-    config.module.rules.push({
-      test: /\.(png)$/,
-      type: "asset/resource"
-    })
-
-    config.module.rules.push({
-      test: /\.(jpg)$/,
-      type: "asset/resource"
     })
 
     return config
   },
   images: {
-    disableStaticImages: true,
+    disableStaticImages: false,
   },
 }
 

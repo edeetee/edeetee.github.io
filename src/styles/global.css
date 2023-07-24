@@ -24,21 +24,22 @@ li{
 /* http://mrmrs.io/links/ */
 a,
 a h1 {
-    transition: color .4s;
-    color: rgb(23, 103, 160) !important;
+    transition: all .4s;
+        color: #0080ff !important;
     cursor: pointer; 
     text-decoration: none;
 }
 
 a:hover,
 a h1:hover {
-    color: #7FDBFF !important;
+    color: #ffffff !important;
+        background: #0080ff;
 }
 
 a:active,
 a h1:active {
-    transition: color .3s !important;
-    color: #007BE6 !important;
+    /* transition: color .3s !important; */
+        color: rgb(23, 103, 160) !important;
 }
 
 h1{

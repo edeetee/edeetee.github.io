@@ -16,8 +16,8 @@
 
 .responsiveStickyMenu{
     display: flex;
-    align-items: end;
-    align-self: flex-start;
+    align-items: flex-end;
+        align-self: center;
     flex-direction: column;
     max-width: 400px;
         flex-basis: 200px;
