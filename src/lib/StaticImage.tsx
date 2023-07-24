@@ -12,7 +12,7 @@ export const imgStyle: CSSProperties = { width: '100%', height: '100%', objectFi
 
 export const Image = ({ style, src, disableLink }: ImageProps) => {
     console.log(src.width, src.height)
-    const inner = <NextImage src={src} width={src.width} height={src.height} objectFit='contain' sizes='50vw' style={{ background: 'black' }} />;
+    const inner = <NextImage loader={(props) => props.src} src={src} width={src.width} height={src.height} objectFit='contain' sizes='50vw' style={{ background: 'black' }} />;
 
     return <MediaContainer style={{ width: '100%', height: '100%' }}>
         {!disableLink ?
