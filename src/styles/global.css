@@ -25,21 +25,21 @@ li{
 a,
 a h1 {
     transition: all .4s;
-        color: #0080ff !important;
+        color: #0080ff;
     cursor: pointer; 
     text-decoration: none;
 }
 
 a:hover,
 a h1:hover {
-    color: #ffffff !important;
+    color: #ffffff;
         background: #0080ff;
 }
 
 a:active,
 a h1:active {
     /* transition: color .3s !important; */
-        color: rgb(23, 103, 160) !important;
+        color: rgb(23, 103, 160);
 }
 
 h1{

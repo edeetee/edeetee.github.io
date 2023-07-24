@@ -10,10 +10,11 @@ export const PageSelector = <K extends {label: string, url: string}>({options, s
     {options.map((el, i) => {
         const isSelected = selected == el
 
-        return <a key={i} href={el.url} style={{ marginBottom: 32 }} className={isSelected ? styles.selected : ""}>
+        return <a key={i} href={el.url} style={{ marginBottom: 32 }} className={isSelected ? styles.selected : styles.selector}>
             <h2 style={{
                 color: 'white',
                 fontWeight: isSelected ? "bold" : "inherit", 
+                background: isSelected ? 'black' : 'none',
                 minWidth: 150,
                 display: 'inline',
 
@@ -24,6 +25,7 @@ export const PageSelector = <K extends {label: string, url: string}>({options, s
                 paddingLeft: 16,
                 paddingRight: 16,
                 paddingBottom: 8,
+                paddingTop: 8,
             }}>
                     
                 {el.label}
