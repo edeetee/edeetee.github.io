@@ -64,7 +64,7 @@ export const Main: React.FC = () => {
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', alignItems: 'stretch' }} >
-            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', flexWrap: 'wrap-reverse', alignItems: 'start', marginTop: 64 }}>
+            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', flexWrap: 'wrap-reverse', alignItems: 'start', marginTop: 64, userSelect: 'none' }}>
                 <ContentExpander expanded={!showContent} onClick={() => setShowContent(!showContent)} />
 
                 <div ref={menuRef} className={styles.responsiveStickyMenu}>
@@ -88,7 +88,7 @@ export const Main: React.FC = () => {
                     </div>
                 </>}
             <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-            <Links className={styles.padding} />
+                <Links className={styles.padding} style={{ userSelect: 'none' }} />
             <AnimatedMe />
             </div>
         </div>
