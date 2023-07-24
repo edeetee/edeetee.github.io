@@ -20,9 +20,9 @@ const nextConfig =   {
 
     return config
   },
-  images: {
-    disableStaticImages: false,
-  },
+  // images: {
+  //   disableStaticImages: false,
+  // },
 }
 
 module.exports = withPlugins([

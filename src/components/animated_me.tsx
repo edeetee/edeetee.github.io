@@ -26,7 +26,7 @@ export const AnimatedMe = () => {
         if(clicked)
             offset -= 20*speed;
 
-        return `translate(${offset}px, ${offset}px) rotate(${cur_rotation-45}deg)`;
+        return `translate(${offset}px, ${offset + 48}px) rotate(${cur_rotation - 45}deg)`;
     }
 
     function onFrame(){
@@ -58,18 +58,20 @@ export const AnimatedMe = () => {
                 cursor: "pointer",
                 // width: "20vw",
                 // margin: 64,
-                right: -64,
-                bottom: -150,
-                transformOrigin: "50%, 50%", 
+             right: -64,
+             //  top: -32,
+             // bottom: -150,
+             transformOrigin: "50% 50%", 
                 transform: calc_transform(),
+             overflow: 'clip',
                 width: 128,
             }}>
 
-
             <img style={{
                 ...imgStyle,
+
             pointerEvents: "none"
-            }} src={me}/>
+            }} src={me.src} />
     </div>
     )
 }
