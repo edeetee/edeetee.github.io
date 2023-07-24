@@ -62,7 +62,7 @@ export const portfolioItems: PortfolioItem[] = [
         date: date(2023, 6),
         content:
             <div>
-                <a href='https://twistedfrequency.nz'> <Image style={{ width: '100%' }} src={require("@public/images/tf-web.png")} disableLink /> </a>
+                <a href='https://twistedfrequency.nz'> <Image style={{ width: '100%' }} src={require("@public/images/tf-web.webp")} disableLink /> </a>
                 <p>
                     Took static elements made by a graphic designer and recreated them in code to create interactive animated elements that fit into the theme for the <a href="https://twistedfrequency.nz">new Twisted Frequency website</a>.
                     I used <a href="http://regl.party/">regl</a> to to create line polygons and leaf particles.
@@ -98,8 +98,8 @@ export const portfolioItems: PortfolioItem[] = [
                     I headed main stage projection this year, after being a guest VJ for several years. It was a good challenge to work as a team and leverage the skills of many creative and technical people.
                 </p>
                 <div style={centeredFlexStyle}>
-                    <Image style={{ width: 350 }} src={require('@public/images/tf_23_0.jpg')} />
-                    <Image style={{ width: 350 }} src={require('@public/images/tf_23_1.jpg')} />
+                    <Image style={{ width: 350 }} src={require('@public/images/tf_23_0.webp')} />
+                    <Image style={{ width: 350 }} src={require('@public/images/tf_23_1.webp')} />
                 </div>
                 <Youtube embedId='05LZwgacdOQ' />
             </div>
