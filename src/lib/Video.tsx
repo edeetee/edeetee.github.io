@@ -31,7 +31,7 @@ export const Video = ({ style, src, unmutable, ...props }: VideoProps & Detailed
 
     return <MediaContainer style={{ ...style }}
     >
-        <a href={src} style={{ position: 'relative', display: 'flex' }}
+        <a href={src} role='button' aria-label='video' style={{ position: 'relative', display: 'flex' }}
             onMouseOver={
                 (e) => {
                     e.preventDefault()
@@ -54,11 +54,11 @@ export const Video = ({ style, src, unmutable, ...props }: VideoProps & Detailed
                 }
             }
         >
-            {unmutable && <span onClick={(e) => { e.preventDefault(); setShowMutedIcon(!showMutedIcon) }} className="material-symbols-outlined" style={{ position: 'absolute', color: 'white', fontSize: 32, zIndex: 1 }}>
+            {unmutable && <span role='button' aria-label='toggle audio' onClick={(e) => { e.preventDefault(); setShowMutedIcon(!showMutedIcon) }} className="material-symbols-outlined" style={{ position: 'absolute', color: 'white', fontSize: 32, zIndex: 1 }}>
                 {showMutedIcon ? 'no_sound' : 'volume_up'}
             </span>}
 
-            {!isPlaying && <span className="material-symbols-outlined" style={{
+            {!isPlaying && <span role='none' className="material-symbols-outlined" style={{
                 fontSize: 64,
                 position: 'absolute',
                 color: 'white',

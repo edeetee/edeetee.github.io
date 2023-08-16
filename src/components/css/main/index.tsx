@@ -65,7 +65,7 @@ export const Main: React.FC = () => {
     return (
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', alignItems: 'stretch' }} >
             <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', flexWrap: 'wrap-reverse', alignItems: 'start', marginTop: 64, userSelect: 'none' }}>
-                <ContentExpander expanded={!showContent} onClick={() => setShowContent(!showContent)} />
+                <ContentExpander expanded={!showContent} onClick={() => setShowContent(!showContent)} aria-label="Show content" role="button" />
 
                 <div ref={menuRef} className={styles.responsiveStickyMenu}>
                     <About minimised={showContent} />
@@ -77,10 +77,11 @@ export const Main: React.FC = () => {
             <div style={{ margin: 'auto' }}></div>
             {showContent &&
                 <>
-                    <PageSelector<PageInfo>
+                <div role="navigation"><PageSelector<PageInfo>
                     options={pageOptions}
                     selected={selectedPage}
                     />
+                </div>
                     <div style={{ height: 32 }}></div>
                     <div ref={contentRef} className={styles.content}>
                         <div style={{ margin: 64 }}>{selectedPage.page}</div>
