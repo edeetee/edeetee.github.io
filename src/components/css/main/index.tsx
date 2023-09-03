@@ -19,24 +19,24 @@ interface PageInfo {
 
 const pageOptions: PageInfo[] = [
     { page: <Events />, label: "Events", name: "optiphonic" },
-    {page: <Creative />, label: "Creative", name: "creative"},
-    {page: <Assistive />, label: "Assistive", name: "assistive"},
-    {page: <Skills />, label: "Skills", name: "skills"},
-    {page: <History/>, label: "History", name: "history"}
+    { page: <Creative />, label: "Creative", name: "creative" },
+    { page: <Assistive />, label: "Assistive", name: "assistive" },
+    { page: <Skills />, label: "Skills", name: "skills" },
+    { page: <History />, label: "History", name: "history" }
 ].map(info => {
-    return {url: `/#${info.name}`, ...info}
+    return { url: `/#${info.name}`, ...info }
 })
 
 export const Main: React.FC = () => {
     const [selectedPage, selectPage] = useState<PageInfo>(pageOptions[0])
     const [showContent, setShowContent] = useState(false);
 
-
     const menuRef = useRef<HTMLDivElement>(null)
     const contentRef = useRef<HTMLDivElement>(null)
 
     async function tryUpdateView(initial = false) {
         if (window.history.state != null && (window.history.state.as != selectedPage?.url || initial)) {
+            console.log(`STATE: ${window.history.state}`)
             const new_page = pageOptions.find(info => info.url == window.history.state.as)
             if (new_page != null) {
                 setShowContent(true)
@@ -77,11 +77,11 @@ export const Main: React.FC = () => {
             <div style={{ margin: 'auto' }}></div>
             {showContent &&
                 <>
-                <div role="navigation"><PageSelector<PageInfo>
-                    options={pageOptions}
-                    selected={selectedPage}
+                    <div role="navigation"><PageSelector<PageInfo>
+                        options={pageOptions}
+                        selected={selectedPage}
                     />
-                </div>
+                    </div>
                     <div style={{ height: 32 }}></div>
                     <div ref={contentRef} className={styles.content}>
                         <div style={{ margin: 64 }}>{selectedPage.page}</div>
@@ -90,7 +90,7 @@ export const Main: React.FC = () => {
                 </>}
             <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                 <Links className={styles.padding} style={{ userSelect: 'none' }} />
-            <AnimatedMe />
+                <AnimatedMe />
             </div>
         </div>
     );
