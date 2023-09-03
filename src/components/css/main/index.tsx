@@ -24,7 +24,7 @@ const pageOptions: PageInfo[] = [
     { page: <Skills />, label: "Skills", name: "skills" },
     { page: <History />, label: "History", name: "history" }
 ].map(info => {
-    return { url: `/#${info.name}`, ...info }
+    return { url: `/${info.name}`, ...info }
 })
 
 export const Main: React.FC = () => {
@@ -34,32 +34,14 @@ export const Main: React.FC = () => {
     const menuRef = useRef<HTMLDivElement>(null)
     const contentRef = useRef<HTMLDivElement>(null)
 
-    async function tryUpdateView(initial = false) {
-        if (window.history.state != null && (window.history.state.as != selectedPage?.url || initial)) {
-            console.log(`STATE: ${window.history.state}`)
+    useEffect(() => {
+        if (window.history.state != null) {
             const new_page = pageOptions.find(info => info.url == window.history.state.as)
             if (new_page != null) {
                 setShowContent(true)
                 selectPage(new_page)
             }
-
-            // await asyncAnimationFrame()
-            // const y = contentRef.current?.getBoundingClientRect()?.top
-            // const menuY = menuRef.current?.getBoundingClientRect()?.top
-            // if(y !== undefined && menuY != undefined)
-            //     scrollTo({
-            //         top: y-menuY,
-            //         behavior: "smooth"
-            //     })
         }
-    }
-
-    useEffect(() => {
-        window.addEventListener('hashchange', () => tryUpdateView())
-    })
-
-    useEffect(() => {
-        tryUpdateView(true)
     }, []);
 
     return (
@@ -80,6 +62,10 @@ export const Main: React.FC = () => {
                     <div role="navigation"><PageSelector<PageInfo>
                         options={pageOptions}
                         selected={selectedPage}
+                        onSelected={(el) => {
+                            window.history.pushState({}, "", el.url);
+                            selectPage(el);
+                        }}
                     />
                     </div>
                     <div style={{ height: 32 }}></div>
