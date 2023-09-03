@@ -34,6 +34,7 @@ export const Main: React.FC = () => {
     const menuRef = useRef<HTMLDivElement>(null)
     const contentRef = useRef<HTMLDivElement>(null)
 
+    //load page from history on first load
     useEffect(() => {
         if (window.history.state != null) {
             const new_page = pageOptions.find(info => info.url == window.history.state.as)
@@ -44,10 +45,16 @@ export const Main: React.FC = () => {
         }
     }, []);
 
+    //copy state to history on page change
+    useEffect(() => {
+        window.history.pushState({}, "", showContent ? selectedPage.url : "/");
+    }, [showContent, selectedPage]);
+
+
     return (
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', alignItems: 'stretch' }} >
             <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', flexWrap: 'wrap-reverse', alignItems: 'start', marginTop: 64, userSelect: 'none' }}>
-                <ContentExpander expanded={!showContent} onClick={() => setShowContent(!showContent)} aria-label="Show content" role="button" />
+                <ContentExpander expanded={!showContent} onClick={() => { setShowContent(!showContent); }} aria-label="Show content" role="button" />
 
                 <div ref={menuRef} className={styles.responsiveStickyMenu}>
                     <About minimised={showContent} />
@@ -63,7 +70,6 @@ export const Main: React.FC = () => {
                         options={pageOptions}
                         selected={selectedPage}
                         onSelected={(el) => {
-                            window.history.pushState({}, "", el.url);
                             selectPage(el);
                         }}
                     />
