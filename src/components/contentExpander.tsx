@@ -14,7 +14,7 @@ export const ContentExpander: React.FC<{ expanded: boolean } & SVGProps<SVGSVGEl
 
     const size = '20vw';
 
-    return <svg {...svgProps} width={size} height={size} viewBox={`0 0 24 24`} style={{ ...animationStyle, maxHeight: maxSize, maxWidth: maxSize, fill: 'white', cursor: 'pointer', marginLeft: '10vw', marginBottom: 32, overflow: 'clip' }}>
+    return <svg {...svgProps} focusable width={size} height={size} viewBox={`0 0 24 24`} style={{ ...animationStyle, maxHeight: maxSize, maxWidth: maxSize, fill: 'white', cursor: 'pointer', marginLeft: '10vw', marginBottom: 32, overflow: 'clip' }}>
         <path style={{ scale: '1.5', transformOrigin: 'center center', transform: 'translate(64,64)', fill: 'black' }} d={expanded ? mdiPlus : mdiMinus}></path>
         <path style={{ scale: '1.5', transformOrigin: 'center center' }} d={expanded ? mdiPlus : mdiMinus}></path>
 

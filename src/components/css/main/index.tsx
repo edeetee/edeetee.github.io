@@ -50,7 +50,7 @@ export const Main: React.FC = () => {
         window.history.pushState({}, "", showContent ? selectedPage.url : "/");
     }, [showContent, selectedPage]);
 
-    const hideableContentStyle = { display: showContent ? undefined : "none" };
+    const hideableContentStyle: React.CSSProperties = { transition: 'all .3s ease-in-out', transform: showContent ? 'translateX(0)' : 'translateY(20vh)', opacity: showContent ? 1 : 0, height: showContent ? undefined : 0, overflow: 'clip' };
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', alignItems: 'stretch' }} >
