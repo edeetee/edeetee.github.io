@@ -3,16 +3,19 @@ import { Separator } from 'src/lib/separator'
 
 export const Skills: React.FC = () =>
     <>
-        <p>
-            I am available for a wide range of work related to digital technology and art. Taking a browse through my portfolio will give you an idea of where my interests lie and what I can create with passion.
-        </p>
-        <p>
-            I am always developing my skills and learning new things to further what I'm capable of. I'm a fast learner especially when prototyping and with a goal in mind.
-        </p>
-        
+        <h1 style={{ fontStyle: 'italic' }}>Skills</h1>
+        <div style={{ borderLeft: 'white solid', paddingLeft: 32 }} >
+            <p>
+                I am available for a wide range of work related to digital technology and art. Taking a browse through my portfolio will give you an idea of where my interests lie and what I can create with passion.
+            </p>
+            <p>
+                I am always developing my skills and learning new things to further what I'm capable of. I'm a fast learner especially when prototyping and with a goal in mind.
+            </p>
+        </div>
+
         <Separator />
-        
-        <h2>Skills</h2>
+
+
         <h3>Rendering & Interaction</h3>
         As shown in my visual work, I love leveraging the potential of technology to create art that reacts to its environment.
         <ul>
@@ -37,7 +40,7 @@ export const Skills: React.FC = () =>
         </ul>
 
         <h3>Misc</h3>
-        I have a range of skills that allow unique solutions with technology. If something isn't listed here, 
+        I have a range of skills that allow unique solutions with technology. If something isn't listed here,
         <ul>
             <li>App development (Android, kotlin)</li>
             <li>Web development (React, nextjs, javascript, WebGL)</li>

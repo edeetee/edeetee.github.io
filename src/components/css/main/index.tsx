@@ -50,6 +50,7 @@ export const Main: React.FC = () => {
         window.history.pushState({}, "", showContent ? selectedPage.url : "/");
     }, [showContent, selectedPage]);
 
+    const hideableContentStyle = { display: showContent ? undefined : "none" };
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', alignItems: 'stretch' }} >
@@ -64,22 +65,19 @@ export const Main: React.FC = () => {
             </div>
             {/* {showContent && } */}
             <div style={{ margin: 'auto' }}></div>
-            {showContent &&
-                <>
-                    <div role="navigation"><PageSelector<PageInfo>
-                        options={pageOptions}
-                        selected={selectedPage}
-                        onSelected={(el) => {
-                            selectPage(el);
-                        }}
-                    />
-                    </div>
-                    <div style={{ height: 32 }}></div>
-                    <div ref={contentRef} className={styles.content}>
-                        <div style={{ margin: 64 }}>{selectedPage.page}</div>
-                        <div style={{ height: 64 }}></div>
-                    </div>
-                </>}
+
+            <div role="navigation" style={hideableContentStyle}><PageSelector<PageInfo>
+                options={pageOptions}
+                selected={selectedPage}
+                onSelected={(el) => {
+                    selectPage(el);
+                }}
+            />
+            </div>
+            <div style={{ height: 32, ...hideableContentStyle }}></div>
+            <div ref={contentRef} className={styles.content} style={hideableContentStyle}>
+                <div style={{ margin: 64 }}>{selectedPage.page}</div>
+            </div>
             <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                 <Links className={styles.padding} style={{ userSelect: 'none' }} />
                 <AnimatedMe />

@@ -1,9 +1,9 @@
 import { portfolioItems, PortfolioTag, RenderPortfolio } from "src/lib/Portfolio";
 
-export const Creative = () => 
-<>
-    <p>
+export const Creative = () =>
+    <>
+        <p style={{ fontSize: 28, fontStyle: 'italic' }}>
             It fills my cup to create beautiful and fun and interactive experiences. Here is a selection of this output.
-    </p>
-    {RenderPortfolio(portfolioItems.filter(item => item.tag == PortfolioTag.Creative))}
-</>
+        </p>
+        {RenderPortfolio(portfolioItems.filter(item => item.tag == PortfolioTag.Creative))}
+    </>
