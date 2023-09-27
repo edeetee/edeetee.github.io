@@ -50,7 +50,7 @@ export const Main: React.FC = () => {
         window.history.pushState({}, "", showContent ? selectedPage.url : "/");
     }, [showContent, selectedPage]);
 
-    const hideableContentStyle: React.CSSProperties = { transition: 'all .3s ease-in-out', transform: showContent ? 'translateX(0)' : 'translateY(20vh)', opacity: showContent ? 1 : 0, height: showContent ? undefined : 0, overflow: 'clip' };
+    const hideableContentStyle: React.CSSProperties = { transition: 'all .3s ease-in-out', transform: showContent ? 'translateX(0)' : 'translateY(20vh)', opacity: showContent ? 1 : 0, maxHeight: showContent ? 99999999 : 0, overflow: 'clip' };
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', alignItems: 'stretch' }} >
@@ -66,18 +66,22 @@ export const Main: React.FC = () => {
             {/* {showContent && } */}
             <div style={{ margin: 'auto' }}></div>
 
-            <div role="navigation" style={hideableContentStyle}><PageSelector<PageInfo>
-                options={pageOptions}
-                selected={selectedPage}
-                onSelected={(el) => {
-                    selectPage(el);
-                }}
-            />
+            <div style={hideableContentStyle}>
+                <div role="navigation"><PageSelector<PageInfo>
+                    options={pageOptions}
+                    selected={selectedPage}
+                    onSelected={(el) => {
+                        selectPage(el);
+                    }}
+                />
+                </div>
+                <div ref={contentRef} className={styles.content}>
+                    <div style={{ height: 16 }}></div>
+                    <div style={{ margin: 64 }}>{selectedPage.page}</div>
+                </div>
             </div>
-            <div style={{ height: 32, ...hideableContentStyle }}></div>
-            <div ref={contentRef} className={styles.content} style={hideableContentStyle}>
-                <div style={{ margin: 64 }}>{selectedPage.page}</div>
-            </div>
+
+
             <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                 <Links className={styles.padding} style={{ userSelect: 'none' }} />
                 <AnimatedMe />
