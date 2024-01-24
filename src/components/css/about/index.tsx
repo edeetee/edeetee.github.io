@@ -10,7 +10,7 @@ export const About: React.FC<{ minimised: boolean }> = ({ minimised }) => {
                 <h3>Bachelor of Design Innovation</h3>
                 <h3>New Zealand</h3>
                 <p>
-                    I am a creative individual who uses technology for beauty, experiences and solutions.
+                    I am a creative individual who uses technology for experiences and solutions.
                 </p>
             </div>
 
