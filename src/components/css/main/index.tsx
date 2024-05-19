@@ -73,7 +73,7 @@ export const Main: React.FC = () => {
                         <div style={{ marginBottom: '-1em' }}>I am a</div>
                         <h2>creative technologist</h2>
                         <h2>projection artist</h2>
-                        <h2>puzzle solver</h2>
+                        <h2>software team lead</h2>
                         <div style={{ marginBottom: '-1em' }}>with a</div>
                         <h2>Bachelor of Design Innovation</h2>
                         <div style={{ marginBottom: '-1em' }}>living in</div>
