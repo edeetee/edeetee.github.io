@@ -31,7 +31,7 @@ export const Video = ({ style, src, unmutable, ...props }: VideoProps & Detailed
 
     return <MediaContainer style={{ ...style }}
     >
-        <a href={src} role='button' aria-label='video' style={{ position: 'relative', display: 'flex' }}
+        <a href={src} role='button' aria-label='video' style={{ position: 'relative', display: 'flex', width: '100%', height: '100%' }}
             onMouseOver={
                 (e) => {
                     e.preventDefault()
@@ -43,7 +43,7 @@ export const Video = ({ style, src, unmutable, ...props }: VideoProps & Detailed
             onClick={
                 (e) => {
                     if (e.currentTarget)
-                    e.preventDefault()
+                        e.preventDefault()
                     if (unmutable && videoRef.current?.muted) {
                         videoRef.current.muted = false;
                         setShowMutedIcon(false)

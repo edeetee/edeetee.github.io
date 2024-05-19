@@ -13,6 +13,12 @@ body {
     cursor: none;
 }
 
+
+
+* {
+    transition: all .2s;
+}
+
 p div {
     line-height: 1.4em;
 }

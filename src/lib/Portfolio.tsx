@@ -9,7 +9,7 @@ import { Image } from 'src/lib/StaticImage'
 import { Youtube } from './Youtube'
 import { Separator } from './separator'
 import { Video } from './Video'
-import { CSSProperties, DetailedHTMLProps, HTMLAttributes } from 'react'
+import React, { CSSProperties, DetailedHTMLProps, HTMLAttributes, useState } from 'react'
 
 export enum PortfolioTag {
     Creative,
@@ -36,6 +36,7 @@ export interface PortfolioItem {
     tag: PortfolioTag
     content: JSX.Element,
     url?: string,
+    images?: JSX.Element[]
 }
 
 export const portfolioItems: PortfolioItem[] = [
@@ -43,6 +44,8 @@ export const portfolioItems: PortfolioItem[] = [
         title: "Mary Hush",
         tag: PortfolioTag.Visuals,
         date: date(2023, 5),
+        images: [<Video src='https://github.com/edeetee/edeetee.github.io/assets/7484745/bfb6ee96-6576-4939-94a8-e719aae3a22a' />,
+        <Image src={require("@public/images/mh_dragon.jpg")} />],
         content:
             <div>
                 <p>
@@ -299,23 +302,38 @@ const titleStyle: CSSProperties = {
     paddingLeft: 8,
 };
 
-export const RenderPortfolio = (items: PortfolioItem[]) =>
-    <div>
-        {items.map((item, i) =>
-            <div style={{ position: 'relative' }} key={i}>
+export const RenderPortfolioItem: React.FC<{ item: PortfolioItem }> = ({ item }) => {
+    const [expanded, setExpanded] = useState(false);
 
-                {/* dividers */}
-                <Separator />
+    const header = <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+        <div style={{ transform: 'translate(-48px, 0)', fontWeight: 'bold', fontStyle: 'italic', fontSize: 16, verticalAlign: 'center', width: 0 }}>{item.date.getFullYear()}</div>
+        {/* title */}
 
-                <div style={{ transform: 'translate(-100%, 0)', fontWeight: 'bold', fontStyle: 'italic', textAlign: 'end', fontSize: 16, position: 'absolute', left: -16, verticalAlign: 'center', top: 44 }}>{item.date.getFullYear()}</div>
-                {/* title */}
-                {item.url != null ?
-                    <a href={item.url}><h1 style={titleStyle}>{item.title}</h1></a> :
-                    <h1 style={titleStyle}>{item.title}</h1>}
+        <h1 style={titleStyle}>{item.title}</h1>
 
-                {/* <div style={{ width: '100%', height: 1, backgroundColor: 'grey' }}> </div> */}
+        {item.images?.map((image, i) => <div key={i} style={{ width: 'auto', height: 128, marginLeft: 32, justifySelf: 'end' }} >{image}</div>)}
+    </div>;
 
-                {item.content}
+    return <div style={{ position: 'relative' }}>
+
+        {/* dividers */}
+        {/* <Separator /> */}
+
+        <a onClick={() => setExpanded(!expanded)} style={{ cursor: 'pointer' }}>
+            {header}
+        </a>
+
+        <div style={{ display: 'grid', gridTemplateRows: expanded ? '1fr' : '0fr', }}>
+            <div style={{ overflow: 'hidden', }}>
+                <div>{item.content}</div>
             </div>
-        )}
+        </div>
     </div>
+}
+
+export const RenderPortfolio = (items: PortfolioItem[]) => {
+    return <div>
+        {items.map((item, i) => <RenderPortfolioItem key={i} item={item} />)}
+        <div style={{ height: 64 }}></div>
+    </div>
+}
