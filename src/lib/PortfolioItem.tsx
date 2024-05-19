@@ -22,6 +22,24 @@ export interface PortfolioItem {
 
 export const portfolioItems: PortfolioItem[] = [
     {
+        title: "Twisted Frequency",
+        tag: PortfolioTag.Visuals,
+        date: date(2024),
+        images: [
+            <Image src={require("@public/images/tf24_koura.jpg")} />,
+            <Image src={require("@public/images/tf24_bw.jpg")} />,
+            <Image src={require("@public/images/tf24_blue.jpg")} />,
+            <Image src={require("@public/images/koura_template_map_v3.png")} />,
+            <Image src={require("@public/images/tf24_blender.png")} />,
+            <Image src={require("@public/images/tf24_proj_placement.png")} />
+        ],
+        content: <p>
+            I was broght on again to lead the main stage. We had a challenging stage with a sculpture that wrapped around the back.
+            I used 2x 5ks on the sides of the Koura and 2x 10ks on the front.
+            I used a custom made 3D model of the stage to previsualise the show and to share with the other VJs
+        </p>
+    },
+    {
         title: "Synchronicity",
         tag: PortfolioTag.Visuals,
         date: date(2023, 10),
@@ -29,7 +47,12 @@ export const portfolioItems: PortfolioItem[] = [
         <Image src={require("@public/images/sync.jpg")} />,
         <Image src={require("@public/images/sync2.jpg")} />,
         <Image src={require("@public/images/sync3.jpg")} />
-        ]
+        ],
+        content: <p>
+            Really enjoy this event.
+            Had a try at AI generation for some of the decals on the stage for a lil bit of high frequency detail.
+
+        </p>
     },
     {
         title: "Mary Hush",
@@ -185,6 +208,50 @@ export const portfolioItems: PortfolioItem[] = [
         tag: PortfolioTag.Creative,
         date: date(2022),
         content: <p>I wanted to update my website to make it easier to update content and showcase my generative art. I want to speak through examples.</p>,
+    },
+
+
+    {
+        title: "Smart Access App & Platform",
+        tag: PortfolioTag.Assistive,
+        date: date(2023, 6),
+        content:
+            <><p>
+                Contracted to develop a multiplatform app for Smart Access, a provider of accessibility mapping data.
+                The target audience is both end users and local councils.
+                We have most recently been developing a navigation system that merges multiple sources of data
+                along with our audited data to give customised routing for many more disabilities than are provided for on services such as Google Maps.
+                <br />
+                It has been very rewarding to work with valuable data and build systems to help users and help the business.
+                <br />
+                <h3>Skills gained</h3>
+                <ul>
+                    <li>Flutter</li>
+                    <li>AWS + Rust</li>
+                    <li>Postgres</li>
+                    <li>PostGIS</li>
+                    <li>pgRouting</li>
+                    <li>Graphing algorithms</li>
+                </ul>
+            </p>
+                <iframe width="90%" height="800px" style={{ aspectRatio: '1:2', margin: 8 }} src="https://app.smartaccess.enterprises" ></iframe>
+            </>
+    },
+    {
+        title: "My Life My Voice - Peer Support App",
+        tag: PortfolioTag.Assistive,
+        date: date(2023, 3),
+        images: [
+        ],
+        content: <><p>
+            Contracted to develop an app to support disabled people in networking and finding support from one another.
+            The app supports the team at <a href='https://www.mylifemyvoice.org.nz'>My Life My Voice</a> in connecting people with verified supporters.
+            Great care has been taken to ensure the app is accessible and secure.
+            Work is ongoing to maintain and improve the app within the constraints of the budget.
+        </p>
+
+            <iframe width="90%" height="800px" style={{ aspectRatio: '1:2', margin: 8 }} src="https://app.mylifemyvoice.org.nz" ></iframe>
+        </>
     },
 
     {

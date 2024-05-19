@@ -38,12 +38,7 @@ export const RenderPortfolioItem: React.FC<{ item: PortfolioItem }> = ({ item })
 
     const header = <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'start', flexWrap: 'wrap' }}>
         <div style={{ transform: 'translate(-48px, 0)', fontWeight: 'bold', fontStyle: 'italic', fontSize: 16, verticalAlign: 'center', width: 0 }}>{item.date.getFullYear()}</div>
-        {/* title */}
-
         <h1 style={titleStyle}>{item.title}</h1>
-
-
-
     </div>;
 
     return <div style={{ position: 'relative', margin: '3vh 0' }}>
@@ -52,7 +47,7 @@ export const RenderPortfolioItem: React.FC<{ item: PortfolioItem }> = ({ item })
             {header}
         </a>
         <Expandable expanded={expanded} children={<div style={{ display: 'flex', flexDirection: 'column' }}>{item.content}</div>} />
-        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'start', flexWrap: 'wrap', justifyContent: 'space-around' }}>
+        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'space-around' }}>
             {media?.map((m) => <div style={{ width: expanded ? '90%' : '40%', margin: 8 }}>{m}</div>)}
         </div>
 
