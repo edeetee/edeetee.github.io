@@ -15,12 +15,22 @@ export interface PortfolioItem {
     title: string;
     date: Date;
     tag: PortfolioTag;
-    content: JSX.Element;
+    content?: JSX.Element;
     url?: string;
     images?: JSX.Element[];
 }
 
 export const portfolioItems: PortfolioItem[] = [
+    {
+        title: "Synchronicity",
+        tag: PortfolioTag.Visuals,
+        date: date(2023, 10),
+        images: [<Youtube embedId='GI_q80acgds' />,
+        <Image src={require("@public/images/sync.jpg")} />,
+        <Image src={require("@public/images/sync2.jpg")} />,
+        <Image src={require("@public/images/sync3.jpg")} />
+        ]
+    },
     {
         title: "Mary Hush",
         tag: PortfolioTag.Visuals,
