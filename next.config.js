@@ -1,7 +1,7 @@
 const optimizedImages = require('next-optimized-images');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-const nextConfig =   {
+const nextConfig = {
   webpack: (config) => {
     config.module.rules.push({
       test: /\.(glsl|vs|fs|vert|frag)$/,
@@ -19,6 +19,7 @@ const nextConfig =   {
 
     return config
   },
+  output: 'export',
   images: {
     unoptimized: true
   },
