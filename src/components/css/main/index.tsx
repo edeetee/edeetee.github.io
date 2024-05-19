@@ -67,14 +67,18 @@ export const Main: React.FC = () => {
             </div>
 
             <div style={{ margin: 'auto' }}>
-                <div style={{ maxWidth: '256px', textAlign: 'right' }}>
+                <div style={{ maxWidth: '400px', padding: '0 5vw', textAlign: 'right' }}>
                     <Expandable expanded={!showContent}>
-                        <h2>Creative Technologist</h2>
+                        <h2>creative technologist</h2>
+                        <h2>projection artist</h2>
+                        <h2>puzzle solver</h2>
+                        with a
                         <h2>Bachelor of Design Innovation</h2>
+                        living in
                         <h2>New Zealand</h2>
                         <div style={{ height: 32 }}></div>
-                        <p>
-                            I am a creative individual who uses technology for experiences and solutions.
+                        <p style={{ textAlign: 'justify' }}>
+                            I am a creative individual who uses technology to build systems for experiences and solutions.
                         </p>
                     </Expandable>
                 </div></div>
