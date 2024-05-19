@@ -2,7 +2,7 @@ import styles from './index.module.css'
 
 interface PageSelectorProps<K extends { label: string, url: string }> {
     options: K[],
-    selected?: K,
+    selected?: K | null,
     onSelected: (x: K) => void
 }
 

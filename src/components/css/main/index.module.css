@@ -35,7 +35,7 @@
     flex-shrink: 1;
     /* padding: 5vh 5vw 5vh 5vw; */
     margin: 0 auto;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.2);
 }
 
 .separator {

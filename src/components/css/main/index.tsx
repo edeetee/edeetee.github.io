@@ -10,6 +10,7 @@ import { Events } from "@components/visuals";
 import { History } from "@components/history";
 import { ContentExpander } from "@components/contentExpander";
 import { AnimatedMe } from "@components/animated_me";
+import { Expandable } from "@src/lib/expandable";
 
 interface PageInfo {
     page: JSX.Element,
@@ -28,8 +29,8 @@ const pageOptions: PageInfo[] = [
 })
 
 export const Main: React.FC = () => {
-    const [selectedPage, selectPage] = useState<PageInfo>(pageOptions[0])
-    const [showContent, setShowContent] = useState(false);
+    const [selectedPage, selectPage] = useState<PageInfo | null>(null)
+    // const [showContent, setShowContent] = useState(false);
 
     const menuRef = useRef<HTMLDivElement>(null)
     const contentRef = useRef<HTMLDivElement>(null)
@@ -39,7 +40,7 @@ export const Main: React.FC = () => {
         if (window.history.state != null) {
             const new_page = pageOptions.find(info => info.url == window.history.state.as)
             if (new_page != null) {
-                setShowContent(true)
+                // setShowContent(true)
                 selectPage(new_page)
             }
         }
@@ -47,39 +48,43 @@ export const Main: React.FC = () => {
 
     //copy state to history on page change
     useEffect(() => {
-        window.history.pushState({}, "", showContent ? selectedPage.url : "/");
-    }, [showContent, selectedPage]);
+        window.history.pushState({}, "", selectedPage?.url ?? "/");
+    }, [selectedPage]);
 
-    const hideableContentStyle: React.CSSProperties = { transition: 'all .3s ease-in-out', transform: showContent ? 'translateX(0)' : 'translateY(20vh)', opacity: showContent ? 1 : 0, maxHeight: showContent ? 99999999 : 0, overflow: 'clip' };
+    const showContent = selectedPage != null;
+
+    // const hideableContentStyle: React.CSSProperties = { transition: 'all .3s ease-in-out', transform: showContent ? 'translateX(0)' : 'translateY(20vh)', opacity: showContent ? 1 : 0, maxHeight: showContent ? 99999999 : 0, overflow: 'clip' };
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', alignItems: 'stretch' }} >
-            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', flexWrap: 'wrap-reverse', alignItems: 'start', marginTop: 64, userSelect: 'none' }}>
-                <ContentExpander expanded={!showContent} onClick={() => { setShowContent(!showContent); }} aria-label="Show content" role="button" />
-
-                <div ref={menuRef} className={styles.responsiveStickyMenu}>
-                    <About minimised={showContent} />
-                </div>
-                {/* <div style={{ display: selectedPage ? "initial" : "none" }} className={styles.separator}></div> */}
-
-            </div>
+            <About minimised={showContent} />
             {/* {showContent && } */}
-            <div style={{ margin: 'auto' }}></div>
-
-            <div style={hideableContentStyle}>
-                <div role="navigation"><PageSelector<PageInfo>
-                    options={pageOptions}
-                    selected={selectedPage}
-                    onSelected={(el) => {
-                        selectPage(el);
-                    }}
-                />
-                </div>
-                <div ref={contentRef} className={styles.content}>
-                    <div style={{ height: 16 }}></div>
-                    <div style={{ margin: 64 }}>{selectedPage.page}</div>
-                </div>
+            <div role="navigation"><PageSelector<PageInfo>
+                options={pageOptions}
+                selected={selectedPage}
+                onSelected={(el) => {
+                    selectPage(el == selectedPage ? null : el);
+                }}
+            />
             </div>
+
+            <div style={{ margin: 'auto' }}>
+                <div style={{ maxWidth: '256px', textAlign: 'justify' }}>
+                    <Expandable expanded={!showContent}>
+                        <h2>Creative Technologist</h2>
+                        <h2>Bachelor of Design Innovation</h2>
+                        <h2>New Zealand</h2>
+                        <p>
+                            I am a creative individual who uses technology for experiences and solutions.
+                        </p>
+                    </Expandable>
+                </div></div>
+
+            <Expandable expanded={showContent}>
+                <div ref={contentRef} className={styles.content}>
+                    <div style={{ margin: '5vh 10vw', paddingTop: '5vh' }}>{selectedPage?.page}</div>
+                </div>
+            </Expandable>
 
 
             <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>

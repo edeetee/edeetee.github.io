@@ -1,4 +1,5 @@
-import { portfolioItems, PortfolioTag, RenderPortfolio } from "src/lib/Portfolio";
+import { PortfolioTag, RenderPortfolio } from "src/lib/Portfolio";
+import { portfolioItems } from '@src/lib/PortfolioItem';
 
 export const Creative = () =>
     <>
