@@ -56,7 +56,8 @@ export const Main: React.FC = () => {
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', alignItems: 'stretch' }} >
-            <About />
+            {/* <About /> */}
+            <h1 style={{ alignSelf: 'end', margin: '5vh 5vw' }}>Edward Taylor</h1>
             <div role="navigation"><PageSelector<PageInfo>
                 options={pageOptions}
                 selected={selectedPage}
@@ -69,17 +70,18 @@ export const Main: React.FC = () => {
             <div style={{ margin: 'auto' }}>
                 <div style={{ maxWidth: '400px', padding: '0 5vw', textAlign: 'right' }}>
                     <Expandable expanded={!showContent}>
+                        <div style={{ marginBottom: '-1em' }}>I am a</div>
                         <h2>creative technologist</h2>
                         <h2>projection artist</h2>
                         <h2>puzzle solver</h2>
-                        with a
+                        <div style={{ marginBottom: '-1em' }}>with a</div>
                         <h2>Bachelor of Design Innovation</h2>
-                        living in
+                        <div style={{ marginBottom: '-1em' }}>living in</div>
                         <h2>New Zealand</h2>
                         <div style={{ height: 32 }}></div>
-                        <p style={{ textAlign: 'justify' }}>
+                        {/* <p style={{ textAlign: 'justify' }}>
                             I am a creative individual who uses technology to build systems for experiences and solutions.
-                        </p>
+                        </p> */}
                     </Expandable>
                 </div></div>
 
