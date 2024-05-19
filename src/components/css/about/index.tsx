@@ -1,8 +1,7 @@
 import React from "react";
 import styles from './index.module.css'
-import { Expandable } from "@src/lib/expandable";
 
-export const About: React.FC<{ minimised: boolean }> = ({ minimised }) => {
+export const About: React.FC = () => {
     return <>
         <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', flexWrap: 'wrap-reverse', alignItems: 'start', marginTop: 64, userSelect: 'none' }}>
             <div className={styles.responsiveStickyMenu}>

@@ -34,25 +34,28 @@ const titleStyle: CSSProperties = {
 export const RenderPortfolioItem: React.FC<{ item: PortfolioItem }> = ({ item }) => {
     const [expanded, setExpanded] = useState(false);
 
-    const media = item.images?.map((image, i) => <div key={i} style={{ width: 'auto', height: '100%', marginLeft: 32, justifySelf: 'end' }} >{image}</div>)
+    const media = item.images?.map((image, i) => <div key={i} style={{ width: 'auto', height: '100%', justifySelf: 'end' }} >{image}</div>)
 
-    const header = <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap' }}>
+    const header = <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'start', flexWrap: 'wrap' }}>
         <div style={{ transform: 'translate(-48px, 0)', fontWeight: 'bold', fontStyle: 'italic', fontSize: 16, verticalAlign: 'center', width: 0 }}>{item.date.getFullYear()}</div>
         {/* title */}
 
         <h1 style={titleStyle}>{item.title}</h1>
 
-        {<Expandable horizontal expanded={!expanded} children={<div style={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'row', height: 128 }}>{media}</div>} />}
+
+
     </div>;
 
-    return <div style={{ position: 'relative' }}>
+    return <div style={{ position: 'relative', margin: '3vh 0' }}>
 
         <a onClick={() => setExpanded(!expanded)} style={{ cursor: 'pointer' }}>
             {header}
         </a>
+        <Expandable expanded={expanded} children={<div style={{ display: 'flex', flexDirection: 'column' }}>{item.content}</div>} />
+        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'start', flexWrap: 'wrap', justifyContent: 'space-around' }}>
+            {media?.map((m) => <div style={{ width: expanded ? '90%' : '40%', margin: 8 }}>{m}</div>)}
+        </div>
 
-
-        <Expandable expanded={expanded} children={<>{item.content}{media}</>} />
     </div>
 }
 

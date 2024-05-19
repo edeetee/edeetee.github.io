@@ -39,9 +39,8 @@ export const portfolioItems: PortfolioItem[] = [
         url: "https://twistedfrequency.nz",
         tag: PortfolioTag.Creative,
         date: date(2023, 6),
-        images: [<Image src={require("@public/images/tf-web.webp")} />],
+        images: [<a href='https://twistedfrequency.nz'> <Image style={{ width: '100%' }} src={require("@public/images/tf-web.webp")} disableLink /> </a>],
         content: <div>
-            <a href='https://twistedfrequency.nz'> <Image style={{ width: '100%' }} src={require("@public/images/tf-web.webp")} disableLink /> </a>
             <p>
                 Took static elements made by a graphic designer and recreated them in code to create interactive animated elements that fit into the theme for the <a href="https://twistedfrequency.nz">new Twisted Frequency website</a>.
                 I used <a href="http://regl.party/">regl</a> to to create line polygons and leaf particles.
@@ -52,11 +51,10 @@ export const portfolioItems: PortfolioItem[] = [
         title: "Robot head",
         tag: PortfolioTag.Creative,
         date: date(2023, 2, 22),
+        images: [
+            <Video style={{ width: 300 }} src='https://github.com/edeetee/edeetee.github.io/assets/7484745/f624c6be-ed87-4bd0-973e-bad487336421' />,
+            <Video unmutable style={{ width: 300 }} src='https://user-images.githubusercontent.com/7484745/253836224-fa02cf26-d18e-461b-92b0-02775d6028d4.mp4' />],
         content: <div>
-            <div style={centeredFlexStyle}>
-                <Video style={{ width: 300 }} src='https://github.com/edeetee/edeetee.github.io/assets/7484745/f624c6be-ed87-4bd0-973e-bad487336421' />
-                <Video unmutable style={{ width: 300 }} src='https://user-images.githubusercontent.com/7484745/253836224-fa02cf26-d18e-461b-92b0-02775d6028d4.mp4' />
-            </div>
             <p>
                 We created a robot head that allowed a performer (in the cockpit) to control various elements of the head.
                 I programmed generative art for the led matrices that responded the the performers voice.
@@ -70,34 +68,36 @@ export const portfolioItems: PortfolioItem[] = [
         tag: PortfolioTag.Visuals,
         url: "https://twistedfrequency.nz",
         date: date(2023),
+        images: [
+            <Youtube embedId='05LZwgacdOQ' />,
+            <Image style={{ width: 350 }} src={require('@public/images/tf_23_0.webp')} />,
+            <Image style={{ width: 350 }} src={require('@public/images/tf_23_1.webp')} />,
+        ],
         content: <div>
             <p>
                 I headed main stage projection this year, after being a guest VJ for several years. It was a good challenge to work as a team and leverage the skills of many creative and technical people.
             </p>
-            <div style={centeredFlexStyle}>
-                <Image style={{ width: 350 }} src={require('@public/images/tf_23_0.webp')} />
-                <Image style={{ width: 350 }} src={require('@public/images/tf_23_1.webp')} />
-            </div>
-            <Youtube embedId='05LZwgacdOQ' />
         </div>
     },
     {
         title: "Dude where's my turtle?",
         tag: PortfolioTag.Visuals,
         date: date(2022, 10, 1),
+        images: [
+
+            <Video unmutable src="https://user-images.githubusercontent.com/7484745/254428275-761daede-d3a3-4db5-a314-f342b0822871.MOV" />,
+            <Video unmutable src="https://user-images.githubusercontent.com/7484745/254428340-655d6f64-9069-4b1b-986c-a3664f2c6768.mp4" />
+        ],
         content: <div>
-            <div style={centeredFlexStyle}>
-                <Video unmutable src="https://user-images.githubusercontent.com/7484745/254428275-761daede-d3a3-4db5-a314-f342b0822871.MOV" />
-                <Video unmutable src="https://user-images.githubusercontent.com/7484745/254428340-655d6f64-9069-4b1b-986c-a3664f2c6768.mp4" />
-            </div>
         </div>
     },
     {
         title: "Syncronicity",
         tag: PortfolioTag.Visuals,
         date: date(2022, 10, 22),
+        images: [<Youtube embedId='D3JL0f5XKTo' />
+        ],
         content: <div>
-            <Youtube embedId='D3JL0f5XKTo' />
             <p>Managed and performed visuals for this one night event near Christchurch. I was really proud of how I utilised the layering of the stage facade</p>
         </div>
     },
@@ -106,11 +106,12 @@ export const portfolioItems: PortfolioItem[] = [
         url: "https://linktr.ee/discoveryship",
         tag: PortfolioTag.Creative,
         date: date(2022, 6),
+        images: [
+            <Youtube embedId='q3hAaLLpg0A' />],
         content: <div>
             <p>
                 Got to collaborate with other skilled artists <a href="https://linktr.ee/discoveryship">(links here)</a> to add interactive elements to a spaceship themed airbnb made from the shell of an airplane.
             </p>
-            <Youtube embedId='q3hAaLLpg0A' />
             <p>
                 My initial work focused on:
             </p>
@@ -127,19 +128,21 @@ export const portfolioItems: PortfolioItem[] = [
         title: "Now that's not music",
         tag: PortfolioTag.Visuals,
         date: date(2022, 8, 28),
+        images: [
+            <Video src="https://user-images.githubusercontent.com/7484745/254429379-84129801-c0fc-479c-9ed8-ca57e70b06df.mp4" />],
         content: <div>
-            <Video src="https://user-images.githubusercontent.com/7484745/254429379-84129801-c0fc-479c-9ed8-ca57e70b06df.mp4" />
         </div>
     },
     {
         title: "Cultured",
         tag: PortfolioTag.Visuals,
         date: date(2022, 1),
+        images: [
+            <Youtube embedId='qiAt0ZFS1eQ' />],
         content: <div>
             <p>
                 Performed at a mostly psy event near Peel Forest to send off a family farm.
             </p>
-            <Youtube embedId='qiAt0ZFS1eQ' />
             <p>
                 Had a hand in designing the stage to match projections to wrap around the dance floor. This performance is an example of my live rendered 3D content where I experiment with infinite geometries.
             </p>
@@ -150,15 +153,17 @@ export const portfolioItems: PortfolioItem[] = [
         title: "Unleashed Society",
         tag: PortfolioTag.Visuals,
         date: date(2022, 5),
+        images: [
+            <Youtube embedId='dXHccbCmphk' />,
+            <Image style={{ width: '100%' }} src={unleashedSocietyInProgress} />,
+            <Image style={{ width: '100%' }} src={unleashedSocietyDejaVuduu} />
+        ],
         content: <div>
             <Youtube embedId='dXHccbCmphk' />
             <div style={{
                 display: "flex",
                 flexDirection: "row"
             }}>
-                <Image style={{ width: '100%' }} src={unleashedSocietyInProgress} />
-                <div style={{ flexBasis: 8 }} />
-                <Image style={{ width: '100%' }} src={unleashedSocietyDejaVuduu} />
             </div>
             <p>
                 For this gig, I collaborated with stage designers to map out this custom built taniwha. I was really happy with the result - ghostly taniwha watching over the audience with my reactive shapes adding depth. I especially valued having enough time in this project to prototype different visual styles beforehand and get the mapping pixel perfect.
@@ -194,9 +199,9 @@ export const portfolioItems: PortfolioItem[] = [
         title: "Pictocraft (2019)",
         tag: PortfolioTag.Assistive,
         date: date(2019),
+        images: [<Image src={pictocraft} />],
         url: "https://github.com/edeetee/pictocraft",
         content: <div>
-            <Image src={pictocraft} />
             <p>
                 For my final project at Victoria University, I carried out independent research where I created a modification of the game <a href="http://www.minecraft.net">Minecraft</a> in order to give communication abilities to people with language difficulties. I integrated an existing English to Picograph system into the game to translate received text into images and made a web interface to allow communicating back by pressing buttons on a tablet. It's not 100% accurate, but the ability to communicate ideas like “I want to build a brick house on a hill” can give users a lot more depth than they had otherwise.
             </p>
@@ -208,11 +213,11 @@ export const portfolioItems: PortfolioItem[] = [
         date: date(2019),
         tag: PortfolioTag.Creative,
         url: "https://github.com/edeetee/scutter",
+        images: [
+            <Image src={scutter1} />,
+            <Image src={scutter2} />
+        ],
         content: <div>
-            <div style={{ display: 'flex' }}>
-                <Image src={scutter1} />
-                <Image src={scutter2} />
-            </div>
             <p>
                 For a university game design course, I designed a multiplayer game best described as blind mans bluff in VR. Up to two players hold a controller each and one player dons the headset. As the controller players move around, a corresponding object in virtual space follows their movements. The VR player's goal is find the objects that represent the controllers moving around and take the controller from the other players, pressing a button to verify. While this happens, the controller players are getting vibrations that guide them to goals in space, with the aim to gain as many points as possible.
             </p>
@@ -246,8 +251,10 @@ export const portfolioItems: PortfolioItem[] = [
         tag: PortfolioTag.Creative,
         date: date(2015),
         url: "https://steamcommunity.com/sharedfiles/filedetails/?id=389065555",
-        content: <div>
+        images: [
             <Image src={createAndCapture} />
+        ],
+        content: <div>
             <p>
                 With my friend Tom Lewis (now a practicing game designer), we build a multiplayer gamemode for the popular game platform Garry's Mod. We did a lot of user testing with our friends and learnt a lot about collaborative and design driven development. The game ended up being a lot of fun and had several thousand downloads.
             </p>

@@ -40,7 +40,6 @@ export const Main: React.FC = () => {
         if (window.history.state != null) {
             const new_page = pageOptions.find(info => info.url == window.history.state.as)
             if (new_page != null) {
-                // setShowContent(true)
                 selectPage(new_page)
             }
         }
@@ -57,8 +56,7 @@ export const Main: React.FC = () => {
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', alignItems: 'stretch' }} >
-            <About minimised={showContent} />
-            {/* {showContent && } */}
+            <About />
             <div role="navigation"><PageSelector<PageInfo>
                 options={pageOptions}
                 selected={selectedPage}
@@ -69,11 +67,12 @@ export const Main: React.FC = () => {
             </div>
 
             <div style={{ margin: 'auto' }}>
-                <div style={{ maxWidth: '256px', textAlign: 'justify' }}>
+                <div style={{ maxWidth: '256px', textAlign: 'right' }}>
                     <Expandable expanded={!showContent}>
                         <h2>Creative Technologist</h2>
                         <h2>Bachelor of Design Innovation</h2>
                         <h2>New Zealand</h2>
+                        <div style={{ height: 32 }}></div>
                         <p>
                             I am a creative individual who uses technology for experiences and solutions.
                         </p>
@@ -82,7 +81,7 @@ export const Main: React.FC = () => {
 
             <Expandable expanded={showContent}>
                 <div ref={contentRef} className={styles.content}>
-                    <div style={{ margin: '5vh 10vw', paddingTop: '5vh' }}>{selectedPage?.page}</div>
+                    <div style={{ margin: '5vh 4vw', paddingTop: '5vh' }}>{selectedPage?.page}</div>
                 </div>
             </Expandable>
 
