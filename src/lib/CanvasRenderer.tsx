@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { CSSProperties, useEffect } from "react";
 import REGL, { Regl } from "regl";
 import vec from "fast-vector";
 import { constrain } from "./constrain";
+import Image from "next/image";
 
 const RES_MULTIPLIER = 1 / 2;
 
@@ -92,6 +93,8 @@ function makeRendererOnCanvas(
         // optionalExtensions: ['OES_texture_float_linear', "WEBGL_color_buffer_float"],
         onDone(err) {
             if (err != null) console.log(err);
+            console.log("done");
+            canvasRef.current?.style.setProperty("display", "initial");
         },
     });
 
@@ -133,25 +136,40 @@ export const CanvasRenderer = ({ buildRenderer, ...props }: CanvasRendererProps)
 
     useEffect(() => {
         try {
+            // throw new Error("test");
             makeRendererOnCanvas(canvasRef, buildRenderer);
         } catch (e) {
             console.error(e);
         }
     });
 
+    const posStyle: CSSProperties = {
+        position: "fixed",
+        width: "100%",
+        height: "100%",
+        left: 0,
+        top: 0,
+        zIndex: -1,
+    };
+
     return (
-        <canvas
-            ref={canvasRef}
-            style={{
-                imageRendering: "pixelated",
-                position: "fixed",
-                width: "100%",
-                height: "100%",
-                left: 0,
-                top: 0,
-                ...style,
-            }}
-            {...otherProps}
-        ></canvas>
+        <>
+            <Image placeholder="blur" src={require("@public/images/bg.png")} alt="" style={{
+                ...posStyle,
+                backgroundColor: 'black',
+            }} />
+            <canvas
+                ref={canvasRef}
+                style={{
+                    imageRendering: "pixelated",
+                    ...posStyle,
+                    ...style,
+                    display: "none",
+                    backgroundColor: 'black'
+                }}
+                {...otherProps}
+            >
+            </canvas>
+        </>
     );
 };

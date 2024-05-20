@@ -10,10 +10,13 @@ body {
 
     outline: none;
     color: whitesmoke;
-    cursor: none;
+
+    /* cursor: none; */
 }
 
-
+html {
+    background: #000;
+}
 
 * {
     transition: all .5s;

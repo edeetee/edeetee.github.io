@@ -48,7 +48,7 @@ export const RenderPortfolioItem: React.FC<{ item: PortfolioItem }> = ({ item })
         </a>
         <Expandable expanded={expanded} children={<div style={{ display: 'flex', flexDirection: 'column' }}>{item.content}</div>} />
         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'space-around' }}>
-            {media?.map((m) => <div style={{ width: expanded ? '90%' : '40%', margin: 8 }}>{m}</div>)}
+            {media?.map((m, i) => <div key={i} style={{ width: expanded ? '90%' : '40%', margin: 8 }}>{m}</div>)}
         </div>
 
     </div>

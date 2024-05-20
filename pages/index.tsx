@@ -16,7 +16,7 @@ const Home: React.FC = () => {
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         </Head>
 
-        <CanvasRenderer buildRenderer={FeedbackRenderer} style={{ backgroundColor: 'black', position: 'fixed', zIndex: -1 }} />
+        <CanvasRenderer buildRenderer={FeedbackRenderer} />
         <Main />
         {/* <AnimatedMe /> */}
     </>

@@ -1,10 +1,11 @@
 h2 .selected {
-    font-weight: "bold";
+    font-weight: bold;
 }
 
 .selector:hover,
 .selected:hover {
     background: none !important;
+    font-weight: bold;
 }
 
 .selector h2 {
