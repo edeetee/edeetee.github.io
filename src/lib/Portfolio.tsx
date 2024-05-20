@@ -3,6 +3,7 @@ import { Separator } from './separator'
 import React, { CSSProperties, DetailedHTMLProps, HTMLAttributes, useState } from 'react'
 import { Expandable } from './expandable'
 import { PortfolioItem } from './PortfolioItem'
+import { ContentExpander } from '@components/contentExpander'
 
 export enum PortfolioTag {
     Creative,
@@ -24,11 +25,12 @@ export function date(year: number, month?: number, day?: number) {
 export const centeredFlexStyle: CSSProperties = { display: 'flex', flexDirection: 'row', alignItems: 'start', flexWrap: 'wrap', justifyContent: 'space-around' }
 
 const titleStyle: CSSProperties = {
-    borderLeft: "solid",
-    borderWidth: 8,
-    // borderColor: "rgba(.5,.5,.5,0.5)",
-    borderRadius: 0,
-    paddingLeft: 8,
+    // borderLeft: "solid",
+    // borderWidth: 8,
+    // // borderColor: "rgba(.5,.5,.5,0.5)",
+    // borderRadius: 0,
+    margin: 0,
+    position: 'relative',
 };
 
 export const RenderPortfolioItem: React.FC<{ item: PortfolioItem }> = ({ item }) => {
@@ -36,17 +38,36 @@ export const RenderPortfolioItem: React.FC<{ item: PortfolioItem }> = ({ item })
 
     const media = item.images?.map((image, i) => <div key={i} style={{ width: 'auto', height: '100%', justifySelf: 'end' }} >{image}</div>)
 
-    const header = <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'start', flexWrap: 'wrap' }}>
-        <div style={{ transform: 'translate(-48px, 0)', fontWeight: 'bold', fontStyle: 'italic', fontSize: 16, verticalAlign: 'center', width: 0 }}>{item.date.getFullYear()}</div>
-        <h1 style={titleStyle}>{item.title}</h1>
+    const yearStr = item.date.getFullYear().toString().substring(2);
+
+    const hasMedia = media?.length ?? 0 > 0;
+
+    const header = <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap' }}>
+        {hasMedia && <><ContentExpander maxSize={30} expanded={!expanded} /><div style={{ width: 8 }}></div></>}
+        <h1 style={titleStyle}>
+            {item.title}
+            <div style={{
+                transform: 'translate(-1.5em, -.75em)',
+                position: 'absolute',
+                right: '-1.5em',
+                top: '.5em',
+                fontWeight: 'bold',
+                fontStyle: 'italic',
+                fontSize: 16,
+                verticalAlign: 'center',
+                width: 0,
+                height: 0,
+            }}>'{yearStr}</div>
+        </h1>
     </div>;
 
     return <div style={{ position: 'relative', margin: '3vh 0' }}>
 
-        <a onClick={() => setExpanded(!expanded)} style={{ cursor: 'pointer' }}>
+        {hasMedia ? <a onClick={() => setExpanded(!expanded)} style={{ cursor: 'pointer' }}>
             {header}
-        </a>
-        <Expandable expanded={expanded} children={<div style={{ display: 'flex', flexDirection: 'column' }}>{item.content}</div>} />
+        </a> : header}
+
+        <div style={{ display: 'flex', flexDirection: 'column' }}>{item.content}</div>
         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'space-around' }}>
             {media?.map((m, i) => <div key={i} style={{ width: expanded ? '90%' : '40%', margin: 8 }}>{m}</div>)}
         </div>

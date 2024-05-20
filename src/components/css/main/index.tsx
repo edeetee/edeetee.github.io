@@ -30,9 +30,8 @@ const pageOptions: PageInfo[] = [
 
 export const Main: React.FC = () => {
     const [selectedPage, selectPage] = useState<PageInfo | null>(null)
-    // const [showContent, setShowContent] = useState(false);
+    const [showExtra, setShowExtra] = useState(false);
 
-    const menuRef = useRef<HTMLDivElement>(null)
     const contentRef = useRef<HTMLDivElement>(null)
 
     //load page from history on first load
@@ -52,7 +51,6 @@ export const Main: React.FC = () => {
 
     const showContent = selectedPage != null;
 
-    // const hideableContentStyle: React.CSSProperties = { transition: 'all .3s ease-in-out', transform: showContent ? 'translateX(0)' : 'translateY(20vh)', opacity: showContent ? 1 : 0, maxHeight: showContent ? 99999999 : 0, overflow: 'clip' };
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', alignItems: 'stretch' }} >
@@ -68,20 +66,26 @@ export const Main: React.FC = () => {
             </div>
 
             <div style={{ margin: 'auto' }}>
-                <div style={{ maxWidth: '400px', padding: '0 5vw', textAlign: 'left' }}>
-                    <Expandable expanded={!showContent}>
-                        <div style={{ marginBottom: '-1em' }}>I am a</div>
-                        <h2>creative technologist</h2>
-                        <h2>projection artist</h2>
-                        <h2>software team lead</h2>
-                        <div style={{ marginBottom: '-1em' }}>with a</div>
-                        <h2>Bachelor of Design Innovation</h2>
-                        <div style={{ marginBottom: '-1em' }}>living in</div>
-                        <h2>New Zealand</h2>
-                        <div style={{ height: 32 }}></div>
-
-                    </Expandable>
-                </div></div>
+                <Expandable expanded={!showContent}>
+                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+                        <ContentExpander expanded={showExtra} maxSize={64} onClick={() => setShowExtra(!showExtra)} />
+                        <Expandable expanded={!showExtra} horizontal>
+                            <Expandable expanded={!showExtra}>
+                                <div style={{ maxWidth: '50vw', padding: '0 auto', textAlign: 'left' }}>
+                                    <div style={{ marginBottom: '-1em' }}>I am a</div>
+                                    <h2>creative technologist</h2>
+                                    <h2>projection artist</h2>
+                                    <h2>software team lead</h2>
+                                    <div style={{ marginBottom: '-1em' }}>with a</div>
+                                    <h2>Bachelor of Design Innovation</h2>
+                                    <div style={{ marginBottom: '-1em' }}>living in</div>
+                                    <h2>New Zealand</h2>
+                                </div>
+                            </Expandable>
+                        </Expandable>
+                    </div>
+                </Expandable>
+            </div>
 
             <Expandable expanded={showContent}>
                 <div ref={contentRef} className={styles.content}>

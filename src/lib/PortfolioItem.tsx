@@ -34,7 +34,7 @@ export const portfolioItems: PortfolioItem[] = [
             <Image src={require("@public/images/tf24_proj_placement.png")} />
         ],
         content: <p>
-            I was broght on again to lead the main stage. We had a challenging stage with a sculpture that wrapped around the back.
+            I was brought on again to lead the main stage. We had a challenging stage with a sculpture that wrapped around the back.
             I used 2x 5ks on the sides of the Koura and 2x 10ks on the front.
             I used a custom made 3D model of the stage to previsualise the show and to share with the other VJs
         </p>
@@ -192,7 +192,6 @@ export const portfolioItems: PortfolioItem[] = [
             <Image style={{ width: '100%' }} src={unleashedSocietyDejaVuduu} />
         ],
         content: <div>
-            <Youtube embedId='dXHccbCmphk' />
             <div style={{
                 display: "flex",
                 flexDirection: "row"
@@ -241,8 +240,6 @@ export const portfolioItems: PortfolioItem[] = [
         title: "My Life My Voice - Peer Support App",
         tag: PortfolioTag.Assistive,
         date: date(2023, 3),
-        images: [
-        ],
         content: <><p>
             Contracted to develop an app to support disabled people in networking and finding support from one another.
             The app supports the team at <a href='https://www.mylifemyvoice.org.nz'>My Life My Voice</a> in connecting people with verified supporters.

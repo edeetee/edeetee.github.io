@@ -28,7 +28,7 @@
 }
 
 .content {
-    max-width: 900px;
+    max-width: 1000px;
     width: 100%;
     justify-self: "center";
     flex-grow: 1;
