@@ -11,6 +11,7 @@
     },
     "dependencies": {
         "@mdi/js": "^6.6.96",
+        "@types/react-modal": "^3.16.3",
         "fast-vector": "^2.3.3",
         "gl-matrix": "^3.4.3",
         "glsl-fast-gaussian-blur": "^1.0.2",
@@ -25,6 +26,8 @@
         "raw-loader": "^4.0.2",
         "react": "^18.0.2",
         "react-dom": "^18.0.2",
+        "react-medium-image-zoom": "^5.2.4",
+        "react-modal": "^3.16.1",
         "regl": "^2.1.0",
         "webp-loader": "^0.6.0"
     },

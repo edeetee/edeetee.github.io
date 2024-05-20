@@ -1,6 +1,7 @@
-import { CSSProperties, DetailedHTMLProps, ImgHTMLAttributes } from 'react'
+import { CSSProperties, DetailedHTMLProps, ImgHTMLAttributes, useState } from 'react'
 import { MediaContainer } from './MediaContainer';
 import NextImage, { StaticImageData } from 'next/image';
+import Modal from 'react-modal';
 
 interface ImageProps {
     style?: CSSProperties,
@@ -10,15 +11,25 @@ interface ImageProps {
 
 
 
-export const Image = ({ style, src, disableLink }: ImageProps) => {
+export const Image = ({ src, disableLink }: ImageProps) => {
+    const [modalIsOpen, setIsOpen] = useState(false);
 
     return <MediaContainer style={{ width: '100%', height: '100%' }}>
         {!disableLink ?
-            <a href={src.src} style={{ width: '100%', height: '100%' }}>
+            <a onClick={() => setIsOpen(true)} style={{ width: '100%', height: '100%', cursor: 'zoom-in' }}>
                 <BareImage src={src} />
             </a>
             : <BareImage src={src} />
         }
+        <Modal isOpen={modalIsOpen}
+            style={{
+                overlay: { backgroundColor: 'rgba(0,0,0,0.8)', zIndex: 1000 },
+            }}
+            contentElement={(p) => <div style={{ zIndex: 1000, display: 'flex', height: '100%', cursor: 'zoom-out' }} ><BareImage src={src} /></div>}
+            onRequestClose={() => setIsOpen(false)}
+            shouldCloseOnOverlayClick shouldCloseOnEsc>
+
+        </Modal>
     </MediaContainer>
 }
 
