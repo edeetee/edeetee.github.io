@@ -71,7 +71,7 @@ export const Main: React.FC = () => {
                         <ContentExpander expanded={showExtra} maxSize={64} onClick={() => setShowExtra(!showExtra)} />
                         <Expandable expanded={!showExtra} horizontal>
                             <Expandable expanded={!showExtra}>
-                                <div style={{ maxWidth: '50vw', padding: '0 auto', textAlign: 'left' }}>
+                                <div style={{ maxWidth: '50vw', padding: '0 3vw', textAlign: 'left' }}>
                                     <div style={{ marginBottom: '-1em' }}>I am a</div>
                                     <h2>creative technologist</h2>
                                     <h2>projection artist</h2>
