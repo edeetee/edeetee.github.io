@@ -78,6 +78,5 @@ export const RenderPortfolioItem: React.FC<{ item: PortfolioItem }> = ({ item })
 export const RenderPortfolio = (items: PortfolioItem[]) => {
     return <div>
         {items.map((item, i) => <RenderPortfolioItem key={i} item={item} />)}
-        <div style={{ height: 64 }}></div>
     </div>
 }
