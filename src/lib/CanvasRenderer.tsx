@@ -84,13 +84,9 @@ function makeRendererOnCanvas(
         gl: glContext,
         extensions: [
             "OES_texture_float",
-            // 'GL_OES_texture_float',
             "WEBGL_color_buffer_float",
-
-            // 'WEBGL_texture_float'
         ],
         optionalExtensions: ["EXT_color_buffer_float", "OES_texture_float_linear",],
-        // optionalExtensions: ['OES_texture_float_linear', "WEBGL_color_buffer_float"],
         onDone(err) {
             if (err != null) console.log(err);
             console.log("done");
