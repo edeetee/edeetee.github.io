@@ -40,6 +40,23 @@ export const portfolioItems: PortfolioItem[] = [
         </p>
     },
     {
+        title: "Summer Technival",
+        tag: PortfolioTag.Visuals,
+        date: date(2023, 11),
+        images: [
+            <Youtube embedId='0M9L8hDUMDg' />,
+            <Youtube embedId='CF8EuRayWpM' />,
+            <Video src='https://github.com/edeetee/edeetee.github.io/assets/7484745/353f4a9b-fac7-4c8a-b56e-6d559aeee63f' />,
+            <Video src='https://github.com/edeetee/edeetee.github.io/assets/7484745/ba28044b-eedb-49ff-8210-f8746c329ee4' />,
+            <Video src='https://github.com/edeetee/edeetee.github.io/assets/7484745/f8aa31a8-b609-4c71-a03d-394c6a20de67' />
+        ],
+        content: <p>
+            Worked on some custom content for this gig that was delayed a year.
+            I made custom planet renderers with data from NASA that I thought looked really slick.
+            I figured out a new workflow for making loops live with a drawing tablet that looked great and friends loved coming up and experimenting with it.
+        </p>
+    },
+    {
         title: "Synchronicity",
         tag: PortfolioTag.Visuals,
         date: date(2023, 10),

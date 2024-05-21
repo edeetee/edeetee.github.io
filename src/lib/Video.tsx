@@ -1,18 +1,22 @@
 import { CSSProperties, DetailedHTMLProps, ImgHTMLAttributes, VideoHTMLAttributes, useEffect, useRef, useState } from 'react'
 import { MediaContainer } from './MediaContainer';
+import ReactModal from 'react-modal';
 
 interface VideoProps {
     style?: CSSProperties,
     src: string,
-    unmutable?: boolean
+    unmutable?: boolean,
+    onExitFullscreen?: () => void
 }
 
-export const Video = ({ style, src, unmutable, ...props }: VideoProps & DetailedHTMLProps<VideoHTMLAttributes<HTMLVideoElement>, HTMLVideoElement>) => {
+export const Video = ({ style, src, unmutable, onExitFullscreen, ...props }: VideoProps & DetailedHTMLProps<VideoHTMLAttributes<HTMLVideoElement>, HTMLVideoElement>) => {
 
     const videoRef = useRef<HTMLVideoElement>(null)
 
     const [showMutedIcon, setShowMutedIcon] = useState(unmutable);
     const [isPlaying, setIsPlaying] = useState(false);
+
+    const [fullscreen, setFullscreen] = useState(onExitFullscreen != undefined);
 
     function setPlaying(isPlaying: boolean) {
         if (!isPlaying) {
@@ -42,15 +46,16 @@ export const Video = ({ style, src, unmutable, ...props }: VideoProps & Detailed
             }
             onClick={
                 (e) => {
-                    if (e.currentTarget)
+                    if (e.currentTarget) {
                         e.preventDefault()
-                    if (unmutable && videoRef.current?.muted) {
-                        videoRef.current.muted = false;
-                        setShowMutedIcon(false)
-                        if (isPlaying)
-                            return;
+                        if (unmutable && videoRef.current?.muted) {
+                            videoRef.current.muted = false;
+                            setShowMutedIcon(false)
+                            if (isPlaying)
+                                return;
+                        }
+                        setPlaying(!isPlaying)
                     }
-                    setPlaying(!isPlaying)
                 }
             }
         >
@@ -69,7 +74,31 @@ export const Video = ({ style, src, unmutable, ...props }: VideoProps & Detailed
                 play_circle
             </span>}
 
+            <a onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                return onExitFullscreen != null ? onExitFullscreen() : setFullscreen(true);
+            }}>
+                <span className="material-symbols-outlined" style={{
+                    fontSize: 32,
+                    position: 'absolute',
+                    color: 'white',
+                    bottom: '0',
+                    right: '0',
+                    zIndex: 1,
+                    // cursor: 'zoom-in'
+                    // transform: 'translate(-50%, -50%)'
+                }}>fullscreen</span>
+            </a>
+
             <video muted autoPlay={isPlaying} loop ref={videoRef} src={src} style={{ width: '100%', height: '100%', objectFit: "cover" }} {...props} > </video>
+
+            {onExitFullscreen == null && <ReactModal isOpen={fullscreen} onRequestClose={() => setFullscreen(false)} style={{
+                overlay: { backgroundColor: 'rgba(0,0,0,0.8)', zIndex: 1000 },
+            }}>
+                <Video onExitFullscreen={() => setFullscreen(false)} src={src} unmutable={unmutable} />
+            </ReactModal>}
+
         </a>
     </MediaContainer>
 }

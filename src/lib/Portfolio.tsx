@@ -61,17 +61,15 @@ export const RenderPortfolioItem: React.FC<{ item: PortfolioItem }> = ({ item })
         </h1>
     </div>;
 
-    return <div style={{ position: 'relative', margin: '3vh 0' }}>
-
+    return <div style={{ position: 'relative', marginTop: '8vh' }}>
         {hasMedia ? <a onClick={() => setExpanded(!expanded)} style={{ cursor: 'pointer' }}>
             {header}
         </a> : header}
 
         <div style={{ display: 'flex', flexDirection: 'column' }}>{item.content}</div>
-        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'space-around' }}>
-            {media?.map((m, i) => <div key={i} style={{ width: expanded ? '90%' : '40%', margin: 8 }}>{m}</div>)}
+        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap' }}>
+            {media?.map((m, i) => <div key={i} style={{ width: expanded ? '90%' : '30%', aspectRatio: expanded ? 'initial' : '1', margin: 8 }}>{m}</div>)}
         </div>
-
     </div>
 }
 
