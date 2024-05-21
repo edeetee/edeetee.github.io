@@ -25,7 +25,7 @@ export const Image = ({ src, disableLink }: ImageProps) => {
             style={{
                 overlay: { backgroundColor: 'rgba(0,0,0,0.8)', zIndex: 1000 },
             }}
-            contentElement={(p) => <div style={{ zIndex: 1000, display: 'flex', height: '100%', cursor: 'zoom-out' }} ><BareImage src={src} /></div>}
+            contentElement={(p) => <div style={{ zIndex: 1000, display: 'flex', height: '100%', cursor: 'zoom-out' }} ><BareImage src={src} style={{ objectFit: 'contain' }} /></div>}
             onRequestClose={() => setIsOpen(false)}
             shouldCloseOnOverlayClick shouldCloseOnEsc>
 
@@ -33,7 +33,7 @@ export const Image = ({ src, disableLink }: ImageProps) => {
     </MediaContainer>
 }
 
-export function BareImage({ src }: { src: StaticImageData }) {
+export function BareImage({ src, style }: { src: StaticImageData, style?: CSSProperties }) {
     return <NextImage alt='' src={src}
-        style={{ objectFit: 'cover', width: '100%', height: '100%' }} fill={false} sizes='50vw' />;
+        style={{ objectFit: 'cover', width: '100%', height: '100%', ...style }} fill={false} sizes='50vw' />;
 }
