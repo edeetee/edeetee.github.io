@@ -68,7 +68,7 @@ export const RenderPortfolioItem: React.FC<{ item: PortfolioItem }> = ({ item })
 
         <div style={{ display: 'flex', flexDirection: 'column' }}>{item.content}</div>
         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap' }}>
-            {media?.map((m, i) => <div key={i} style={{ width: expanded ? '90%' : '30%', aspectRatio: expanded ? 'initial' : '1', margin: 8 }}>{m}</div>)}
+            {media?.map((m, i) => <div key={i} style={{ width: expanded ? '90%' : '30%', minWidth: 128, aspectRatio: expanded ? 'initial' : '1', margin: 8 }}>{m}</div>)}
         </div>
     </div>
 }

@@ -89,12 +89,12 @@ export const portfolioItems: PortfolioItem[] = [
         url: "https://twistedfrequency.nz",
         tag: PortfolioTag.Creative,
         date: date(2023, 6),
-        images: [<a href='https://twistedfrequency.nz'> <Image style={{ width: '100%' }} src={require("@public/images/tf-web.webp")} disableLink /> </a>],
         content: <div>
             <p>
                 Took static elements made by a graphic designer and recreated them in code to create interactive animated elements that fit into the theme for the <a href="https://twistedfrequency.nz">new Twisted Frequency website</a>.
                 I used <a href="http://regl.party/">regl</a> to to create line polygons and leaf particles.
             </p>
+            <a href='https://twistedfrequency.nz'> <Image style={{ width: '100%' }} src={require("@public/images/tf-web.webp")} disableLink /> </a>
         </div>
     },
     {
