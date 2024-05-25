@@ -21,6 +21,27 @@ export interface PortfolioItem {
 }
 
 export const portfolioItems: PortfolioItem[] = [
+    // {
+    //     title: "Metamorphosis",
+    //     tag: PortfolioTag.Visuals,
+    //     date: date(2024, 5),
+    // },
+    {
+        title: "As Above So Below",
+        tag: PortfolioTag.Visuals,
+        date: date(2024, 3),
+        images: [
+            <Image src={require("@public/images/asabovesobelow/1.jpg")} />,
+            <Image src={require("@public/images/asabovesobelow/2.jpg")} />,
+            <Image src={require("@public/images/asabovesobelow/3.jpg")} />,
+            <Image src={require("@public/images/asabovesobelow/uv.png")} />,
+        ],
+        content: <p>
+            Continued work on this stage from the same team as Synchronicity.
+            I figured out a new technique to generate displacement maps along curves to create forces that followed the stage shape.
+            I also had an old friend, <a href='https://www.instagram.com/boy__skum/'>Jamie Price </a> come on board for their first visuals gig.
+        </p>
+    },
     {
         title: "Twisted Frequency",
         tag: PortfolioTag.Visuals,
@@ -36,7 +57,8 @@ export const portfolioItems: PortfolioItem[] = [
         content: <p>
             I was brought on again to lead the main stage. We had a challenging stage with a sculpture that wrapped around the back.
             I used 2x 5ks on the sides of the Koura and 2x 10ks on the front.
-            I used a custom made 3D model of the stage to previsualise the show and to share with the other VJs
+            I used a custom made 3D model of the stage to previsualise the show and to share with the other VJs.
+            This year we had better team synergy and I felt supported in what we were doing - enough to leave the start sequence up to the rest of the crew on the 4th night!
         </p>
     },
     {
