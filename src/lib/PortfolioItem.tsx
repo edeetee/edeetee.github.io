@@ -21,11 +21,22 @@ export interface PortfolioItem {
 }
 
 export const portfolioItems: PortfolioItem[] = [
-    // {
-    //     title: "Metamorphosis",
-    //     tag: PortfolioTag.Visuals,
-    //     date: date(2024, 5),
-    // },
+    {
+        title: "Metamorphosis",
+        tag: PortfolioTag.Visuals,
+        date: date(2024, 5),
+        images: [
+            <Video src='https://github.com/edeetee/edeetee.github.io/assets/7484745/45328d38-5fd6-42ec-8e47-c6039e63c715' />,
+            <Video src='https://github.com/edeetee/edeetee.github.io/assets/7484745/4ff0fb61-4beb-4407-bbdf-9d974673d41e' />,
+            <Video src='https://github.com/edeetee/edeetee.github.io/assets/7484745/8d393ce8-9973-4d4d-a53a-cb5a42a797ab' />,
+            <Image src={require("@public/images/metamorphosis_build.jpg")} />,
+        ],
+        content: <p>
+            Was great to throw some light over this stage by @lauren_daance, @brutal.fairy and @bukabazooka for the charity gig, Metamorphosis.
+            Tried a new technique with overlaying a negative photo of the stage right inside resolume which highlights the beautiful shiny paintings on the stage.
+            Good to funnel some cash towards suicide prevention.
+        </p>
+    },
     {
         title: "As Above So Below",
         tag: PortfolioTag.Visuals,
