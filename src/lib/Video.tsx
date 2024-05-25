@@ -5,13 +5,15 @@ import ReactModal from 'react-modal';
 interface VideoProps {
     style?: CSSProperties,
     src: string,
-    unmutable?: boolean,
+    muted?: boolean,
     onExitFullscreen?: () => void
 }
 
-export const Video = ({ style, src, unmutable, onExitFullscreen, ...props }: VideoProps & DetailedHTMLProps<VideoHTMLAttributes<HTMLVideoElement>, HTMLVideoElement>) => {
+export const Video = ({ style, src, muted, onExitFullscreen, ...props }: VideoProps & DetailedHTMLProps<VideoHTMLAttributes<HTMLVideoElement>, HTMLVideoElement>) => {
 
     const videoRef = useRef<HTMLVideoElement>(null)
+
+    const unmutable = !muted ?? false;
 
     const [showMutedIcon, setShowMutedIcon] = useState(unmutable);
     const [isPlaying, setIsPlaying] = useState(false);
@@ -96,7 +98,7 @@ export const Video = ({ style, src, unmutable, onExitFullscreen, ...props }: Vid
             {onExitFullscreen == null && <ReactModal isOpen={fullscreen} onRequestClose={() => setFullscreen(false)} style={{
                 overlay: { backgroundColor: 'rgba(0,0,0,0.8)', zIndex: 1000 },
             }}>
-                <Video onExitFullscreen={() => setFullscreen(false)} src={src} unmutable={unmutable} />
+                <Video onExitFullscreen={() => setFullscreen(false)} src={src} muted={muted} />
             </ReactModal>}
 
         </a>

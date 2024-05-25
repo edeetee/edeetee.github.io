@@ -31,6 +31,7 @@ export const portfolioItems: PortfolioItem[] = [
         tag: PortfolioTag.Visuals,
         date: date(2024, 3),
         images: [
+            <Video src='https://github.com/edeetee/edeetee.github.io/assets/7484745/9f7a605a-6870-499e-8183-94bc4e7f3922' />,
             <Image src={require("@public/images/asabovesobelow/1.jpg")} />,
             <Image src={require("@public/images/asabovesobelow/2.jpg")} />,
             <Image src={require("@public/images/asabovesobelow/3.jpg")} />,
@@ -125,7 +126,7 @@ export const portfolioItems: PortfolioItem[] = [
         date: date(2023, 2, 22),
         images: [
             <Video style={{ width: 300 }} src='https://github.com/edeetee/edeetee.github.io/assets/7484745/f624c6be-ed87-4bd0-973e-bad487336421' />,
-            <Video unmutable style={{ width: 300 }} src='https://user-images.githubusercontent.com/7484745/253836224-fa02cf26-d18e-461b-92b0-02775d6028d4.mp4' />],
+            <Video style={{ width: 300 }} src='https://user-images.githubusercontent.com/7484745/253836224-fa02cf26-d18e-461b-92b0-02775d6028d4.mp4' />],
         content: <div>
             <p>
                 We created a robot head that allowed a performer (in the cockpit) to control various elements of the head.
@@ -157,8 +158,8 @@ export const portfolioItems: PortfolioItem[] = [
         date: date(2022, 10, 1),
         images: [
 
-            <Video unmutable src="https://user-images.githubusercontent.com/7484745/254428275-761daede-d3a3-4db5-a314-f342b0822871.MOV" />,
-            <Video unmutable src="https://user-images.githubusercontent.com/7484745/254428340-655d6f64-9069-4b1b-986c-a3664f2c6768.mp4" />
+            <Video src="https://user-images.githubusercontent.com/7484745/254428275-761daede-d3a3-4db5-a314-f342b0822871.MOV" />,
+            <Video src="https://user-images.githubusercontent.com/7484745/254428340-655d6f64-9069-4b1b-986c-a3664f2c6768.mp4" />
         ],
         content: <div>
         </div>
