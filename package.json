@@ -29,6 +29,7 @@
         "react-medium-image-zoom": "^5.2.4",
         "react-modal": "^3.16.1",
         "regl": "^2.1.0",
+        "sharp": "^0.33.4",
         "webp-loader": "^0.6.0"
     },
     "devDependencies": {
