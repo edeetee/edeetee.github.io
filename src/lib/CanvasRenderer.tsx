@@ -150,7 +150,7 @@ export const CanvasRenderer = ({ buildRenderer, ...props }: CanvasRendererProps)
 
     return (
         <>
-            <Image placeholder="blur" src={require("@public/images/bg.png")} alt="" style={{
+            <Image placeholder="blur" src={require("@public/images/bg.webp")} alt="" style={{
                 ...posStyle,
                 backgroundColor: 'black',
             }} />

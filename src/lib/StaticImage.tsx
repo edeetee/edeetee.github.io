@@ -9,8 +9,6 @@ interface ImageProps {
     disableLink?: boolean
 }
 
-
-
 export const Image = ({ src, disableLink }: ImageProps) => {
     const [modalIsOpen, setIsOpen] = useState(false);
 

@@ -29,7 +29,7 @@ export const portfolioItems: PortfolioItem[] = [
             <Video src='https://github.com/edeetee/edeetee.github.io/assets/7484745/45328d38-5fd6-42ec-8e47-c6039e63c715' />,
             <Video src='https://github.com/edeetee/edeetee.github.io/assets/7484745/4ff0fb61-4beb-4407-bbdf-9d974673d41e' />,
             <Video src='https://github.com/edeetee/edeetee.github.io/assets/7484745/8d393ce8-9973-4d4d-a53a-cb5a42a797ab' />,
-            <Image src={require("@public/images/metamorphosis_build.jpg")} />,
+            <Image src={require("@public/images/metamorphosis_build.webp")} />,
         ],
         content: <p>
             Was great to throw some light over this stage by @lauren_daance, @brutal.fairy and @bukabazooka for the charity gig, Metamorphosis.
@@ -43,10 +43,10 @@ export const portfolioItems: PortfolioItem[] = [
         date: date(2024, 3),
         images: [
             <Video src='https://github.com/edeetee/edeetee.github.io/assets/7484745/9f7a605a-6870-499e-8183-94bc4e7f3922' />,
-            <Image src={require("@public/images/asabovesobelow/1.jpg")} />,
-            <Image src={require("@public/images/asabovesobelow/2.jpg")} />,
-            <Image src={require("@public/images/asabovesobelow/3.jpg")} />,
-            <Image src={require("@public/images/asabovesobelow/uv.png")} />,
+            <Image src={require("@public/images/asabovesobelow/1.webp")} />,
+            <Image src={require("@public/images/asabovesobelow/2.webp")} />,
+            <Image src={require("@public/images/asabovesobelow/3.webp")} />,
+            <Image src={require("@public/images/asabovesobelow/uv.webp")} />,
         ],
         content: <p>
             Continued work on this stage from the same team as Synchronicity.
@@ -59,12 +59,12 @@ export const portfolioItems: PortfolioItem[] = [
         tag: PortfolioTag.Visuals,
         date: date(2024),
         images: [
-            <Image src={require("@public/images/tf24_koura.jpg")} />,
-            <Image src={require("@public/images/tf24_bw.jpg")} />,
-            <Image src={require("@public/images/tf24_blue.jpg")} />,
-            <Image src={require("@public/images/koura_template_map_v3.png")} />,
-            <Image src={require("@public/images/tf24_blender.png")} />,
-            <Image src={require("@public/images/tf24_proj_placement.png")} />
+            <Image src={require("@public/images/tf24_koura.webp")} />,
+            <Image src={require("@public/images/tf24_bw.webp")} />,
+            <Image src={require("@public/images/tf24_blue.webp")} />,
+            <Image src={require("@public/images/koura_template_map_v3.webp")} />,
+            <Image src={require("@public/images/tf24_blender.webp")} />,
+            <Image src={require("@public/images/tf24_proj_placement.webp")} />
         ],
         content: <p>
             I was brought on again to lead the main stage. We had a challenging stage with a sculpture that wrapped around the back.
@@ -95,9 +95,9 @@ export const portfolioItems: PortfolioItem[] = [
         tag: PortfolioTag.Visuals,
         date: date(2023, 10),
         images: [<Youtube embedId='GI_q80acgds' />,
-        <Image src={require("@public/images/sync.jpg")} />,
-        <Image src={require("@public/images/sync2.jpg")} />,
-        <Image src={require("@public/images/sync3.jpg")} />
+        <Image src={require("@public/images/sync.webp")} />,
+        <Image src={require("@public/images/sync2.webp")} />,
+        <Image src={require("@public/images/sync3.webp")} />
         ],
         content: <p>
             Really enjoy this event.
@@ -110,7 +110,7 @@ export const portfolioItems: PortfolioItem[] = [
         tag: PortfolioTag.Visuals,
         date: date(2023, 5),
         images: [<Video src='https://github.com/edeetee/edeetee.github.io/assets/7484745/bfb6ee96-6576-4939-94a8-e719aae3a22a' />,
-        <Image src={require("@public/images/mh_dragon.jpg")} />],
+        <Image src={require("@public/images/mh_dragon.webp")} />],
         content: <div>
             <p>
                 For this experimental event, we took over a swanky conference center in Christchurch. We had many floors of interactive art and music made by over 50 creators.
