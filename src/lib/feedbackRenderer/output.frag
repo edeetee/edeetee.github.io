@@ -35,7 +35,8 @@ void main () {
 
     float distMask = step(mouseLength, 4.0);
     float mouseModX = 0.1;
-    float cursorMask = distMask*dirMask;
+    // float cursorMask = distMask*dirMask;
+    float cursorMask = 0.0;
 
     gl_FragColor = max(gl_FragColor*(1.0-cursorMask),(cursorMask-gl_FragColor));
     // gl_FragColor = textureColor;
