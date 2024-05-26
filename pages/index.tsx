@@ -13,7 +13,7 @@ const Home: React.FC = () => {
             <link rel="icon" type="image/png" href="/favicon/16.png"></link>
             <link rel="icon" sizes="32x32" type="image/png" href="/favicon/32.png"></link>
             <link rel="icon" sizes="64x64" type="image/png" href="/favicon/64.png"></link>
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block" />
         </Head>
 
         <CanvasRenderer buildRenderer={FeedbackRenderer} />
