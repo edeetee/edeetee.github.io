@@ -52,7 +52,7 @@ export const Skills: React.FC = () =>
         <h1>Experience</h1>
         <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around' }}>
             <div style={{ width: '30%', minWidth: 200 }} >
-                <h3><i>2020</i> Smart Access</h3>
+                <h3><i>2023</i> Smart Access</h3>
                 Map app
                 <ul>
                     <li>Geospatial data and processing</li>
@@ -62,7 +62,7 @@ export const Skills: React.FC = () =>
                 </ul>
             </div>
             <div style={{ width: '30%', minWidth: 200 }} >
-                <h3><i>2020</i> My Life My Voice</h3>
+                <h3><i>2023</i> My Life My Voice</h3>
                 Peer support communication app
                 <ul>
                     <li>Flutter</li>
@@ -121,14 +121,17 @@ export const Skills: React.FC = () =>
                 <h4>
                     Bachelor of Design Innovation (Media Design)
                 </h4>
-                Deans Award
+                Deans Award<br />
+                6 courses complete with grade A- or greater<br />
+                2 more with B+
             </div>
             <div style={{ width: '40%', minWidth: 300 }} >
                 <h3><i>2016</i> Canterbury University</h3>
                 <h4>
-                    Bachelor of Science (Computer Science)
+                    Bachelor of Science (Incomplete) (Computer Science)
                 </h4>
-                Incomplete
+                First year completed with average of A-<br />
+                Dropped out second year to pursue more applied skills
             </div>
         </div>
 

@@ -55,7 +55,7 @@ export const Main: React.FC = () => {
     return (
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', alignItems: 'stretch' }} >
             {/* <About /> */}
-            <div className="only-print" style={{ position: 'fixed', margin: 16, top: 0, left: 0 }}>
+            <div className="print-only" style={{ position: 'fixed', margin: 16, top: 0, left: 0 }}>
                 0224998841<br />
                 edeetee@gmail.com<br />
                 www.edt.nz
