@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { About } from "@components/css/about";
-import { Skills } from "@components/skills";
+import { Skills as CV } from "@components/cv";
 import { Links } from "@components/links";
 import { PageSelector } from "../pageSelector";
 import { Creative } from "@components/creative";
@@ -22,8 +22,8 @@ const pageOptions: PageInfo[] = [
     { page: <Events />, label: "Events", name: "optiphonic" },
     { page: <Creative />, label: "Creative", name: "creative" },
     { page: <Assistive />, label: "Assistive", name: "assistive" },
-    { page: <Skills />, label: "Skills", name: "skills" },
-    { page: <History />, label: "History", name: "history" }
+    { page: <CV />, label: "CV", name: "cv" },
+    // { page: <History />, label: "History", name: "history" }
 ].map(info => {
     return { url: `/${info.name}`, ...info }
 })
@@ -55,8 +55,14 @@ export const Main: React.FC = () => {
     return (
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', alignItems: 'stretch' }} >
             {/* <About /> */}
+            <div className="only-print" style={{ position: 'fixed', margin: 16, top: 0, left: 0 }}>
+                0224998841<br />
+                edeetee@gmail.com<br />
+                www.edt.nz
+            </div>
+
             <h1 style={{ alignSelf: 'end', margin: '5vh 5vw' }}>Edward Taylor</h1>
-            <div role="navigation"><PageSelector<PageInfo>
+            <div className="nav" role="navigation"><PageSelector<PageInfo>
                 options={pageOptions}
                 selected={selectedPage}
                 onSelected={(el) => {
@@ -65,7 +71,7 @@ export const Main: React.FC = () => {
             />
             </div>
 
-            <div style={{ margin: 'auto' }}>
+            <div className="expandingHome" style={{ margin: 'auto' }}>
                 <Expandable expanded={!showContent}>
                     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
                         <ContentExpander expanded={showExtra} maxSize={64} onClick={() => setShowExtra(!showExtra)} />
@@ -94,10 +100,10 @@ export const Main: React.FC = () => {
             </Expandable>
 
 
-            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+            <div className="footer" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                 <Links className={styles.padding} style={{ userSelect: 'none' }} />
                 <AnimatedMe />
             </div>
-        </div>
+        </div >
     );
 };

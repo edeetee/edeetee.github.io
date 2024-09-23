@@ -102,3 +102,64 @@ h4 {
     margin-top: 4px;
     margin-bottom: 16px;
 }
+
+.print-only {
+    display: none;
+}
+
+@media print {
+    .print-only {
+        display: block;
+    }
+
+    .nav {
+        display: none;
+    }
+
+    .footer {
+        display: none !important;
+    }
+
+    .expandingHome {
+        display: none !important;
+    }
+
+    .bg {
+        display: none !important;
+    }
+
+    h1 {
+        /* font-size: 32px !important; */
+        font-size: 2em !important;
+        margin: 16px 16px 0px 0px !important;
+    }
+
+    h2 {
+        font-size: 1.5em !important;
+        margin: 8px 0px 0 !important;
+    }
+
+    h3 {
+        font-size: 1.25em !important;
+        margin: 8px 0px 0 !important;
+    }
+
+    ul {
+        margin: 8px 0;
+        padding: 0;
+        padding-left: 16px;
+    }
+
+    li {
+        margin: 4px 0;
+    }
+
+    body {
+        font-size: 14px !important;
+        color: black !important;
+    }
+
+    html {
+        background: white !important;
+    }
+}
