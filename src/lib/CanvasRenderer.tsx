@@ -5,6 +5,7 @@ import { constrain } from "./constrain";
 import Image from "next/image";
 
 const RES_MULTIPLIER = 1 / 2;
+const FPS = 60;
 
 export interface MouseMoveListener {
     (x: number, y: number): void;
@@ -120,8 +121,16 @@ function makeRendererOnCanvas(
     document.body.addEventListener("touchcancel", () => onPress(false));
     document.body.addEventListener("mouseup", () => onPress(false));
 
+    let lastRenderTime = Date.now();
+
     regl.frame((ctx) => {
-        renderer.onFrame(ctx);
+        const now = Date.now();
+        const dt = now - lastRenderTime;
+        if (dt > 1000 / FPS) {
+            lastRenderTime = now;
+            renderer.onFrame(ctx);
+            return;
+        }
     });
 }
 
