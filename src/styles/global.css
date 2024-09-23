@@ -107,9 +107,17 @@ h4 {
     display: none;
 }
 
+.not-print {
+    display: block;
+}
+
 @media print {
     .print-only {
         display: block;
+    }
+
+    .not-print {
+        display: none;
     }
 
     .nav {
