@@ -20,7 +20,13 @@ export const Video = ({ style, src, muted, onExitFullscreen, ...props }: VideoPr
 
     const [fullscreen, setFullscreen] = useState(onExitFullscreen != undefined);
 
+    const isBgVideo = onExitFullscreen == null && fullscreen;
+
     function setPlaying(isPlaying: boolean) {
+        if (isBgVideo && isPlaying) {
+            setPlaying(false)
+            return;
+        }
         if (!isPlaying) {
             setShowMutedIcon(true)
             if (videoRef.current != null)
@@ -37,7 +43,7 @@ export const Video = ({ style, src, muted, onExitFullscreen, ...props }: VideoPr
 
     return <MediaContainer style={{ ...style }}
     >
-        <a href={src} role='button' aria-label='video' style={{ position: 'relative', display: 'flex', width: '100%', height: '100%' }}
+        <div role='button' aria-label='video' style={{ cursor: 'pointer', position: 'relative', display: 'flex', width: '100%', height: '100%' }}
             onMouseOver={
                 (e) => {
                     e.preventDefault()
@@ -76,9 +82,10 @@ export const Video = ({ style, src, muted, onExitFullscreen, ...props }: VideoPr
                 play_circle
             </span>}
 
-            <a onClick={(e) => {
+            <div onClick={(e) => {
                 e.stopPropagation();
                 e.preventDefault();
+                setPlaying(false);
                 return onExitFullscreen != null ? onExitFullscreen() : setFullscreen(true);
             }}>
                 <span className="material-symbols-outlined" style={{
@@ -91,16 +98,16 @@ export const Video = ({ style, src, muted, onExitFullscreen, ...props }: VideoPr
                     // cursor: 'zoom-in'
                     // transform: 'translate(-50%, -50%)'
                 }}>fullscreen</span>
-            </a>
+            </div>
 
-            <video muted autoPlay={isPlaying} loop ref={videoRef} src={src} style={{ width: '100%', height: '100%', objectFit: "cover" }} {...props} > </video>
+            <video muted autoPlay={isPlaying} loop ref={videoRef} src={src} style={{ width: '100%', height: '100%' }} {...props} > </video>
 
             {onExitFullscreen == null && <ReactModal isOpen={fullscreen} onRequestClose={() => setFullscreen(false)} style={{
                 overlay: { backgroundColor: 'rgba(0,0,0,0.8)', zIndex: 1000 },
             }}>
-                <Video onExitFullscreen={() => setFullscreen(false)} src={src} muted={muted} />
+                <Video onExitFullscreen={() => setFullscreen(false)} src={src} style={{ objectFit: 'inherit', margin: 0 }} muted={muted} />
             </ReactModal>}
 
-        </a>
+        </div>
     </MediaContainer>
 }

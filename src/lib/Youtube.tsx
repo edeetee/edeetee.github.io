@@ -1,12 +1,12 @@
 import { CSSProperties } from "react"
 import { MediaContainer } from "./MediaContainer"
 
-interface YoutubeParams{
+interface YoutubeParams {
     style?: CSSProperties,
     embedId: string
 }
 
-export const Youtube = ({embedId, style}: YoutubeParams) => 
+export const Youtube = ({ embedId, style }: YoutubeParams) =>
     <MediaContainer style={{
         position: "relative",
         aspectRatio: '16/9',

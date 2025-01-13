@@ -36,7 +36,7 @@ const titleStyle: CSSProperties = {
 export const RenderPortfolioItem: React.FC<{ item: PortfolioItem }> = ({ item }) => {
     const [expanded, setExpanded] = useState(false);
 
-    const media = item.images?.map((image, i) => <div key={i} style={{ width: 'auto', height: '100%', justifySelf: 'end' }} >{image}</div>)
+    const media = item.images?.map((image, i) => <div key={i} style={{ width: '100%', height: '100%', justifySelf: 'end' }} >{image}</div>)
 
     const yearStr = item.date.getFullYear().toString().substring(2);
 
@@ -67,8 +67,8 @@ export const RenderPortfolioItem: React.FC<{ item: PortfolioItem }> = ({ item })
         </a> : header}
 
         <div style={{ display: 'flex', flexDirection: 'column' }}>{item.content}</div>
-        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap' }}>
-            {media?.map((m, i) => <div key={i} style={{ width: expanded ? '90%' : '30%', minWidth: 128, aspectRatio: expanded ? 'initial' : '1', margin: 8 }}>{m}</div>)}
+        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'start', flexWrap: 'wrap' }}>
+            {media?.map((m, i) => <div key={i} style={{ width: expanded ? '45%' : 256, minWidth: 128, aspectRatio: expanded ? 'initial' : '1', margin: 8 }}>{m}</div>)}
         </div>
     </div>
 }

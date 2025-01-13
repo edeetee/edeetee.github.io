@@ -95,7 +95,7 @@ export const Main: React.FC = () => {
 
             <Expandable expanded={showContent}>
                 <div ref={contentRef} className={styles.content}>
-                    <div style={{ margin: '5vh 4vw', padding: '5vh 0' }}>{selectedPage?.page}</div>
+                    <div style={{ margin: '32px 24px', padding: '32px 0' }}>{selectedPage?.page}</div>
                 </div>
             </Expandable>
 
