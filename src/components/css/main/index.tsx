@@ -19,10 +19,10 @@ interface PageInfo {
 }
 
 const pageOptions: PageInfo[] = [
+    { page: <CV />, label: "CV", name: "cv" },
     { page: <Events />, label: "Events", name: "optiphonic" },
     { page: <Creative />, label: "Creative", name: "creative" },
     { page: <Assistive />, label: "Assistive", name: "assistive" },
-    { page: <CV />, label: "CV", name: "cv" },
     // { page: <History />, label: "History", name: "history" }
 ].map(info => {
     return { url: `/${info.name}`, ...info }
@@ -64,7 +64,7 @@ export const Main: React.FC = () => {
                     <br />
                     <div >
                         0224998841<br />
-                        edeetee@gmail.com<br />
+                        dev@edt.nz<br />
                         www.edt.nz
                     </div>
                 </div>
@@ -89,8 +89,8 @@ export const Main: React.FC = () => {
                                 <div style={{ maxWidth: '50vw', padding: '0 3vw', textAlign: 'left' }}>
                                     <div style={{ marginBottom: '-1em' }}>I am a</div>
                                     <h2>creative technologist</h2>
-                                    <h2>projection artist</h2>
                                     <h2>software team lead</h2>
+                                    <h2>projection artist</h2>
                                     <div style={{ marginBottom: '-1em' }}>with a</div>
                                     <h2>Bachelor of Design Innovation</h2>
                                     <div style={{ marginBottom: '-1em' }}>living in</div>
