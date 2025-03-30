@@ -4,7 +4,7 @@ import { Separator } from 'src/lib/separator'
 export const Skills: React.FC = () =>
     <>
 
-        <a style={{ textAlign: 'end' }} className='not-print' href='cv.pdf'>Download this page</a>
+        <a style={{ textAlign: 'end', display: 'block' }} className='not-print' href='cv.pdf'>Download this page</a>
 
         <h1>Skills</h1>
         {/* <div style={{ borderLeft: 'white solid', paddingLeft: 16 }} >
