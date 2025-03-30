@@ -57,7 +57,7 @@ export const Main: React.FC = () => {
             {/* <About /> */}
 
             <h1 className="not-print" style={{ marginRight: 0, textAlign: 'right', margin: '5vh 5vw' }}>Edward Taylor</h1>
-            <div className="print-only" style={{ display: 'flex', flexDirection: 'row', width: '100%', justifyContent: 'space-betweens', }} >
+            <div className="print-only" style={{ display: 'flex', flexDirection: 'row', width: '100%', justifyContent: 'space-between', }} >
 
                 <div style={{ display: 'flex', flexDirection: 'column', alignSelf: 'start', marginLeft: 16 }} >
                     <h1 style={{ marginRight: 0 }}>Edward Taylor</h1>
