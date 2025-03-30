@@ -20,22 +20,13 @@ export const Skills: React.FC = () =>
         {/* <Separator /> */}
 
         <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around' }}>
-            <div style={{ width: '30%', minWidth: 200 }} >
-                <h3>Rendering & Interaction</h3>
-                <ul style={{ paddingLeft: 16 }}>
-                    <li>3D Materials, Modelling & Maths</li>
-                    <li>Live data & interaction</li>
-                    <li>Projection hardware experience</li>
-                    <li>Passion for experimental techniques</li>
-                </ul>
-            </div>
 
             <div style={{ width: '30%', minWidth: 200 }} >
                 <h3>Software Development</h3>
                 <ul style={{ paddingLeft: 16 }}>
-                    <li>Linux management (systemd, nixos, Raspberry Pi)</li>
                     <li>Backend (AWS, Rust in lambda, Postgres)</li>
-                    <li>Apps (Flutter, Android, Web)</li>
+                    <li>Apps (Flutter, Android, iOS, Web)</li>
+                    <li>Linux (systemd, nixos, Raspberry Pi)</li>
                 </ul>
             </div>
 
@@ -47,6 +38,16 @@ export const Skills: React.FC = () =>
                     <li>Knowing when to present a learning opportunity and when to step in</li>
                 </ul>
             </div>
+
+            <div style={{ width: '30%', minWidth: 200 }} >
+                <h3>Rendering & Interaction</h3>
+                <ul style={{ paddingLeft: 16 }}>
+                    <li>3D Materials, Modelling & Maths</li>
+                    <li>Live data & interaction</li>
+                    <li>Projection hardware experience</li>
+                    <li>Passion for experimental techniques</li>
+                </ul>
+            </div>
         </div>
 
         <h1>Experience</h1>
@@ -56,8 +57,8 @@ export const Skills: React.FC = () =>
                 Map app
                 <ul>
                     <li>Geospatial data and processing</li>
-                    <li>Python visualisation and data proessing</li>
-                    <li>Reproducible data pipeline</li>
+                    <li>Data visualisation and proessing</li>
+                    <li>Accessible flutter app</li>
                     <li>Team management</li>
                 </ul>
             </div>
@@ -121,9 +122,11 @@ export const Skills: React.FC = () =>
                 <h4>
                     Bachelor of Design Innovation (Media Design)
                 </h4>
-                Deans Award<br />
-                6 courses complete with grade A- or greater<br />
-                2 more with B+
+                <ul>
+                    <li>Deans Award</li>
+                    <li>7.32 GPA</li>
+                </ul>
+                <a href='https://edt.nz/transcript.pdf'>Download Transcript</a> <br />
             </div>
             <div style={{ width: '40%', minWidth: 300 }} >
                 <h3><i>2016</i> Canterbury University</h3>
@@ -131,7 +134,7 @@ export const Skills: React.FC = () =>
                     Bachelor of Science (Incomplete) (Computer Science)
                 </h4>
                 First year completed with average of A-<br />
-                Dropped out second year to pursue more applied skills
+                Dropped out second year to pursue applied skills
             </div>
         </div>
 

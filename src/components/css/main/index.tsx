@@ -55,13 +55,22 @@ export const Main: React.FC = () => {
     return (
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', alignItems: 'stretch' }} >
             {/* <About /> */}
-            <div className="print-only" style={{ position: 'fixed', margin: 16, top: 0, left: 0 }}>
-                0224998841<br />
-                edeetee@gmail.com<br />
-                www.edt.nz
+
+            <h1 className="not-print" style={{ marginRight: 0, textAlign: 'right', margin: '5vh 5vw' }}>Edward Taylor</h1>
+            <div className="print-only" style={{ display: 'flex', flexDirection: 'row', width: '100%', justifyContent: 'space-betweens', }} >
+
+                <div style={{ display: 'flex', flexDirection: 'column', alignSelf: 'start', marginLeft: 16 }} >
+                    <h1 style={{ marginRight: 0 }}>Edward Taylor</h1>
+                    <br />
+                    <div >
+                        0224998841<br />
+                        edeetee@gmail.com<br />
+                        www.edt.nz
+                    </div>
+                </div>
+                <img src="images/profile.jpg" width={180} height={180} style={{ marginRight: 8, marginTop: 16 }} />
             </div>
 
-            <h1 style={{ alignSelf: 'end', margin: '5vh 5vw' }}>Edward Taylor</h1>
             <div className="nav" role="navigation"><PageSelector<PageInfo>
                 options={pageOptions}
                 selected={selectedPage}
@@ -95,7 +104,8 @@ export const Main: React.FC = () => {
 
             <Expandable expanded={showContent}>
                 <div ref={contentRef} className={styles.content}>
-                    <div style={{ margin: '32px 24px', padding: '32px 0' }}>{selectedPage?.page}</div>
+                    <div className="not-print" style={{ margin: '32px 24px', padding: '32px 0' }}>{selectedPage?.page}</div>
+                    <div className="print-only" style={{ margin: '32px 24px' }}>{selectedPage?.page}</div>
                 </div>
             </Expandable>
 

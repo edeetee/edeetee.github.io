@@ -103,25 +103,19 @@ h4 {
     margin-bottom: 16px;
 }
 
-.print-only {
-    display: none;
-}
-
-.not-print {
-    display: block;
+@media not print {
+    .print-only {
+        display: none !important;
+    }
 }
 
 @media print {
-    .print-only {
-        display: block;
-    }
-
     .not-print {
-        display: none;
+        display: none !important;
     }
 
     .nav {
-        display: none;
+        display: none !important;
     }
 
     .footer {
