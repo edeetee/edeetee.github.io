@@ -95,7 +95,7 @@ export const Skills: React.FC = () =>
 
         <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around' }}>
             <div style={{ width: '40%', minWidth: 300 }} >
-                <h3>Victoria University of Wellington <i style={{ fontSize: 14, display: 'block' }}>2019</i></h3>
+                <h3>Victoria University of Wellington <i style={{ fontSize: 14, display: 'block' }}>2017 - 2019</i></h3>
                 <h4>
                     Bachelor of Design Innovation (Media Design)
                 </h4>
@@ -108,7 +108,7 @@ export const Skills: React.FC = () =>
             <div style={{ width: '40%', minWidth: 300 }} >
                 <h3>Canterbury University <i style={{ fontSize: 14, display: 'block' }}>2014 - 2016</i></h3>
                 <h4>
-                    Bachelor of Science (Incomplete) (Computer Science)
+                    Bachelor of Science (Computer Science) [Incomplete]
                 </h4>
                 First year completed with average of A-<br />
                 Dropped out second year to pursue applied skills
