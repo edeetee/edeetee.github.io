@@ -1,4 +1,3 @@
-
 import { Separator } from 'src/lib/separator'
 
 export const Skills: React.FC = () =>
@@ -7,17 +6,6 @@ export const Skills: React.FC = () =>
         <a style={{ textAlign: 'end', display: 'block' }} className='not-print' href='cv.pdf'>Download this page</a>
 
         <h1>Skills</h1>
-        {/* <div style={{ borderLeft: 'white solid', paddingLeft: 16 }} >
-            <p>
-                I am available for a wide range of work related to digital technology and art.
-                Taking a browse through <a href='https://edt.nz'>my portfolio</a> will give you an idea of where my interests lie and what I can create with passion.
-            </p>
-            <p>
-                I am always developing my skills and learning new things to further what I'm capable of. I'm a fast learner especially when prototyping and with a goal in mind.
-            </p>
-        </div> */}
-
-        {/* <Separator /> */}
 
         <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around' }}>
 
@@ -53,17 +41,16 @@ export const Skills: React.FC = () =>
         <h1>Experience</h1>
         <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around' }}>
             <div style={{ width: '30%', minWidth: 200 }} >
-                <h3><i>2023</i> Smart Access</h3>
+                <h3>Smart Access<i style={{ fontSize: 12, display: 'block' }}>Mar 2023 - Today</i></h3>
                 Map app
                 <ul>
-                    <li>Geospatial data and processing</li>
-                    <li>Data visualisation and proessing</li>
+                    <li>Geospatial data visualisation and processing</li>
                     <li>Accessible flutter app</li>
                     <li>Team management</li>
                 </ul>
             </div>
             <div style={{ width: '30%', minWidth: 200 }} >
-                <h3><i>2023</i> My Life My Voice</h3>
+                <h3>My Life My Voice<i style={{ fontSize: 12, display: 'block' }}>Feb 2023 - Today</i></h3>
                 Peer support communication app
                 <ul>
                     <li>Flutter</li>
@@ -71,7 +58,7 @@ export const Skills: React.FC = () =>
                 </ul>
             </div>
             <div style={{ width: '30%', minWidth: 200 }} >
-                <h3><i>2020</i> TASKA Prosthetics</h3>
+                <h3>TASKA Prosthetics<i style={{ fontSize: 12, display: 'block' }}>Nov 2019 - Nov 2020</i></h3>
                 Mobile Developer for hand management app
                 <ul>
                     <li>Working in a larger team</li>
@@ -79,7 +66,7 @@ export const Skills: React.FC = () =>
                 </ul>
             </div>
             <div style={{ width: '30%', minWidth: 200 }} >
-                <h3><i>2019</i> Victoria University</h3>
+                <h3>Victoria University<i style={{ fontSize: 12, display: 'block' }}>Nov 2018 - Oct 2019</i></h3>
                 Alexa App and Class Tutor
                 <ul>
                     <li>Developing for differently abled people</li>
@@ -87,7 +74,7 @@ export const Skills: React.FC = () =>
                 </ul>
             </div>
             <div style={{ width: '30%', minWidth: 200 }} >
-                <h3><i>2019</i> Savesign</h3>
+                <h3>Savesign<i style={{ fontSize: 12, display: 'block' }}>Nov 2017 - Dev 2019</i></h3>
                 Display software for Raspberry Pi
                 <ul>
                     <li>Java</li>
@@ -95,22 +82,13 @@ export const Skills: React.FC = () =>
                 </ul>
             </div>
             <div style={{ width: '30%', minWidth: 200 }} >
-                <h3><i>2017</i> GeneralApps</h3>
+                <h3>GeneralApps<i style={{ fontSize: 12, display: 'block' }}>Apr 2016 - Jan 2017</i></h3>
                 Android app development
                 <ul>
                     <li>Client negotiation</li>
                     <li>App development</li>
                 </ul>
             </div>
-            {/* <div style={{ width: '30%', minWidth: 200 }} >
-                <h3><i>2016</i> Jade Software</h3>
-                Internship
-                <ul>
-                    <li>Web development</li>
-                    <li>Java</li>
-                    <li>Working in a team</li>
-                </ul>
-            </div> */}
         </div>
 
         <h1>Education</h1>
@@ -118,7 +96,7 @@ export const Skills: React.FC = () =>
 
         <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around' }}>
             <div style={{ width: '40%', minWidth: 300 }} >
-                <h3><i>2019</i> Victoria University of Wellington</h3>
+                <h3>Victoria University of Wellington <i style={{ fontSize: 14, display: 'block' }}>2019</i></h3>
                 <h4>
                     Bachelor of Design Innovation (Media Design)
                 </h4>
@@ -129,7 +107,7 @@ export const Skills: React.FC = () =>
                 <a href='https://edt.nz/transcript.pdf'>Download Transcript</a> <br />
             </div>
             <div style={{ width: '40%', minWidth: 300 }} >
-                <h3><i>2016</i> Canterbury University</h3>
+                <h3>Canterbury University <i style={{ fontSize: 14, display: 'block' }}>2016</i></h3>
                 <h4>
                     Bachelor of Science (Incomplete) (Computer Science)
                 </h4>

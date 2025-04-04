@@ -105,7 +105,7 @@ export const Main: React.FC = () => {
             <Expandable expanded={showContent}>
                 <div ref={contentRef} className={styles.content}>
                     <div className="not-print" style={{ margin: '32px 24px', padding: '32px 0' }}>{selectedPage?.page}</div>
-                    <div className="print-only" style={{ margin: '32px 24px' }}>{selectedPage?.page}</div>
+                    <div className="print-only" style={{ margin: '32px 24px', marginBottom: 0 }}>{selectedPage?.page}</div>
                 </div>
             </Expandable>
 
