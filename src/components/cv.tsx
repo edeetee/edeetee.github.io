@@ -3,7 +3,7 @@ import { Separator } from 'src/lib/separator'
 export const Skills: React.FC = () =>
     <>
 
-        <a style={{ textAlign: 'end', display: 'block' }} className='not-print' href='cv.pdf'>Download this page</a>
+        <a style={{ textAlign: 'end', display: 'block' }} className='not-print' href='cv.pdf'>Download PDF</a>
 
         <h1>Skills</h1>
 
@@ -93,7 +93,6 @@ export const Skills: React.FC = () =>
 
         <h1>Education</h1>
 
-
         <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around' }}>
             <div style={{ width: '40%', minWidth: 300 }} >
                 <h3>Victoria University of Wellington <i style={{ fontSize: 14, display: 'block' }}>2019</i></h3>
@@ -107,7 +106,7 @@ export const Skills: React.FC = () =>
                 <a href='https://edt.nz/transcript.pdf'>Download Transcript</a> <br />
             </div>
             <div style={{ width: '40%', minWidth: 300 }} >
-                <h3>Canterbury University <i style={{ fontSize: 14, display: 'block' }}>2016</i></h3>
+                <h3>Canterbury University <i style={{ fontSize: 14, display: 'block' }}>2014 - 2016</i></h3>
                 <h4>
                     Bachelor of Science (Incomplete) (Computer Science)
                 </h4>
@@ -115,7 +114,6 @@ export const Skills: React.FC = () =>
                 Dropped out second year to pursue applied skills
             </div>
         </div>
-
 
         {/* <h3>Rendering & Interaction</h3>
         As shown in my visual work, I love leveraging the potential of technology to create art that reacts to its environment.
