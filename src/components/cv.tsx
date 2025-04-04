@@ -22,7 +22,7 @@ export const Skills: React.FC = () =>
                 <h3>Team management</h3>
                 <ul style={{ paddingLeft: 16 }}>
                     <li>Leading multiple projects</li>
-                    <li>Balancing priorites between clients, developers, deadlines and quality</li>
+                    <li>Balancing priorities between clients, developers, deadlines and quality</li>
                     <li>Knowing when to present a learning opportunity and when to step in</li>
                 </ul>
             </div>
@@ -74,7 +74,7 @@ export const Skills: React.FC = () =>
                 </ul>
             </div>
             <div style={{ width: '30%', minWidth: 200 }} >
-                <h3>Savesign<i style={{ fontSize: 12, display: 'block' }}>Nov 2017 - Dev 2019</i></h3>
+                <h3>Savesign<i style={{ fontSize: 12, display: 'block' }}>Nov 2017 - Dec 2019</i></h3>
                 Display software for Raspberry Pi
                 <ul>
                     <li>Java</li>
