@@ -1,3 +1,6 @@
+
+"use client";
+
 import React, { useEffect, useRef, useState } from "react";
 import { About } from "@components/css/about";
 import { Skills as CV } from "@components/cv";
@@ -11,6 +14,7 @@ import { History } from "@components/history";
 import { ContentExpander } from "@components/contentExpander";
 import { AnimatedMe } from "@components/animated_me";
 import { Expandable } from "@src/lib/expandable";
+import { usePathname } from 'next/navigation'
 
 interface PageInfo {
     page: JSX.Element,
@@ -28,20 +32,22 @@ const pageOptions: PageInfo[] = [
     return { url: `/${info.name}`, ...info }
 })
 
+
 export const Main: React.FC = () => {
-    const [selectedPage, selectPage] = useState<PageInfo | null>(null)
+    const initial_page = pageOptions.find(info => info.url == usePathname())
+
+    const [selectedPage, selectPage] = useState<PageInfo | null>(initial_page || null)
     const [showExtra, setShowExtra] = useState(false);
 
     const contentRef = useRef<HTMLDivElement>(null)
+    const [initialRenderComplete, setInitialRenderComplete] = React.useState(false);
 
-    //load page from history on first load
+    // load page from history on first load
     useEffect(() => {
-        if (window.history.state != null) {
-            const new_page = pageOptions.find(info => info.url == window.history.state.as)
-            if (new_page != null) {
-                selectPage(new_page)
-            }
+        if (initial_page != null) {
+            selectPage(initial_page)
         }
+        setInitialRenderComplete(true);
     }, []);
 
     //copy state to history on page change
@@ -49,8 +55,11 @@ export const Main: React.FC = () => {
         window.history.pushState({}, "", selectedPage?.url ?? "/");
     }, [selectedPage]);
 
-    const showContent = selectedPage != null;
+    // if (!initialRenderComplete) {
+    //     return null;
+    // }
 
+    const showContent = selectedPage != null;
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', alignItems: 'stretch' }} >
@@ -71,17 +80,19 @@ export const Main: React.FC = () => {
                 <img src="images/profile.jpg" width={180} height={180} style={{ marginRight: 8, marginTop: 16 }} />
             </div>
 
-            <div className="nav" role="navigation"><PageSelector<PageInfo>
+
+            {!initialRenderComplete ? null : <div className="nav" role="navigation"><PageSelector<PageInfo>
                 options={pageOptions}
                 selected={selectedPage}
                 onSelected={(el) => {
                     selectPage(el == selectedPage ? null : el);
                 }}
             />
-            </div>
+            </div>}
 
             <div className="expandingHome" style={{ margin: 'auto' }}>
-                <Expandable expanded={!showContent}>
+
+                {!initialRenderComplete ? null : <Expandable expanded={!showContent}>
                     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
                         <ContentExpander expanded={showExtra} maxSize={64} onClick={() => setShowExtra(!showExtra)} />
                         <Expandable expanded={!showExtra} horizontal>
@@ -99,15 +110,17 @@ export const Main: React.FC = () => {
                             </Expandable>
                         </Expandable>
                     </div>
-                </Expandable>
+                </Expandable>}
             </div>
 
-            <Expandable expanded={showContent}>
+
+
+            {!initialRenderComplete ? null : <Expandable expanded={showContent}>
                 <div ref={contentRef} className={styles.content}>
                     <div className="not-print" style={{ margin: '32px 24px', padding: '32px 0' }}>{selectedPage?.page}</div>
                     <div className="print-only" style={{ margin: '32px 24px', marginBottom: 0 }}>{selectedPage?.page}</div>
                 </div>
-            </Expandable>
+            </Expandable>}
 
 
             <div className="footer" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
