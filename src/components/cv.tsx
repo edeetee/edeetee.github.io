@@ -15,6 +15,7 @@ export const Skills: React.FC = () =>
                     <li>Backend (AWS, Rust in lambda, Postgres)</li>
                     <li>Apps (Flutter, Android, iOS, Web)</li>
                     <li>Linux (systemd, nixos, Raspberry Pi)</li>
+                    <li>C#, Go, Dart, Javascript, Kotlin, Python</li>
                 </ul>
             </div>
 
@@ -22,6 +23,7 @@ export const Skills: React.FC = () =>
                 <h3>Team management</h3>
                 <ul style={{ paddingLeft: 16 }}>
                     <li>Leading multiple projects</li>
+                    <li>Issues & project management</li>
                     <li>Balancing priorities between clients, developers, deadlines and quality</li>
                     <li>Knowing when to present a learning opportunity and when to step in</li>
                 </ul>
@@ -42,52 +44,48 @@ export const Skills: React.FC = () =>
         <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around' }}>
             <div style={{ width: '30%', minWidth: 200 }} >
                 <h3>Smart Access<i style={{ fontSize: 12, display: 'block' }}>Mar 2023 - Today</i></h3>
-                Map app
-                <ul>
-                    <li>Geospatial data visualisation and processing</li>
-                    <li>Accessible flutter app</li>
-                    <li>Team management</li>
-                </ul>
+                <i>Accessibility mapping platform</i>
+                <li>Geospatial data visualisation and processing</li>
+                <li>Accessible flutter apps</li>
+                <li>Team management</li>
             </div>
+
             <div style={{ width: '30%', minWidth: 200 }} >
                 <h3>My Life My Voice<i style={{ fontSize: 12, display: 'block' }}>Feb 2023 - Today</i></h3>
-                Peer support communication app
-                <ul>
-                    <li>Flutter</li>
-                    <li>Accessible apps</li>
-                </ul>
+                <i>Peer support communication platform</i>
+                <li>Live connection flutter app</li>
+                <li>Accessible apps</li>
             </div>
+
             <div style={{ width: '30%', minWidth: 200 }} >
                 <h3>TASKA Prosthetics<i style={{ fontSize: 12, display: 'block' }}>Nov 2019 - Nov 2020</i></h3>
-                Mobile Developer for hand management app
-                <ul>
-                    <li>Working in a larger team</li>
-                    <li>Multi platform development</li>
-                </ul>
+                <i>Mobile Developer for hand management app</i>
+                <li>Integrating with a larger team</li>
+                <li>Multi platform development</li>
+                <li>Legacy software migration</li>
             </div>
+
             <div style={{ width: '30%', minWidth: 200 }} >
                 <h3>Victoria University<i style={{ fontSize: 12, display: 'block' }}>Nov 2018 - Oct 2019</i></h3>
-                Alexa App and Class Tutor
-                <ul>
-                    <li>Developing for differently abled people</li>
-                    <li>Teaching</li>
-                </ul>
+                <i>Alexa App and Class Tutor</i>
+                <li>Accessibility technology</li>
+                <li>Alternate UX systems</li>
+                <li>Supportive teaching</li>
             </div>
+
             <div style={{ width: '30%', minWidth: 200 }} >
                 <h3>Savesign<i style={{ fontSize: 12, display: 'block' }}>Nov 2017 - Dec 2019</i></h3>
-                Display software for Raspberry Pi
-                <ul>
-                    <li>Java</li>
-                    <li>Linux Configuration</li>
-                </ul>
+                <i>Display CMS for Raspberry Pi</i>
+                <li>Java</li>
+                <li>Linux Configuration</li>
             </div>
+
             <div style={{ width: '30%', minWidth: 200 }} >
                 <h3>GeneralApps<i style={{ fontSize: 12, display: 'block' }}>Apr 2016 - Jan 2017</i></h3>
-                Android app development
-                <ul>
-                    <li>Client negotiation</li>
-                    <li>App development</li>
-                </ul>
+                <i>Android app development</i>
+                <li>Client negotiation</li>
+                <li>App development</li>
+                <li>Live audio programming</li>
             </div>
         </div>
 
@@ -99,10 +97,8 @@ export const Skills: React.FC = () =>
                 <h4>
                     Bachelor of Design Innovation (Media Design)
                 </h4>
-                <ul>
-                    <li>Deans Award</li>
-                    <li>7.32 GPA</li>
-                </ul>
+                <li>Deans Award</li>
+                <li>7.32 GPA</li>
                 <a href='https://edt.nz/transcript.pdf'>Download Transcript</a> <br />
             </div>
             <div style={{ width: '40%', minWidth: 300 }} >
