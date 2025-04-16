@@ -47,10 +47,10 @@ Initially, the app was a clone of the android app allowing the user to view the 
 work on more ambitious features. We wanted to be able to remotely update the map data, so we built a
 backend in AWS using PostGIS and a Rust web server in lambda to serve requests to our frontends.
 
-We next implemented an experimental **Navigation System**, merging our data with 
-[Open Streep Maps](https://www.openstreetmap.org/about) using Python GeoPandas and NetworkX to 
+We next implemented an experimental Navigation System, merging our data with 
+Open Streep Maps using Python GeoPandas and NetworkX to 
 produce a sidewalk graph. This graph is imported to Postgres in our backend and routing is calculated 
-using [pgRouting](https://pgrouting.org/). 
+using pgRouting and a patented algorithm for custom weighting.
 
 #### Tagging/Annotation app 
 We see the future of mapping data including automation, so we built an internal app for 
@@ -68,7 +68,7 @@ The Smart Access platform is now flowing as a pipeline of data from users and cl
 people with disabilities in the map app, 
 with data annotation and intelligence in the backend.
 
-## My Life My Voice([Web](https://app.mylifemyvoice.org.nz)) <span style={{ fontSize: 12, display: 'block' }}>Lead Developer | Feb 2023 - Today</span>
+## My Life My Voice ([Web](https://app.mylifemyvoice.org.nz)) <span style={{ fontSize: 12, display: 'block' }}>Lead Developer | Feb 2023 - Today</span>
 
 With My Life My Voice I have been working on a peer support platform for people with disabilities.
 The organization had an existing process of emails and phone calls but wanted to build an automated platform
@@ -92,9 +92,6 @@ clear documentation or support from the original developers.
 
 I also built interfaces into the webview on both iOS and Android platforms with basic interfaces to view the live data
 on either platform from the hand.
-
-This was about when covid struck. Being young and anxious stuck at home without support, 
-I did not want to continue working on this project and left the role to travel and gain freedom after the lockdowns.
 
 # History
 
