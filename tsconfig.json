@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -17,32 +13,17 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "baseUrl": ".",
+    "baseUrl": "src",
     "paths": {
-      "@components/*": [
-        "src/components/*"
-      ],
-      "@components": [
-        "src/components"
-      ],
-      "@src": [
-        "src"
-      ],
-      "@src/*": [
-        "src/*"
-      ],
-      "@styles/*": [
-        "src/styles/*"
-      ],
-      "@styles": [
-        "src/styles"
-      ],
-      "@public/*": [
-        "public/*"
-      ],
-      "@public": [
-        "public"
-      ]
+      "@/*": ["*"],
+      "@components/*": ["src/components/*"],
+      "@components": ["src/components"],
+      "@src": ["src"],
+      "@src/*": ["src/*"],
+      "@styles/*": ["src/styles/*"],
+      "@styles": ["src/styles"],
+      "@public/*": ["public/*"],
+      "@public": ["public"]
     },
     "incremental": true,
     "plugins": [
@@ -55,9 +36,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "src/components/cv.mdx"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

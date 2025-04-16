@@ -1,0 +1,165 @@
+import React from 'react'
+import { Separator } from '../lib/separator'
+
+
+<a href="cv.pdf" className="not-print" style={{textAlign:'end',display:'block'}}>Download PDF</a>
+
+# Skills
+
+<div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around' }}>
+    <div style={{ width: '30%', minWidth: 200 }} >
+        ### Software Development
+        - Backend (AWS, Rust in lambda, Postgres)
+        - Apps (Flutter, Android, iOS, Web)
+        - Linux (systemd, nixos, Raspberry Pi)
+        - C#, Go, Dart, Javascript, Kotlin, Python
+    </div>
+
+    <div style={{ width: '30%', minWidth: 200 }} >
+        ### Team management
+        - Leading multiple projects
+        - Issues & project management
+        - Balancing priorities between clients, developers, deadlines and quality
+        - Knowing when to present a learning opportunity and when to step in
+    </div>
+
+    <div style={{ width: '30%', minWidth: 200 }} >
+        ### Rendering & Interaction
+        - 3D Materials, Modelling & Maths
+        - Live data & interaction
+        - Projection hardware experience
+        - Passion for experimental techniques
+    </div>
+</div>
+
+# Recent Experience
+
+## Smart Access<span style={{ fontSize: 12, display: 'block' }}>Lead Developer | Mar 2023 - Today</span>
+
+I joined Smart Access at the start of their software journey - they just had a prototype
+map app - a whitelabelled clone of an android map app. They have ownership over lots of Accessibility
+data with experience collecting it and wanted to build a platform to share it and grow.
+Together we have expanded the company in many directions, including the following projects:
+
+#### Smart Access Navigation ([Web](https://app.smartaccess.enterprises))
+We reimplemented the mapping app in flutter to be cross platform and allow a faster development cycle.
+Initially, the app was a clone of the android app allowing the user to view the accessibility data, but we soon got to 
+work on more ambitious features. We wanted to be able to remotely update the map data, so we built a
+backend in AWS using PostGIS and a Rust web server in lambda to serve requests to our frontends.
+
+We next implemented an experimental **Navigation System**, merging our data with 
+[Open Streep Maps](https://www.openstreetmap.org/about) using Python GeoPandas and NetworkX to 
+produce a sidewalk graph. This graph is imported to Postgres in our backend and routing is calculated 
+using [pgRouting](https://pgrouting.org/). 
+
+#### Tagging/Annotation app 
+We see the future of mapping data including automation, so we built an internal app for 
+building a dataset of geometrically annotated aerial imagery. New Zealand is lucky to have LINZ,
+which provides open source aerial imagery of the entire country.
+The app provides streamlined UX for different annotation workflows,
+including importing data from our other products.
+
+#### Access Quest ([Web](https://www.accessquest.com/))
+The latest venture has been to simplify data collection for our clients. We have built an app and hardware integration
+that speeds up and increases the accuracy of data collection.
+The app is a simple interface for collecting data with helpful UX and it integrates into the same backend.
+
+The Smart Access platform is now flowing as a pipeline of data from users and clients the field to
+people with disabilities in the map app, 
+with data annotation and intelligence in the backend.
+
+## My Life My Voice([Web](https://app.mylifemyvoice.org.nz)) <span style={{ fontSize: 12, display: 'block' }}>Lead Developer | Feb 2023 - Today</span>
+
+With My Life My Voice I have been working on a peer support platform for people with disabilities.
+The organization had an existing process of emails and phone calls but wanted to build an automated platform
+that could pair user with supporters.
+
+I used Stream Chat to handle the chat system and HasuraDB for the backend. I build custom authorization logic
+to securely pair users with supporters, allowing them to chat and share information.
+
+The apps key audience included people with disabilities including intellectual and sensory disabilities,
+so we had to be extra mindful with our UX. In my time digging deep into flutter's accessibility features, I
+contributed back to the project by clearly communicating issues I found with reproducible examples.
+
+## TASKA Prosthetics <span style={{ fontSize: 12, display: 'block' }}>Mobile Developer | Nov 2019 - Nov 2020</span>
+I joined TASKA as a mobile developer for their hand management app as a graduate developer.
+I contributed by prototyping options for expanding their app into multiple platforms, including iOS.
+Their hand communication system was written in Javascript and run inside a webview.
+
+I experimented with a Kotlin KMP library to communicate with the hand directly, allowing us to build a native app.
+This ended up being a dead end as there was too much technical debt in the existing javascript library without
+clear documentation or support from the original developers.
+
+I also built interfaces into the webview on both iOS and Android platforms with basic interfaces to view the live data
+on either platform from the hand.
+
+This was about when covid struck. Being young and anxious stuck at home without support, 
+I did not want to continue working on this project and left the role to travel and gain freedom after the lockdowns.
+
+# History
+
+<div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around' }}>
+    {/* <div style={{ width: '30%', minWidth: 200 }} >
+        ### Smart Access <span style={{ fontSize: 12, display: 'block' }}>Mar 2023 - Today</span>
+        _Accessibility mapping platform_
+        - Geospatial data visualisation and processing
+        - Accessible flutter apps
+        - Team management
+    </div> */}
+
+    {/* <div style={{ width: '30%', minWidth: 200 }} >
+        ### My Life My Voice <span style={{ fontSize: 12, display: 'block' }}>Feb 2023 - Today</span>
+        _Peer support communication platform_
+        - Live connection flutter app
+        - Accessible apps
+    </div> */}
+
+    {/* <div style={{ width: '30%', minWidth: 200 }} >
+        ### TASKA Prosthetics <span style={{ fontSize: 12, display: 'block' }}>Nov 2019 - Nov 2020</span>
+        _Mobile Developer for hand management app_
+        - Integrating with a larger team
+        - Multi platform development
+        - Legacy software migration
+    </div> */}
+
+    <div style={{ width: '30%', minWidth: 200 }} >
+        ### Victoria University <span style={{ fontSize: 12, display: 'block' }}>Nov 2018 - Oct 2019</span>
+        _Alexa App and Class Tutor_
+        - Accessibility technology
+        - Alternate UX systems
+        - Supportive teaching
+    </div>
+
+    <div style={{ width: '30%', minWidth: 200 }} >
+        ### Savesign <span style={{ fontSize: 12, display: 'block' }}>Nov 2017 - Dec 2019</span>
+        _Display CMS for Raspberry Pi_
+        - Java
+        - Linux Configuration
+    </div>
+
+    <div style={{ width: '30%', minWidth: 200 }} >
+        ### GeneralApps <span style={{ fontSize: 12, display: 'block' }}>Apr 2016 - Jan 2017</span>
+        _Android app development_
+        - Client negotiation
+        - App development
+        - Live audio programming
+    </div>
+</div>
+
+# Education
+
+<div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around' }}>
+    <div style={{ width: '40%', minWidth: 300 }} >
+        ### Victoria University of Wellington <span style={{ fontSize: 14, display: 'block' }}>2017 - 2019</span>
+        #### Bachelor of Design Innovation (Media Design)
+        - Deans Award
+        - 7.32 GPA
+        [Download Transcript](https://edt.nz/transcript.pdf)  
+    </div>
+    <div style={{ width: '40%', minWidth: 300 }} >
+        ### Canterbury University <span style={{ fontSize: 14, display: 'block' }}>2014 - 2016</span>
+        #### Bachelor of Science (Computer Science) [Incomplete]
+        First year completed with average of A-  
+        Dropped out second year to pursue applied skills
+    </div>
+</div>

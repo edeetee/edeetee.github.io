@@ -1,5 +1,6 @@
 const optimizedImages = require('next-optimized-images');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const createMdx = require('@next/mdx');
 
 const nextConfig = {
   webpack: (config) => {
@@ -47,16 +48,14 @@ const nextConfig = {
   // },
 }
 
-// module.exports = withPlugins([
-//   // [optimizedImages, {}]
-//   new BundleAnalyzerPlugin({
-//     analyzerMode: 'server',
-//     analyzerPort: 8989,
-//     openAnalyzer: true,
-//   })
-// ], nextConfig);
+const withMDX = require('@next/mdx')({
+  extension: /\.mdx?$/,
+  options: {
+    // You can add MDX options here
+  }
+});
 
-module.exports = (_phase, { defaultConfig }) => {
-  const plugins = [/* ... */]
-  return plugins.reduce((acc, plugin) => plugin(acc), { ...nextConfig })
-}
+module.exports = withMDX({
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
+  ...nextConfig,
+});

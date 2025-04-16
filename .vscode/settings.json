@@ -1,8 +1,13 @@
 {
-    "files.exclude": {
-        "**/node_modules": true
-    },
-    "cSpell.words": [
-        "REGL"
-    ]
+  "files.exclude": {
+    "**/node_modules": true
+  },
+  "cSpell.words": ["REGL"],
+  "spellright.language": ["en"],
+  "spellright.documentTypes": ["markdown", "latex", "plaintext", "mdx"],
+  "spellright.parserByClass": {
+    "mdx": {
+      "parser": "markdown"
+    }
+  }
 }
