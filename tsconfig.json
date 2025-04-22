@@ -13,9 +13,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "baseUrl": "src",
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["*"],
+      "@markdown/*": ["src/markdown/*"],
       "@components/*": ["src/components/*"],
       "@components": ["src/components"],
       "@src": ["src"],

@@ -3,7 +3,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { About } from "@components/css/about";
-import CV from "@/markdown/cv.mdx";
+import CV from "@markdown/cv.mdx";
 import { Links } from "@components/links";
 import { PageSelector } from "../pageSelector";
 import { Creative } from "@components/creative";
