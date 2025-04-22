@@ -23,7 +23,6 @@ vec2 snoise32(vec3 pos){
 }
 
 void main () {
-    
     vec2 mouseDist = (uv-mousePos)*aspect;
     float mouseLength = length(mouseDist);
     float mouseStrength = pow(max(1.0-mouseLength*1.0, 0.0), 5.0);
@@ -55,10 +54,10 @@ void main () {
         textureColor = blur(texture, textureUV, res, normalize(textureOffset)*max(0.3, min(1.0, length(textureOffset))));
 
     vec2 outUv = textureColor.xy;
-    outUv += pow(snoise32(vec3(uv*res*0.31232+vec2(1234.1232), t*10.323)), vec2(8.0))
-        *0.3
-        *speed
-        *(1.0+1.0*pow(snoise3(vec3(aspectUv*0.8312, t*0.2581232)), 2.0) + pow(mouseStrength, 100.0)*1.5);
+    outUv += pow(snoise32(vec3(uv*res*0.31232+vec2(1234.1232), t*5.323)), vec2(4.0))
+        *0.07
+        *speed;
+        // *(1.0+1.0*pow(snoise3(vec3(aspectUv*0.8312, t*0.2581232)), 2.0) + pow(mouseStrength, 100.0)*1.5);
 
     //alpha starts at 0
     outUv = mix(uv, outUv, (1.0-0.02*speed)*textureColor.a);

@@ -33,9 +33,12 @@
     justify-self: "center";
     flex-grow: 1;
     flex-shrink: 1;
-    /* padding: 5vh 5vw 5vh 5vw; */
     margin: 0 auto;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(3px);
+    box-sizing: border-box;
+    margin-top: 32px;
+    padding: 32px 48px;
 }
 
 .separator {
@@ -44,6 +47,10 @@
 }
 
 @media screen and (min-width: 1200px) {
+    .content {
+        padding: 64px 96px;
+    }
+
     .responsiveDoubleCol {
         flex-direction: row;
     }

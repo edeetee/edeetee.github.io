@@ -15,6 +15,7 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
+      "@/*": ["src/*"],
       "@markdown/*": ["src/markdown/*"],
       "@components/*": ["src/components/*"],
       "@components": ["src/components"],
