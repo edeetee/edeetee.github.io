@@ -38,6 +38,7 @@ export const Main: React.FC = () => {
 
     const [selectedPage, selectPage] = useState<PageInfo | null>(initial_page || null)
     const [showExtra, setShowExtra] = useState(false);
+    const lastSelectedPage = useRef(selectedPage);
 
     const contentRef = useRef<HTMLDivElement>(null)
     const [initialRenderComplete, setInitialRenderComplete] = React.useState(false);
@@ -52,6 +53,10 @@ export const Main: React.FC = () => {
 
     //copy state to history on page change
     useEffect(() => {
+        if (selectedPage != null) {
+            lastSelectedPage.current = selectedPage;
+        }
+
         window.history.pushState({}, "", selectedPage?.url ?? "/");
     }, [selectedPage]);
 
@@ -129,7 +134,7 @@ export const Main: React.FC = () => {
 
             {!initialRenderComplete ? null : <Expandable expanded={showContent}>
                 <div ref={contentRef} className={styles.content}>
-                    <div className="not-print">{selectedPage?.page}</div>
+                    <div className="not-print">{selectedPage?.page ?? lastSelectedPage?.current?.page}</div>
                     <div className="print-only">{selectedPage?.page}</div>
                 </div>
             </Expandable>}
