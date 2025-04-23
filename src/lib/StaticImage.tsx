@@ -33,5 +33,5 @@ export const Image = ({ src, disableLink }: ImageProps) => {
 
 export function BareImage({ src, style }: { src: StaticImageData, style?: CSSProperties }) {
     return <NextImage alt='' src={src}
-        style={{ objectFit: 'cover', width: '100%', height: '100%', ...style }} fill={false} sizes='50vw' />;
+        style={{ objectFit: 'cover', width: '100%', height: '100%', ...style }} loading='lazy' fill={false} sizes='50vw' />;
 }

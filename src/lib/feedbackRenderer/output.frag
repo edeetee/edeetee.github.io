@@ -15,7 +15,7 @@ void main () {
     vec4 textureColor = texture2D(texture, uv);
 
     vec2 feedbackDiff = textureColor.rg-uv;
-    float feedbackLength = length(feedbackDiff)*3.0;
+    float feedbackLength = length(feedbackDiff)*3.3;
     // float feedbackLength = textureColor.r;
     float edges = mod(feedbackLength, modPeriod)/modPeriod;
 

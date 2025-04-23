@@ -64,12 +64,24 @@ export const Main: React.FC = () => {
     return (
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', alignItems: 'stretch' }} >
             {/* <About /> */}
+            <img
+                src="/images/bg.webp"
+                alt="" // Decorative image, empty alt is appropriate
+                className="print-only"
+                style={{
+                    // width: '100%',
+                    height: '8px',
+                    objectFit: 'cover',
+                    objectPosition: 'center 50%',
+                    marginBottom: '1em',
+                }}
+            />
 
             <h1 className="not-print" style={{ marginRight: 0, textAlign: 'right', margin: '5vh 5vw' }}>Edward Taylor</h1>
             <div className="print-only" style={{ display: 'flex', flexDirection: 'row', width: '100%', justifyContent: 'space-between', }} >
 
-                <div style={{ display: 'flex', flexDirection: 'column', alignSelf: 'start', marginLeft: 16 }} >
-                    <h1 style={{ marginRight: 0 }}>Edward Taylor</h1>
+                <div style={{ display: 'flex', flexDirection: 'column', alignSelf: 'start' }} >
+                    <h1 >Edward Taylor</h1>
                     <br />
                     <div >
                         0224998841<br />
@@ -77,7 +89,7 @@ export const Main: React.FC = () => {
                         www.edt.nz
                     </div>
                 </div>
-                <img src="images/profile.jpg" width={180} height={180} style={{ marginRight: 8, marginTop: 16 }} />
+                <img src="images/profile.jpg" width={180} height={180} />
             </div>
 
 

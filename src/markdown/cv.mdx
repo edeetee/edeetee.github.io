@@ -4,10 +4,18 @@ import { Separator } from '../lib/separator'
 
 <a href="cv.pdf" className="not-print" style={{textAlign:'end',display:'block'}}>Download PDF</a>
 
+I'm a full-stack lead engineer who brings clarity to complex, ambiguous problems by delivering 
+robust systems that just work. From high performance backends and geospatial data pipelines to 
+cross-platform apps and empathetic UX, I operate across the stack within my deadlines.
+I thrive in fast-moving environments where wearing multiple hats — architecting, 
+scoping, coding, managing, or prototyping — is part of getting great products shipped.
+
+<br/>
+
 # Skills
 
 <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around', justifyContent: 'start' }}>
-    <div style={{ width: '30%', minWidth: 200 }} >
+    <div style={{ width: '30%', minWidth: 200, marginRight: 8 }} >
         ### Software
         - Backend (AWS, Rust in lambda, Postgres)
         - Apps (Flutter, Android, iOS, Web)
@@ -15,21 +23,21 @@ import { Separator } from '../lib/separator'
         - C#, Go, Dart, Javascript, Kotlin, Python
     </div>
 
-    <div style={{ width: '30%', minWidth: 200 }} >
+    <div style={{ width: '30%', minWidth: 200, marginRight: 8 }} >
         ### Teams
         - Leading multiple projects
-        - Coordinating stakeholder needs while maintaining development quality
-        - Scoping projects and managing backlog
-        - Balancing learning opportunities with deadlines
+        - Translated stakeholder needs into technical solutions
+        - Crafted clear project scopes and managed backlogs
+        - Created growth opportunities while meeting deadlines
     </div>
 
-    <div style={{ width: '30%', minWidth: 200 }} >
+    <div style={{ width: '30%', minWidth: 200, marginRight: 8, marginRight: 8 }} >
         ### Product
-        - Github Actions CI/CD
-        - Passion for DX & Tooling
-        - Mobile app store management
-        - Budget and time estimation
-        - AI Prototyping
+        - Implemented robust CI/CD with Github Actions
+        - Driven improvements in DX & Tooling
+        - Managed multiple app store deployments
+        - Delivered accurate budget and time estimations
+        - Pioneered AI prototyping solutions
     </div>
 </div>
 
@@ -37,67 +45,80 @@ import { Separator } from '../lib/separator'
 
 ## Smart Access<span style={{ fontSize: 12, display: 'block' }}>Lead Developer | Mar 2023 - Today</span>
 
-I joined Smart Access at the start of their software journey - they initially had only a prototype
-map application based on a white-labeled Android platform. The company possessed valuable accessibility
-data from years of collection efforts and sought to build a comprehensive platform to leverage and expand this data.
-Together we have expanded the company in many directions, including the following projects:
+At Smart Access, I spearheaded the transformation from a white-label prototype to a production-grade cross-platform mapping system, 
+architecting a scalable backend with Rust and AWS while delivering modern UI solutions through Flutter. 
+The company had accumulated valuable accessibility data over years of collection, and I designed a comprehensive platform to 
+maximize and expand this data asset.
+Under my leadership, we successfully expanded the company across multiple strategic directions:
 
 #### Smart Access Navigation ([Web](https://app.smartaccess.enterprises))
-We reimplemented the mapping app in flutter to be cross platform and allow a faster development cycle.
-Initially, the app was a clone of the android app allowing the user to view the accessibility data, but we soon got to 
-work on more ambitious features. We wanted to be able to remotely update the map data, so we built a
-backend in AWS using PostGIS and a Rust web server in lambda to serve requests to our frontends.
+I drove the reimplementation of the mapping app in Flutter to enable cross-platform compatibility and accelerate the development cycle.
+Starting with a functional clone of the Android app for accessibility data visualization, I quickly expanded it to incorporate ambitious features.
+To enable remote map data updates, I engineered a backend in AWS utilizing PostGIS and a Rust web server in lambda to efficiently serve requests to our frontends.
 
-We next implemented an experimental Navigation System, merging our data with 
-Open Streep Maps using Python GeoPandas and NetworkX to 
-produce a sidewalk graph. This graph is imported to Postgres in our backend and routing is calculated 
-using pgRouting and a patented algorithm for custom weighting.
+Working closely with the founder to define strategic direction, I designed and implemented an experimental Navigation System, successfully integrating our proprietary data with 
+Open Street Maps through Python GeoPandas and NetworkX to 
+create a comprehensive sidewalk graph. This graph is imported to our Postgres backend where routing is calculated 
+using pgRouting alongside a patented algorithm I implemented for custom weighting.
+
+In the front end, we integrated experimental computer vision tools to assist blind users with 
+seeing their world, built in to our app.
 
 #### Tagging/Annotation app 
-We see the future of mapping data including automation, so we built an internal app for 
-building a dataset of geometrically annotated aerial imagery. New Zealand is lucky to have LINZ,
-which provides open source aerial imagery of the entire country.
-The app provides streamlined UX for different annotation workflows,
-including importing data from our other products.
+In collaboration with the founder, we identified automation as key to the future of mapping data. Based on this vision, I created an internal app for 
+building a dataset of geometrically annotated aerial imagery, leveraging New Zealand's LINZ open-source aerial imagery resources.
+I designed a streamlined UX for various annotation workflows, incorporating powerful data import capabilities from our other products.
+I carefully designed the app internals to allow other developers to contribute.
 
 #### Access Quest ([Web](https://www.accessquest.com/))
-The latest venture has been to simplify data collection for our clients. We have built an app and hardware integration
-that speeds up and increases the accuracy of data collection.
-The app is a simple interface for collecting data with helpful UX and it integrates into the same backend.
+Following strategic discussions with the founder, I executed our latest venture to accelerate data collection by developing an app with hardware integration
+that dramatically improves both speed and accuracy of field data collection.
+I created an intuitive interface with optimized UX that seamlessly integrates with our unified backend infrastructure.
 
-I learnt a lot of advanced techniques while working with Smart Access - workflows for local database testing, 
-shared flutter libraries between apps, automatic deployment and more recently, prototyping
-features with AI tools.
+I mastered advanced techniques while working with Smart Access - implementing workflows for local database testing, 
+developing shared flutter libraries between apps, establishing automatic deployment pipelines, and more recently, pioneering
+feature prototyping with AI tools.
 
-The Smart Access platform is now flowing as a pipeline of data from users and clients the field to
-people with disabilities in the map app with data annotation and intelligence in the backend.
+The Smart Access platform now operates as a comprehensive data pipeline, efficiently moving information from users and clients in the field to
+people with disabilities through the map app, with sophisticated data annotation and intelligence in the backend.
 <br/>
 
 ## My Life My Voice ([Web](https://app.mylifemyvoice.org.nz)) <span style={{ fontSize: 12, display: 'block' }}>Lead Developer | Feb 2023 - Today</span>
 
-With My Life My Voice I have been working on a peer support platform for people with disabilities.
-The organization had an existing process of emails and phone calls but wanted to build an automated platform
-that could pair user with supporters.
+At My Life My Voice, I architected and implemented a comprehensive peer support platform for people with disabilities.
+I transformed their manual process of emails and phone calls into a streamlined digital platform that
+automatically pairs users with appropriate supporters.
 
-I used Stream Chat to handle the chat system and HasuraDB for the backend. I build custom authorization logic
-to securely pair users with supporters, allowing them to chat and share information.
+I engineered a secure real-time communication infrastructure using Stream Chat and designed a robust backend with HasuraDB. 
+I developed custom authorization logic to ensure secure and appropriate pairing between users and supporters,
+enabling confidential information sharing and communication.
 
-The apps key audience included people with disabilities including intellectual and sensory disabilities,
-so we had to be extra mindful with our UX. In my time digging deep into flutter's accessibility features, I
-contributed back to the project by clearly communicating issues I found with reproducible examples.
+Recognizing that the platform's primary users include people with diverse disabilities (intellectual, sensory, and physical),
+I prioritized exceptional accessibility in every aspect of the design. I conducted deep research into Flutter's accessibility 
+capabilities, identifying limitations and creating innovative workarounds. My commitment to inclusive design extended beyond 
+the project itself, as I contributed back to the Flutter community by documenting issues with detailed reproducible examples,
+helping improve the framework's accessibility features for all developers.
+
+<div style={{breakAfter:'page'}} />
 
 <br/>
 ## TASKA Prosthetics <span style={{ fontSize: 12, display: 'block' }}>Mobile Developer | Nov 2019 - Nov 2020</span>
-I joined TASKA as a graduate mobile developer for their hand management app.
-I contributed by prototyping options for expanding their app into multiple platforms, including iOS.
-Their hand communication system was written in Javascript and run inside a webview.
+At TASKA Prosthetics, I drove mobile innovation for their advanced prosthetic hand management application.
+I lead exploration of multi-platform strategies, developing prototypes that demonstrated viable paths
+to expand their Android-only solution to iOS and other platforms.
 
-I experimented with a Kotlin KMP library to communicate with the hand directly, allowing us to build a native app.
-This ended up being a dead end as there was too much technical debt in the existing javascript library without
-clear documentation or support from the original developers.
+I identified that their existing hand communication system, implemented in JavaScript within a webview,
+presented significant limitations for future development. Taking initiative, I designed and prototyped a 
+Kotlin KMP (Kotlin Multiplatform) library to enable direct communication with the prosthetic hardware,
+which would allow for truly native app development across platforms.
 
-I also built interfaces into the webview on both iOS and Android platforms to view the live hand data
-on either platform from the hand.
+Though technical debt in the existing codebase ultimately prevented full implementation of this approach,
+my analysis provided valuable strategic insights for the company's technology roadmap. Meanwhile,
+I successfully engineered cross-platform webview interfaces for both iOS and Android that enabled
+real-time visualization of prosthetic hand data, significantly improving the user experience for
+both platforms while working within existing constraints.
+
+<br/>
 
 # History
 
@@ -125,22 +146,23 @@ on either platform from the hand.
         - Legacy software migration
     </div> */}
 
-    <div style={{ width: '30%', minWidth: 200 }} >
+    <div style={{ width: '30%', minWidth: 200, marginRight: 8 }} >
         ### Victoria University <span style={{ fontSize: 12, display: 'block' }}>Nov 2018 - Oct 2019</span>
         _Alexa App and Class Tutor_
-        - Accessibility technology
-        - Alternate UX systems
-        - Supportive teaching
+        - Developed accessible voice interfaces
+        - Designed alternative interaction models
+        - Mentored students in technical skills
     </div>
 
-    <div style={{ width: '30%', minWidth: 200 }} >
+    <div style={{ width: '30%', minWidth: 200, marginRight: 8 }} >
         ### Savesign <span style={{ fontSize: 12, display: 'block' }}>Nov 2017 - Dec 2019</span>
         _Display CMS for Raspberry Pi_
-        - Java
-        - Linux Configuration
+        - Built robust Java applications
+        - Configured Linux systems for reliability
+        - Developed embedded display solutions
     </div>
 
-    <div style={{ width: '30%', minWidth: 200 }} >
+    <div style={{ width: '30%', minWidth: 200, marginRight: 8 }} >
         ### GeneralApps <span style={{ fontSize: 12, display: 'block' }}>Apr 2016 - Jan 2017</span>
         _Android app development_
         - Client negotiation
@@ -149,6 +171,7 @@ on either platform from the hand.
     </div>
 </div>
 
+<br/>
 # Education
 
 <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around', justifyContent: 'start' }}>

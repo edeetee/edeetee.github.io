@@ -26,6 +26,10 @@ p div {
     line-height: 1.4em;
 }
 
+ul {
+    padding-left: 16px;
+}
+
 li {
     margin: 8px 0;
 }
@@ -170,6 +174,7 @@ h4 {
     body {
         font-size: 14px !important;
         color: black !important;
+        margin: 0 32px;
     }
 
     html {
