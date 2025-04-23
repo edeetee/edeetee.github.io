@@ -151,9 +151,8 @@ export const CanvasRenderer = ({ buildRenderer, ...props }: CanvasRendererProps)
     const posStyle: CSSProperties = {
         position: "fixed",
         width: "100%",
-        height: "100%",
-        left: 0,
-        top: 0,
+        height: "calc(100% + 32px)",
+        marginTop: -16,
         zIndex: -1,
     };
 
