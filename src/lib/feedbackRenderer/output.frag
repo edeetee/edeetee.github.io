@@ -22,7 +22,7 @@ void main () {
     vec3 hsv = vec3(pow(edges, 0.5)+t*0.01, 0.4, 1);
 
     vec3 color = hsv2rgb(hsv);
-    float brightness = pow(feedbackLength, 9.0)*0.6;
+    float brightness = pow(feedbackLength, 5.0);
 
     gl_FragColor = vec4(color, 1)*brightness;
 }

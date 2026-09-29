@@ -24,8 +24,8 @@ vec2 snoise32(vec3 pos){
 
 void main () {
     vec2 mouseDist = (uv-mousePos)*aspect;
-    float mouseLength = length(mouseDist)*0.6;
-    float mouseStrength = pow(max(1.0-mouseLength*1.0, 0.0), 5.0);
+    float mouseLength = length(mouseDist)*1.0;
+    float mouseStrength = pow(max(1.0-mouseLength*1.0, 0.0), 4.0);
 
     vec2 aspectUv = uv*aspect;
 
@@ -33,7 +33,7 @@ void main () {
     vec2 rotatedMouseDist = rotate(mouseDist, rotation);
 
     vec2 mouseForceDir = normalize(rotatedMouseDist)* (pressed ? 5.0 : 3.0);
-    vec2 mouseUvOffset = (mouseForceDir+mouseVel*130.0)*mouseStrength*0.5;
+    vec2 mouseUvOffset = (mouseForceDir+mouseVel*130.0)*mouseStrength*0.3;
 
     vec2 centerness = rotate(uv-0.5, PI*hyperdrive*0.25);
     vec2 hyperdriveOffset = pow(max(1.0-length(centerness), 0.0), 0.5)*normalize(-centerness)*max(3.0, hyperdrive)*0.8;
@@ -54,13 +54,13 @@ void main () {
         textureColor = blur(texture, textureUV, res, normalize(textureOffset)*max(0.3, min(1.0, length(textureOffset))));
 
     vec2 outUv = textureColor.xy;
-    outUv += pow(snoise32(vec3(uv*res*0.31232+vec2(1234.1232), t*5.323)), vec2(4.0))
-        *0.07
+    outUv += pow(snoise32(vec3(uv*res*0.31232+vec2(1234.1232), t*8.323)), vec2(4.0))
+        *0.08
         *speed;
         // *(1.0+1.0*pow(snoise3(vec3(aspectUv*0.8312, t*0.2581232)), 2.0) + pow(mouseStrength, 100.0)*1.5);
 
     //alpha starts at 0
-    outUv = mix(uv, outUv, (1.0-0.02*speed)*textureColor.a);
+    outUv = mix(uv, outUv, (1.0-0.03*speed)*textureColor.a);
 
     gl_FragColor = vec4(outUv, 0, 1);
 }
