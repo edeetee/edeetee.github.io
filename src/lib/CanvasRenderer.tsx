@@ -158,10 +158,6 @@ export const CanvasRenderer = ({ buildRenderer, ...props }: CanvasRendererProps)
 
     return (
         <>
-            <Image className="bg" placeholder="blur" src={require("@public/images/bg.webp")} alt="" style={{
-                ...posStyle,
-                backgroundColor: 'black',
-            }} />
             <canvas
                 ref={canvasRef}
                 className="bg"
