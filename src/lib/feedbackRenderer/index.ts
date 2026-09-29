@@ -77,7 +77,7 @@ export const FeedbackRenderer: (regl: Regl) => {onFrame: FrameCallback, onPress:
         ],
         hyperdrive: () => lastTime - lastMousePress,
         // resized: () =>
-        speed: framePeriod / expectedFramePeriod,
+        speed: framePeriod / expectedFramePeriod * 0.8,
         t: ({ time }) => time + timestamp,
       },
       count: 3,

@@ -2,13 +2,11 @@ import React from 'react'
 import { Separator } from '../lib/separator'
 
 
-<a href="cv.pdf" className="not-print" style={{textAlign:'end',display:'block'}}>Download PDF</a>
+<a href="cv.pdf" className="not-print"  target="_blank" rel="noopener noreferrer" style={{textAlign:'end',display:'block'}}>Download PDF</a>
 
-I'm a full-stack lead engineer who brings clarity to complex, ambiguous problems by delivering 
-robust systems that just work. From high performance backends and geospatial data pipelines to 
-cross-platform apps and empathetic UX, I operate across the stack within my deadlines.
-I thrive in fast-moving environments where wearing multiple hats — architecting, 
-scoping, coding, managing, or prototyping — is part of getting great products shipped.
+I bring clarity to complex problems by clarifying ambiguous customer needs, aligning with business requirements and implementing with solid engineering fundamentals that simplify ongoing maintenance.
+
+I thrive in fast-moving environments where wearing multiple hats — architecting, scoping, exploring, managing, or ideating — is part of getting great products shipped.
 
 <br/>
 
@@ -21,104 +19,99 @@ scoping, coding, managing, or prototyping — is part of getting great products 
         - Apps (Flutter, Android, iOS, Web)
         - Linux (systemd, nixos, Raspberry Pi)
         - C#, Go, Dart, Javascript, Kotlin, Python
+        - React (vite, Redux, flutter, deck.gl)
     </div>
 
     <div style={{ width: '30%', minWidth: 200, marginRight: 8 }} >
-        ### Teams
-        - Leading multiple projects
-        - Translated stakeholder needs into technical solutions
-        - Crafted clear project scopes and managed backlogs
-        - Created growth opportunities while meeting deadlines
+        ### Engineering Process
+        - Balances multiple priorities and projects
+        - Translaates stakeholder needs into technical requirements
+        - Explores the future while developing the present and maintaining the past
+        - Upholds quality with SDLC, isolation, impact and risk analysis
     </div>
 
     <div style={{ width: '30%', minWidth: 200, marginRight: 8, marginRight: 8 }} >
         ### Product
-        - Implemented robust CI/CD with Github Actions
-        - Driven improvements in DX & Tooling
-        - Managed multiple app store deployments
-        - Delivered accurate budget and time estimations
-        - Pioneered AI prototyping solutions
+        - User interviewing and feedback collation
+        - Deep care and intuition for customer experience
+        - Passion for converting ambiguity into clarity through collaborative process
+        - Leveraging agents for tighter feedback loops
     </div>
 </div>
 
 # Recent Experience
 
-## Smart Access<span style={{ fontSize: 12, display: 'block' }}>Lead Developer | Mar 2023 - Today</span>
 
-At Smart Access, I spearheaded the transformation from a white-label prototype to a production-grade cross-platform mapping system, 
-architecting a scalable backend with Rust and AWS while delivering modern UI solutions through Flutter. 
-The company had accumulated valuable accessibility data over years of collection, and I designed a comprehensive platform to 
-maximize and expand this data asset.
+## Starboard Maritime Intelligence<span style={{ fontSize: 12, display: 'block' }}>Senior Software Engineer | June 2025 - Today</span>
+
+I was attracted to Starboard for their ability to leverage a large scale of large data volumes and funnel it into an intuitive UX. I expanded my capabilities in this role to step towards staff engineer responsibilities, championing the customer's experience, and aligning engineering efforts with the business and product needs.
+
+### Frontend owner
+Within a few months of joining, I took over as owner of the frontend when the outgoing maintainer departed. The hardest part of this role was pushing forwards with Typescript and linting improvements in a pre-typescript codebase that was stuck inside a Create-React-App template which had ballooned to 100s of components. My greatest achievements include initiating new standards, such as co-located feature folders, that could be iteratively adopted and moving development to vite to improve the dev experience.
+
+I explored the potential of using deck.gl and geospatial cloud formats to enable more performant and flexible experiences, without impacting the feature roadmap.
+
+### Agentic development
+I worked at Starboard during the AI takeoff of early 2026, and I've been deeply involved with tooling improvements and process/leadership discussions to ensure we leverage it best in our specific context. I believe that agentic development isn't something to be avoided and there is still deep meaningful work for humans to carry out both at a high architectural level, at maintaining a quality of code that results in great output and in shaping the agentic processes based on the business need.
+
+### Engineering process
+I worked alongside a Principal engineer to take their heavyweight SDLC process and roll out a lightweight version of it inside Fibery, which the Product and Engineering team now utilise.
+
+I initiated new PR review processes to reduce feedback time, and was consistently one of the most active reviewers and encouraged discussions around the organisation to reach consensus on issues that were apparent.
+Nominated for a company award for “When faced with uncertainty, he leans in, listens to people and searches for ways to have impact”.
+
+### Delivering value
+With the help of a strong team beside me and a knowledgeable PM, I lead the implementation of the Asset Catalog - a feature to allow Critial Maritime Industry (CMI) customers to visualise their maritime assets. I used standards such as [GeoJson](https://geojson.io/), [simplestyle](https://github.com/mapbox/simplestyle-spec) and [protobufs](https://protobuf.dev/) to improve usability, something I found lacking in the existing codebase. This Beta feature was quickly expanded to more customers, some outside the CMI domain as they wanted access to the underlying functionality.
+
+### Product Engineering
+I consider myself a mix between Product and Engineering. I care a lot about understanding the customer, their needs, our impact and how we can find a path to more value. I find the UX impact and alignment with the vision just as important as technical implementations. At Starboard, I aligned with the Product team's use of Fibery to explore the product. I helped by implementing changes inside Fibery to bring engineers closer to the Product team, encouraging discussions such as requirement gathering.
+
+I explored thin vertical feature slices for early feature ideation and produced overviews in Fibery which helped Product to understand, prioritise and estimate different changes. I believe agentic development makes this ideation output and product collaboration more valuable than ever.
+
+Customer experience and feedback is key to building any great product. I always seek the customer impact behind a change, even when reviewing PRs.
+
+## Smart Access<span style={{ fontSize: 12, display: 'block' }}>Lead Developer | Mar 2023 - 2026</span>
+
+At Smart Access, I lead the transformation from a white-label prototype to a production-grade cross-platform mapping system, architecting a scalable backend with Rust and AWS and a utilitarian interface in Flutter.
+The company had accumulated valuable accessibility data over years of collection, and I designed a comprehensive platform to maximize and expand this data asset.
+
 Under my leadership, we successfully expanded the company across multiple strategic directions:
 
 #### Smart Access Navigation ([Web](https://app.smartaccess.enterprises))
-I drove the reimplementation of the mapping app in Flutter to enable cross-platform compatibility and accelerate the development cycle.
-Starting with a functional clone of the Android app for accessibility data visualization, I quickly expanded it to incorporate ambitious features.
-To enable remote map data updates, I engineered a backend in AWS utilizing PostGIS and a Rust web server in lambda to efficiently serve requests to our frontends.
+I drove the reimplementation of the mapping app in Flutter to enable cross-platform compatibility and accelerate the development cycle. Starting with a functional clone of the Android app for accessibility data visualization, I quickly expanded it to incorporate ambitious features. To enable remote map data updates, I engineered a backend in AWS utilizing PostGIS and a Rust web server in lambda to efficiently serve requests to our frontends.
 
-Working closely with the founder to define strategic direction, I designed and implemented an experimental Navigation System, successfully integrating our proprietary data with 
-Open Street Maps through Python GeoPandas and NetworkX to 
-create a comprehensive sidewalk graph. This graph is imported to our Postgres backend where routing is calculated 
-using pgRouting alongside a patented algorithm I implemented for custom weighting.
+Working closely with the founder to define strategic direction, I designed and implemented an experimental Navigation System, successfully integrating our proprietary data with Open Street Maps through Python GeoPandas and NetworkX to create a comprehensive sidewalk graph. This graph is imported to our Postgres backend where routing is calculated using pgRouting alongside a patented algorithm I implemented for custom weighting.
 
-In the front end, we integrated experimental computer vision tools to assist blind users with 
-seeing their world, built in to our app.
+In the front end, we integrated experimental computer vision tools to assist blind users with seeing their world, built in to our app.
 
-#### Tagging/Annotation app 
-In collaboration with the founder, we identified automation as key to the future of mapping data. Based on this vision, I created an internal app for 
-building a dataset of geometrically annotated aerial imagery, leveraging New Zealand's LINZ open-source aerial imagery resources.
-I designed a streamlined UX for various annotation workflows, incorporating powerful data import capabilities from our other products.
-I carefully designed the app internals to allow other developers to contribute.
+#### Tagging/Annotation app
+We identified automation as key to the future of mapping data. Based on this vision, I created an internal app for building a dataset of geometrically annotated aerial imagery, leveraging New Zealand's LINZ open-source aerial imagery resources. I designed a streamlined UX for various annotation workflows, incorporating powerful data import capabilities from our other products.
 
 #### Access Quest ([Web](https://www.accessquest.com/))
-Following strategic discussions with the founder, I executed our latest venture to accelerate data collection by developing an app with hardware integration
-that dramatically improves both speed and accuracy of field data collection.
-I created an intuitive interface with optimized UX that seamlessly integrates with our unified backend infrastructure.
+The final product noted accelerates data collection through a hardware integrated app that dramatically improves both speed and accuracy of in-field data collection. I created an intuitive interface with optimized UX that seamlessly integrates with our unified backend infrastructure.
 
-I mastered advanced techniques while working with Smart Access - implementing workflows for local database testing, 
-developing shared flutter libraries between apps, establishing automatic deployment pipelines, and more recently, pioneering
-feature prototyping with AI tools.
 
-The Smart Access platform now operates as a comprehensive data pipeline, efficiently moving information from users and clients in the field to
-people with disabilities through the map app, with sophisticated data annotation and intelligence in the backend.
-<br/>
 
-## My Life My Voice ([Web](https://app.mylifemyvoice.org.nz)) <span style={{ fontSize: 12, display: 'block' }}>Lead Developer | Feb 2023 - Today</span>
+I mastered advanced techniques while working with Smart Access - implementing workflows for local database testing, developing shared flutter libraries between apps, establishing automatic deployment pipelines, and more recently, pioneering feature prototyping with AI tools.
+
+The Smart Access platform now operates as a comprehensive data pipeline, efficiently moving information from users and clients in the field to people with disabilities through the map app, with sophisticated data annotation and intelligence in the backend.
+
+## My Life My Voice ([Web](https://app.mylifemyvoice.org.nz)) <span style={{ fontSize: 12, display: 'block' }}>Lead Developer | Feb 2023 - 2025</span>
 
 At My Life My Voice, I architected and implemented a comprehensive peer support platform for people with disabilities.
-I transformed their manual process of emails and phone calls into a streamlined digital platform that
-automatically pairs users with appropriate supporters.
+I worked with team leaders to convert their manual process of emails and phone calls into a streamlined digital platform that automatically pairs users with appropriate supporters.
 
-I engineered a secure real-time communication infrastructure using Stream Chat and designed a robust backend with HasuraDB. 
-I developed custom authorization logic to ensure secure and appropriate pairing between users and supporters,
-enabling confidential information sharing and communication.
+I implemented real-time communication infrastructure using Stream Chat and a backend serving custom user profiles with an authentication layer to handle different user types. The user interface allowed
 
-Recognizing that the platform's primary users include people with diverse disabilities (intellectual, sensory, and physical),
-I prioritized exceptional accessibility in every aspect of the design. I conducted deep research into Flutter's accessibility 
-capabilities, identifying limitations and creating innovative workarounds. My commitment to inclusive design extended beyond 
-the project itself, as I contributed back to the Flutter community by documenting issues with detailed reproducible examples,
-helping improve the framework's accessibility features for all developers.
+Recognizing that the platform's primary users include people with diverse disabilities (intellectual, sensory, and physical), I prioritized exceptional accessibility in every aspect of the design. I conducted deep research into Flutter's accessibility capabilities, identifying limitations and creating innovative workarounds. My commitment to inclusive design extended beyond the project itself, as I contributed back to the open Flutter community.
 
-<div style={{breakAfter:'page'}} />
-
-<br/>
 ## TASKA Prosthetics <span style={{ fontSize: 12, display: 'block' }}>Mobile Developer | Nov 2019 - Nov 2020</span>
-At TASKA Prosthetics, I drove mobile innovation for their advanced prosthetic hand management application.
-I lead exploration of multi-platform strategies, developing prototypes that demonstrated viable paths
-to expand their Android-only solution to iOS and other platforms.
+This was my first graduate developer role out of my degree. I leant how to operate with a team in an existing brownfield codebase. I immediately got stuck into exploring multi-platform technologies that would help expand their Android-only solution to iOS and other platforms.
 
-I identified that their existing hand communication system, implemented in JavaScript within a webview,
-presented significant limitations for future development. Taking initiative, I designed and prototyped a 
-Kotlin KMP (Kotlin Multiplatform) library to enable direct communication with the prosthetic hardware,
-which would allow for truly native app development across platforms.
-
-Though technical debt in the existing codebase ultimately prevented full implementation of this approach,
-my analysis provided valuable strategic insights for the company's technology roadmap. Meanwhile,
+My analysis and prototypes with kotlin MVP provided valuable strategic insights for the company's technology roadmap. Meanwhile,
 I successfully engineered cross-platform webview interfaces for both iOS and Android that enabled
 real-time visualization of prosthetic hand data, significantly improving the user experience for
 both platforms while working within existing constraints.
-
-<br/>
 
 # History
 
@@ -180,12 +173,12 @@ both platforms while working within existing constraints.
         #### Bachelor of Design Innovation (Media Design)
         - Deans Award
         - 7.32 GPA
-        [Download Transcript](https://edt.nz/transcript.pdf)  
+        [Download Transcript](https://edt.nz/transcript.pdf)
     </div>
     <div style={{ width: '40%', minWidth: 300 }} >
         ### Canterbury University <span style={{ fontSize: 14, display: 'block' }}>2014 - 2016</span>
         #### Bachelor of Science (Computer Science) [Incomplete]
-        First year completed with average of A-  
+        First year completed with average of A-
         Dropped out second year to pursue applied skills
     </div>
 </div>

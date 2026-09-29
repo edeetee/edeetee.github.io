@@ -1,6 +1,6 @@
 precision highp float;
 
-#pragma glslify: hsv2rgb = require(glsl-hsv2rgb) 
+#pragma glslify: hsv2rgb = require(glsl-hsv2rgb)
 
 uniform sampler2D texture;
 varying vec2 uv;
@@ -22,7 +22,7 @@ void main () {
     vec3 hsv = vec3(edges*0.4+t*0.02, 0.4, 1);
 
     vec3 color = hsv2rgb(hsv);
-    float brightness = pow(min(1.0,feedbackLength), 4.0);
+    float brightness = pow(min(1.0,feedbackLength), 8.0)*0.5;
 
     gl_FragColor = vec4(color, 1)*brightness;
 }
