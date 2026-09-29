@@ -15,14 +15,14 @@ void main () {
     vec4 textureColor = texture2D(texture, uv);
 
     vec2 feedbackDiff = textureColor.rg-uv;
-    float feedbackLength = length(feedbackDiff)*3.3;
+    float feedbackLength = min(1.0, length(feedbackDiff)*3.5);
     // float feedbackLength = textureColor.r;
     float edges = mod(feedbackLength, modPeriod)/modPeriod;
 
-    vec3 hsv = vec3(edges*0.4+t*0.02, 0.4, 1);
+    vec3 hsv = vec3(pow(edges, 0.5)+t*0.01, 0.4, 1);
 
     vec3 color = hsv2rgb(hsv);
-    float brightness = pow(min(1.0,feedbackLength), 8.0)*0.5;
+    float brightness = pow(feedbackLength, 9.0)*0.6;
 
     gl_FragColor = vec4(color, 1)*brightness;
 }
