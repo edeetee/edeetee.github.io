@@ -115,14 +115,14 @@ export const Main: React.FC = () => {
                         <Expandable expanded={!showExtra} horizontal>
                             <Expandable expanded={!showExtra}>
                                 <div style={{ maxWidth: '50vw', padding: '0 3vw', textAlign: 'left' }}>
-                                    <div style={{ marginBottom: '-1em' }}>I am a</div>
-                                    <h2>creative technologist</h2>
-                                    <h2>software team lead</h2>
-                                    <h2>projection artist</h2>
-                                    <div style={{ marginBottom: '-1em' }}>with a</div>
-                                    <h2>Bachelor of Design Innovation</h2>
-                                    <div style={{ marginBottom: '-1em' }}>living in</div>
-                                    <h2>New Zealand</h2>
+                                    <div>I am a</div>
+                                    <h2 style={{marginTop:0}}>creative technologist</h2>
+                                    <h2 style={{marginTop:0}}>software team lead</h2>
+                                    <h2 style={{marginTop:0}}>projection artist</h2>
+                                    <div>with a</div>
+                                    <h2 style={{marginTop:0}}>Bachelor of Design Innovation</h2>
+                                    <div>living in</div>
+                                    <h2 style={{marginTop:0}}>New Zealand</h2>
                                 </div>
                             </Expandable>
                         </Expandable>
