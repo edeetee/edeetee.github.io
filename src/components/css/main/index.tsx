@@ -142,7 +142,7 @@ export const Main: React.FC = () => {
 
             <div className="footer" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                 <Links className={styles.padding} style={{ userSelect: 'none' }} />
-                <AnimatedMe />
+                <AnimatedMe hidden={showContent} />
             </div>
         </div >
     );
