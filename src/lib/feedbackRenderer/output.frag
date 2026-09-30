@@ -15,7 +15,11 @@ void main () {
     vec4 textureColor = texture2D(texture, uv);
 
     vec2 feedbackDiff = textureColor.rg-uv;
-    float feedbackLength = min(1.0, length(feedbackDiff)*3.5);
+    float feedbackLength = length(feedbackDiff)*3.5;
+
+    // clamp top
+    feedbackLength = feedbackLength * (1.0 - smoothstep(1.0, 1.5, feedbackLength));
+
     // float feedbackLength = textureColor.r;
     float edges = mod(feedbackLength, modPeriod)/modPeriod;
 

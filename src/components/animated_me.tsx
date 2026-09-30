@@ -1,7 +1,8 @@
 import { BareImage } from "src/lib/StaticImage";
-import me from "@public/images/me.webp"
+import me from "@public/images/profile-transparent.png"
 import { useEffect, useRef } from "react";
 
+const offset_rotation = 20;
 
 export const AnimatedMe = () => {
     const imageRef = useRef<HTMLDivElement>(null)
@@ -9,7 +10,7 @@ export const AnimatedMe = () => {
     let mouse_over = false;
     let clicked = false;
 
-    let cur_rotation = 0;
+    let cur_rotation = offset_rotation;
     let offset = 0;
 
     let last_frame = Date.now();
@@ -17,16 +18,16 @@ export const AnimatedMe = () => {
     function calc_transform() {
         const speed = (Date.now() - last_frame) / (1000 / 60);
 
-        const freq = clicked ? 0.02 : 0.005;
-        const amp = clicked ? 100 : 4;
-        const aim_rotation = mouse_over || clicked ? Math.sin(Date.now() * freq) * amp : 0;
+        const freq = clicked ? 0.02 : 0.003;
+        const amp = clicked ? 100 : 15;
+        const aim_rotation = offset_rotation + (mouse_over || clicked ? Math.sin(Date.now() * freq) * amp : 0);
 
         cur_rotation += (aim_rotation - cur_rotation) * 0.1;
 
         if (clicked)
             offset -= 20 * speed;
 
-        return `translate(${offset}px, ${offset + 48}px) rotate(${cur_rotation - 45}deg)`;
+        return `translate(${offset/2}px, ${offset + 48}px) rotate(${cur_rotation - 45}deg)`;
     }
 
     function onFrame() {
@@ -58,13 +59,14 @@ export const AnimatedMe = () => {
                 cursor: "pointer",
                 // width: "20vw",
                 // margin: 64,
-                right: -64,
+                right: -16,
+                bottom: -16,
                 //  top: -32,
                 // bottom: -150,
                 transformOrigin: "50% 50%",
                 transform: calc_transform(),
                 overflow: 'clip',
-                width: 128,
+                width: 200,
             }}>
 
             <BareImage src={me} />
