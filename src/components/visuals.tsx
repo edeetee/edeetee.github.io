@@ -1,12 +1,13 @@
 import { PortfolioTag, RenderPortfolio } from "src/lib/Portfolio";
 import { portfolioItems } from '@src/lib/PortfolioItem';
 import { Video } from "src/lib/Video";
+import { Youtube } from "src/lib/Youtube";
 
 const halfBoxStyle = { margin: "0 auto", border: "none", width: "50%", aspectRatio: "1/1" }
 
 export const Events = () =>
     <div>
-        <div>
+        <div style={{marginBottom:32}}>
             <div style={{ fontSize: '10vw', fontFamily: 'Poppkorn', textAlign: 'center', marginBottom: 32 }}>Optiphonic</div>
             <p>
                 I perform visual art at festivals and music events around New Zealand.
@@ -21,6 +22,8 @@ export const Events = () =>
 
             </p>
         </div>
+
+        <Youtube embedId='utNB2WZQUmw'  />
 
         {RenderPortfolio(portfolioItems.filter(item => item.tag == PortfolioTag.Visuals))}
     </div>
