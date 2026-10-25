@@ -23,10 +23,10 @@ void main () {
     // float feedbackLength = textureColor.r;
     float edges = mod(feedbackLength, modPeriod)/modPeriod;
 
-    vec3 hsv = vec3(pow(edges, 0.5)+t*0.01, 0.4, 1);
+    vec3 hsv = vec3(pow(edges, 0.5)+t*0.01, 0.4, 1.5);
 
     vec3 color = hsv2rgb(hsv);
-    float brightness = pow(feedbackLength, 5.0);
+    float brightness = pow(feedbackLength, 4.0);
 
     gl_FragColor = vec4(color, 1)*brightness;
 }
