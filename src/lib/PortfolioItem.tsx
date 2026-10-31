@@ -284,7 +284,7 @@ export const portfolioItems: PortfolioItem[] = [
                     <li>Graphing algorithms</li>
                 </ul>
             </p>
-                <iframe width="90%" height="800px" style={{ aspectRatio: '1:2', margin: 8 }} src="https://app.accessquest.com" ></iframe>
+            <a href='https://app.accessquest.com'> <Image style={{ width: '100%' }} src={require("@public/images/smart_access_screenshot.jpg")} disableLink /> </a>
             </>
     },
     {
